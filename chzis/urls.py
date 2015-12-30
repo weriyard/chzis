@@ -16,7 +16,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
+
+from chzis.mainpage.views import Index
+from chzis.congregation.views import CongregationsMembers
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-]
+    url(r'^/', Index.as_view()),
+    url(r'^congregation/', CongregationsMembers.as_view()),
+
+] + static(settings.STATIC_URL)
+
