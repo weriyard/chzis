@@ -1,0 +1,242 @@
+[
+    {
+        "pk": 1,
+        "model": "school.Background",
+        "fields": {
+            "number": 1,
+            "name": "G\u0142oszenie od domu do domu"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "school.Background",
+        "fields": {
+            "number": 2,
+            "name": "Reakcja na pr\u00f3b\u0119 przerwania rozmowy"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "school.Background",
+        "fields": {
+            "number": 3,
+            "name": "Pierwsze odwiedziny u osoby, kt\u00f3ra okaza\u0142a zainteresowanie"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "school.Background",
+        "fields": {
+            "number": 4,
+            "name": "Zapoczatkowanie studium biblijnego podczas pierwszej rozmowy"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "school.Background",
+        "fields": {
+            "number": 5,
+            "name": "Studium biblijne  zosob\u0105, kt\u00f3ra niezbyt dobrze czyta"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "school.Background",
+        "fields": {
+            "number": 6,
+            "name": "Zaawansowane studium biblijne"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "school.Background",
+        "fields": {
+            "number": 7,
+            "name": "Zach\u0119cenie zainteresowanego do przychodzenia na zebrania"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "school.Background",
+        "fields": {
+            "number": 8,
+            "name": "Zach\u0119cenie zainteresowanego do wprowadzenia w czyn jakiej\u015b rady biblijnej"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "school.Background",
+        "fields": {
+            "number": 9,
+            "name": "Przygotowanie si\u0119 do s\u0142u\u017cby z nieochrzczonym g\u0142osicielem"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "school.Background",
+        "fields": {
+            "number": 10,
+            "name": "Zach\u0119cenie do czytania Bibli przez pokazanie, jak to robi\u0107, albo przez obja\u015bnienie, jak lektura konkretnej ksi\u0119gi mo\u017ce nam prznie\u015b\u0107 po\u017cytek"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "school.Background",
+        "fields": {
+            "number": 11,
+            "name": "G\u0142oszenie przez telefon lub domofon"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "school.Background",
+        "fields": {
+            "number": 12,
+            "name": "G\u0142oszenie na ulicy"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "school.Background",
+        "fields": {
+            "number": 13,
+            "name": "G\u0142oszenie na targu, w punktach handlowych lub us\u0142ugowych"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "school.Background",
+        "fields": {
+            "number": 14,
+            "name": "\u015awiadczenie nieoficjalne w poczekalni"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "school.Background",
+        "fields": {
+            "number": 15,
+            "name": "\u015awiadczenie nieoficjalne w \u015brodkach transportu publicznego"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "school.Background",
+        "fields": {
+            "number": 16,
+            "name": "G\u0142oszenie w jakim\u015b miejscu charakterystycznym dla twojej okolicy"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "school.Background",
+        "fields": {
+            "number": 17,
+            "name": "Dawanie \u015bwiadectwa s\u0105siadowi"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "school.Background",
+        "fields": {
+            "number": 18,
+            "name": "Wyja\u015bnienie naszych wierze\u0144 krewnemu, kt\u00f3ry nie jest \u015awiadkiem"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "school.Background",
+        "fields": {
+            "number": 19,
+            "name": "Dawanie \u015bwiadectwa wsp\u00f3\u0142pracownikowi b\u0105d\u017c koledze ze szko\u0142y"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "school.Background",
+        "fields": {
+            "number": 20,
+            "name": "Rozmowa z nauczycielem, pracodawc\u0105 lub miejscowym urz\u0119dnikiem"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "school.Background",
+        "fields": {
+            "number": 21,
+            "name": "Dawanie \u015bwiadectwa lekarzowi, prawnikowi albo innemu specjali\u015bcie"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "school.Background",
+        "fields": {
+            "number": 22,
+            "name": "Dawanie \u015bwiadectwa osobie, kt\u00f3ra nie m\u00f3wi dobrze w twoim j\u0119zyku"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "school.Background",
+        "fields": {
+            "number": 23,
+            "name": "Rozmowa z ateist\u0105 lub agnostykiem"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "school.Background",
+        "fields": {
+            "number": 24,
+            "name": "G\u0142oszenie animi\u015bcie, buddy\u015bcie, hindui\u015bcie, katolikowi, muz\u0142umaninow, protestantowi, \u017cydowi albo wyznawcy jakiej\u015b innej miejscowej religii"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "school.Background",
+        "fields": {
+            "number": 25,
+            "name": "Wsp\u00f3\u0142praca w ramach programu \"Pionierzy wspieraj\u0105 drugich\""
+        }
+    },
+    {
+        "pk": 26,
+        "model": "school.Background",
+        "fields": {
+            "number": 26,
+            "name": "Rozmowa mi\u0119dzy matk\u0105 a dzieckiem lub mi\u0119dzy rodze\u0144stwem"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "school.Background",
+        "fields": {
+            "number": 27,
+            "name": "Udzielanie biblijnych zach\u0119t osobie chorej"
+        }
+    },
+    {
+        "pk": 28,
+        "model": "school.Background",
+        "fields": {
+            "number": 28,
+            "name": "Udzielanie pociechy na podstawie Biblii komu\u015b napotkanemu w s\u0142u\u017cbie, kto jest przygn\u0119biony lub pogr\u0105\u017cony w \u017ca\u0142obie"
+        }
+    },
+    {
+        "pk": 29,
+        "model": "school.Background",
+        "fields": {
+            "number": 29,
+            "name": "Udzielanie rady komu\u015b m\u0142odemu przez osob\u0119 doros\u0142\u0105"
+        }
+    },
+    {
+        "pk": 30,
+        "model": "school.Background",
+        "fields": {
+            "number": 30,
+            "name": "Inne sytuacje pasuj\u0105ce do Twojego terenu"
+        }
+    }
+]
