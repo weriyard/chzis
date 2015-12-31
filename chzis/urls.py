@@ -20,12 +20,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from chzis.mainpage.views import Index
-from chzis.congregation.views import CongregationsMembers
+from chzis.congregation.views import CongregationsMembers, Congregations
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', Index.as_view()),
-    url(r'^congregation/', CongregationsMembers.as_view()),
+    url(r'^congregation/', Congregations.as_view()),
 
 ] + static(settings.STATIC_URL)
 
