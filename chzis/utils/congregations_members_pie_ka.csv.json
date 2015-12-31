@@ -1,0 +1,1081 @@
+[
+    {
+        "pk": 1,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Adamska",
+                "Karolina"
+            ]
+        }
+    },
+    {
+        "pk": 2,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Adamski",
+                "Mateusz"
+            ]
+        }
+    },
+    {
+        "pk": 3,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Bana\u015b",
+                "Ewa"
+            ]
+        }
+    },
+    {
+        "pk": 4,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Bana\u015b",
+                "Grzegorz"
+            ]
+        }
+    },
+    {
+        "pk": 5,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Bana\u015b",
+                "Iwona"
+            ]
+        }
+    },
+    {
+        "pk": 6,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Bana\u015b",
+                "Kinga"
+            ]
+        }
+    },
+    {
+        "pk": 7,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Binek",
+                "Bo\u017cena"
+            ]
+        }
+    },
+    {
+        "pk": 8,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Brodziak",
+                "Alina"
+            ]
+        }
+    },
+    {
+        "pk": 9,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Brodziak",
+                "Grzegorz"
+            ]
+        }
+    },
+    {
+        "pk": 10,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Ciszek",
+                "Anna"
+            ]
+        }
+    },
+    {
+        "pk": 11,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Ciszek",
+                "Daniel"
+            ]
+        }
+    },
+    {
+        "pk": 12,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Cot",
+                "Grzegorz"
+            ]
+        }
+    },
+    {
+        "pk": 13,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Cot",
+                "Krystyna"
+            ]
+        }
+    },
+    {
+        "pk": 14,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Cot",
+                "Michalina"
+            ]
+        }
+    },
+    {
+        "pk": 15,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Czaja",
+                "Eugeniusz"
+            ]
+        }
+    },
+    {
+        "pk": 16,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Czaja",
+                "Mateusz"
+            ]
+        }
+    },
+    {
+        "pk": 17,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Czaja",
+                "Teresa"
+            ]
+        }
+    },
+    {
+        "pk": 18,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Czepiczek",
+                "Beata"
+            ]
+        }
+    },
+    {
+        "pk": 19,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Czepiczek",
+                "Kamil"
+            ]
+        }
+    },
+    {
+        "pk": 20,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Czepiczek",
+                "Zbigniew"
+            ]
+        }
+    },
+    {
+        "pk": 21,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Duda",
+                "Dariusz"
+            ]
+        }
+    },
+    {
+        "pk": 22,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Gajdzik",
+                "Jolanta"
+            ]
+        }
+    },
+    {
+        "pk": 23,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Gajdzik",
+                "Tadeusz"
+            ]
+        }
+    },
+    {
+        "pk": 24,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Garov",
+                "Renata"
+            ]
+        }
+    },
+    {
+        "pk": 25,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Gbur",
+                "Krystyna"
+            ]
+        }
+    },
+    {
+        "pk": 26,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Gil",
+                "Halina"
+            ]
+        }
+    },
+    {
+        "pk": 27,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Guba\u0142a",
+                "Zdzis\u0142awa"
+            ]
+        }
+    },
+    {
+        "pk": 28,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Gugnacka",
+                "Beata"
+            ]
+        }
+    },
+    {
+        "pk": 29,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Gugnacki",
+                "Piotr"
+            ]
+        }
+    },
+    {
+        "pk": 30,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Jordan",
+                "Gra\u017cyna"
+            ]
+        }
+    },
+    {
+        "pk": 31,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Jordan",
+                "Szymon"
+            ]
+        }
+    },
+    {
+        "pk": 32,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Jordan",
+                "Zdzis\u0142aw"
+            ]
+        }
+    },
+    {
+        "pk": 33,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Kasperek",
+                "Czes\u0142aw"
+            ]
+        }
+    },
+    {
+        "pk": 34,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Kasperek",
+                "Irena"
+            ]
+        }
+    },
+    {
+        "pk": 35,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Kasprzak",
+                "Marek"
+            ]
+        }
+    },
+    {
+        "pk": 36,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Kasprzak",
+                "Mieczys\u0142awa"
+            ]
+        }
+    },
+    {
+        "pk": 37,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Kosiorska",
+                "Agnieszka"
+            ]
+        }
+    },
+    {
+        "pk": 38,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Kosiorski",
+                "Mariusz"
+            ]
+        }
+    },
+    {
+        "pk": 39,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Kurzac",
+                "Beata"
+            ]
+        }
+    },
+    {
+        "pk": 40,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Kurzac",
+                "Daria"
+            ]
+        }
+    },
+    {
+        "pk": 41,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Kwieci\u0144ska",
+                "Anna"
+            ]
+        }
+    },
+    {
+        "pk": 42,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Kwieci\u0144ska",
+                "Izabela"
+            ]
+        }
+    },
+    {
+        "pk": 43,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "\u0141ubkowska",
+                "Natalia"
+            ]
+        }
+    },
+    {
+        "pk": 44,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "\u0141ubkowski",
+                "Edward"
+            ]
+        }
+    },
+    {
+        "pk": 45,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Marcinkowska",
+                "Aneta"
+            ]
+        }
+    },
+    {
+        "pk": 46,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Marcinkowski",
+                "Sebastian"
+            ]
+        }
+    },
+    {
+        "pk": 47,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Maruszczyk",
+                "Ilona"
+            ]
+        }
+    },
+    {
+        "pk": 48,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Maruszczyk",
+                "Piotr"
+            ]
+        }
+    },
+    {
+        "pk": 49,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Matusiak",
+                "Krystyna"
+            ]
+        }
+    },
+    {
+        "pk": 50,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Matuszewski",
+                "Damian"
+            ]
+        }
+    },
+    {
+        "pk": 51,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Mu\u0107ka",
+                "Anna"
+            ]
+        }
+    },
+    {
+        "pk": 52,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Mu\u0107ka",
+                "Krzysztof"
+            ]
+        }
+    },
+    {
+        "pk": 53,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Mu\u0107ka",
+                "Ma\u0142gorzata"
+            ]
+        }
+    },
+    {
+        "pk": 54,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Mu\u0107ka",
+                "Micha\u0142"
+            ]
+        }
+    },
+    {
+        "pk": 55,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Mu\u0107ka",
+                "Rozalia"
+            ]
+        }
+    },
+    {
+        "pk": 56,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Mu\u0107ka",
+                "Sabina"
+            ]
+        }
+    },
+    {
+        "pk": 57,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Mu\u0107ka",
+                "S\u0142awomir"
+            ]
+        }
+    },
+    {
+        "pk": 58,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Nalewajka",
+                "Andrzej"
+            ]
+        }
+    },
+    {
+        "pk": 59,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Nalewajka",
+                "Ma\u0142gorzata"
+            ]
+        }
+    },
+    {
+        "pk": 60,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Naumczyk",
+                "Anna"
+            ]
+        }
+    },
+    {
+        "pk": 61,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Naumczyk",
+                "Zeon"
+            ]
+        }
+    },
+    {
+        "pk": 62,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Pander",
+                "Joanna"
+            ]
+        }
+    },
+    {
+        "pk": 63,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Pep\u0142owska",
+                "Katarzyna"
+            ]
+        }
+    },
+    {
+        "pk": 64,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Pep\u0142owski",
+                "Romuald"
+            ]
+        }
+    },
+    {
+        "pk": 65,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Poloczek",
+                "Eugenia"
+            ]
+        }
+    },
+    {
+        "pk": 66,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Poloczek",
+                "Henryk"
+            ]
+        }
+    },
+    {
+        "pk": 67,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Poloczek",
+                "Roksana"
+            ]
+        }
+    },
+    {
+        "pk": 68,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Radsak",
+                "Estera"
+            ]
+        }
+    },
+    {
+        "pk": 69,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Skowronek",
+                "Adam"
+            ]
+        }
+    },
+    {
+        "pk": 70,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Skowronek",
+                "Gabriela"
+            ]
+        }
+    },
+    {
+        "pk": 71,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Soboci\u0144ska",
+                "Edeltrauta"
+            ]
+        }
+    },
+    {
+        "pk": 72,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Soboci\u0144ska",
+                "Halina"
+            ]
+        }
+    },
+    {
+        "pk": 73,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Soboci\u0144ski",
+                "W\u0142adys\u0142aw"
+            ]
+        }
+    },
+    {
+        "pk": 74,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Soboci\u0144skie",
+                "Rafa\u0142"
+            ]
+        }
+    },
+    {
+        "pk": 75,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Szafreanek",
+                "Helena"
+            ]
+        }
+    },
+    {
+        "pk": 76,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Szulca",
+                "Helena"
+            ]
+        }
+    },
+    {
+        "pk": 77,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Tide",
+                "W\u0142odzimierz"
+            ]
+        }
+    },
+    {
+        "pk": 78,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "Wachowiak",
+                "Ma\u0142gorzata"
+            ]
+        }
+    },
+    {
+        "pk": 79,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "\u017be\u0144czak",
+                "Cecylia"
+            ]
+        }
+    },
+    {
+        "pk": 80,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "\u017bydek",
+                "Andrzej"
+            ]
+        }
+    },
+    {
+        "pk": 81,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "\u017bydek",
+                "Dorota"
+            ]
+        }
+    },
+    {
+        "pk": 82,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "\u017bydek",
+                "Malwina"
+            ]
+        }
+    },
+    {
+        "pk": 83,
+        "model": "congregation.CongregationMember",
+        "fields": {
+            "congregation": [
+                "Piekary-Kamnie\u0144"
+            ],
+            "user": [
+                "\u017bydek",
+                "Micha\u0142"
+            ]
+        }
+    }
+]
