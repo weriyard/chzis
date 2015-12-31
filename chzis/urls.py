@@ -24,7 +24,7 @@ from chzis.congregation.views import CongregationsMembers
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^/', Index.as_view()),
+    url(r'^$', Index.as_view()),
     url(r'^congregation/', CongregationsMembers.as_view()),
 
 ] + static(settings.STATIC_URL)

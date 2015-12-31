@@ -58,7 +58,6 @@ for row in reader:
     fields = {}
     for i in range(len(row)-1):
         active_field = row[i+1]
-
         # convert numeric strings into actual numbers by converting to either int or float
         if active_field.isdigit():
             try:
@@ -66,8 +65,16 @@ for row in reader:
             except ValueError:
                 new_number = float(active_field)
             fields[header_row[i+1]] = new_number
-        else:
-            fields[header_row[i+1]] = active_field.strip()
+	    continue
+	elif active_field.startswith("[") and active_field.endswith("]"):
+	    try:
+		print active_field, type(active_field)
+		active_field = active_field.replace("[", "").replace("]", "")
+		fields[header_row[i+1]] = active_field.split(",")
+	    except Exception as e:
+		print e
+    	    continue
+        fields[header_row[i+1]] = active_field.strip()
 
     row_dict = {}
     row_dict["pk"] = int(pk)

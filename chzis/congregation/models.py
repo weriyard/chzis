@@ -1,14 +1,24 @@
 from __future__ import unicode_literals
-
+import datetime
 from django.db import models
 
+
+class CongregationManager(models.Manager):
+    def get_by_natural_key(self, congregation_name, *other):
+        return self.get(name=congregation_name)
+
+
 class Congregation(models.Model):
+    objects = CongregationManager()
+
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255, null=True)
     number = models.IntegerField(null=True)
     circuit = models.IntegerField(null=True)
     coordinator = models.ForeignKey('congregation.CongregationMember', models.SET_NULL, related_name='owner', null=True, blank=True, default=None)
 
+    def __unicode__(self):
+        return "{name}".format(name=self.name)
 
 class CongregationMember(models.Model):
     user = models.ForeignKey('users.People')
@@ -26,7 +36,12 @@ class CongregationMember(models.Model):
     reader_only = models.BooleanField(default=False)
     lector = models.BooleanField(default=False)
     sound_sysop = models.BooleanField(default=False)
-    last_modification = models.DateTimeField(auto_now=True)
+    last_modification = models.DateTimeField(auto_now_add=True, null=True)
 
+    def __unicode__(self):
+        return "{lastname} {firstname}".format(lastname=self.user.lastname, firstname=self.user.firstname)
+
+    class Meta:
+        ordering = ['user']
 
 
