@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
-import datetime
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class CongregationManager(models.Manager):
@@ -20,8 +20,9 @@ class Congregation(models.Model):
     def __unicode__(self):
         return "{name}".format(name=self.name)
 
+
 class CongregationMember(models.Model):
-    user = models.ForeignKey('users.People')
+    user = models.ForeignKey(User)
     congregation = models.ForeignKey(Congregation, null=True, blank=True)
     age = models.IntegerField(null=True)
     baptism_date = models.DateField(null=True)
@@ -39,7 +40,7 @@ class CongregationMember(models.Model):
     last_modification = models.DateTimeField(auto_now_add=True, null=True)
 
     def __unicode__(self):
-        return "{lastname} {firstname}".format(lastname=self.user.lastname, firstname=self.user.firstname)
+        return "{lastname} {firstname}".format(lastname=self.user.last_name, firstname=self.user.first_name)
 
     class Meta:
         ordering = ['user']

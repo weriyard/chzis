@@ -1,0 +1,832 @@
+[
+    {
+        "pk": 1,
+        "model": "auth.User",
+        "fields": {
+            "username": "KarolinaAdamska",
+            "password": "szkola",
+            "first_name": "Karolina",
+            "last_name": "Adamska"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "auth.User",
+        "fields": {
+            "username": "MateuszAdamski",
+            "password": "szkola",
+            "first_name": "Mateusz",
+            "last_name": "Adamski"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "auth.User",
+        "fields": {
+            "username": "EwaBanas",
+            "password": "szkola",
+            "first_name": "Ewa",
+            "last_name": "Bana\u015b"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "auth.User",
+        "fields": {
+            "username": "GrzegorzBanas",
+            "password": "szkola",
+            "first_name": "Grzegorz",
+            "last_name": "Bana\u015b"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "auth.User",
+        "fields": {
+            "username": "IwonaBanas",
+            "password": "szkola",
+            "first_name": "Iwona",
+            "last_name": "Bana\u015b"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "auth.User",
+        "fields": {
+            "username": "KingaBanas",
+            "password": "szkola",
+            "first_name": "Kinga",
+            "last_name": "Bana\u015b"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "auth.User",
+        "fields": {
+            "username": "BozenaBinek",
+            "password": "szkola",
+            "first_name": "Bo\u017cena",
+            "last_name": "Binek"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "auth.User",
+        "fields": {
+            "username": "AlinaBrodziak",
+            "password": "szkola",
+            "first_name": "Alina",
+            "last_name": "Brodziak"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "auth.User",
+        "fields": {
+            "username": "GrzegorzBrodziak",
+            "password": "szkola",
+            "first_name": "Grzegorz",
+            "last_name": "Brodziak"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "auth.User",
+        "fields": {
+            "username": "AnnaCiszek",
+            "password": "szkola",
+            "first_name": "Anna",
+            "last_name": "Ciszek"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "auth.User",
+        "fields": {
+            "username": "DanielCiszek",
+            "password": "szkola",
+            "first_name": "Daniel",
+            "last_name": "Ciszek"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "auth.User",
+        "fields": {
+            "username": "GrzegorzCot",
+            "password": "szkola",
+            "first_name": "Grzegorz",
+            "last_name": "Cot"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "auth.User",
+        "fields": {
+            "username": "KrystynaCot",
+            "password": "szkola",
+            "first_name": "Krystyna",
+            "last_name": "Cot"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "auth.User",
+        "fields": {
+            "username": "MichalinaCot",
+            "password": "szkola",
+            "first_name": "Michalina",
+            "last_name": "Cot"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "auth.User",
+        "fields": {
+            "username": "EugeniuszCzaja",
+            "password": "szkola",
+            "first_name": "Eugeniusz",
+            "last_name": "Czaja"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "auth.User",
+        "fields": {
+            "username": "MateuszCzaja",
+            "password": "szkola",
+            "first_name": "Mateusz",
+            "last_name": "Czaja"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "auth.User",
+        "fields": {
+            "username": "TeresaCzaja",
+            "password": "szkola",
+            "first_name": "Teresa",
+            "last_name": "Czaja"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "auth.User",
+        "fields": {
+            "username": "BeataCzepiczek",
+            "password": "szkola",
+            "first_name": "Beata",
+            "last_name": "Czepiczek"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "auth.User",
+        "fields": {
+            "username": "KamilCzepiczek",
+            "password": "szkola",
+            "first_name": "Kamil",
+            "last_name": "Czepiczek"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "auth.User",
+        "fields": {
+            "username": "ZbigniewCzepiczek",
+            "password": "szkola",
+            "first_name": "Zbigniew",
+            "last_name": "Czepiczek"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "auth.User",
+        "fields": {
+            "username": "DariuszDuda",
+            "password": "szkola",
+            "first_name": "Dariusz",
+            "last_name": "Duda"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "auth.User",
+        "fields": {
+            "username": "JolantaGajdzik",
+            "password": "szkola",
+            "first_name": "Jolanta",
+            "last_name": "Gajdzik"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "auth.User",
+        "fields": {
+            "username": "TadeuszGajdzik",
+            "password": "szkola",
+            "first_name": "Tadeusz",
+            "last_name": "Gajdzik"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "auth.User",
+        "fields": {
+            "username": "RenataGarov",
+            "password": "szkola",
+            "first_name": "Renata",
+            "last_name": "Garov"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "auth.User",
+        "fields": {
+            "username": "KrystynaGbur",
+            "password": "szkola",
+            "first_name": "Krystyna",
+            "last_name": "Gbur"
+        }
+    },
+    {
+        "pk": 26,
+        "model": "auth.User",
+        "fields": {
+            "username": "HalinaGil",
+            "password": "szkola",
+            "first_name": "Halina",
+            "last_name": "Gil"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "auth.User",
+        "fields": {
+            "username": "ZdzislawaGubala",
+            "password": "szkola",
+            "first_name": "Zdzis\u0142awa",
+            "last_name": "Guba\u0142a"
+        }
+    },
+    {
+        "pk": 28,
+        "model": "auth.User",
+        "fields": {
+            "username": "BeataGugnacka",
+            "password": "szkola",
+            "first_name": "Beata",
+            "last_name": "Gugnacka"
+        }
+    },
+    {
+        "pk": 29,
+        "model": "auth.User",
+        "fields": {
+            "username": "PiotrGugnacki",
+            "password": "szkola",
+            "first_name": "Piotr",
+            "last_name": "Gugnacki"
+        }
+    },
+    {
+        "pk": 30,
+        "model": "auth.User",
+        "fields": {
+            "username": "GrazynaJordan",
+            "password": "szkola",
+            "first_name": "Gra\u017cyna",
+            "last_name": "Jordan"
+        }
+    },
+    {
+        "pk": 31,
+        "model": "auth.User",
+        "fields": {
+            "username": "SzymonJordan",
+            "password": "szkola",
+            "first_name": "Szymon",
+            "last_name": "Jordan"
+        }
+    },
+    {
+        "pk": 32,
+        "model": "auth.User",
+        "fields": {
+            "username": "ZdzislawJordan",
+            "password": "szkola",
+            "first_name": "Zdzis\u0142aw",
+            "last_name": "Jordan"
+        }
+    },
+    {
+        "pk": 33,
+        "model": "auth.User",
+        "fields": {
+            "username": "CzeslawKasperek",
+            "password": "szkola",
+            "first_name": "Czes\u0142aw",
+            "last_name": "Kasperek"
+        }
+    },
+    {
+        "pk": 34,
+        "model": "auth.User",
+        "fields": {
+            "username": "IrenaKasperek",
+            "password": "szkola",
+            "first_name": "Irena",
+            "last_name": "Kasperek"
+        }
+    },
+    {
+        "pk": 35,
+        "model": "auth.User",
+        "fields": {
+            "username": "MarekKasprzak",
+            "password": "szkola",
+            "first_name": "Marek",
+            "last_name": "Kasprzak"
+        }
+    },
+    {
+        "pk": 36,
+        "model": "auth.User",
+        "fields": {
+            "username": "MieczyslawaKasprzak",
+            "password": "szkola",
+            "first_name": "Mieczys\u0142awa",
+            "last_name": "Kasprzak"
+        }
+    },
+    {
+        "pk": 37,
+        "model": "auth.User",
+        "fields": {
+            "username": "AgnieszkaKosiorska",
+            "password": "szkola",
+            "first_name": "Agnieszka",
+            "last_name": "Kosiorska"
+        }
+    },
+    {
+        "pk": 38,
+        "model": "auth.User",
+        "fields": {
+            "username": "MariuszKosiorski",
+            "password": "szkola",
+            "first_name": "Mariusz",
+            "last_name": "Kosiorski"
+        }
+    },
+    {
+        "pk": 39,
+        "model": "auth.User",
+        "fields": {
+            "username": "BeataKurzac",
+            "password": "szkola",
+            "first_name": "Beata",
+            "last_name": "Kurzac"
+        }
+    },
+    {
+        "pk": 40,
+        "model": "auth.User",
+        "fields": {
+            "username": "DariaKurzac",
+            "password": "szkola",
+            "first_name": "Daria",
+            "last_name": "Kurzac"
+        }
+    },
+    {
+        "pk": 41,
+        "model": "auth.User",
+        "fields": {
+            "username": "AnnaKwiecinska",
+            "password": "szkola",
+            "first_name": "Anna",
+            "last_name": "Kwieci\u0144ska"
+        }
+    },
+    {
+        "pk": 42,
+        "model": "auth.User",
+        "fields": {
+            "username": "IzabelaKwiecinska",
+            "password": "szkola",
+            "first_name": "Izabela",
+            "last_name": "Kwieci\u0144ska"
+        }
+    },
+    {
+        "pk": 43,
+        "model": "auth.User",
+        "fields": {
+            "username": "NataliaLubkowska",
+            "password": "szkola",
+            "first_name": "Natalia",
+            "last_name": "\u0141ubkowska"
+        }
+    },
+    {
+        "pk": 44,
+        "model": "auth.User",
+        "fields": {
+            "username": "EdwardLubkowski",
+            "password": "szkola",
+            "first_name": "Edward",
+            "last_name": "\u0141ubkowski"
+        }
+    },
+    {
+        "pk": 45,
+        "model": "auth.User",
+        "fields": {
+            "username": "AnetaMarcinkowska",
+            "password": "szkola",
+            "first_name": "Aneta",
+            "last_name": "Marcinkowska"
+        }
+    },
+    {
+        "pk": 46,
+        "model": "auth.User",
+        "fields": {
+            "username": "SebastianMarcinkowski",
+            "password": "szkola",
+            "first_name": "Sebastian",
+            "last_name": "Marcinkowski"
+        }
+    },
+    {
+        "pk": 47,
+        "model": "auth.User",
+        "fields": {
+            "username": "IlonaMaruszczyk",
+            "password": "szkola",
+            "first_name": "Ilona",
+            "last_name": "Maruszczyk"
+        }
+    },
+    {
+        "pk": 48,
+        "model": "auth.User",
+        "fields": {
+            "username": "PiotrMaruszczyk",
+            "password": "szkola",
+            "first_name": "Piotr",
+            "last_name": "Maruszczyk"
+        }
+    },
+    {
+        "pk": 49,
+        "model": "auth.User",
+        "fields": {
+            "username": "KrystynaMatusiak",
+            "password": "szkola",
+            "first_name": "Krystyna",
+            "last_name": "Matusiak"
+        }
+    },
+    {
+        "pk": 50,
+        "model": "auth.User",
+        "fields": {
+            "username": "DamianMatuszewski",
+            "password": "szkola",
+            "first_name": "Damian",
+            "last_name": "Matuszewski"
+        }
+    },
+    {
+        "pk": 51,
+        "model": "auth.User",
+        "fields": {
+            "username": "AnnaMucka",
+            "password": "szkola",
+            "first_name": "Anna",
+            "last_name": "Mu\u0107ka"
+        }
+    },
+    {
+        "pk": 52,
+        "model": "auth.User",
+        "fields": {
+            "username": "KrzysztofMucka",
+            "password": "szkola",
+            "first_name": "Krzysztof",
+            "last_name": "Mu\u0107ka"
+        }
+    },
+    {
+        "pk": 53,
+        "model": "auth.User",
+        "fields": {
+            "username": "MalgorzataMucka",
+            "password": "szkola",
+            "first_name": "Ma\u0142gorzata",
+            "last_name": "Mu\u0107ka"
+        }
+    },
+    {
+        "pk": 54,
+        "model": "auth.User",
+        "fields": {
+            "username": "MichalMucka",
+            "password": "szkola",
+            "first_name": "Micha\u0142",
+            "last_name": "Mu\u0107ka"
+        }
+    },
+    {
+        "pk": 55,
+        "model": "auth.User",
+        "fields": {
+            "username": "RozaliaMucka",
+            "password": "szkola",
+            "first_name": "Rozalia",
+            "last_name": "Mu\u0107ka"
+        }
+    },
+    {
+        "pk": 56,
+        "model": "auth.User",
+        "fields": {
+            "username": "SabinaMucka",
+            "password": "szkola",
+            "first_name": "Sabina",
+            "last_name": "Mu\u0107ka"
+        }
+    },
+    {
+        "pk": 57,
+        "model": "auth.User",
+        "fields": {
+            "username": "SlawomirMucka",
+            "password": "szkola",
+            "first_name": "S\u0142awomir",
+            "last_name": "Mu\u0107ka"
+        }
+    },
+    {
+        "pk": 58,
+        "model": "auth.User",
+        "fields": {
+            "username": "AndrzejNalewajka",
+            "password": "szkola",
+            "first_name": "Andrzej",
+            "last_name": "Nalewajka"
+        }
+    },
+    {
+        "pk": 59,
+        "model": "auth.User",
+        "fields": {
+            "username": "MalgorzataNalewajka",
+            "password": "szkola",
+            "first_name": "Ma\u0142gorzata",
+            "last_name": "Nalewajka"
+        }
+    },
+    {
+        "pk": 60,
+        "model": "auth.User",
+        "fields": {
+            "username": "AnnaNaumczyk",
+            "password": "szkola",
+            "first_name": "Anna",
+            "last_name": "Naumczyk"
+        }
+    },
+    {
+        "pk": 61,
+        "model": "auth.User",
+        "fields": {
+            "username": "ZeonNaumczyk",
+            "password": "szkola",
+            "first_name": "Zeon",
+            "last_name": "Naumczyk"
+        }
+    },
+    {
+        "pk": 62,
+        "model": "auth.User",
+        "fields": {
+            "username": "JoannaPander",
+            "password": "szkola",
+            "first_name": "Joanna",
+            "last_name": "Pander"
+        }
+    },
+    {
+        "pk": 63,
+        "model": "auth.User",
+        "fields": {
+            "username": "KatarzynaPeplowska",
+            "password": "szkola",
+            "first_name": "Katarzyna",
+            "last_name": "Pep\u0142owska"
+        }
+    },
+    {
+        "pk": 64,
+        "model": "auth.User",
+        "fields": {
+            "username": "RomualdPeplowski",
+            "password": "szkola",
+            "first_name": "Romuald",
+            "last_name": "Pep\u0142owski"
+        }
+    },
+    {
+        "pk": 65,
+        "model": "auth.User",
+        "fields": {
+            "username": "EugeniaPoloczek",
+            "password": "szkola",
+            "first_name": "Eugenia",
+            "last_name": "Poloczek"
+        }
+    },
+    {
+        "pk": 66,
+        "model": "auth.User",
+        "fields": {
+            "username": "HenrykPoloczek",
+            "password": "szkola",
+            "first_name": "Henryk",
+            "last_name": "Poloczek"
+        }
+    },
+    {
+        "pk": 67,
+        "model": "auth.User",
+        "fields": {
+            "username": "RoksanaPoloczek",
+            "password": "szkola",
+            "first_name": "Roksana",
+            "last_name": "Poloczek"
+        }
+    },
+    {
+        "pk": 68,
+        "model": "auth.User",
+        "fields": {
+            "username": "EsteraRadsak",
+            "password": "szkola",
+            "first_name": "Estera",
+            "last_name": "Radsak"
+        }
+    },
+    {
+        "pk": 69,
+        "model": "auth.User",
+        "fields": {
+            "username": "AdamSkowronek",
+            "password": "szkola",
+            "first_name": "Adam",
+            "last_name": "Skowronek"
+        }
+    },
+    {
+        "pk": 70,
+        "model": "auth.User",
+        "fields": {
+            "username": "GabrielaSkowronek",
+            "password": "szkola",
+            "first_name": "Gabriela",
+            "last_name": "Skowronek"
+        }
+    },
+    {
+        "pk": 71,
+        "model": "auth.User",
+        "fields": {
+            "username": "EdeltrautaSobocinska",
+            "password": "szkola",
+            "first_name": "Edeltrauta",
+            "last_name": "Soboci\u0144ska"
+        }
+    },
+    {
+        "pk": 72,
+        "model": "auth.User",
+        "fields": {
+            "username": "HalinaSobocinska",
+            "password": "szkola",
+            "first_name": "Halina",
+            "last_name": "Soboci\u0144ska"
+        }
+    },
+    {
+        "pk": 73,
+        "model": "auth.User",
+        "fields": {
+            "username": "WladyslawSobocinski",
+            "password": "szkola",
+            "first_name": "W\u0142adys\u0142aw",
+            "last_name": "Soboci\u0144ski"
+        }
+    },
+    {
+        "pk": 74,
+        "model": "auth.User",
+        "fields": {
+            "username": "RafalSobocinski",
+            "password": "szkola",
+            "first_name": "Rafa\u0142",
+            "last_name": "Soboci\u0144ski"
+        }
+    },
+    {
+        "pk": 75,
+        "model": "auth.User",
+        "fields": {
+            "username": "HelenaSzafranek",
+            "password": "szkola",
+            "first_name": "Helena",
+            "last_name": "Szafranek"
+        }
+    },
+    {
+        "pk": 76,
+        "model": "auth.User",
+        "fields": {
+            "username": "HelenaSzulc",
+            "password": "szkola",
+            "first_name": "Helena",
+            "last_name": "Szulc"
+        }
+    },
+    {
+        "pk": 77,
+        "model": "auth.User",
+        "fields": {
+            "username": "WlodzimierzTide",
+            "password": "szkola",
+            "first_name": "W\u0142odzimierz",
+            "last_name": "Tide"
+        }
+    },
+    {
+        "pk": 78,
+        "model": "auth.User",
+        "fields": {
+            "username": "MalgorzataWachowiak",
+            "password": "szkola",
+            "first_name": "Ma\u0142gorzata",
+            "last_name": "Wachowiak"
+        }
+    },
+    {
+        "pk": 79,
+        "model": "auth.User",
+        "fields": {
+            "username": "CecyliaZenczak",
+            "password": "szkola",
+            "first_name": "Cecylia",
+            "last_name": "\u017be\u0144czak"
+        }
+    },
+    {
+        "pk": 80,
+        "model": "auth.User",
+        "fields": {
+            "username": "AndrzejZydek",
+            "password": "szkola",
+            "first_name": "Andrzej",
+            "last_name": "\u017bydek"
+        }
+    },
+    {
+        "pk": 81,
+        "model": "auth.User",
+        "fields": {
+            "username": "DorotaZydek",
+            "password": "szkola",
+            "first_name": "Dorota",
+            "last_name": "\u017bydek"
+        }
+    },
+    {
+        "pk": 82,
+        "model": "auth.User",
+        "fields": {
+            "username": "MalwinaZydek",
+            "password": "szkola",
+            "first_name": "Malwina",
+            "last_name": "\u017bydek"
+        }
+    },
+    {
+        "pk": 83,
+        "model": "auth.User",
+        "fields": {
+            "username": "MichalZydek",
+            "password": "szkola",
+            "first_name": "Micha\u0142",
+            "last_name": "\u017bydek"
+        }
+    }
+]

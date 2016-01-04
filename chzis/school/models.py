@@ -20,6 +20,7 @@ class Lesson(models.Model):
     class Meta:
         ordering = ['number']
 
+
 class Background(models.Model):
     number = models.IntegerField()
     name = models.CharField(max_length=255)
@@ -33,15 +34,14 @@ class Background(models.Model):
         ordering = ['number']
 
 
-class StudentProfile(models.Model):
+class SchoolTask(models.Model):
     topic = models.CharField(max_length=255)
     person = models.ForeignKey(CongregationMember)
     lesson = models.ForeignKey(Lesson)
-    background = models.ForeignKey(Background)
+    background = models.ForeignKey(Background, null=True, blank=True)
     presentation_date = models.DateField(auto_now=True)
     lesson_passed = models.BooleanField(default=False)
-    lesson_comments = models.TextField(null=True)
-    description = models.TextField(null=True)
+    lesson_comments = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
     creation_date = models.DateField(auto_now=True)
     last_modification = models.DateTimeField(auto_now_add=True, null=True)
-

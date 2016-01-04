@@ -1,37 +1,23 @@
 from __future__ import unicode_literals
-import datetime
 
 from django.db import models
+from django.contrib.auth.models import User
 
 
-class PeopleManager(models.Manager):
-    def get_by_natural_key(self, lastname, firstname):
-        return self.get(lastname=lastname, firstname=firstname)
-
-
-class People(models.Model):
-    objects = PeopleManager()
+class PeopleProfile(models.Model):
     GENDER = (
         ('M', 'male'),
         ('F', 'female'),
     )
 
-    firstname = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
-    nickname = models.CharField(max_length=255, null=True)
-    password = models.CharField(max_length=255, null=True)
-    email = models.EmailField(null=True)
-    system_account = models.BooleanField(default=False)
-    perms = models.CharField(max_length=255, null=True)
+    user = models.ForeignKey(User)
     gender = models.CharField(max_length=1, choices=GENDER, default='male')
+    default_congregation = models.ForeignKey('congregation.Congregation', models.SET_NULL, null=True, blank=True, default=None)
     last_modification = models.DateTimeField(auto_now_add=True, null=True)
 
     def __unicode__(self):
-        return "{lastname} {firstname}".format(lastname=self.lastname, firstname=self.firstname)
+        return "{lastname} {firstname}".format(lastname=self.user.last_name, firstname=self.user.first_name)
 
-    class Meta:
-        ordering = ['lastname', 'firstname']
-
-
-
+    # class Meta:
+    #     ordering = ['last_name', 'first_name']
 

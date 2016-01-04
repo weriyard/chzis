@@ -7,7 +7,7 @@ from django.core.management import call_command
 
 
 def load_fixtures(state_apps, schema_editor):
-    call_command('loaddata', 'people')
+    call_command('loaddata', 'users_django')
 
 
 class Migration(migrations.Migration):
@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('users', '0002_add_superuser'),
+        ('users', '0001_initial'),
     ]
 
     operations = [

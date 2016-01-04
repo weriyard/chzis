@@ -1,9 +1,9 @@
 from django.contrib import admin
-from chzis.users.models import People
+from chzis.users.models import PeopleProfile
 
 
-class PeopleAdmin(admin.ModelAdmin):
+class PeopleProfileAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(People, PeopleAdmin)
+admin.site.register(PeopleProfile, PeopleProfileAdmin)

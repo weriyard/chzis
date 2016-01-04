@@ -9,7 +9,21 @@
 {% block content %}
     <div class="table-responsive">
         <table class="table table-bordered">
-            {{congregations}}
+            <thead>
+                <th>Congregation name</th>
+                <th>Congregation number</th>
+                <th>Default</th>
+            </thead>
+            <tbody>
+                {% for congregation in congregations %}
+                <tr>
+                    <td>{{congregation.name}}</td>
+                    <td>{{congregation.number}}</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
         </table>
     </div>
 
