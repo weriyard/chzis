@@ -10,7 +10,7 @@ class PeopleProfile(models.Model):
         ('F', 'female'),
     )
 
-    user = models.ForeignKey(User)
+    user = models.OneToOneField(User, related_name="profile")
     gender = models.CharField(max_length=1, choices=GENDER, default='male')
     default_congregation = models.ForeignKey('congregation.Congregation', models.SET_NULL, null=True, blank=True, default=None)
     last_modification = models.DateTimeField(auto_now_add=True, null=True)

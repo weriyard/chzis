@@ -18,14 +18,20 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 
 from chzis.mainpage.views import Index
 from chzis.congregation.views import CongregationsMembers, Congregations
+from chzis.users.views import PeopleProfileSetting
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^people/login/$', auth_views.login, {'template_name': 'login.html',
+                                               'redirect_field_name': '/'}, name=
+        'login'),
     url(r'^$', Index.as_view()),
     url(r'^congregation/', Congregations.as_view()),
+    url(r'^people/profile/', PeopleProfileSetting.as_view()),
 
 ] + static(settings.STATIC_URL)
 
