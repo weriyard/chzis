@@ -123,11 +123,8 @@ USE_TZ = True
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "chzis/media"),
 ]
-print BASE_DIR
 
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-#MEDIA_URL = '/media/'
 STATIC_URL = '/media/'
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_URL = "/people/login"
 AUTH_PROFILE_MODULE = "users.PeopleProfile"

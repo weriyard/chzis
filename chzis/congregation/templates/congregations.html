@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% block navbar %}
-    <li class="active"><a href="/congregation">Zbór</a></li>
+    <li class="active"><a href="/congregation/">Zbór</a></li>
+{% if user.profile.default_congregation %}
     <li><a href="./">Zebrania</a></li>
     <li><a href="./">Szkoła</a></li>
-
+{% endif %}
 {% endblock %}
 
 {% block content %}
 
+<form method="POST" action=".">
+    {% csrf_token %}
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
@@ -18,14 +21,18 @@
             <tbody>
                 {% for congregation in congregations %}
                 <tr>
-                    <td>{{congregation.name}}</td>
+                    <td>
+                        <a href="{{congregation.get_absolute_url}}">{{congregation.name}}</a>
+                    </td>
                     <td>{{congregation.number}}</td>
-                    <td><input type="checkbox"></td>
+                    <td><input type="radio" name="default" id="default_{{congregation.id}}" value="{{congregation.id}}" \
+                               {% if user.profile.default_congregation.id == congregation.id %}checked{% endif %}></td>
                 </tr>
                 {% endfor %}
             </tbody>
-
         </table>
     </div>
+    <button type="submit" class="btn btn-lg btn-success" name="Save">Save changes</button>
+</form>
 
 {% endblock %}

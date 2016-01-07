@@ -19,19 +19,22 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.decorators import login_required
+
 
 from chzis.mainpage.views import Index
 from chzis.congregation.views import CongregationDetails, Congregations, CongregationMemberDetails
-from chzis.users.views import PeopleProfileSetting
+from chzis.users.views import PeopleProfileSetting, PeopleLogin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^people/login/$', auth_views.login, {'template_name': 'login.html',
-                                               'redirect_field_name': '/'}, name=
-        'login'),
+    # url(r'^people/login$', auth_views.login, {'template_name': 'login.html'},
+    #     name='login'),
+    url(r'^people/login$', PeopleLogin.as_view(), name='login'),
+    url(r'^people/logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^$', Index.as_view()),
-    url(r'^congregation/$', Congregations.as_view()),
-    url(r'^congregation/(?P<congregation_id>\d+)/$', CongregationDetails.as_view()),
+    url(r'^congregation/$', login_required(Congregations.as_view())),
+    url(r'^congregation/(?P<congregation_id>\d+)/$', login_required(CongregationDetails.as_view())),
     url(r'^congregation/(?P<congregation_id>\d+)/members/(?P<member_id>\d+)$', CongregationMemberDetails.as_view()),
     url(r'^people/profile/', PeopleProfileSetting.as_view()),
 

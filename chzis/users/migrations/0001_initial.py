@@ -21,8 +21,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('gender', models.CharField(choices=[('M', 'male'), ('F', 'female')], default='male', max_length=1)),
-                ('last_modification', models.DateTimeField(auto_now_add=True, null=True)),
+                ('last_modification', models.DateTimeField(auto_now=True, null=True)),
                 ('default_congregation', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
+                ('birth_date', models.DateTimeField(null=True, blank=True)),
+                ('baptism_date', models.DateField(null=True, blank=True)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),

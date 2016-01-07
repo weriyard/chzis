@@ -12,20 +12,21 @@ class Congregation(models.Model):
     objects = CongregationManager()
 
     name = models.CharField(max_length=255)
-    address = models.CharField(max_length=255, null=True)
-    number = models.IntegerField(null=True)
-    circuit = models.IntegerField(null=True)
+    address = models.CharField(max_length=255, null=True, blank=True)
+    number = models.IntegerField(null=True, blank=True)
+    circuit = models.IntegerField(null=True, blank=True)
     coordinator = models.ForeignKey('congregation.CongregationMember', models.SET_NULL, related_name='owner', null=True, blank=True, default=None)
 
     def __unicode__(self):
         return "{name}".format(name=self.name)
 
+    def get_absolute_url(self):
+        return "/congregation/{congregation_id}".format(congregation_id=self.id)
+
 
 class CongregationMember(models.Model):
     user = models.ForeignKey(User)
     congregation = models.ForeignKey(Congregation, null=True, blank=True)
-    age = models.IntegerField(null=True)
-    baptism_date = models.DateField(null=True)
     active = models.BooleanField(default=False)
     servant = models.BooleanField(default=False)
     elder = models.BooleanField(default=False)
@@ -37,7 +38,7 @@ class CongregationMember(models.Model):
     reader_only = models.BooleanField(default=False)
     lector = models.BooleanField(default=False)
     sound_sysop = models.BooleanField(default=False)
-    last_modification = models.DateTimeField(auto_now_add=True, null=True)
+    last_modification = models.DateTimeField(auto_now=True, null=True)
 
     def __unicode__(self):
         return "{lastname} {firstname}".format(lastname=self.user.last_name, firstname=self.user.first_name)

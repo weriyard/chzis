@@ -7,6 +7,8 @@
     <link href="http://fiddle.jshell.net/css/normalize.css" rel="stylesheet">
     <script src="/media/js/bootstrap.min.js" type="text/javascript"></script>
     <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/media/css/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <link rel="stylesheet" href="/media/css/font-awesome.min.css">
     <link href="/media/css/main.css" rel="stylesheet" >
 
 <!--    <link href="/media/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -40,11 +42,9 @@ $(window).on('load', function() {
         <div class="collapse navbar-collapse" id="navigationbar"  style="z-index:1000">
             <ul class="nav navbar-nav">
                 {% block navbar %}
-                <li class="active"><a href="./Index.html">Startseite</a></li>
-                <li><a href="./">R&uuml;ckblick</a></li>
-                <li><a href="./">Wettbewerb</a></li>
-                <li><a href="./">Anmelden</a></li>
-                <li><a href="./">Sponsoren</a></li>
+                    <li><a href="/congregation/">Zbór</a></li>
+                    <li><a href="./">Zebrania</a></li>
+                    <li><a href="./">Szkoła</a></li>
                 {% endblock %}
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -54,6 +54,7 @@ $(window).on('load', function() {
 
     <script src="/media/js/bootstrap.min.js"></script>
 
+    <a href="/people/logout">LOGOUT</a>
 {% block content %}
 {% endblock %}
 </div>

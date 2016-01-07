@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('number', models.IntegerField()),
                 ('name', models.CharField(max_length=255)),
                 ('description', models.CharField(max_length=255, null=True)),
-                ('last_modification', models.DateTimeField(auto_now_add=True, null=True)),
+                ('last_modification', models.DateTimeField(auto_now=True, null=True)),
             ],
             options={
                 'ordering': ['number'],
@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('discourse', models.BooleanField(default=False)),
                 ('book_page', models.CharField(max_length=255, null=True)),
                 ('description', models.TextField(null=True)),
-                ('last_modification', models.DateTimeField(auto_now_add=True, null=True)),
+                ('last_modification', models.DateTimeField(auto_now=True, null=True)),
             ],
             options={
                 'ordering': ['number'],

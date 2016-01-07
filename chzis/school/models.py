@@ -12,7 +12,7 @@ class Lesson(models.Model):
     discourse = models.BooleanField(default=False)
     book_page = models.CharField(max_length=255, null=True)
     description = models.TextField(null=True)
-    last_modification = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    last_modification = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     def __unicode__(self):
         return "{number} {name}".format(number=self.number, name=self.name)
@@ -25,7 +25,7 @@ class Background(models.Model):
     number = models.IntegerField()
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255, null=True)
-    last_modification = models.DateTimeField(auto_now_add=True, null=True)
+    last_modification = models.DateTimeField(auto_now=True, null=True)
 
     def __unicode__(self):
         return "{number} {name}".format(number=self.number, name=self.name)
@@ -44,4 +44,4 @@ class SchoolTask(models.Model):
     lesson_comments = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     creation_date = models.DateField(auto_now=True)
-    last_modification = models.DateTimeField(auto_now_add=True, null=True)
+    last_modification = models.DateTimeField(auto_now=True, null=True)
