@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block navbar %}
+    <li class="active"><a href="/congregation">Zbór</a></li>
+    <li><a href="./">Zebrania</a></li>
+    <li><a href="./">Szkoła</a></li>
+
+{% endblock %}
+
+{% block content %}
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <th>Congregation name</th>
+                <th>Congregation number</th>
+                <th>Default</th>
+            </thead>
+            <tbody>
+            {% for cong_member in cong_members %}
+            <tr>
+                <td><a href="{{cong_member.get_absolute_url}}">{{cong_member}}</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

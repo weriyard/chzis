@@ -21,7 +21,7 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 
 from chzis.mainpage.views import Index
-from chzis.congregation.views import CongregationsMembers, Congregations
+from chzis.congregation.views import CongregationDetails, Congregations, CongregationMemberDetails
 from chzis.users.views import PeopleProfileSetting
 
 urlpatterns = [
@@ -30,8 +30,11 @@ urlpatterns = [
                                                'redirect_field_name': '/'}, name=
         'login'),
     url(r'^$', Index.as_view()),
-    url(r'^congregation/', Congregations.as_view()),
+    url(r'^congregation/$', Congregations.as_view()),
+    url(r'^congregation/(?P<congregation_id>\d+)/$', CongregationDetails.as_view()),
+    url(r'^congregation/(?P<congregation_id>\d+)/members/(?P<member_id>\d+)$', CongregationMemberDetails.as_view()),
     url(r'^people/profile/', PeopleProfileSetting.as_view()),
+
 
 ] + static(settings.STATIC_URL)
 

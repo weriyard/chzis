@@ -42,6 +42,10 @@ class CongregationMember(models.Model):
     def __unicode__(self):
         return "{lastname} {firstname}".format(lastname=self.user.last_name, firstname=self.user.first_name)
 
+    def get_absolute_url(self):
+        return "/congregation/{congregation_id}/members/{members_id}".format(congregation_id=self.congregation.id,
+                                                                             members_id=self.id)
+
     class Meta:
         ordering = ['user']
 
