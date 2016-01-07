@@ -39,9 +39,15 @@ class SchoolTask(models.Model):
     person = models.ForeignKey(CongregationMember)
     lesson = models.ForeignKey(Lesson)
     background = models.ForeignKey(Background, null=True, blank=True)
-    presentation_date = models.DateField(auto_now=True)
+    presentation_date = models.DateField(null=True, blank=True)
     lesson_passed = models.BooleanField(default=False)
     lesson_comments = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     creation_date = models.DateField(auto_now=True)
     last_modification = models.DateTimeField(auto_now=True, null=True)
+
+    def __unicode__(self):
+        return "{number} {lastname} {firstname} {topic}".format(number=self.id,
+                                                                lastname=self.person.user.last_name,
+                                                                firstname=self.person.user.first_name,
+                                                                topic=self.topic)

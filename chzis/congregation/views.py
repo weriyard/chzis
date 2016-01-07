@@ -15,8 +15,7 @@ class Congregations(View):
         return render(request, 'congregations.html', context)
 
     def post(self, request):
-        print request.POST
-        if 'default' in request.POST and int(request.POST.get('default')) != request.user.profile.default_congregation.id:
+        if 'default' in request.POST:
             profile = request.user.profile
             congregation = Congregation.objects.get(id=request.POST.get('default'))
             profile.default_congregation = congregation

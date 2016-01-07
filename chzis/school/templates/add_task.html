@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="table-responsive">
+        <table class="add-task">
+            {{form.as_table}}
+        </table>
+    </div>
+    <button type="submit" class="btn btn-lg btn-warning" name="Add">Add task</button>
+</form>
+
+
+
+{% endblock %}
