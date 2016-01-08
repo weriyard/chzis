@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="pull-left">
+<form method="GET" action="/school/plan/{{prev_plan_date}}">
+    <button type="submit" class="btn btn-xs btn-warning"><<<</button>
+</form>
+</div>
+
+<div class="pull-right">
+<form method="GET" action="/school/plan/{{next_plan_date}}">
+    <button type="submit" class="btn btn-xs btn-success">>>></button>
+</form>
+</div>
+
+<div style="clear: both;"></div>
+<h2>
+    <span class="label label-info">Week {{current_week.week_start_day}} - {{current_week.week_end_day}} {{date.month_name}} {{date.year}}</span>
+</h2>
+
+<div class="center-block">
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-condensed task_list">
+        <thead>
+            <th>ID</th>
+            <th>Topic</th>
+            <th>Person</th>
+            <th>Lesson name</th>
+            <th>Presentation date</th>
+            <th>Creation date</th>
+            <th>Result</th>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <th scope="row" >{{task.id}}</th>
+                <td class="col-xs-2">{{task.topic}}</td>
+                <td class="col-xs-2">{{task.person}}</td>
+                <td class="col-xs-2">{{task.lesson.name}}</td>
+                <td class="col-xs-2">{{task.presentation_date}}</td>
+                <td class="col-xs-2">{{task.creation_date}}</td>
+                <td>
+                    <!--<h3>-->
+                        <!--<span class="label {% if task.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{task.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>-->
+                    <!--</h3>-->
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+
+{% endblock %}

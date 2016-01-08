@@ -25,7 +25,7 @@ from django.contrib.auth.decorators import login_required
 from chzis.mainpage.views import Index
 from chzis.congregation.views import CongregationDetails, Congregations, CongregationMemberDetails
 from chzis.users.views import PeopleProfileSetting, PeopleLogin
-from chzis.school.views import Tasks, AddTasks, TaskView
+from chzis.school.views import Tasks, AddTasks, TaskView, SchoolPlanDetails, school_plan
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -40,6 +40,8 @@ urlpatterns = [
     url(r'^school/tasks/$', Tasks.as_view()),
     url(r'^school/tasks/add/$', AddTasks.as_view()),
     url(r'^school/tasks/(?P<task_id>\d+)/$', TaskView.as_view()),
+    url(r'^school/plan/$', school_plan),
+    url(r'^school/plan/([0-9]{4})/([0-9]+)/([0-9]+)/$', SchoolPlanDetails.as_view()),
     url(r'^people/profile/', PeopleProfileSetting.as_view()),
 
 
