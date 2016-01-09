@@ -9,5 +9,6 @@ class Index(View):
         if not request.user.is_authenticated():
             return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
         else:
+            request.LANGUAGE_CODE = 'pl'
             return render(request, 'index.html', {})
 

@@ -1,10 +1,5 @@
 {% extends "base.html" %}
-{% block navbar %}
-    <li class="active"><a href="/congregation/">Zbór</a></li>
-{% if user.profile.default_congregation %}
-    <li><a href="./">Zebrania</a></li>
-    <li><a href="./">Szkoła</a></li>
-{% endif %}
+
 {% endblock %}
 
 {% block content %}
@@ -14,9 +9,9 @@
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
-                <th>Congregation name</th>
-                <th>Congregation number</th>
-                <th>Default</th>
+                <th>{% trans "Congregation name" %}</th>
+                <th>{% trans "Congregation number" %}</th>
+                <th>{% trans "Default" %}</th>
             </thead>
             <tbody>
                 {% for congregation in congregations %}
@@ -32,7 +27,7 @@
             </tbody>
         </table>
     </div>
-    <button type="submit" class="btn btn-lg btn-success" name="Save">Save changes</button>
+    <button type="submit" class="btn btn-lg btn-success" name="Save">{% trans "Save changes" %}</button>
 </form>
 
 {% endblock %}
