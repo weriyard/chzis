@@ -2,7 +2,7 @@
 
 
 {% block content %}
-
+{% load i18n %}
 <div class="pull-left">
 <form method="GET" action="/school/plan/{{prev_plan_date}}">
     <button type="submit" class="btn btn-xs btn-warning"><<<</button>
@@ -17,7 +17,7 @@
 
 <div style="clear: both;"></div>
 <h2>
-    <span class="label label-info">Week {{current_week.week_start_day}} - {{current_week.week_end_day}} {{date.month_name}} {{date.year}}</span>
+    <span class="label label-info">{% trans "Week" %} {{current_week.week_start|date:"j F" }} - {{current_week.week_end|date:"j F"}}</span>
 </h2>
 
 <div class="center-block">

@@ -47,24 +47,22 @@ class TaskView(View):
 
 
 class SchoolPlanDetails(View):
-    def get(self, request, year, month, week_start_day):
+    def get(self, request, year, month, week_start):
 
         year = int(year)
         month = int(month)
-        week_start_day = int(week_start_day)
-        week_end_day = week_start_day + 6
-        date = datetime.datetime(year,month, week_start_day)
-        tasks = SchoolTask.objects.filter(presentation_date__gte=datetime.datetime(year, month, week_start_day),
-                                          presentation_date__lte=datetime.datetime(year, month, week_end_day))
+        week_start = datetime.datetime(year=year, month=month, day=int(week_start))
+        week_end = week_start + datetime.timedelta(days=6)
+        tasks = SchoolTask.objects.filter(presentation_date__gte=week_start,
+                                          presentation_date__lte=week_end)
 
-        prev_plan_date = date - datetime.timedelta(days=7)
-        next_plan_date = date + datetime.timedelta(days=7)
+        prev_date = week_start - datetime.timedelta(days=7)
+        next_date = week_start + datetime.timedelta(days=7)
         context = dict()
         context['tasks'] = tasks
-        context['current_week'] = dict(week_start_day=week_start_day, week_end_day=week_end_day)
-        context['date'] = dict(year=date.year, month=date.month, month_name=date.strftime("%B"))
-        context['prev_plan_date'] = "{year}/{month}/{day}".format(year=prev_plan_date.year, month=prev_plan_date.month, day=prev_plan_date.day);
-        context['next_plan_date'] = "{year}/{month}/{day}".format(year=next_plan_date.year, month=next_plan_date.month, day=next_plan_date.day);
+        context['current_week'] = dict(week_start=week_start, week_end=week_end)
+        context['prev_plan_date'] = "{year}/{month}/{day}".format(year=prev_date.year, month=prev_date.month, day=prev_date.day);
+        context['next_plan_date'] = "{year}/{month}/{day}".format(year=next_date.year, month=next_date.month, day=next_date.day);
         return render(request, "school_plan.html", context)
 
 
