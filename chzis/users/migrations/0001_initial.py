@@ -25,7 +25,8 @@ class Migration(migrations.Migration):
                 ('default_congregation', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
                 ('birth_date', models.DateTimeField(null=True, blank=True)),
                 ('baptism_date', models.DateField(null=True, blank=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='profile', to=settings.AUTH_USER_MODEL)),
+
             ],
         ),
     ]

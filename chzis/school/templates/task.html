@@ -2,10 +2,13 @@
 
 
 {% block content %}
+{% if perms.add_schooltask %}
 <form method="GET" action="/school/tasks/add">
     <button type="submit" class="btn btn-lg btn-warning">+ Add next tasks</button>
 </form>
+{% endif %}
 
+<br>
 <div class="table-responsive">
     <table class="add-task">
         {{form.as_table}}

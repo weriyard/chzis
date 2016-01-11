@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 
-{% endblock %}
-
 {% block content %}
-
+{% load i18n %}
 <form method="POST" action=".">
     {% csrf_token %}
     <div class="table-responsive">

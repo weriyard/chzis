@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="/congregation/{{member.congregation.id}}">Back</a>
+<a href="{{request.META.HTTP_REFERER}}">Back</a>
 {{member.user.username}}
     <div class="table-responsive">
         <table class="table table-bordered">

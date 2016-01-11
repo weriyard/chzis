@@ -11,7 +11,7 @@ class PeopleProfile(models.Model):
 
     user = models.OneToOneField(User, related_name="profile")
     gender = models.CharField(max_length=1, choices=GENDER, default='male')
-    default_congregation = models.ForeignKey('congregation.Congregation', models.SET_NULL, null=True, blank=True, default=None)
+    default_congregation = models.ForeignKey(blank=True, default=None, null=True, on_delete=models.SET_NULL, to='congregation.Congregation')
     birth_date = models.DateTimeField(null=True, blank=True)
     baptism_date = models.DateField(null=True, blank=True)
     last_modification = models.DateTimeField(auto_now=True, null=True)

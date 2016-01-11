@@ -144,4 +144,7 @@ STATIC_URL = '/media/'
 LOGIN_URL = "/people/login"
 AUTH_PROFILE_MODULE = "users.PeopleProfile"
 
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: "/people/%s/" % u.id,
+}
 

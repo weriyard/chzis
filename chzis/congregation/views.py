@@ -20,7 +20,7 @@ class Congregations(View):
             congregation = Congregation.objects.get(id=request.POST.get('default'))
             profile.default_congregation = congregation
             profile.save()
-        return redirect("{}?menu=1".format(request.path))
+        return redirect("{}".format(request.path))
 
 
 

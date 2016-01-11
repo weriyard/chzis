@@ -2,10 +2,13 @@
 
 {% block content %}
 
+{% if perms.school.add_schooltask %}
 <form method="GET" action="/school/tasks/add">
     <button type="submit" class="btn btn-lg btn-primary">+ Add tasks</button>
 </form>
+{% endif %}
 
+<br>
 <form>
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-condensed task_list">
@@ -21,9 +24,9 @@
             <tbody>
                 {% for task in tasks %}
                 <tr>
-                    <th scope="row" >{{task.id}}</th>
-                    <td class="col-xs-2">{{task.topic}}</td>
-                    <td class="col-xs-2">{{task.person}}</td>
+                    <th scope="row" ><a href ="{{task.get_absolute_url}}">{{task.id}}</a></th>
+                    <td class="col-xs-2"><a href ="{{task.get_absolute_url}}">{{task.topic}}</a></td>
+                    <td class="col-xs-2"><a href="{{task.person.get_absolute_url}}">{{task.person}}</a></td>
                     <td class="col-xs-2">{{task.lesson.name}}</td>
                     <td class="col-xs-2">{{task.presentation_date}}</td>
                     <td class="col-xs-2">{{task.creation_date}}</td>

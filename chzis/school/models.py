@@ -40,8 +40,6 @@ class SchoolTask(models.Model):
     lesson = models.ForeignKey(Lesson)
     background = models.ForeignKey(Background, null=True, blank=True)
     presentation_date = models.DateField(null=True, blank=True)
-    lesson_passed = models.BooleanField(default=False)
-    lesson_comments = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     creation_date = models.DateField(auto_now=True)
     last_modification = models.DateTimeField(auto_now=True, null=True)
@@ -51,3 +49,27 @@ class SchoolTask(models.Model):
                                                                 lastname=self.person.user.last_name,
                                                                 firstname=self.person.user.first_name,
                                                                 topic=self.topic)
+
+    def get_absolute_url(self):
+        return "/school/tasks/{id}".format(id=self.id)
+
+    class Meta:
+        permissions = (
+                    ("can_view_all_tasks", "Can see all available tasks"),
+                    ("can_judge_tasks", "Can judge presented tasks by popele"),
+                )
+
+class SchoolMemberTasksResults(models.Model):
+    person = models.ForeignKey(CongregationMember)
+    lesson = models.ForeignKey(Lesson)
+    task = models.ForeignKey(SchoolTask, null=True, blank=True, default=None)
+    lesson_passed = models.BooleanField(default=False)
+    description = models.TextField(null=True, blank=True)
+    lesson_passed_date = models.DateTimeField(auto_now=True, null=True)
+    last_modification = models.DateTimeField(auto_now=True, null=True)
+
+    def __unicode__(self):
+        return "{lesson} {lastname} {firstname} {passed}".format(lesson=self.lesson.name,
+                                                                 lastname=self.person.user.last_name,
+                                                                 firstname=self.person.user.first_name,
+                                                                 passed=self.lesson_passed)

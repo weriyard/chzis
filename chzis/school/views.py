@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import View
 from django.shortcuts import redirect
 
-from chzis.school.models import SchoolTask
+from chzis.school.models import SchoolTask, SchoolMemberTasksResults
 from chzis.school.forms import SchoolTaskForm
 
 
@@ -53,11 +53,13 @@ class SchoolPlanDetails(View):
         month = int(month)
         week_start = datetime.datetime(year=year, month=month, day=int(week_start))
         week_end = week_start + datetime.timedelta(days=6)
-        tasks = SchoolTask.objects.filter(presentation_date__gte=week_start,
-                                          presentation_date__lte=week_end)
 
         prev_date = week_start - datetime.timedelta(days=7)
         next_date = week_start + datetime.timedelta(days=7)
+
+        tasks = SchoolTask.objects.filter(presentation_date__gte=week_start,
+                                          presentation_date__lte=week_end)
+
         context = dict()
         context['tasks'] = tasks
         context['current_week'] = dict(week_start=week_start, week_end=week_end)

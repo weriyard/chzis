@@ -50,15 +50,27 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('topic', models.CharField(max_length=255)),
-                ('presentation_date', models.DateField(auto_now=True)),
-                ('lesson_passed', models.BooleanField(default=False)),
-                ('lesson_comments', models.TextField(blank=True, null=True)),
+                ('presentation_date', models.DateField(blank=True, null=True)),
                 ('description', models.TextField(blank=True, null=True)),
                 ('creation_date', models.DateField(auto_now=True)),
-                ('last_modification', models.DateTimeField(auto_now_add=True, null=True)),
+                ('last_modification', models.DateTimeField(auto_now=True, null=True)),
                 ('background', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='school.Background')),
                 ('lesson', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='school.Lesson')),
                 ('person', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='congregation.CongregationMember')),
+            ],
+        ),
+
+        migrations.CreateModel(
+            name='SchoolMemberTasksResults',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('lesson_passed', models.BooleanField(default=False)),
+                ('description', models.TextField(blank=True, null=True)),
+                ('lesson_passed_date', models.DateTimeField(auto_now=True, null=True)),
+                ('last_modification', models.DateTimeField(auto_now=True, null=True)),
+                ('lesson', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='school.Lesson')),
+                ('person', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='congregation.CongregationMember')),
+                ('task', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='school.SchoolTask', null=True, blank=True, default=None))
             ],
         ),
     ]
