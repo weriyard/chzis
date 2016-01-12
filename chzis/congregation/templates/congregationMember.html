@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+{% load i18n %}
 {{member.user.username}}
 <br>
 <br>
@@ -9,10 +9,10 @@
         <table class="table table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-xs-3">Age</td>
-                    <td class="col-xs-3">Baptism date</td>
-                    <td class="col-xs-3">Active</td>
-                    <td class="col-xs-3">Last modification</td>
+                    <td class="col-xs-3">{% trans "Age" %}</td>
+                    <td class="col-xs-3">{% trans "Baptism date" %}</td>
+                    <td class="col-xs-3">{% trans "Active" %}</td>
+                    <td class="col-xs-3">{% trans "Last modification" %}</td>
                 </tr>
                 <tr>
                     <td>{{member.age}}</td>
@@ -39,7 +39,7 @@
                     <div class="checkbox checkbox-danger">
                         <input type="checkbox" id="school_allow" name="school_allow" {% if member.school_allow %}checked{% endif %}>
                         <label for="school_allow">
-                            School allow
+                            {% trans "School allow" %}
                         </label>
                     </div>
                 </li>
@@ -53,26 +53,32 @@
                     <div class="checkbox checkbox-info">
                         <input type="checkbox" id="pioneer" name="pioneer" {% if member.pioneer %}checked{% endif %}>
                         <label for="pioneer">
-                            Pioneer
+                            {% trans "Pioneer" %}
                         </label>
                     </div>
                 </li>
                 <li>
                     <div class="checkbox checkbox-info">
                         <input type="checkbox" id="servant" name="servant" {% if member.servant %}checked{% endif %}>
-                        <label for="servant">Servant</label>
+                        <label for="servant">
+                            {% trans "Servant" %}
+                        </label>
                     </div>
                 </li>
                 <li>
                        <div class="checkbox checkbox-info">
                             <input type="checkbox" id="elder" name="elder" {% if member.elder %}checked{% endif %}>
-                            <label for="elder">Elder</label>
+                            <label for="elder">
+                                {% trans "Elder" %}
+                            </label>
                         </div>
                 </li>
                 <li>
                     <div class="checkbox checkbox-primary">
                         <input type="checkbox" id="coordinator" name="coordinator" {% if member.coordinator %}checked{% endif %} disabled>
-                        <label for="coordinator">Coordinator</label>
+                        <label for="coordinator">
+                            {% trans "Coordinator" %}
+                        </label>
                     </div>
                 </li>
             </ul>
@@ -85,7 +91,7 @@
                     <div class="checkbox checkbox-success">
                         <input type="checkbox" id="lector" name="lector" {% if member.lector %}checked{% endif %}>
                         <label for="lector">
-                            Lector
+                            {% trans "Lector" %}
                         </label>
                     </div>
                 </li>
@@ -93,7 +99,7 @@
                     <div class="checkbox checkbox-success">
                         <input type="checkbox" id="sound_sysop" name="sound_sysop" {% if member.sound_sysop %}checked{% endif %}>
                         <label for="sound_sysop">
-                            Sound operator
+                            {% trans "Sound operator" %}
                         </label>
                     </div>
                 </li>
@@ -107,7 +113,7 @@
                     <div class="checkbox checkbox-warning">
                         <input type="checkbox" id="master" name="master" {% if member.master %}checked{% endif %}>
                         <label for="master">
-                            Master
+                            {% trans "Master" %}
                         </label>
                     </div>
                 </li>
@@ -115,7 +121,7 @@
                     <div class="checkbox checkbox-warning">
                         <input type="checkbox" id="slave" name="slave" {% if member.slave %}checked{% endif %}>
                         <label for="slave">
-                            Slave
+                            {% trans "Slave" %}
                         </label>
                     </div>
                 </li>
@@ -123,7 +129,7 @@
                     <div class="checkbox checkbox-warning">
                         <input type="checkbox" id="reader_only" name="reader_only" {% if member.reader_only %}checked{% endif %}>
                         <label for="reader_only">
-                            Reader
+                            {% trans "Reader" %}
                         </label>
                     </div>
                 </li>
@@ -132,25 +138,7 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-lg btn-success">Save changes</button>
+    <button type="submit" class="btn btn-lg btn-success">{% trans "Save changes" %}</button>
 </form>
 
 {% endblock %}
-
-    <!--age = models.IntegerField(null=True)-->
-    <!--baptism_date = models.DateField(null=True)-->
-    <!--active = models.BooleanField(default=False)-->
-
-    <!--servant = models.BooleanField(default=False)-->
-    <!--elder = models.BooleanField(default=False)-->
-    <!--coordinator = models.BooleanField(default=False)-->
-    <!--pioneer = models.BooleanField(default=False)-->
-
-<!--lector = models.BooleanField(default=False)-->
-<!--sound_sysop = models.BooleanField(default=False)-->
-
-<!--master = models.BooleanField(default=False)-->
-<!--slave = models.BooleanField(default=False)-->
-<!--school_allow = models.BooleanField(default=False)-->
-<!--reader_only = models.BooleanField(default=False)-->
-    <!--last_modification = models.DateTimeField(auto_now_add=True, null=True)-->

@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load i18n %}
 
 {% if perms.school.add_schooltask %}
 <form method="GET" action="/school/tasks/add">
-    <button type="submit" class="btn btn-lg btn-primary">+ Add tasks</button>
+    <button type="submit" class="btn btn-lg btn-primary">+ {% trans "Add task" %}</button>
 </form>
 {% endif %}
 
@@ -14,12 +15,12 @@
         <table class="table table-bordered table-hover table-condensed task_list">
             <thead>
                 <th class="text-center">ID</th>
-                <th class="text-center">Topic</th>
-                <th class="text-center">Person</th>
-                <th class="text-center">Lesson name</th>
-                <th class="text-center">Presentation date</th>
-                <th class="text-center">Creation date</th>
-                <th class="text-center">Result</th>
+                <th class="text-center">{% trans "Topic" %}</th>
+                <th class="text-center">{% trans "Person" %}</th>
+                <th class="text-center">{% trans "Lesson name" %}</th>
+                <th class="text-center">{% trans "Presentation date" %}</th>
+                <th class="text-center">{% trans "Creation date" %}</th>
+                <th class="text-center">{% trans "Result" %}</th>
             </thead>
             <tbody>
                 {% for task in tasks %}

@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load i18n %}
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
-                <th>Congregation name</th>
-                <th>Congregation number</th>
-                <th>Default</th>
+                <th>{% trans "Congregation name" %}</th>
+                <th>{% trans "Congregation number" %}</th>
+                <th>{% trans "Default" %}</th>
             </thead>
             <tbody>
             {% for cong_member in cong_members %}

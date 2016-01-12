@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-12 15:08+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: chzis/school/templates/add_task.html:11 chzis/school/templates/tasks.html:8
+msgid "Add task"
+msgstr ""
+
+#: chzis/school/templates/school_plan.html:35
+msgid "Week"
+msgstr ""
+
+#: chzis/school/templates/school_plan.html:44
+#: chzis/school/templates/tasks.html:18
+msgid "Topic"
+msgstr ""
+
+#: chzis/school/templates/school_plan.html:45
+#: chzis/school/templates/tasks.html:19
+msgid "Person"
+msgstr ""
+
+#: chzis/school/templates/school_plan.html:46
+#: chzis/school/templates/tasks.html:20
+msgid "Lesson name"
+msgstr ""
+
+#: chzis/school/templates/school_plan.html:47
+#: chzis/school/templates/tasks.html:21
+msgid "Presentation date"
+msgstr ""
+
+#: chzis/school/templates/school_plan.html:48
+#: chzis/school/templates/tasks.html:22
+msgid "Creation date"
+msgstr ""
+
+#: chzis/school/templates/school_plan.html:49
+#: chzis/school/templates/tasks.html:23
+msgid "Result"
+msgstr ""
+
+#: chzis/school/templates/school_plan.html:65
+msgid "FAIL"
+msgstr ""
+
+#: chzis/school/templates/school_plan.html:70
+msgid "OK"
+msgstr ""

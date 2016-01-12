@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-09 21:57+0000\n"
+"POT-Creation-Date: 2016-01-12 15:08+0000\n"
 "PO-Revision-Date: 2016-01-09 22:17+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.10\n"
 
-#: chzis/congregation/templates/congregations.html:12
+#: chzis/congregation/templates/congregationDetails.html:8
+#: chzis/congregation/templates/congregations.html:10
 msgid "Congregation name"
 msgstr "Congregation name"
 
-#: chzis/congregation/templates/congregations.html:13
+#: chzis/congregation/templates/congregationDetails.html:9
+#: chzis/congregation/templates/congregations.html:11
 msgid "Congregation number"
 msgstr ""
 
-#: chzis/congregation/templates/congregations.html:14
+#: chzis/congregation/templates/congregationDetails.html:10
+#: chzis/congregation/templates/congregations.html:12
 msgid "Default"
 msgstr ""
 
-#: chzis/congregation/templates/congregations.html:30
+#: chzis/congregation/templates/congregationMember.html:12
+msgid "Age"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:13
+msgid "Baptism date"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:14
+msgid "Active"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:15
+msgid "Last modification"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:42
+msgid "School allow"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:56
+msgid "Pioneer"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:64
+msgid "Servant"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:72
+msgid "Elder"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:80
+msgid "Coordinator"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:94
+msgid "Lector"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:102
+msgid "Sound operator"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:116
+msgid "Master"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:124
+msgid "Slave"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:132
+msgid "Reader"
+msgstr ""
+
+#: chzis/congregation/templates/congregationMember.html:141
+#: chzis/congregation/templates/congregations.html:28
 msgid "Save changes"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-09 21:57+0000\n"
+"POT-Creation-Date: 2016-01-12 15:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,26 +19,30 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: chzis/mainpage/templates/base.html:49
+#: chzis/mainpage/templates/base.html:51
 msgid "Congregation"
 msgstr "Zbór"
 
-#: chzis/mainpage/templates/base.html:51
+#: chzis/mainpage/templates/base.html:53
 msgid "Meetings"
 msgstr "Zebrania"
 
-#: chzis/mainpage/templates/base.html:58
+#: chzis/mainpage/templates/base.html:60
 msgid "School"
 msgstr "Szkoła"
 
-#: chzis/mainpage/templates/base.html:60
+#: chzis/mainpage/templates/base.html:62
 msgid "Plan"
 msgstr "Plan"
 
-#: chzis/mainpage/templates/base.html:61
+#: chzis/mainpage/templates/base.html:64
+msgid "Add new task"
+msgstr "Dodaj zadanie"
+
+#: chzis/mainpage/templates/base.html:67
 msgid "Tasks"
 msgstr "Wszystkie zadania"
 
-#: chzis/mainpage/templates/base.html:67
+#: chzis/mainpage/templates/base.html:74
 msgid "Logout"
 msgstr "Wyloguj"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-09 21:57+0000\n"
+"POT-Creation-Date: 2016-01-12 15:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,26 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: chzis/mainpage/templates/base.html:49
+#: chzis/mainpage/templates/base.html:51
 msgid "Congregation"
 msgstr ""
 
-#: chzis/mainpage/templates/base.html:51
+#: chzis/mainpage/templates/base.html:53
 msgid "Meetings"
 msgstr ""
 
-#: chzis/mainpage/templates/base.html:58
+#: chzis/mainpage/templates/base.html:60
 msgid "School"
 msgstr ""
 
-#: chzis/mainpage/templates/base.html:60
+#: chzis/mainpage/templates/base.html:62
 msgid "Plan"
 msgstr ""
 
-#: chzis/mainpage/templates/base.html:61
-msgid "Tasks"
+#: chzis/mainpage/templates/base.html:64
+msgid "Add new task"
 msgstr ""
 
 #: chzis/mainpage/templates/base.html:67
+msgid "Tasks"
+msgstr ""
+
+#: chzis/mainpage/templates/base.html:74
 msgid "Logout"
 msgstr ""

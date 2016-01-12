@@ -9,7 +9,7 @@
             data: {'result': result, csrfmiddlewaretoken: '{{ csrf_token }}'},
             type: 'post',
             success: function(data) {
-                alert(data);
+
             }
         });
     }
@@ -41,12 +41,12 @@
     <table class="table table-bordered table-hover table-condensed task_list">
         <thead>
             <th class="text-center">ID</th>
-            <th class="text-center">Topic</th>
-            <th class="text-center">Person</th>
-            <th class="text-center">Lesson name</th>
-            <th class="text-center">Presentation date</th>
-            <th class="text-center">Creation date</th>
-            <th class="text-center">Result</th>
+            <th class="text-center">{% trans "Topic" %}</th>
+            <th class="text-center">{% trans "Person" %}</th>
+            <th class="text-center">{% trans "Lesson name" %}</th>
+            <th class="text-center">{% trans "Presentation date" %}</th>
+            <th class="text-center">{% trans "Creation date" %}</th>
+            <th class="text-center">{% trans "Result" %}</th>
         </thead>
         <tbody>
             {% for task in tasks %}
