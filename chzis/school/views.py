@@ -3,9 +3,10 @@ import datetime
 from django.shortcuts import render
 from django.views.generic import View
 from django.shortcuts import redirect
+from django.http import HttpResponse
 
 from chzis.school.models import SchoolTask, SchoolMemberTasksResults
-from chzis.school.forms import SchoolTaskForm
+from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm
 
 
 class Tasks(View):
@@ -40,7 +41,7 @@ class AddTasks(View):
 class TaskView(View):
     def get(self, request, task_id):
         task = SchoolTask.objects.get(id=task_id)
-        form = SchoolTaskForm(instance=task)
+        form = SchoolTaskViewForm(instance=task)
         context = dict()
         context['form'] = form
         return render(request, "task.html", context)
@@ -75,3 +76,15 @@ def school_plan(request):
     return redirect("/school/plan/{year}/{month}/{week_start_day}".format(year=dt.year,
                                                                           month=dt.month,
                                                                           week_start_day=week_start_day))
+
+def set_task_result(request, task_id):
+    if 'result' in request.POST:
+        if request.POST.get('result', None) == 'ok':
+            result = True
+        else:
+            result = False
+
+        task_result = SchoolMemberTasksResults.objects.get(task__id=int(task_id))
+        task_result.lesson_passed = result
+        task_result.save()
+    return HttpResponse("alal")

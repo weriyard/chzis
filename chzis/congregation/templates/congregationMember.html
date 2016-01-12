@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="{{request.META.HTTP_REFERER}}">Back</a>
+
 {{member.user.username}}
+<br>
+<br>
     <div class="table-responsive">
         <table class="table table-bordered">
             <tbody>
@@ -26,6 +28,7 @@
             </tbody>
         </table>
     </div>
+
 <form method="POST">
     {% csrf_token %}
     <div class="row">

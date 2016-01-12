@@ -13,18 +13,18 @@
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-condensed task_list">
             <thead>
-                <th>ID</th>
-                <th>Topic</th>
-                <th>Person</th>
-                <th>Lesson name</th>
-                <th>Presentation date</th>
-                <th>Creation date</th>
-                <th>Result</th>
+                <th class="text-center">ID</th>
+                <th class="text-center">Topic</th>
+                <th class="text-center">Person</th>
+                <th class="text-center">Lesson name</th>
+                <th class="text-center">Presentation date</th>
+                <th class="text-center">Creation date</th>
+                <th class="text-center">Result</th>
             </thead>
             <tbody>
                 {% for task in tasks %}
                 <tr>
-                    <th scope="row" ><a href ="{{task.get_absolute_url}}">{{task.id}}</a></th>
+                    <th scope="row" class="text-center"><a href ="{{task.get_absolute_url}}">{{task.id}}</a></th>
                     <td class="col-xs-2"><a href ="{{task.get_absolute_url}}">{{task.topic}}</a></td>
                     <td class="col-xs-2"><a href="{{task.person.get_absolute_url}}">{{task.person}}</a></td>
                     <td class="col-xs-2">{{task.lesson.name}}</td>

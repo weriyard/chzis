@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 from django.db import models
-import datetime
-from chzis.congregation.models import CongregationMember
+from django.core import exceptions
 
+from chzis.congregation.models import CongregationMember
 
 class Lesson(models.Model):
     number = models.IntegerField()
@@ -53,6 +53,14 @@ class SchoolTask(models.Model):
     def get_absolute_url(self):
         return "/school/tasks/{id}".format(id=self.id)
 
+    def save(self, *args, **kwargs):
+        super(SchoolTask, self).save(*args, **kwargs)
+        try:
+            SchoolMemberTasksResults.objects.get(task=self)
+        except exceptions.ObjectDoesNotExist:
+            SchoolMemberTasksResults(task=self, lesson=self.lesson, person=self.person).save()
+
+
     class Meta:
         permissions = (
                     ("can_view_all_tasks", "Can see all available tasks"),
@@ -63,7 +71,7 @@ class SchoolMemberTasksResults(models.Model):
     person = models.ForeignKey(CongregationMember)
     lesson = models.ForeignKey(Lesson)
     task = models.ForeignKey(SchoolTask, null=True, blank=True, default=None)
-    lesson_passed = models.BooleanField(default=False)
+    lesson_passed = models.NullBooleanField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     lesson_passed_date = models.DateTimeField(auto_now=True, null=True)
     last_modification = models.DateTimeField(auto_now=True, null=True)

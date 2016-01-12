@@ -3,14 +3,12 @@
 
 {% block content %}
 
-<form method="POST">
+<form method="POST" class="form-horizontal" role="form">
     {% csrf_token %}
-    <div class="table-responsive">
-        <table class="add-task">
-            {{form.as_table}}
-        </table>
-    </div>
-    <button type="submit" class="btn btn-lg btn-warning" name="Add">Add task</button>
+        <div class="col-md-offset-3 col-md-6">
+            {{form.as_div}}
+            <button type="submit" class="btn btn-lg btn-warning" name="Add">Add task</button>
+        </div>
 </form>
 
 

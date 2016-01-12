@@ -1,11 +1,26 @@
 {% extends "base.html" %}
 
+{% block head %}
+<script type='text/javascript'>
+
+    function set_result(obj, task_id, result) {
+        $.ajax({
+            url: "/school/tasks/"+ task_id +"/result/",
+            data: {'result': result, csrfmiddlewaretoken: '{{ csrf_token }}'},
+            type: 'post',
+            success: function(data) {
+                alert(data);
+            }
+        });
+    }
+</script>
+{% endblock %}
 
 {% block content %}
 {% load i18n %}
 <div class="pull-left">
 <form method="GET" action="/school/plan/{{prev_plan_date}}">
-    <button type="submit" class="btn btn-xs btn-warning"><<<</button>
+    <button type="submit" class="btn btn-xs btn-danger"><<<</button>
 </form>
 </div>
 
@@ -25,18 +40,18 @@
 <div class="table-responsive">
     <table class="table table-bordered table-hover table-condensed task_list">
         <thead>
-            <th>ID</th>
-            <th>Topic</th>
-            <th>Person</th>
-            <th>Lesson name</th>
-            <th>Presentation date</th>
-            <th>Creation date</th>
-            <th>Result</th>
+            <th class="text-center">ID</th>
+            <th class="text-center">Topic</th>
+            <th class="text-center">Person</th>
+            <th class="text-center">Lesson name</th>
+            <th class="text-center">Presentation date</th>
+            <th class="text-center">Creation date</th>
+            <th class="text-center">Result</th>
         </thead>
         <tbody>
             {% for task in tasks %}
             <tr>
-                <th scope="row" ><a href ="{{task.get_absolute_url}}">{{task.id}}</a></th>
+                <th scope="row" class="text-center"><a href ="{{task.get_absolute_url}}">{{task.id}}</a></th>
                 <td class="col-xs-2"><a href ="{{task.get_absolute_url}}">{{task.topic}}</a></td>
                 <td class="col-xs-2"><a href="{{task.person.get_absolute_url}}">{{task.person}}</a></td>
                 <td class="col-xs-2">{{task.lesson.name}}</td>
@@ -44,15 +59,18 @@
                 <td class="col-xs-2">{{task.creation_date}}</td>
                 <td>
                     {% if perms.school.can_judge_tasks %}
-                    <div class="checkbox checkbox-danger">
-                        <input type="checkbox" id="{{task.id}}" name="{{task.id}}" {% if member.school_allow %}checked{% endif %}>
-                        <label for="{{task.id}}"></label>
-                    </div>
+                    {% if member.school_allow == None %}
+                        <div class="checkbox checkbox-danger">
+                            <input type="checkbox" id="{{task.id}}_fail" name="{{task.id}}_fail" onclick="set_result(this, {{task.id}}, 'fail');">
+                            <label for="{{task.id}}_fail">{% trans "FAIL" %}</label>
+                        </div>
+                    <div></div>
+                        <div class="checkbox checkbox-success">
+                            <input type="checkbox" id="{{task.id}}_ok" name="{{task.id}}_ok" onclick="set_result(this, {{task.id}}, 'ok');">
+                            <label for="{{task.id}}_ok">{% trans "OK" %}</label>
+                        </div>
+                    {% endif %}
                     {% else %}
-                    <div class="checkbox checkbox-danger">
-                        <input type="checkbox" id="{{task.id}}" name="{{task.id}}" {% if member.school_allow %}checked{% endif %} disabled>
-                        <label for="{{task.id}}"></label>
-                    </div>
                     {% endif %}
                     <!--<h3>-->
                         <!--<span class="label {% if task.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{task.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>-->

@@ -64,7 +64,7 @@ class Migration(migrations.Migration):
             name='SchoolMemberTasksResults',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('lesson_passed', models.BooleanField(default=False)),
+                ('lesson_passed', models.NullBooleanField(null=True, blank=True)),
                 ('description', models.TextField(blank=True, null=True)),
                 ('lesson_passed_date', models.DateTimeField(auto_now=True, null=True)),
                 ('last_modification', models.DateTimeField(auto_now=True, null=True)),
