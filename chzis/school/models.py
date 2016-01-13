@@ -69,6 +69,8 @@ class SchoolTask(models.Model):
                 )
 
 
+# TODO: zastanowic sie czy nie zcalic ze schooltask ponownie, tylko umozliwic tworzenia taska z sama lekcja i rezultatem
+
 class SchoolMemberTasksResults(models.Model):
     person = models.ForeignKey(CongregationMember)
     lesson = models.ForeignKey(Lesson)
