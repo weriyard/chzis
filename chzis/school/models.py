@@ -5,7 +5,8 @@ from django.db import models
 from django.core import exceptions
 
 from chzis.congregation.models import CongregationMember
-from chzis.meetings.models import MeetingItem
+from chzis.meetings.models import MeetingItem, MeetingTask
+
 
 class Lesson(models.Model):
     number = models.IntegerField()
@@ -37,17 +38,12 @@ class Background(models.Model):
         ordering = ['number']
 
 
-# TODO potrzebne jest wprowadzenie MeetingTask - rozwazyc czy nie polaczyc tych dwoch modeli ew. podziedziczyc jeden po drugim
-
 class SchoolTask(models.Model):
+    task = models.ForeignKey(MeetingTask)
     topic = models.CharField(max_length=255,null=True, blank=True)
-    meeting_item = models.ForeignKey(MeetingItem)
-    person = models.ForeignKey(CongregationMember)
     lesson = models.ForeignKey(Lesson)
     background = models.ForeignKey(Background, null=True, blank=True)
-    presentation_date = models.DateField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    creation_date = models.DateField(auto_now=True)
     last_modification = models.DateTimeField(auto_now=True, null=True)
 
     def __unicode__(self):
@@ -66,12 +62,12 @@ class SchoolTask(models.Model):
         except exceptions.ObjectDoesNotExist:
             SchoolMemberTasksResults(task=self, lesson=self.lesson, person=self.person).save()
 
-
     class Meta:
         permissions = (
                     ("can_view_all_tasks", "Can see all available tasks"),
                     ("can_judge_tasks", "Can judge presented tasks by popele"),
                 )
+
 
 class SchoolMemberTasksResults(models.Model):
     person = models.ForeignKey(CongregationMember)
