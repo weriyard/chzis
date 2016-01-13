@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chzis.mainpage',
+    'chzis.meetings',
     'chzis.congregation',
     'chzis.users',
     'chzis.school',

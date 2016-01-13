@@ -1,8 +1,11 @@
+# -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 from django.db import models
 from django.core import exceptions
 
 from chzis.congregation.models import CongregationMember
+from chzis.meetings.models import MeetingItem
 
 class Lesson(models.Model):
     number = models.IntegerField()
@@ -34,8 +37,11 @@ class Background(models.Model):
         ordering = ['number']
 
 
+# TODO potrzebne jest wprowadzenie MeetingTask - rozwazyc czy nie polaczyc tych dwoch modeli ew. podziedziczyc jeden po drugim
+
 class SchoolTask(models.Model):
-    topic = models.CharField(max_length=255)
+    topic = models.CharField(max_length=255,null=True, blank=True)
+    meeting_item = models.ForeignKey(MeetingItem)
     person = models.ForeignKey(CongregationMember)
     lesson = models.ForeignKey(Lesson)
     background = models.ForeignKey(Background, null=True, blank=True)
