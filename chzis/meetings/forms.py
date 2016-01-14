@@ -1,5 +1,6 @@
 from django.forms import ModelForm, TextInput, Select, Textarea
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 from chzis.school.widgets import InlineSelectDateWidget
 from chzis.meetings.models import MeetingTask, MeetingItem
@@ -16,7 +17,8 @@ class EmptyChoiceField(forms.ChoiceField):
 
 
 class MeetingTaskSchoolForm(forms.ModelForm):
-    meeting_item = EmptyChoiceField(choices=MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'name'),
+    meeting_item_choices = MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'name')
+    meeting_item = EmptyChoiceField(choices=[(id, _(item)) for id, item in meeting_item_choices],
                                      widget=Select(attrs={'class': 'form-control', 'label': None}), empty_label='---------')
 
     class Meta:
