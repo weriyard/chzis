@@ -5,8 +5,10 @@ from django.views.generic import View
 from django.shortcuts import redirect
 from django.http import HttpResponse
 
-from chzis.school.models import SchoolTask, SchoolMemberTasksResults
+from chzis.school.models import SchoolTask
 from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm
+from chzis.meetings.models import MeetingTask
+from chzis.meetings.forms import MeetingTaskSchoolForm
 
 
 class Tasks(View):
@@ -22,20 +24,30 @@ class AddTasks(View):
     def get(self, request):
 
         context = dict()
-        context['form'] = SchoolTaskForm()
+        context['task_form'] = MeetingTaskSchoolForm()
+        context['school_task_form'] = SchoolTaskForm()
+
         return render(request, 'add_task.html', context)
 
     def post(self, request):
         print request.POST
 
-        form = SchoolTaskForm(request.POST)
-        if form.is_valid():
-            task = form.save()
+        task_form = MeetingTaskSchoolForm(request.POST)
+        school_task_form = SchoolTaskForm(request.POST)
+
+        if task_form.is_valid():
+            if school_task_form.is_valid():
+                task_form.instance.description = school_task_form.instance.description
+                task = task_form.save()
+                school_task_form.instance.task = task
+                school_task = school_task_form.save()
         else:
             context = dict()
-            context['form'] = form
+            context['task_form'] = school_task_form
+            context['school_task_form'] = school_task_form
             return render(request, "add_task.html", context)
-        return redirect('/school/tasks/{}'.format(task.id))
+        return redirect('/school/tasks/{}'.format(school_task.id))
+
 
 
 class TaskView(View):
@@ -84,7 +96,7 @@ def set_task_result(request, task_id):
         else:
             result = False
 
-        task_result = SchoolMemberTasksResults.objects.get(task__id=int(task_id))
+        task_result = SchoolTask.objects.get(task__id=int(task_id))
         task_result.lesson_passed = result
         task_result.save()
     return HttpResponse("alal")

@@ -39,49 +39,22 @@ class Background(models.Model):
 
 
 class SchoolTask(models.Model):
-    task = models.ForeignKey(MeetingTask)
-    topic = models.CharField(max_length=255,null=True, blank=True)
+    task = models.ForeignKey(MeetingTask, null=True, blank=True)
     lesson = models.ForeignKey(Lesson)
+    lesson_passed = models.NullBooleanField(null=True, blank=True)
+    lesson_passed_date = models.DateTimeField(auto_now=True, null=True)
     background = models.ForeignKey(Background, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     last_modification = models.DateTimeField(auto_now=True, null=True)
 
     def __unicode__(self):
-        return "{number} {lastname} {firstname} {topic}".format(number=self.id,
-                                                                lastname=self.person.user.last_name,
-                                                                firstname=self.person.user.first_name,
-                                                                topic=self.topic)
+        return "{number}".format(number=self.id)
 
     def get_absolute_url(self):
         return "/school/tasks/{id}".format(id=self.id)
-
-    def save(self, *args, **kwargs):
-        super(SchoolTask, self).save(*args, **kwargs)
-        try:
-            SchoolMemberTasksResults.objects.get(task=self)
-        except exceptions.ObjectDoesNotExist:
-            SchoolMemberTasksResults(task=self, lesson=self.lesson, person=self.person).save()
 
     class Meta:
         permissions = (
                     ("can_view_all_tasks", "Can see all available tasks"),
                     ("can_judge_tasks", "Can judge presented tasks by popele"),
                 )
-
-
-# TODO: zastanowic sie czy nie zcalic ze schooltask ponownie, tylko umozliwic tworzenia taska z sama lekcja i rezultatem
-
-class SchoolMemberTasksResults(models.Model):
-    person = models.ForeignKey(CongregationMember)
-    lesson = models.ForeignKey(Lesson)
-    task = models.ForeignKey(SchoolTask, null=True, blank=True, default=None)
-    lesson_passed = models.NullBooleanField(null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
-    lesson_passed_date = models.DateTimeField(auto_now=True, null=True)
-    last_modification = models.DateTimeField(auto_now=True, null=True)
-
-    def __unicode__(self):
-        return "{lesson} {lastname} {firstname} {passed}".format(lesson=self.lesson.name,
-                                                                 lastname=self.person.user.last_name,
-                                                                 firstname=self.person.user.first_name,
-                                                                 passed=self.lesson_passed)

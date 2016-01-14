@@ -6,7 +6,14 @@ from django.db import models
 from chzis.congregation.models import Congregation, CongregationMember
 
 
+class MeetingTypeManager(models.Manager):
+    def get_by_natural_key(self, meeting_type, *other):
+        return self.filter(name=meeting_type)[0]
+
+
 class MeetingType(models.Model):
+    objects = MeetingTypeManager()
+
     name = models.CharField(max_length=255)
     duration = models.IntegerField(null=True, blank=True)
     week_day = models.IntegerField(null=True, blank=True)
@@ -14,28 +21,40 @@ class MeetingType(models.Model):
     congregation = models.ForeignKey(Congregation, null=True, blank=True)
 
     def __unicode__(self):
-        return "{name}".format(name=self.name)
+        return "{name} ({start_time})".format(name=self.name, start_time=self.start_time)
+
+
+class MeetingPartManager(models.Manager):
+    def get_by_natural_key(self, meeting_part, *other):
+        return self.get(name=meeting_part)
 
 
 class MeetingPart(models.Model):
+    objects = MeetingPartManager()
+
     name = models.CharField(max_length=255)
+    full_name = models.CharField(max_length=255)
     type = models.ForeignKey(MeetingType)
     duration = models.IntegerField()
     order = models.IntegerField()
 
     def __unicode__(self):
-        return "{name}".format(name=self.name)
+        return "{type} - {full_name} ".format(type=self.type.name, full_name=self.full_name)
 
 
-#TODO: dodac nr weekendu w ktory dany punkt jest, sprawdzic czy zawsze to jest 1 tydzien
 class MeetingItem(models.Model):
     name = models.CharField(max_length=255)
-    duration = models.IntegerField()
+    full_name = models.CharField(max_length=255)
+    duration = models.IntegerField(null=True, blank=True)
     part = models.ForeignKey(MeetingPart)
+    weekend = models.IntegerField(null=True, blank=True)
     order = models.IntegerField()
 
     def __unicode__(self):
-        return "{name}".format(name=self.name)
+        return "[{type}] {part} - {full_name}".format(type=self.part.type.name, part=self.part.full_name, full_name=self.full_name)
+
+    class Meta:
+        ordering = ['part__type__name','part__order', 'order']
 
 
 class MeetingTask(models.Model):
@@ -46,3 +65,6 @@ class MeetingTask(models.Model):
     presentation_date = models.DateField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     last_modification = models.DateTimeField(auto_now=True, null=True)
+
+    def __unicode__(self):
+        return "{meeting} {person} {presentation_date}".format(meeting=self.meeting_item, person=self.person, presentation_date=self.presentation_date)

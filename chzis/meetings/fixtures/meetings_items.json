@@ -1,0 +1,198 @@
+[
+    {
+        "pk": 1,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Public Meeting",
+            "part": [
+                "Public Meeting"
+            ],
+            "full_name": "Public Meeting",
+            "duration": 30,
+            "weekend": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Watchtower Study",
+            "part": [
+                "Watchtower Study"
+            ],
+            "full_name": "Watchtower Study",
+            "duration": 60,
+            "weekend": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 3,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Opening Comments",
+            "part": [
+                "Treasures"
+            ],
+            "full_name": "Opening Comments",
+            "duration": 3,
+            "weekend": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 4,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Treasuresfrom Bible",
+            "part": [
+                "Treasures"
+            ],
+            "full_name": "Treasures from Bible",
+            "duration": 10,
+            "weekend": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 5,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Gems",
+            "part": [
+                "Treasures"
+            ],
+            "full_name": "Digging for Spiritual Gems",
+            "duration": 8,
+            "weekend": null,
+            "order": 3
+        }
+    },
+    {
+        "pk": 6,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Bible Reading",
+            "part": [
+                "Treasures"
+            ],
+            "full_name": "Bible Reading",
+            "duration": 4,
+            "weekend": null,
+            "order": 4
+        }
+    },
+    {
+        "pk": 7,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Month presentations",
+            "part": [
+                "Field ministry"
+            ],
+            "full_name": "Prepare This Month\u2019s Presentations",
+            "duration": 15,
+            "weekend": 1,
+            "order": 1
+        }
+    },
+    {
+        "pk": 8,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Initial Call",
+            "part": [
+                "Field ministry"
+            ],
+            "full_name": "Initial Call",
+            "duration": 2,
+            "weekend": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 9,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Return Visit",
+            "part": [
+                "Field ministry"
+            ],
+            "full_name": "Return Visit",
+            "duration": 4,
+            "weekend": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 10,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Bible Study",
+            "part": [
+                "Field ministry"
+            ],
+            "full_name": "Bible Study",
+            "duration": 6,
+            "weekend": null,
+            "order": 3
+        }
+    },
+    {
+        "pk": 11,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Meeting1",
+            "part": [
+                "Living as Christians"
+            ],
+            "full_name": "Meeting1",
+            "duration": null,
+            "weekend": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 12,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Meeting2",
+            "part": [
+                "Living as Christians"
+            ],
+            "full_name": "Meeting2",
+            "duration": null,
+            "weekend": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 13,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Bible Study",
+            "part": [
+                "Living as Christians"
+            ],
+            "full_name": "Congregation Bible Study",
+            "duration": 30,
+            "weekend": null,
+            "order": 3
+        }
+    },
+    {
+        "pk": 14,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Review",
+            "part": [
+                "Living as Christians"
+            ],
+            "full_name": "Review Followed by Preview of Next Week",
+            "duration": 3,
+            "weekend": null,
+            "order": 4
+        }
+    }
+]

@@ -1,0 +1,15 @@
+id,name,full_name,part,weekend,duration,order
+1,Public Meeting,Public Meeting,[Public Meeting],,30,1
+2,Watchtower Study,Watchtower Study,[Watchtower Study],,60,2
+3,Opening Comments,Opening Comments,[Treasures ],,3,1
+4,Treasures from Bible,Treasures from Bible,[Treasures ],,10,2
+5,Gems,Digging for Spiritual Gems,[Treasures ],,8,3
+6,Bible Reading,Bible Reading,[Treasures ],,4,4
+7,Month presentations,Prepare This Month’s Presentations,[Field ministry],1,15,1
+8,Initial Call,Initial Call,[Field ministry],,2,1
+9,Return Visit,Return Visit,[Field ministry],,4,2
+10,Bible Study,Bible Study,[Field ministry],,6,3
+11,Meeting1,Meeting1,[Living as Christians],,,1
+12,Meeting2,Meeting2,[Living as Christians],,,2
+13,Bible Study,Congregation Bible Study,[Living as Christians],,30,3
+14,Review,Review Followed by Preview of Next Week,[Living as Christians],,3,4

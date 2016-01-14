@@ -1,0 +1,106 @@
+[
+    {
+        "pk": 1,
+        "model": "meetings.MeetingPart",
+        "fields": {
+            "duration": 30,
+            "type": [
+                "Public and Watchtower"
+            ],
+            "name": "Public Meeting",
+            "full_name": "Public Meeting",
+            "order": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "meetings.MeetingPart",
+        "fields": {
+            "duration": 60,
+            "type": [
+                "Public and Watchtower"
+            ],
+            "name": "Watchtower Study",
+            "full_name": "Watchtower Study",
+            "order": 2
+        }
+    },
+    {
+        "pk": 3,
+        "model": "meetings.MeetingPart",
+        "fields": {
+            "duration": 3,
+            "type": [
+                "Life and Ministry"
+            ],
+            "name": "Opening Comments",
+            "full_name": "Opening Comments",
+            "order": 1
+        }
+    },
+    {
+        "pk": 4,
+        "model": "meetings.MeetingPart",
+        "fields": {
+            "duration": 22,
+            "type": [
+                "Life and Ministry"
+            ],
+            "name": "Treasures from God\u2019s word",
+            "full_name": "Treasures from God\u2019s word",
+            "order": 2
+        }
+    },
+    {
+        "pk": 5,
+        "model": "meetings.MeetingPart",
+        "fields": {
+            "duration": 15,
+            "type": [
+                "Life and Ministry"
+            ],
+            "name": "Apply yourself to the field ministry",
+            "full_name": "Apply yourself to the field ministry",
+            "order": 3
+        }
+    },
+    {
+        "pk": 6,
+        "model": "meetings.MeetingPart",
+        "fields": {
+            "duration": 45,
+            "type": [
+                "Life and Ministry"
+            ],
+            "name": "Living as Christians",
+            "full_name": "Living as Christians",
+            "order": 4
+        }
+    },
+    {
+        "pk": 7,
+        "model": "meetings.MeetingPart",
+        "fields": {
+            "duration": 3,
+            "type": [
+                "Life and Ministry"
+            ],
+            "name": "Review",
+            "full_name": "Review Followed by Preview of Next Week",
+            "order": 5
+        }
+    },
+    {
+        "pk": 8,
+        "model": "meetings.MeetingPart",
+        "fields": {
+            "duration": 7,
+            "type": [
+                "Field service"
+            ],
+            "name": "Field service",
+            "full_name": "Meetings for field service",
+            "order": 1
+        }
+    }
+]
