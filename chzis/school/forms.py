@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput, Select, Textarea
+from django.forms import ModelForm, TextInput, Select, Textarea, RadioSelect
 from django import forms
 from chzis.school.models import SchoolTask, Lesson, Background
 from chzis.school.widgets import InlineSelectDateWidget
@@ -14,7 +14,7 @@ class SchoolTaskForm(ModelForm):
         widgets = {
             'presentation_date': InlineSelectDateWidget(attrs={'class': 'form-control'},
                                                         empty_label=("Year", "Month", "Day")),
-            'lesson': Select(attrs={'class': 'form-control'}),
+            'lesson': RadioSelect(attrs={'class': 'radio-primary'}),
             'background': Select(attrs={'class': 'form-control'}),
             'description': Textarea(attrs={'class': 'form-control'})
         }
@@ -41,14 +41,12 @@ class SchoolTaskForm(ModelForm):
 class SchoolTaskViewForm(SchoolTaskForm):
     class Meta:
         model = SchoolTask
-        fields = '__all__'
+       # fields = '__all__'
+        exclude = ['task']
         widgets = {
-            'presentation_date': InlineSelectDateWidget(attrs={'class':'form-control', 'disabled':''},
-                                                        empty_label=("Year", "Month", "Day")),
-            'topic': TextInput(attrs={'class': 'form-control', 'disabled':''}),
-            'person': Select(attrs={'class': 'form-control', 'disabled':''}),
-            'lesson': Select(attrs={'class': 'form-control', 'disabled':''}),
-            'background': Select(attrs={'class': 'form-control', 'disabled':''}),
+            'lesson': TextInput(attrs={'class': 'form-control', 'disabled':''}),
+            'lesson_passed': TextInput(attrs={'class': 'form-control', 'disabled':''}),
+            'background': TextInput(attrs={'class': 'form-control', 'disabled':''}),
             'description': Textarea(attrs={'class': 'form-control', 'disabled':''})
         }
 

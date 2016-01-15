@@ -41,7 +41,7 @@
     <table class="table table-bordered table-hover table-condensed task_list">
         <thead>
             <th class="text-center">ID</th>
-            <th class="text-center">{% trans "Topic" %}</th>
+            <th class="text-center">{% trans "Meeting item" %}</th>
             <th class="text-center">{% trans "Person" %}</th>
             <th class="text-center">{% trans "Lesson name" %}</th>
             <th class="text-center">{% trans "Presentation date" %}</th>
@@ -51,12 +51,12 @@
         <tbody>
             {% for task in tasks %}
             <tr>
-                <th scope="row" class="text-center"><a href ="{{task.get_absolute_url}}">{{task.id}}</a></th>
-                <td class="col-xs-2"><a href ="{{task.get_absolute_url}}">{{task.topic}}</a></td>
-                <td class="col-xs-2"><a href="{{task.person.get_absolute_url}}">{{task.person}}</a></td>
+                <th scope="row" class="text-center"><a href ="{{task.get_absolute_url}}">{{task.task.id}}</a></th>
+                <td class="col-xs-2"><a href ="{{task.get_absolute_url}}">{{task.task.meeting_item.full_name}}</a></td>
+                <td class="col-xs-2"><a href="{{task.task.person.get_absolute_url}}">{{task.task.person}}</a></td>
                 <td class="col-xs-2">{{task.lesson.name}}</td>
-                <td class="col-xs-2">{{task.presentation_date}}</td>
-                <td class="col-xs-2">{{task.creation_date}}</td>
+                <td class="col-xs-2">{{task.task.presentation_date}}</td>
+                <td class="col-xs-2">{{task.task.creation_date}}</td>
                 <td>
                     {% if perms.school.can_judge_tasks %}
                     {% if member.school_allow == None %}

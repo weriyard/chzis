@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from chzis.school.models import SchoolTask
 from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm
 from chzis.meetings.models import MeetingTask
-from chzis.meetings.forms import MeetingTaskSchoolForm
+from chzis.meetings.forms import MeetingTaskSchoolForm, MeetingTaskSchoolViewForm
 
 
 class Tasks(View):
@@ -43,7 +43,7 @@ class AddTasks(View):
                 school_task = school_task_form.save()
         else:
             context = dict()
-            context['task_form'] = school_task_form
+            context['task_form'] = task_form
             context['school_task_form'] = school_task_form
             return render(request, "add_task.html", context)
         return redirect('/school/tasks/{}'.format(school_task.id))
@@ -52,10 +52,12 @@ class AddTasks(View):
 
 class TaskView(View):
     def get(self, request, task_id):
-        task = SchoolTask.objects.get(id=task_id)
-        form = SchoolTaskViewForm(instance=task)
+        school_task = SchoolTask.objects.get(id=task_id)
         context = dict()
-        context['form'] = form
+        context['task_form'] = MeetingTaskSchoolViewForm(instance=school_task.task, initial={'meeting_item': school_task.task.meeting_item.full_name if school_task.task is not None else None,
+                                                                                             'person': str(school_task.task.person) if school_task.task is not None else None})
+        context['school_task_form'] = SchoolTaskViewForm(instance=school_task, initial={'lesson': school_task.lesson.name,
+                                                                                        'background': school_task.background.name if school_task.background is not None else None})
         return render(request, "task.html", context)
 
 
@@ -70,8 +72,8 @@ class SchoolPlanDetails(View):
         prev_date = week_start - datetime.timedelta(days=7)
         next_date = week_start + datetime.timedelta(days=7)
 
-        tasks = SchoolTask.objects.filter(presentation_date__gte=week_start,
-                                          presentation_date__lte=week_end)
+        tasks = SchoolTask.objects.filter(task__presentation_date__gte=week_start,
+                                          task__presentation_date__lte=week_end)
 
         context = dict()
         context['tasks'] = tasks

@@ -18,8 +18,11 @@ class EmptyChoiceField(forms.ChoiceField):
 
 class MeetingTaskSchoolForm(forms.ModelForm):
     meeting_item_choices = MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'name')
-    meeting_item = EmptyChoiceField(choices=[(id, _(item)) for id, item in meeting_item_choices],
-                                     widget=Select(attrs={'class': 'form-control', 'label': None}), empty_label='---------')
+    # meeting_item = EmptyChoiceField(choices=[(id, _(item)) for id, item in meeting_item_choices],
+    #                                  widget=Select(attrs={'class': 'form-control', 'label': None}), empty_label='---------')
+    meeting_item = EmptyChoiceField(choices=meeting_item_choices,
+                                    widget=Select(attrs={'class': 'form-control', 'label': None}), empty_label='---------')
+
 
     class Meta:
         model = MeetingTask
@@ -42,6 +45,29 @@ class MeetingTaskSchoolForm(forms.ModelForm):
 
         return meeting_item
 
+
+    def as_div(self):
+        "Returns this form rendered as HTML <p>s."
+        return self._html_output(
+            normal_row='<div class="form-group %(html_class_attr)s">%(label)s %(field)s%(help_text)s</div>',
+            error_row='%s',
+            row_ender='</div>',
+            help_text_html=' <div class="help-block">%s</div>',
+            errors_on_separate_row=True)
+
+
+class MeetingTaskSchoolViewForm(forms.ModelForm):
+
+    class Meta:
+        model = MeetingTask
+        exclude = ['topic', 'description']
+
+        widgets = {
+            'meeting_item': TextInput(attrs={'class': 'form-control', 'disabled':''}),
+            'person': TextInput(attrs={'class': 'form-control', 'disabled':''}),
+            'presentation_date': InlineSelectDateWidget(attrs={'class': 'form-control', 'disabled':''},
+                                                        empty_label=("Year", "Month", "Day")),
+        }
 
     def as_div(self):
         "Returns this form rendered as HTML <p>s."

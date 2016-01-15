@@ -1,4 +1,4 @@
-from django.forms import SelectDateWidget
+from django.forms import SelectDateWidget, Widget
 from django.utils.safestring import mark_safe
 
 
@@ -8,3 +8,4 @@ class InlineSelectDateWidget(SelectDateWidget):
         render_output = super(InlineSelectDateWidget, self).render(name, value, attrs=None)
         output = '<div class="form-inline">%s</div>'
         return output % render_output
+

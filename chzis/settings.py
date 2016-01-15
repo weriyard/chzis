@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'chzis.users',
     'chzis.meetings',
     'chzis.school',
-    'chzis.layout'
+    'chzis.layout',
+    'vinaigrette',
 
 ]
 MIDDLEWARE_CLASSES = [

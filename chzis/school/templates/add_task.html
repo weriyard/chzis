@@ -6,7 +6,7 @@
 
 <form method="POST" class="form-horizontal" role="form">
     {% csrf_token %}
-        <div class="col-md-offset-3 col-md-6">
+        <div class="col-md-offset-3 col-md-6 ">
             {{task_form.as_div}}
             {{school_task_form.as_div}}
             <button type="submit" class="btn btn-lg btn-warning" name="Add">{% trans "Add task" %}</button>
