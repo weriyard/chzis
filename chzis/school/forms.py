@@ -1,17 +1,20 @@
-from django.forms import ModelForm, TextInput, Select, Textarea, RadioSelect
+from django.forms import ModelForm, TextInput, Select, Textarea, RadioSelect, ChoiceField
 from django import forms
 from chzis.school.models import SchoolTask, Lesson, Background
-from chzis.school.widgets import InlineSelectDateWidget, LessonPassedWidget
+from chzis.school.widgets import InlineSelectDateWidget, LessonPassedWidget, LessonListWithLastDate
 from chzis.congregation.models import CongregationMember
 from chzis.meetings.models import MeetingItem, MeetingTask
 
 
 class SchoolTaskForm(ModelForm):
+    lessons_pass_result = ChoiceField(widget=LessonListWithLastDate())
+
     class Meta:
         model = SchoolTask
         exclude = ['task', 'lesson_passed']
         widgets = {
-            'lesson': RadioSelect(attrs={'class': 'radio-primary'}),
+            #'lesson': RadioSelect(attrs={'class': 'radio-primary'}),
+            'lesson': LessonListWithLastDate(attrs={'class': 'form-control'}),
             'background': Select(attrs={'class': 'form-control'}),
             'description': Textarea(attrs={'class': 'form-control'})
 
