@@ -30,8 +30,6 @@ class AddTasks(View):
         return render(request, 'add_task.html', context)
 
     def post(self, request):
-        print request.POST
-
         task_form = MeetingTaskSchoolForm(request.POST)
         school_task_form = SchoolTaskForm(request.POST)
 

@@ -42,14 +42,22 @@ table.task_list td, th {
 table.task_list td > h3 {
     margin-top: 10px;
     margin-bottom: 10px;
-    padding: 5px;
 }
 
 table.add-task td{
     padding: 10px;
 }
+
 table.add-task td#id_topic {
     width: 200px;
 }
 
-form.form-horizontal
+h3.lesson-passed {
+    margin-top: 0 !important;
+    margin-bottom: 2px !important;
+    text-align: center !important;
+}
+
+div.error-block {
+    color: red;
+}

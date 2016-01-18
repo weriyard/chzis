@@ -50,7 +50,7 @@ class MeetingTaskSchoolForm(forms.ModelForm):
         "Returns this form rendered as HTML <p>s."
         return self._html_output(
             normal_row='<div class="form-group %(html_class_attr)s">%(label)s %(field)s%(help_text)s</div>',
-            error_row='%s',
+            error_row='<div class="error-block">%s</div>',
             row_ender='</div>',
             help_text_html=' <div class="help-block">%s</div>',
             errors_on_separate_row=True)
@@ -73,7 +73,7 @@ class MeetingTaskSchoolViewForm(forms.ModelForm):
         "Returns this form rendered as HTML <p>s."
         return self._html_output(
             normal_row='<div class="form-group %(html_class_attr)s">%(label)s %(field)s%(help_text)s</div>',
-            error_row='%s',
+            error_row='<div class="error-block">%s</div>',
             row_ender='</div>',
             help_text_html=' <div class="help-block">%s</div>',
             errors_on_separate_row=True)

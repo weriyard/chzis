@@ -15,9 +15,10 @@
         <table class="table table-bordered table-hover table-condensed task_list">
             <thead>
                 <th class="text-center">ID</th>
-                <th class="text-center">{% trans "Topic" %}</th>
                 <th class="text-center">{% trans "Person" %}</th>
+                <th class="text-center">{% trans "Meeting item" %}</th>
                 <th class="text-center">{% trans "Lesson name" %}</th>
+                <th class="text-center">{% trans "Topic" %}</th>
                 <th class="text-center">{% trans "Presentation date" %}</th>
                 <th class="text-center">{% trans "Creation date" %}</th>
                 <th class="text-center">{% trans "Result" %}</th>
@@ -26,14 +27,15 @@
                 {% for task in tasks %}
                 <tr>
                     <th scope="row" class="text-center"><a href ="{{task.get_absolute_url}}">{{task.id}}</a></th>
-                    <td class="col-xs-2"><a href ="{{task.get_absolute_url}}">{{task.topic}}</a></td>
-                    <td class="col-xs-2"><a href="{{task.person.get_absolute_url}}">{{task.person}}</a></td>
-                    <td class="col-xs-2">{{task.lesson.name}}</td>
-                    <td class="col-xs-2">{{task.presentation_date}}</td>
-                    <td class="col-xs-2">{{task.creation_date}}</td>
-                    <td>
-                        <h3>
-                            <span class="label {% if task.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{task.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>
+                    <td class="col-xs-2"><a href="{{task.task.person.get_absolute_url}}">{{task.task.person}}</a></td>
+                    <td class="col-xs-2">{{task.task.meeting_item.full_name}}</td>
+                    <td class="col-xs-3">{{task.lesson.name}}</td>
+                    <td class="col-xs-2"><a href ="{{task.get_absolute_url}}">{{task.task.topic|default:""}}</a></td>
+                    <td class="col-xs-1">{{task.task.presentation_date}}</td>
+                    <td class="col-xs-1">{{task.task.creation_date}}</td>
+                    <td class="col-xs-1">
+                        <h3 class="lesson-passed">
+                            <span class="label {% if task.lesson.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{task.lesson.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>
                         </h3>
                     </td>
                 </tr>

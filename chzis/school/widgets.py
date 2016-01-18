@@ -9,3 +9,21 @@ class InlineSelectDateWidget(SelectDateWidget):
         output = '<div class="form-inline">%s</div>'
         return output % render_output
 
+
+class LessonPassedWidget(Widget):
+
+    def render(self, name, value, attrs=None):
+        if value is None:
+            css_class = "label-default"
+            label = "None"
+        elif value:
+            css_class = "label-success"
+            label = "PASSED"
+        else:
+            css_class = "label-danger"
+            label = "FAIL"
+        html = '<h3 class="lesson-passed">' \
+               '<span class="label %s">%s</span>' \
+               '</h3>' % (css_class, label)
+        return mark_safe("%s" % html)
+
