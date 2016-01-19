@@ -58,3 +58,5 @@ class LessonListWithLastDate(Widget):
         memo[id(self)] = obj
         print '-->', self.attrs
         return obj
+
+

@@ -39,12 +39,12 @@ class AddTasks(View):
                 task = task_form.save()
                 school_task_form.instance.task = task
                 school_task = school_task_form.save()
+            return redirect('/school/tasks/{}'.format(school_task.id))
         else:
             context = dict()
             context['task_form'] = task_form
             context['school_task_form'] = school_task_form
             return render(request, "add_task.html", context)
-        return redirect('/school/tasks/{}'.format(school_task.id))
 
 
 
