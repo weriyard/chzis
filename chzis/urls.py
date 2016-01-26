@@ -52,4 +52,4 @@ urlpatterns = [
 
 ] + static(settings.STATIC_URL)
 
-urlpatterns += manage_urlpatterns
+# urlpatterns += manage_urlpatterns

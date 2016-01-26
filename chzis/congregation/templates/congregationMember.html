@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% include "include/congregationMember.inc.html" %}
+    {%  if member != None %}
+        {% include "congregationMember.inc.html" %}
+    {% else %}
+        <h2>"User is not congregation member !"</h2>
+    {% endif %}
 {% endblock %}

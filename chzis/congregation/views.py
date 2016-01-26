@@ -50,9 +50,13 @@ class CongregationMemberDetails(TemplateView):
 
     def get_context_data(self, member_id, *args, **kwargs):
         if 'congregation_id' in kwargs:
-            member = CongregationMember.objects.get(congregation__id=kwargs.get('congregation_id'), id=member_id)
+            member = CongregationMember.objects.get(congregation__id=kwargs.get('congregation_id'), user__id=member_id)
         else:
-            member = CongregationMember.objects.get(id=member_id)
+            try:
+                member = CongregationMember.objects.get(user__id=member_id)
+            except exceptions.ObjectDoesNotExist:
+                member = None
+
         context = dict()
         context['member'] = member
         return context

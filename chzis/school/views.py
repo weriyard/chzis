@@ -1,7 +1,7 @@
 import datetime
 
 from django.shortcuts import render
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from django.shortcuts import redirect
 from django.http import HttpResponse
 
@@ -20,16 +20,17 @@ class Tasks(View):
         return render(request, 'tasks.html', context)
 
 
-class AddTasks(View):
-    def get(self, request):
+class AddTasks(TemplateView):
+    template_name = "add_task.html"
 
+    def get_context_data(self):
         context = dict()
         context['task_form'] = MeetingTaskSchoolForm()
         context['school_task_form'] = SchoolTaskForm()
-
-        return render(request, 'add_task.html', context)
+        return context
 
     def post(self, request):
+        print request.path
         task_form = MeetingTaskSchoolForm(request.POST)
         school_task_form = SchoolTaskForm(request.POST)
 
@@ -47,16 +48,17 @@ class AddTasks(View):
             return render(request, "add_task.html", context)
 
 
+class TaskView(TemplateView):
+    template_name = "task.html"
 
-class TaskView(View):
-    def get(self, request, task_id):
+    def get_context_data(self, task_id):
         school_task = SchoolTask.objects.get(id=task_id)
         context = dict()
         context['task_form'] = MeetingTaskSchoolViewForm(instance=school_task.task, initial={'meeting_item': school_task.task.meeting_item.full_name if school_task.task is not None else None,
                                                                                              'person': str(school_task.task.person) if school_task.task is not None else None})
         context['school_task_form'] = SchoolTaskViewForm(instance=school_task, initial={'lesson': school_task.lesson.name,
                                                                                         'background': school_task.background.name if school_task.background is not None else None})
-        return render(request, "task.html", context)
+        return context
 
 
 class SchoolPlanDetails(View):
@@ -79,7 +81,7 @@ class SchoolPlanDetails(View):
         context['prev_plan_date'] = "{year}/{month}/{day}".format(year=prev_date.year, month=prev_date.month, day=prev_date.day);
         context['next_plan_date'] = "{year}/{month}/{day}".format(year=next_date.year, month=next_date.month, day=next_date.day);
         return render(request, "school_plan.html", context)
-
+View
 
 def school_plan(request):
     dt = datetime.datetime.now()

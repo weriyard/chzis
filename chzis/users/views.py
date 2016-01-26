@@ -5,6 +5,7 @@ from django.core import exceptions
 
 from chzis.users.models import PeopleProfile
 
+
 class PeopleLogin(View):
     def get(self, request):
         return auth_views.login(request, template_name='login.html')
@@ -19,6 +20,7 @@ class PeopleLogin(View):
                 people_profile.user = request.user
                 people_profile.save()
         return response
+
 
 class PeopleProfileSetting(View):
     def get(self, request):

@@ -52,6 +52,10 @@ table.add-task td#id_topic {
     width: 200px;
 }
 
+table.task_list th:first-child.col-md-1-id {
+    width: 1%;
+}
+
 h3.lesson-passed {
     margin-top: 0 !important;
     margin-bottom: 2px !important;
@@ -60,4 +64,9 @@ h3.lesson-passed {
 
 div.error-block {
     color: red;
+}
+
+
+div.checkbox-task-list {
+    float: left;
 }

@@ -136,7 +136,9 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-lg btn-success">{% trans "Save changes" %}</button>
+    {% if perms.congregation.can_manage %}
+        <button type="submit" class="btn btn-lg btn-success">{% trans "Save changes" %}</button>
+    {% endif %}
 </form>
 
 {% endblock %}

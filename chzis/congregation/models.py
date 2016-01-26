@@ -22,7 +22,7 @@ class Congregation(models.Model):
         return "{name}".format(name=self.name)
 
     def get_absolute_url(self):
-        return "/congregation/{congregation_id}".format(congregation_id=self.id)
+        return "/congregations/{congregation_id}".format(congregation_id=self.id)
 
     def get_manage_absolute_url(self):
         return "{manage_url}{absolute_url}".format(manage_url=settings.MANAGE_URL, absolute_url=self.get_absolute_url())
@@ -60,5 +60,6 @@ class CongregationMember(models.Model):
 
     class Meta:
         ordering = ['user']
-
-
+        permissions = (
+            ("can_manage", "Can manage"),
+        )

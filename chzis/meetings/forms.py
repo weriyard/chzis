@@ -37,14 +37,10 @@ class MeetingTaskSchoolForm(forms.ModelForm):
             'description': Textarea(attrs={'class': 'form-control'})
         }
 
-
     def clean_meeting_item(self):
         meetings_id = self.cleaned_data['meeting_item']
-
         meeting_item = MeetingItem.objects.get(id=meetings_id)
-
         return meeting_item
-
 
     def as_div(self):
         "Returns this form rendered as HTML <p>s."

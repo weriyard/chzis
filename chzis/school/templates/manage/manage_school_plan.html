@@ -38,7 +38,7 @@
 <br>
 <div class="center-block">
 <div class="table-responsive">
-    <table class="table table-bordered table-hover table-condensed table-striped task_list">
+    <table class="table table-bordered table-hover table-condensed task_list">
         <thead>
             <th class="text-center">ID</th>
             <th class="text-center">{% trans "Meeting item" %}</th>
@@ -46,42 +46,28 @@
             <th class="text-center">{% trans "Lesson name" %}</th>
             <th class="text-center">{% trans "Presentation date" %}</th>
             <th class="text-center">{% trans "Creation date" %}</th>
-            {% if perms.congregation.can_manage %}
             <th class="text-center">{% trans "Result" %}</th>
-            {% endif %}
         </thead>
         <tbody>
             {% for task in tasks %}
-                <tr>
-                <th class="text-center col-md-1-id">
-                {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
-                        <a href ="{{task.get_absolute_url}}">{{task.task.id}}</a>
-                    {% else %}
-                        {{task.task.id}}
-                    {% endif %}
-                </th>
+            <tr>
+                <th scope="row" class="text-center"><a href ="{{task.get_absolute_url}}">{{task.task.id}}</a></th>
                 <td class="col-xs-2">{{task.task.meeting_item.full_name}}</td>
-                <td class="col-xs-2">
-                    {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
-                        <a href="{{task.task.person.get_absolute_url}}">{{task.task.person}}</a>
-                    {% else %}
-                        {{task.task.person}}
-                    {% endif %}
-                 </td>
+                <td class="col-xs-2"><a href="{{task.task.person.get_absolute_url}}">{{task.task.person}}</a></td>
                 <td class="col-xs-2">{{task.lesson.name}}</td>
                 <td class="col-xs-2">{{task.task.presentation_date}}</td>
                 <td class="col-xs-2">{{task.task.creation_date}}</td>
-                {% if perms.congregation.can_manage %}
-                <td class="col-xs-1">
+                <td>
+                    {% if perms.school.can_judge_tasks %}
                     {% if member.school_allow == None %}
-                        <div class="checkbox checkbox-danger checkbox-task-list">
+                        <div class="checkbox checkbox-danger">
                             <input type="checkbox" id="{{task.id}}_fail" name="{{task.id}}_fail" onclick="set_result(this, {{task.id}}, 'fail');">
-                            <label for="{{task.id}}_fail"></label>
+                            <label for="{{task.id}}_fail">{% trans "FAIL" %}</label>
                         </div>
-                        <div></div>
-                        <div class="checkbox checkbox-success checkbox-task-list">
+                    <div></div>
+                        <div class="checkbox checkbox-success">
                             <input type="checkbox" id="{{task.id}}_ok" name="{{task.id}}_ok" onclick="set_result(this, {{task.id}}, 'ok');">
-                            <label for="{{task.id}}_ok"></label>
+                            <label for="{{task.id}}_ok">{% trans "OK" %}</label>
                         </div>
                     {% endif %}
                     {% else %}

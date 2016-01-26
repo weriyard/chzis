@@ -52,27 +52,32 @@ $(window).on('load', function() {
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.last_name}} {{user.first_name}}<span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a href="/profile">{% trans "Profile" %}</a></li>
-                          {% if perms.school.add_schooltask %}
-                          <li><a href="/school/tasks/add/">{% trans "Meeting tasks" %}</a></li>
-                          {% endif %}
-                          {% if perms.school.can_view_all_tasks %}
-                        <li><a href="/school/tasks">{% trans "School" %}</a></li>
-                          {% endif %}
+                        <li><a href="">{% trans "Meeting tasks" %}</a></li>
+                        <li><a href="">{% trans "School tasks" %}</a></li>
                       </ul>
                     </li>
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Meetings" %} <span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="#">{% trans "Meeting plan" %}</a></li>
-                          <li><a href="#">{% trans "School plan" %}</a></li>
-                          <li><a href="#">{% trans "Field service plan" %}</a></li>
+                        <li><a href="/meetings/plan/">{% trans "Meeting plan" %}</a></li>
+                        <li><a href="/school/plan">{% trans "School plan" %}</a></li>
+                        <li><a href="/fieldservice/plan">{% trans "Field service plan" %}</a></li>
                       </ul>
                     </li>
 
                 {% endblock %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/manage/congregations/">{% trans "Manage" %}</a></li>
+                {% if perms.congregation.can_manage %}
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Manage" %} <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/congregations/">{% trans "Congregation" %}</a></li>
+                        <li><a href="/meetings/">{% trans "Meetings plan" %}</a></li>
+                        <li><a href="/school/tasks/add/">{% trans "School add task" %}</a></li>
+                      </ul>
+                    </li>
+                {% endif %}
                 <li><a href="/people/logout">{% trans "Logout" %} {{user.username}}</a></li>
                 <!--<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
                     <!--<ul class="dropdown-menu">-->

@@ -42,9 +42,9 @@ urlpatterns = [
     url(r'^manage/congregations/(?P<congregation_id>\d+)/members/(?P<member_id>\d+)$', login_required(CongregationMemberDetails.as_view(template_name="manage/manage_congregationMember.html"))),
     url(r'^manage/congregations/unknown/members/(?P<member_id>\d+)$', login_required(CongregationMemberDetails.as_view(template_name="manage/manage_congregationMember.html"))),
     # url(r'^school/tasks/$', Tasks.as_view()),
-    # url(r'^manage/school/tasks/add/$', AddTasks.as_view()),
-    # url(r'^school/tasks/(?P<task_id>\d+)/$', TaskView.as_view()),
+    url(r'^manage/school/tasks/add/$', AddTasks.as_view(template_name="manage/manage_add_task.html")),
+    url(r'^manage/school/tasks/(?P<task_id>\d+)/$', TaskView.as_view(template_name="manage/manage_task.html")),
     # url(r'^school/tasks/(?P<task_id>\d+)/result/$', set_task_result),
     url(r'^manage/school/plan/$', school_plan),
-    # url(r'^school/plan/([0-9]{4})/([0-9]+)/([0-9]+)/$', SchoolPlanDetails.as_view()),
+    url(r'^manage/school/plan/([0-9]{4})/([0-9]+)/([0-9]+)/$', SchoolPlanDetails.as_view()),
 ]
