@@ -59,7 +59,6 @@ class CongregationMemberDetails(TemplateView):
 
 
     def post(self, request, congregation_id, member_id):
-        print "VALE POSTAAA"
         cong_member = CongregationMember.objects.get(id=member_id)
 
         for field in CongregationMember._meta.fields:
@@ -81,6 +80,6 @@ class CongregationMemberProfileRedirect(RedirectView):
             member = CongregationMember.objects.get(user=self.request.user)
             redirect_url = member.get_absolute_url()
         except exceptions.ObjectDoesNotExist:
-            redirect_url = '/congregations/-1/members/{member_id}'.format(member_id=self.request.user.id)
+            redirect_url = '/congregations/unknown/members/{member_id}'.format(member_id=self.request.user.id)
 
         return self.url + redirect_url
