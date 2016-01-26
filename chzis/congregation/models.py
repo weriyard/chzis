@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 
 class CongregationManager(models.Manager):
@@ -23,6 +24,10 @@ class Congregation(models.Model):
     def get_absolute_url(self):
         return "/congregation/{congregation_id}".format(congregation_id=self.id)
 
+    def get_manage_absolute_url(self):
+        return "{manage_url}{absolute_url}".format(manage_url=settings.MANAGE_URL, absolute_url=self.get_absolute_url())
+
+
 
 class CongregationMember(models.Model):
     user = models.ForeignKey(User)
@@ -44,8 +49,15 @@ class CongregationMember(models.Model):
         return "{lastname} {firstname}".format(lastname=self.user.last_name, firstname=self.user.first_name)
 
     def get_absolute_url(self):
-        return "/congregation/{congregation_id}/members/{members_id}".format(congregation_id=self.congregation.id,
+        return "/congregations/{congregation_id}/members/{members_id}".format(congregation_id=self.congregation.id,
                                                                              members_id=self.id)
+
+    def get_manage_absolute_url(self):
+        print "{manage_url}{absolute_url}".format(manage_url=settings.MANAGE_URL, absolute_url=self.get_absolute_url())
+        return "{manage_url}{absolute_url}".format(manage_url=settings.MANAGE_URL, absolute_url=self.get_absolute_url())
+
+    def get_absolute_url_by_user(self, user_id):
+        pass
 
     class Meta:
         ordering = ['user']

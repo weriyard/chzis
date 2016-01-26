@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chzis.mainpage',
+    'chzis.manage',
     'chzis.congregation',
     'chzis.users',
     'chzis.meetings',
@@ -150,3 +151,4 @@ ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: "/people/%s/" % u.id,
 }
 
+MANAGE_URL = '/manage'

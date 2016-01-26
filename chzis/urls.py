@@ -21,9 +21,10 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 
+from chzis.manage_urls import urlpatterns as manage_urlpatterns
 
 from chzis.mainpage.views import Index
-from chzis.congregation.views import CongregationDetails, Congregations, CongregationMemberDetails
+from chzis.congregation.views import Congregations, CongregationMemberDetails, CongregationDetails
 from chzis.users.views import PeopleProfileSetting, PeopleLogin
 from chzis.school.views import Tasks, AddTasks, TaskView, SchoolPlanDetails, school_plan, set_task_result
 
@@ -33,18 +34,19 @@ urlpatterns = [
     #     name='login'),
     url(r'^people/login$', PeopleLogin.as_view(), name='login'),
     url(r'^people/logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
+    url(r'^people/profile/', PeopleProfileSetting.as_view()),
     url(r'^$', Index.as_view()),
-    url(r'^congregation/$', login_required(Congregations.as_view())),
-    url(r'^congregation/(?P<congregation_id>\d+)/$', login_required(CongregationDetails.as_view())),
-    url(r'^congregation/(?P<congregation_id>\d+)/members/(?P<member_id>\d+)$', CongregationMemberDetails.as_view()),
+    url(r'^congregations/$', login_required(Congregations.as_view())),
+    url(r'^congregations/(?P<congregation_id>\d+)/$', login_required(CongregationDetails.as_view())),
+    url(r'^congregations/(?P<congregation_id>\d+)/members/(?P<member_id>\d+)$', login_required(CongregationMemberDetails.as_view())),
     url(r'^school/tasks/$', Tasks.as_view()),
     url(r'^school/tasks/add/$', AddTasks.as_view()),
     url(r'^school/tasks/(?P<task_id>\d+)/$', TaskView.as_view()),
     url(r'^school/tasks/(?P<task_id>\d+)/result/$', set_task_result),
     url(r'^school/plan/$', school_plan),
     url(r'^school/plan/([0-9]{4})/([0-9]+)/([0-9]+)/$', SchoolPlanDetails.as_view()),
-    url(r'^people/profile/', PeopleProfileSetting.as_view()),
 
 
 ] + static(settings.STATIC_URL)
 
+urlpatterns += manage_urlpatterns

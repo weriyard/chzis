@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from django.shortcuts import redirect
 from chzis.congregation.models import Congregation, CongregationMember
 
@@ -8,7 +8,7 @@ class Congregations(View):
     def get(self, request):
         default_congregation = request.user.profile.default_congregation
         if default_congregation is not None and not 'menu' in request.GET:
-            return redirect('/congregation/{}/'.format(default_congregation.id))
+            return redirect('/congregations/{}/'.format(default_congregation.id))
         congregations = Congregation.objects.only('name')
         context = dict()
         context['congregations'] = congregations
@@ -23,28 +23,29 @@ class Congregations(View):
         return redirect("{}".format(request.path))
 
 
+class CongregationDetails(TemplateView):
+    template_name = "congregationDetails.html"
 
-class CongregationDetails(View):
-
-    def get(self, request, congregation_id):
+    def get_context_data(self, congregation_id):
         cong_members = CongregationMember.objects.filter(congregation_id=congregation_id)
-
         context = dict()
         context['cong_members'] = cong_members
-        return render(request, 'congregationDetails.html', context)
+        return context
 
 
+class CongregationMemberDetails(TemplateView):
+    template_name = "congregationMember.html"
 
-class CongregationMemberDetails(View):
-
-    def get(self, request, congregation_id, member_id):
+    def get_context_data(self, congregation_id, member_id):
         member = CongregationMember.objects.get(id=member_id)
 
         context = dict()
         context['member'] = member
-        return render(request, 'congregationMember.html', context)
+        return context
+
 
     def post(self, request, congregation_id, member_id):
+        print "VALE POSTAAA"
         cong_member = CongregationMember.objects.get(id=member_id)
 
         for field in CongregationMember._meta.fields:

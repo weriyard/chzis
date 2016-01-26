@@ -1,0 +1,19 @@
+{% load i18n %}
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <th>{% trans "Congregation name" %}</th>
+            <th>{% trans "Congregation number" %}</th>
+            <th>{% trans "Default" %}</th>
+        </thead>
+        <tbody>
+        {% for cong_member in cong_members %}
+        <tr>
+            <td><a href="{{cong_member.get_manage_absolute_url}}">{{cong_member}}</a></td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,142 @@
+{% block content %}
+{% load i18n %}
+{{member.user.username}}
+<br>
+<br>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-xs-3">{% trans "Age" %}</td>
+                    <td class="col-xs-3">{% trans "Baptism date" %}</td>
+                    <td class="col-xs-3">{% trans "Active" %}</td>
+                    <td class="col-xs-3">{% trans "Last modification" %}</td>
+                </tr>
+                <tr>
+                    <td>{{member.age}}</td>
+                    <td>{{member.baptism_date}}</td>
+                    <td>
+                        <div class="checkbox checkbox-success" style="margin-top:0px;margin-bottom:5px;">
+                            <input type="checkbox" id="active" name="active" {% if member.active %}checked{% endif %} disabled>
+                            <label for="active"></label>
+                        </div>
+                    </td>
+                    <td>{{member.last_modification}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="data-field">
+            <ul>
+                <li>
+                    <div class="checkbox checkbox-danger">
+                        <input type="checkbox" id="school_allow" name="school_allow" {% if member.school_allow %}checked{% endif %}>
+                        <label for="school_allow">
+                            {% trans "School allow" %}
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <div class="checkbox checkbox-info">
+                        <input type="checkbox" id="aux_pioneer" name="aux_pioneer" {% if member.aux_pioneer %}checked{% endif %}>
+                        <label for="aux_pioneer">Auxliliary pioneer</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="checkbox checkbox-info">
+                        <input type="checkbox" id="pioneer" name="pioneer" {% if member.pioneer %}checked{% endif %}>
+                        <label for="pioneer">
+                            {% trans "Pioneer" %}
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <div class="checkbox checkbox-info">
+                        <input type="checkbox" id="servant" name="servant" {% if member.servant %}checked{% endif %}>
+                        <label for="servant">
+                            {% trans "Servant" %}
+                        </label>
+                    </div>
+                </li>
+                <li>
+                       <div class="checkbox checkbox-info">
+                            <input type="checkbox" id="elder" name="elder" {% if member.elder %}checked{% endif %}>
+                            <label for="elder">
+                                {% trans "Elder" %}
+                            </label>
+                        </div>
+                </li>
+                <li>
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="coordinator" name="coordinator" {% if member.coordinator %}checked{% endif %} disabled>
+                        <label for="coordinator">
+                            {% trans "Coordinator" %}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="data-field">
+            <ul>
+                <li>
+                    <div class="checkbox checkbox-success">
+                        <input type="checkbox" id="lector" name="lector" {% if member.lector %}checked{% endif %}>
+                        <label for="lector">
+                            {% trans "Lector" %}
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <div class="checkbox checkbox-success">
+                        <input type="checkbox" id="sound_sysop" name="sound_sysop" {% if member.sound_sysop %}checked{% endif %}>
+                        <label for="sound_sysop">
+                            {% trans "Sound operator" %}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="data-field">
+            <ul>
+                <li>
+                    <div class="checkbox checkbox-warning">
+                        <input type="checkbox" id="master" name="master" {% if member.master %}checked{% endif %}>
+                        <label for="master">
+                            {% trans "Master" %}
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <div class="checkbox checkbox-warning">
+                        <input type="checkbox" id="slave" name="slave" {% if member.slave %}checked{% endif %}>
+                        <label for="slave">
+                            {% trans "Slave" %}
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <div class="checkbox checkbox-warning">
+                        <input type="checkbox" id="reader_only" name="reader_only" {% if member.reader_only %}checked{% endif %}>
+                        <label for="reader_only">
+                            {% trans "Reader" %}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-lg btn-success">{% trans "Save changes" %}</button>
+</form>
+
+{% endblock %}
