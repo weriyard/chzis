@@ -1,18 +1,30 @@
 from django.shortcuts import render
-from django.views.generic import View, TemplateView
+from django.views.generic import View, TemplateView, RedirectView
 from django.shortcuts import redirect
 from chzis.congregation.models import Congregation, CongregationMember
+from django.core import exceptions
 
 
-class Congregations(View):
-    def get(self, request):
-        default_congregation = request.user.profile.default_congregation
-        if default_congregation is not None and not 'menu' in request.GET:
-            return redirect('/congregations/{}/'.format(default_congregation.id))
+class CongregationRedirect(RedirectView):
+    url = ""
+
+    def get_redirect_url(self, *args, **kwargs):
+        default_congregation = self.request.user.profile.default_congregation
+        if default_congregation is not None:
+            redirect_url = '/congregations/{}/'.format(default_congregation.id)
+        else:
+            redirect_url = '/congregations/all/'
+        return self.url + redirect_url
+
+
+class Congregations(TemplateView):
+    template_name = 'congregations.html'
+
+    def get_context_data(self):
         congregations = Congregation.objects.only('name')
         context = dict()
         context['congregations'] = congregations
-        return render(request, 'congregations.html', context)
+        return context
 
     def post(self, request):
         if 'default' in request.POST:
@@ -36,9 +48,11 @@ class CongregationDetails(TemplateView):
 class CongregationMemberDetails(TemplateView):
     template_name = "congregationMember.html"
 
-    def get_context_data(self, congregation_id, member_id):
-        member = CongregationMember.objects.get(id=member_id)
-
+    def get_context_data(self, member_id, *args, **kwargs):
+        if 'congregation_id' in kwargs:
+            member = CongregationMember.objects.get(congregation__id=kwargs.get('congregation_id'), id=member_id)
+        else:
+            member = CongregationMember.objects.get(id=member_id)
         context = dict()
         context['member'] = member
         return context
@@ -56,3 +70,17 @@ class CongregationMemberDetails(TemplateView):
 
         cong_member.save()
         return redirect(request.path)
+
+
+class CongregationMemberProfileRedirect(RedirectView):
+    url = ""
+
+    def get_redirect_url(self, *args, **kwargs):
+        print args, kwargs, self.url
+        try:
+            member = CongregationMember.objects.get(user=self.request.user)
+            redirect_url = member.get_absolute_url()
+        except exceptions.ObjectDoesNotExist:
+            redirect_url = '/congregations/-1/members/{member_id}'.format(member_id=self.request.user.id)
+
+        return self.url + redirect_url

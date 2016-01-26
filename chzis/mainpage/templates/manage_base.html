@@ -51,7 +51,7 @@ $(window).on('load', function() {
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.last_name}} {{user.first_name}}<span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href=""">{% trans "Info" %}</a></li>
+                        <li><a href="/profile">{% trans "Info" %}</a></li>
                           {% if perms.school.add_schooltask %}
                           <li><a href="/school/tasks/add/">{% trans "Meeting tasks" %}</a></li>
                           {% endif %}

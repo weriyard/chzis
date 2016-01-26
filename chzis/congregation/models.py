@@ -49,7 +49,7 @@ class CongregationMember(models.Model):
         return "{lastname} {firstname}".format(lastname=self.user.last_name, firstname=self.user.first_name)
 
     def get_absolute_url(self):
-        return "/congregations/{congregation_id}/members/{members_id}".format(congregation_id=self.congregation.id,
+        return "/congregations/{congregation_id}/members/{members_id}".format(congregation_id=self.congregation.id if self.congregation is not None else 'unknown',
                                                                              members_id=self.id)
 
     def get_manage_absolute_url(self):

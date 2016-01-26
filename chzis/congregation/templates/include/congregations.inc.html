@@ -1,0 +1,28 @@
+{% block content %}
+{% load i18n %}
+<form method="POST" action=".">
+    {% csrf_token %}
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <th>{% trans "Congregation name" %}</th>
+                <th>{% trans "Congregation number" %}</th>
+                <th>{% trans "Default" %}</th>
+            </thead>
+            <tbody>
+                {% for congregation in congregations %}
+                <tr>
+                    <td>
+                        <a href="{{congregation.get_absolute_url}}">{{congregation.name}}</a>
+                    </td>
+                    <td>{{congregation.number}}</td>
+                    <td><input type="radio" name="default" id="default_{{congregation.id}}" value="{{congregation.id}}" \
+                               {% if user.profile.default_congregation.id == congregation.id %}checked{% endif %}></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <button type="submit" class="btn btn-lg btn-success" name="Save">{% trans "Save changes" %}</button>
+</form>
+{% endblock %}
