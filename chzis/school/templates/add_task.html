@@ -1,5 +1,22 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <script type='text/javascript'>
+    $(window).on('load', function() {
+        $("#id_person").change(function() {
+            var member_id = $("#id_person").val();
+            $.ajax({
+               url: '/school/lessons/passed/' + member_id,
+               success: function(data) {
+                    console.log(data);
+                    $("#school_task_content").html(data);
+               }
+            });
+        });
+    });
+    </script>
+{% endblock %}
+
 
 {% block content %}
 {% load i18n %}
@@ -8,29 +25,10 @@
     {% csrf_token %}
         <div class="col-md-offset-3 col-md-6 ">
             {{task_form.as_div}}
-                <div class="error-block">
-                    {{ school_task_form.lesson.errors }}
-                </div>
-            <div class="form-group">
-                <label>{{school_task_form.lesson.label}}</label>
-                {% for it in  school_task_form.lesson %}
-                    {% if not forloop.first %}
-                    <div class="radio">
-                        {{it.tag}}
-                        <label for="{{it.id_for_label}}">{{it.choice_label}}</label>
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-            <div class="form-group">
-                <label for="{{school_task_form.background.id_for_label}}">{{school_task_form.background.label}}</label>
-                {{ school_task_form.background.errors }}
-                {{school_task_form.background}}
-            </div>
-            <div class="form-group">
-                <label for="{{school_task_form.description.id_for_label}}">{{school_task_form.description.label}}</label>
-                {{school_task_form.description.errors }}
-                {{school_task_form.description}}
+            <div id="school_task_content">
+                {% if school_task_form %}
+                    {% include "add_task_school.inc.html" %}
+                {% endif %}
             </div>
             <button type="submit" class="btn btn-lg btn-warning" name="Add">{% trans "Add task" %}</button>
         </div>

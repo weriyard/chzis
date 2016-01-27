@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView
 from django.shortcuts import redirect
 from django.http import HttpResponse
+from django.template import loader, Context
 
 from chzis.school.models import SchoolTask
 from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm
@@ -26,11 +27,10 @@ class AddTasks(TemplateView):
     def get_context_data(self):
         context = dict()
         context['task_form'] = MeetingTaskSchoolForm()
-        context['school_task_form'] = SchoolTaskForm()
+        context['school_task_form'] = None
         return context
 
     def post(self, request):
-        print request.path
         task_form = MeetingTaskSchoolForm(request.POST)
         school_task_form = SchoolTaskForm(request.POST)
 
@@ -40,12 +40,12 @@ class AddTasks(TemplateView):
                 task = task_form.save()
                 school_task_form.instance.task = task
                 school_task = school_task_form.save()
-            return redirect('/school/tasks/{}'.format(school_task.id))
-        else:
-            context = dict()
-            context['task_form'] = task_form
-            context['school_task_form'] = school_task_form
-            return render(request, "add_task.html", context)
+                return redirect('/school/tasks/{}'.format(school_task.id))
+
+        context = dict()
+        context['task_form'] = task_form
+        context['school_task_form'] = school_task_form
+        return render(request, "add_task.html", context)
 
 
 class TaskView(TemplateView):
@@ -54,16 +54,17 @@ class TaskView(TemplateView):
     def get_context_data(self, task_id):
         school_task = SchoolTask.objects.get(id=task_id)
         context = dict()
-        context['task_form'] = MeetingTaskSchoolViewForm(instance=school_task.task, initial={'meeting_item': school_task.task.meeting_item.full_name if school_task.task is not None else None,
-                                                                                             'person': str(school_task.task.person) if school_task.task is not None else None})
-        context['school_task_form'] = SchoolTaskViewForm(instance=school_task, initial={'lesson': school_task.lesson.name,
-                                                                                        'background': school_task.background.name if school_task.background is not None else None})
+        context['task_form'] = MeetingTaskSchoolViewForm(instance=school_task.task, initial={
+            'meeting_item': school_task.task.meeting_item.full_name if school_task.task is not None else None,
+            'person': str(school_task.task.person) if school_task.task is not None else None})
+        context['school_task_form'] = SchoolTaskViewForm(instance=school_task,
+                                                         initial={'lesson': school_task.lesson.name,
+                                                                  'background': school_task.background.name if school_task.background is not None else None})
         return context
 
 
 class SchoolPlanDetails(View):
     def get(self, request, year, month, week_start):
-
         year = int(year)
         month = int(month)
         week_start = datetime.datetime(year=year, month=month, day=int(week_start))
@@ -78,10 +79,12 @@ class SchoolPlanDetails(View):
         context = dict()
         context['tasks'] = tasks
         context['current_week'] = dict(week_start=week_start, week_end=week_end)
-        context['prev_plan_date'] = "{year}/{month}/{day}".format(year=prev_date.year, month=prev_date.month, day=prev_date.day);
-        context['next_plan_date'] = "{year}/{month}/{day}".format(year=next_date.year, month=next_date.month, day=next_date.day);
+        context['prev_plan_date'] = "{year}/{month}/{day}".format(year=prev_date.year, month=prev_date.month,
+                                                                  day=prev_date.day);
+        context['next_plan_date'] = "{year}/{month}/{day}".format(year=next_date.year, month=next_date.month,
+                                                                  day=next_date.day);
         return render(request, "school_plan.html", context)
-View
+
 
 def school_plan(request):
     dt = datetime.datetime.now()
@@ -90,6 +93,7 @@ def school_plan(request):
     return redirect("/school/plan/{year}/{month}/{week_start_day}".format(year=dt.year,
                                                                           month=dt.month,
                                                                           week_start_day=week_start_day))
+
 
 def set_task_result(request, task_id):
     if 'result' in request.POST:
@@ -102,3 +106,20 @@ def set_task_result(request, task_id):
         task_result.lesson_passed = result
         task_result.save()
     return HttpResponse("alal")
+
+
+def school_member_lesson_passed(request, member_id):
+    member_passsed_lessons = SchoolTask.objects.filter(task__person__id=member_id).only('lesson', 'lesson_passed_date')
+    print '-->', member_passsed_lessons
+    passed_lessons = {}
+    for lesson_passed in member_passsed_lessons:
+        passed_dates = passed_lessons.setdefault(lesson_passed.lesson.number, [])
+        passed_dates.append(lesson_passed.lesson_passed_date)
+        passed_dates.sort()
+
+    print passed_lessons
+    tpl = loader.get_template('add_task_school.inc.html')
+    context = {'school_task_form': SchoolTaskForm(),
+               'passed_lessons': passed_lessons
+               }
+    return HttpResponse(tpl.render(context))

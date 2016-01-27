@@ -26,7 +26,7 @@ from chzis.manage_urls import urlpatterns as manage_urlpatterns
 from chzis.mainpage.views import Index
 from chzis.congregation.views import Congregations, CongregationMemberDetails, CongregationDetails, CongregationMemberProfileRedirect, CongregationRedirect
 from chzis.users.views import PeopleProfileSetting, PeopleLogin
-from chzis.school.views import Tasks, AddTasks, TaskView, SchoolPlanDetails, school_plan, set_task_result
+from chzis.school.views import Tasks, AddTasks, TaskView, SchoolPlanDetails, school_plan, set_task_result, school_member_lesson_passed
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -46,6 +46,7 @@ urlpatterns = [
     url(r'^school/tasks/add/$', AddTasks.as_view()),
     url(r'^school/tasks/(?P<task_id>\d+)/$', TaskView.as_view()),
     url(r'^school/tasks/(?P<task_id>\d+)/result/$', set_task_result),
+    url(r'^school/lessons/passed/(?P<member_id>\d+)', school_member_lesson_passed),
     url(r'^school/plan/$', school_plan),
     url(r'^school/plan/([0-9]{4})/([0-9]+)/([0-9]+)/$', SchoolPlanDetails.as_view()),
 

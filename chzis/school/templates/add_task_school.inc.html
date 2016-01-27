@@ -1,0 +1,46 @@
+{% load extra_filters %}
+
+<div class="error-block">
+    {{ school_task_form.lesson.errors }}
+</div>
+<div class="form-group">
+    <label>{{school_task_form.lesson.label}}</label>
+    <table>
+        {% for it in  school_task_form.lesson %}
+            <tr>
+                {% if not forloop.first %}
+                    <td>
+                        <div class="radio">
+                            {{it.tag}}
+                            <label for="{{it.id_for_label}}">{{it.choice_label}}</label>
+                        </div>
+                    </td>
+                    <td>
+                        {% if passed_lessons %}
+                            {% for a in passed_lessons|access_by_key:forloop.counter0 %}
+                                {% if forloop.first %}
+                                    {{ a|date:"d.m.y" }}
+                                {% endif %}
+                             {% empty %}
+                                &nbsp;
+                            {% endfor %}
+                            {% if passed_lessons|access_by_key:forloop.counter0|length > 2 %}
+                                (x{{passed_lessons|access_by_key:forloop.counter0|length|add:"-1" }})
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="form-group">
+    <label for="{{school_task_form.background.id_for_label}}">{{school_task_form.background.label}}</label>
+    {{ school_task_form.background.errors }}
+    {{school_task_form.background}}
+</div>
+<div class="form-group">
+    <label for="{{school_task_form.description.id_for_label}}">{{school_task_form.description.label}}</label>
+    {{school_task_form.description.errors }}
+    {{school_task_form.description}}
+</div>
