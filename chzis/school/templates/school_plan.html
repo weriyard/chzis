@@ -13,6 +13,32 @@
             }
         });
     }
+
+
+    function get_pdf_content(){
+        var checked = $(".print_checkbox:checkbox:checked");
+        console.log(checked);
+        $.ajax({
+            url: "/school/tasks/print"+ task_id +"/result/",
+            data: {'tasks_id': []
+                , csrfmiddlewaretoken: '{{ csrf_token }}'},
+            type: 'post',
+            success: function(data) {
+
+            }
+        });
+    }
+
+    $(window).on('load', function() {
+        $("#print_button").click(function() {
+            var checked = $(".print_checkbox:checkbox:checked");
+             console.log(checked);
+            console.log("printowankooo");
+            return false;
+        });
+
+    });
+
 </script>
 {% endblock %}
 
@@ -48,6 +74,7 @@
             <th class="text-center">{% trans "Creation date" %}</th>
             {% if perms.congregation.can_manage %}
             <th class="text-center">{% trans "Result" %}</th>
+            <th>{% trans "Print" %}</th>
             {% endif %}
         </thead>
         <tbody>
@@ -84,16 +111,28 @@
                             <label for="{{task.id}}_ok"></label>
                         </div>
                     {% endif %}
-                    {% else %}
-                    {% endif %}
                     <!--<h3>-->
                         <!--<span class="label {% if task.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{task.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>-->
                     <!--</h3>-->
                 </td>
+                <td>
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="print_{{task.id}}" name="print_{{task.id}}" class="print_checkbox">
+                        <label for="print_{{task.id}}"></label>
+                    </div>
+                </td>
+                {% else %}
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    {% if perms.congregation.can_manage %}
+        <form method="POST" class="form-horizontal" role="form">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-lg btn-danger" name="Add" id="print_button">{% trans "Print selected" %}</button>
+        </form>
+    {% endif %}
 </div>
 </div>
 

@@ -19,7 +19,7 @@ class Lesson(models.Model):
     last_modification = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     def __unicode__(self):
-        return "{number} {name}".format(number=self.number, name=self.name)
+        return "{name}".format(name=self.name)
 
     class Meta:
         ordering = ['number']

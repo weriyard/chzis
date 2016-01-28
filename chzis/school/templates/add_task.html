@@ -1,25 +1,32 @@
 {% extends "base.html" %}
 
+{% load i18n %}
 {% block head %}
     <script type='text/javascript'>
+
+    function get_lessons(){
+        var member_id = $("#id_person").val();
+        $.ajax({
+           url: '/school/lessons/passed/' + member_id,
+           success: function(data) {
+                console.log(data);
+                $("#school_task_content").html(data);
+           }
+        });
+    }
     $(window).on('load', function() {
         $("#id_person").change(function() {
-            var member_id = $("#id_person").val();
-            $.ajax({
-               url: '/school/lessons/passed/' + member_id,
-               success: function(data) {
-                    console.log(data);
-                    $("#school_task_content").html(data);
-               }
-            });
+            get_lessons();
         });
+        if ($("#id_person").val() != "") {
+            get_lessons();
+        }
     });
     </script>
 {% endblock %}
 
 
 {% block content %}
-{% load i18n %}
 
 <form method="POST" class="form-horizontal" role="form">
     {% csrf_token %}

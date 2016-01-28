@@ -1,38 +1,55 @@
+{% load i18n %}
+
 {% load extra_filters %}
 
 <div class="error-block">
     {{ school_task_form.lesson.errors }}
 </div>
 <div class="form-group">
-    <label>{{school_task_form.lesson.label}}</label>
-    <table>
-        {% for it in  school_task_form.lesson %}
-            <tr>
-                {% if not forloop.first %}
-                    <td>
-                        <div class="radio">
-                            {{it.tag}}
-                            <label for="{{it.id_for_label}}">{{it.choice_label}}</label>
-                        </div>
-                    </td>
-                    <td>
-                        {% if passed_lessons %}
-                            {% for a in passed_lessons|access_by_key:forloop.counter0 %}
-                                {% if forloop.first %}
-                                    {{ a|date:"d.m.y" }}
+    <div class="table-responsive">
+        <table class="table-condensed school-lessons">
+            <thead>
+                <th>{% trans "No." %}</th>
+                <th>
+                    {{school_task_form.lesson.label}}
+                </th>
+                <th>
+                    {% trans "Last" %}
+                </th>
+                <th></th>
+            </thead>
+            {% for it in  school_task_form.lesson %}
+                <tr>
+                    {% if not forloop.first %}
+                        <td class="col-md-1">{{ forloop.counter0}}</td>
+                        <td class="col-md-6">
+                            {{it.choice_label}}
+                        </td>
+                        <td class="col-md-2">
+                            {% if passed_lessons %}
+                                {% for a in passed_lessons|access_by_key:forloop.counter0 %}
+                                    {% if forloop.first %}
+                                        {{ a|date:"d.m.y" }}
+                                    {% endif %}
+                                 {% empty %}
+                                    &nbsp;
+                                {% endfor %}
+                                {% if passed_lessons|access_by_key:forloop.counter0|length > 2 %}
+                                    (x{{passed_lessons|access_by_key:forloop.counter0|length|add:"-1" }})
                                 {% endif %}
-                             {% empty %}
-                                &nbsp;
-                            {% endfor %}
-                            {% if passed_lessons|access_by_key:forloop.counter0|length > 2 %}
-                                (x{{passed_lessons|access_by_key:forloop.counter0|length|add:"-1" }})
                             {% endif %}
-                        {% endif %}
-                    </td>
-                {% endif %}
-            </tr>
-        {% endfor %}
-    </table>
+                        </td>
+                        <td class="col-md-1">
+                            <div class="radio">
+                                {{ it.tag }}
+                                <label for="{{it.id_for_label}}"></label>
+                            </div>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
 <div class="form-group">
     <label for="{{school_task_form.background.id_for_label}}">{{school_task_form.background.label}}</label>
