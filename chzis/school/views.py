@@ -1,4 +1,5 @@
 import datetime
+import simplejson
 
 from django.shortcuts import render
 from django.views.generic import View, TemplateView
@@ -123,3 +124,9 @@ def school_member_lesson_passed(request, member_id):
                'passed_lessons': passed_lessons
                }
     return HttpResponse(tpl.render(context))
+
+
+def school_tasks_print(request):
+    task_list = simplejson.loads(request.POST.get('tasks_ids'))
+    print [ SchoolTask.objects.filter(id=task) for task in task_list ]
+    return HttpResponse(request.POST.get('tasks_ids'))

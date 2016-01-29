@@ -15,25 +15,27 @@
     }
 
 
-    function get_pdf_content(){
-        var checked = $(".print_checkbox:checkbox:checked");
-        console.log(checked);
+    function get_pdf_content(task_to_print){
         $.ajax({
-            url: "/school/tasks/print"+ task_id +"/result/",
-            data: {'tasks_id': []
+            url: "/school/tasks/print/",
+            data: {'tasks_ids': JSON.stringify(task_to_print, null)
                 , csrfmiddlewaretoken: '{{ csrf_token }}'},
             type: 'post',
             success: function(data) {
-
+                console.log(data);
             }
         });
+        return false;
     }
 
     $(window).on('load', function() {
         $("#print_button").click(function() {
-            var checked = $(".print_checkbox:checkbox:checked");
-             console.log(checked);
-            console.log("printowankooo");
+            var task_to_print = [];
+            $(".print_checkbox:checkbox:checked").each(function() {
+                console.log($(this).val());
+                task_to_print.push($(this).val());
+            });
+            get_pdf_content(task_to_print);
             return false;
         });
 
@@ -117,7 +119,7 @@
                 </td>
                 <td>
                     <div class="checkbox checkbox-primary">
-                        <input type="checkbox" id="print_{{task.id}}" name="print_{{task.id}}" class="print_checkbox">
+                        <input type="checkbox" id="print_{{task.id}}" name="print_{{task.id}}" value="{{task.id}}" class="print_checkbox">
                         <label for="print_{{task.id}}"></label>
                     </div>
                 </td>

@@ -1,8 +1,8 @@
 # -- coding: utf-8 --
 
 import time
-from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Frame, BaseDocTemplate
+from reportlab.lib.pagesizes import letter, A4
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Frame, BaseDocTemplate, PageTemplate, FrameBreak, PageBreak
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch, mm
 from reportlab.graphics.shapes import Drawing, String
@@ -70,12 +70,12 @@ pdfmetrics.registerFont(TTFont('Arial_Italic', 'Arial_Italic.ttf'))
 pdfmetrics.registerFont(TTFont('Verdana_Bold', 'Verdana_Bold.ttf'))
 
 def create_meeting_task_card(meeting_item=None, school_class=None):
-    page_size = (88.5 * mm, 140 * mm)
-    doc = SimpleDocTemplate("form_letter.pdf", pagesize=page_size,
-                            rightMargin=0,
-                            leftMargin=0,
-                            topMargin=0,
-                            bottomMargin=0)
+    # page_size = (88.5 * mm, 140 * mm)
+    # doc = SimpleDocTemplate("form_letter.pdf", pagesize=page_size,
+    #                         rightMargin=0,
+    #                         leftMargin=0,
+    #                         topMargin=0,
+    #                         bottomMargin=0)
 
     header_style = ParagraphStyle(name="base",
                                   fontName="Arial_Bold",
@@ -188,8 +188,54 @@ def create_meeting_task_card(meeting_item=None, school_class=None):
     annonation = Paragraph("S-89-P 10/15", annonation_style)
     page_content.append(annonation)
 
-    doc.build(page_content)
+    return page_content
 
+def build_pdf():
+    A4_width, A4_height = A4[0], A4[1]
+    print A4
+    doc = SimpleDocTemplate("form_letter.pdf", pagesize=A4,
+                        rightMargin=0,
+                        leftMargin=0,
+                        topMargin=0,
+                        bottomMargin=0)
+    #page_size = (88.5 * mm, 140 * mm)
+    pdf_content = []
+    frames = []
+    tasks = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    w_counter = 0
+    h_counter = 1
+    width_wstart = 0
+    height_start = 0
+    frame_w = 88.5 * mm
+    frame_h = 140 * mm
+    for task in tasks:
+        print "------------------"
+
+        print A4_width - w_counter * frame_w
+        if A4_width - w_counter * frame_w >= frame_w:
+            print 'licze szerokosc', w_counter * frame_w
+            width_wstart = w_counter * frame_w
+            w_counter += 1
+        else:
+            h_counter -= 1
+            w_counter = 0
+            width_wstart = 0
+            height_start = 0
+
+        print h_counter * frame_h
+        if A4_height - h_counter * frame_h >= frame_h:
+            print 'licze wysokosccc', h_counter, frame_h
+            height_start = h_counter * frame_h
+
+
+        frame_content = create_meeting_task_card()
+        print "WYM->", width_wstart, height_start
+        frames.append(Frame(width_wstart, height_start, 88.5 * mm, 140 * mm))
+        pdf_content.extend(frame_content)
+        pdf_content.append(FrameBreak())
+    template = PageTemplate(frames=frames)
+    doc.addPageTemplates(template)
+    doc.build(pdf_content)
 
 if __name__ == '__main__':
-    create_meeting_task_card()
+    build_pdf()
