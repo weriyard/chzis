@@ -5,14 +5,14 @@ from reportlab.lib.pagesizes import letter, A4
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Frame, BaseDocTemplate, PageTemplate, FrameBreak, PageBreak, NextPageTemplate
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch, mm
-from reportlab.graphics.shapes import Drawing, String
+from reportlab.graphics.shapes import Drawing, String, Line
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT, TA_CENTER
 from reportlab.graphics.widgets import signsandsymbols
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 from reportlab.graphics import shapes
-
+from reportlab import rl_config, isPy3
 
 class MyCrossBox(signsandsymbols.Crossbox):
     def __init__(self, x=0, y=0, size=8, oversize=0, selected=False):
@@ -62,6 +62,46 @@ class MyCrossBox(signsandsymbols.Crossbox):
 
         return g
 
+class ShowBoundaryValue:
+    def __init__(self,color=(0,0,0),width=0.1):
+        self.color = color
+        self.width = width
+
+    if isPy3:
+        def __bool__(self):
+            return self.color is not None and self.width>=0
+    else:
+        def __nonzero__(self):
+            return self.color is not None and self.width>=0
+
+
+class MyFrame(Frame):
+
+    def drawBoundary(self,canv):
+            "draw the frame boundary as a rectangle (primarily for debugging)."
+            from reportlab.lib.colors import Color, CMYKColor, toColor
+            sb = self.showBoundary
+            ss = type(sb) in (type(''),type(()),type([])) or isinstance(sb,Color)
+            w = -1
+            if ss:
+                c = toColor(sb,self)
+                ss = c is not self
+            elif isinstance(sb,ShowBoundaryValue) and sb:
+                c = toColor(sb.color,self)
+                w = sb.width
+                ss = c is not self
+            if ss:
+                canv.saveState()
+                canv.setStrokeColor(c)
+                if w>=0:
+                    canv.setLineWidth(w)
+            canv.rect(
+                    self._x1 - 20,
+                    self._y1,
+                    self._x2 - self._x1 + 40,
+                    self._y2 - self._y1
+                    )
+            if ss: canv.restoreState()
 
 styles = getSampleStyleSheet()
 pdfmetrics.registerFont(TTFont('Arial_Bold', 'Arial_Bold.ttf'))
@@ -200,7 +240,7 @@ def build_pdf():
                             bottomMargin=0)
     pdf_content = []
     frames = []
-    tasks = xrange(0, 100)
+    tasks = xrange(0, 31)
     w_counter = 0
     h_counter = 1
     width_position = 0
@@ -211,7 +251,11 @@ def build_pdf():
     frame_counter = 1
     for task in tasks:
         if A4_width - w_counter * frame_w > frame_w:
-            width_position = w_counter * frame_w
+            if w_counter % 2 == 0:
+                add = 0
+            else:
+                add = 40
+            width_position = w_counter * frame_w + add
             same_line = True
         else:
             same_line = False
@@ -226,11 +270,12 @@ def build_pdf():
         w_counter += 1
 
         frame_content = create_meeting_task_card()
-        left_padding = (A4_width - 2 * 88.5 * mm) / 2
+        left_padding = (A4_width - 2 * 88.5 * mm - 40) / 2
         bottom_padding = (A4_height - 2 * 140 * mm) / 2
-        frames.append(Frame(left_padding + width_position, bottom_padding + height_position, 88.5 * mm, 140 * mm))
+        frames.append(MyFrame(left_padding + width_position, bottom_padding + height_position, 88.5 * mm, 140 * mm, showBoundary=1))
         pdf_content.extend(frame_content)
-        pdf_content.append(FrameBreak())
+        if len(frames) < len(tasks):
+            pdf_content.append(FrameBreak())
 
         if frame_counter % 4 == 0:
             w_counter = 0
