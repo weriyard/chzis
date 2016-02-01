@@ -8,12 +8,15 @@ from django.views.generic import View, TemplateView
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.template import loader, Context
+from wsgiref.util import FileWrapper
 
 from chzis.school.models import SchoolTask
 from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm
 from chzis.meetings.models import MeetingTask
 from chzis.meetings.forms import MeetingTaskSchoolForm, MeetingTaskSchoolViewForm
 from chzis.utils.pdf import create_form
+
+import os
 
 
 class Tasks(View):
@@ -146,4 +149,12 @@ def school_tasks_print(request):
                       }
         tasks_to_print.append(task_param)
     create_form.build_pdf(tasks_to_print)
-    return HttpResponse(request.POST.get('tasks_ids'))
+
+    wrapper = FileWrapper(file("./form_letter.pdf"))
+    response = HttpResponse(wrapper, content_type='application/octet-stream')
+    #response['Content-Type'] = 'application/octet-stream'
+    response['Content-Length'] = os.path.getsize("./form_letter.pdf")
+    response['Content-Disposition'] = 'attachment; filename="form_letter.pdf"'
+
+    #return HttpResponse(request.POST.get('tasks_ids'))
+    return response

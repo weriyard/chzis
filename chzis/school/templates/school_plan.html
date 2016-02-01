@@ -22,31 +22,61 @@
                 , csrfmiddlewaretoken: '{{ csrf_token }}'},
             type: 'post',
             success: function(data) {
+                //$("#pdf_form").attr('target', 'downloadFrame');
                 console.log(data);
+                //$('#downloadFrame').attr('src',data);
+                //$('#downloadFrame').html(data);
             }
         });
         return false;
     }
 
     $(window).on('load', function() {
-        $("#print_button").click(function() {
+        $("#print_button").click(function () {
             var task_to_print = [];
-            $(".print_checkbox:checkbox:checked").each(function() {
+            $(".print_checkbox:checkbox:checked").each(function () {
                 console.log($(this).val());
                 task_to_print.push($(this).val());
             });
-            get_pdf_content(task_to_print);
-            return false;
+            //get_pdf_content(task_to_print);
+            //$("#pdf_form").attr("action", "/school/tasks/print/");
+            //$("#pdf_form").attr('target', 'downloadFrame');
+            $("#pdf_form").submit(function (event) {
+
+                event.preventDefault();
+                var task_to_print = [];
+                $(".print_checkbox:checkbox:checked").each(function () {
+                    console.log($(this).val());
+                    task_to_print.push($(this).val());
+                });
+                var posting = $.post("/school/tasks/print/", {
+                    'tasks_ids': JSON.stringify(task_to_print, null)
+                    , 'csrfmiddlewaretoken': '{{ csrf_token }}'
+                });
+
+                posting.done(function (data) {
+                    console.log("XXXX");
+                    $('#downloadFrame').html(data);
+                    return data;
+                });
+                $("#pdf_form").attr('target', 'downloadFrame');
+                console.log("XXXX1");
+                //$('#downloadFrame').attr('src','/school/tasks/print/');
+                // Stop form from submitting normally
+
+                //return false;
+            });
+
         });
-
     });
-
 </script>
 {% endblock %}
 
 {% block content %}
 {% load i18n %}
-<div class="pull-left">
+<iframe id="downloadFrame" name="downloadFrame" style="display:none"></iframe>
+
+    <div class="pull-left">
 <form method="GET" action="/school/plan/{{prev_plan_date}}">
     <button type="submit" class="btn btn-xs btn-danger"><<<</button>
 </form>
@@ -130,7 +160,7 @@
         </tbody>
     </table>
     {% if perms.congregation.can_manage %}
-        <form method="POST" class="form-horizontal" role="form">
+        <form method="POST" class="form-horizontal" role="form" id="pdf_form">
             {% csrf_token %}
             <button type="submit" class="btn btn-lg btn-danger" name="Add" id="print_button">{% trans "Print selected" %}</button>
         </form>

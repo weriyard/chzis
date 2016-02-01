@@ -12,7 +12,8 @@ from reportlab.graphics.widgets import signsandsymbols
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 from reportlab.graphics import shapes
-from reportlab import rl_config, isPy3
+from reportlab import isPy3
+
 
 class MyCrossBox(signsandsymbols.Crossbox):
     def __init__(self, x=0, y=0, size=8, oversize=0, selected=False):
@@ -62,6 +63,7 @@ class MyCrossBox(signsandsymbols.Crossbox):
 
         return g
 
+
 class ShowBoundaryValue:
     def __init__(self,color=(0,0,0),width=0.1):
         self.color = color
@@ -109,6 +111,7 @@ pdfmetrics.registerFont(TTFont('Arial', 'Arial.ttf'))
 pdfmetrics.registerFont(TTFont('Arial_Italic', 'Arial_Italic.ttf'))
 pdfmetrics.registerFont(TTFont('Verdana_Bold', 'Verdana_Bold.ttf'))
 pdfmetrics.registerFont(TTFont('Courier_New', 'Courier_New.ttf'))
+
 
 def create_meeting_task_card(data=None, school_class=None):
     # page_size = (88.5 * mm, 140 * mm)
@@ -269,7 +272,6 @@ def build_pdf(data):
                             bottomMargin=0)
     pdf_content = []
     frames = []
-    tasks = xrange(0, 31)
     w_counter = 0
     h_counter = 1
     width_position = 0
@@ -322,4 +324,4 @@ def build_pdf(data):
     doc.build(pdf_content)
 
 if __name__ == '__main__':
-    build_pdf()
+    build_pdf(data=None)
