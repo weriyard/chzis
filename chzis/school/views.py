@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import datetime
 import simplejson
 
@@ -11,6 +13,7 @@ from chzis.school.models import SchoolTask
 from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm
 from chzis.meetings.models import MeetingTask
 from chzis.meetings.forms import MeetingTaskSchoolForm, MeetingTaskSchoolViewForm
+from chzis.utils.pdf import create_form
 
 
 class Tasks(View):
@@ -128,5 +131,19 @@ def school_member_lesson_passed(request, member_id):
 
 def school_tasks_print(request):
     task_list = simplejson.loads(request.POST.get('tasks_ids'))
-    print [ SchoolTask.objects.filter(id=task) for task in task_list ]
+    print [SchoolTask.objects.filter(id=task) for task in task_list]
+
+    tasks_to_print = []
+    for task in task_list:
+        t = SchoolTask.objects.get(id=task)
+        task_param = {"name": u"{firstname} {lastname}".format(firstname=t.task.person.user.first_name,
+                                                              lastname=t.task.person.user.last_name),
+                      "slave": "",
+                      "date": t.task.presentation_date,
+                      "lesson": t.lesson.name,
+                      "task_type": t.task.meeting_item.name,
+                      "class": 1
+                      }
+        tasks_to_print.append(task_param)
+    create_form.build_pdf(tasks_to_print)
     return HttpResponse(request.POST.get('tasks_ids'))

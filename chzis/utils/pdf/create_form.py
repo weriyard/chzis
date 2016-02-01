@@ -108,14 +108,26 @@ pdfmetrics.registerFont(TTFont('Arial_Bold', 'Arial_Bold.ttf'))
 pdfmetrics.registerFont(TTFont('Arial', 'Arial.ttf'))
 pdfmetrics.registerFont(TTFont('Arial_Italic', 'Arial_Italic.ttf'))
 pdfmetrics.registerFont(TTFont('Verdana_Bold', 'Verdana_Bold.ttf'))
+pdfmetrics.registerFont(TTFont('Courier_New', 'Courier_New.ttf'))
 
-def create_meeting_task_card(meeting_item=None, school_class=None):
+def create_meeting_task_card(data=None, school_class=None):
     # page_size = (88.5 * mm, 140 * mm)
     # doc = SimpleDocTemplate("form_letter.pdf", pagesize=page_size,
     #                         rightMargin=0,
     #                         leftMargin=0,
     #                         topMargin=0,
     #                         bottomMargin=0)
+
+    dynamic_content = {"name": "",
+                       "slave": "",
+                       "date": "",
+                       "lesson": "",
+                       "task_type": "",
+                       "class": 1
+                       }
+
+    if data is not None:
+        dynamic_content.update(data)
 
     header_style = ParagraphStyle(name="base",
                                   fontName="Arial_Bold",
@@ -133,6 +145,23 @@ def create_meeting_task_card(meeting_item=None, school_class=None):
                                         rightIndent=0,
                                         leftIndent=5,
                                         leading=26,
+                                        wordWrap="LTR",
+                                        allowOrphans = 0,
+                                        allowWidows= 0,
+                                        splitLongWords = 1
+                                        )
+
+    lesson_style = ParagraphStyle(name="base",
+                                        fontName="Arial_Bold",
+                                        alignment=TA_LEFT,
+                                        fontSize=11.8,
+                                        rightIndent=0,
+                                        leftIndent=5,
+                                        leading=13,
+                                        wordWrap="LTR",
+                                        allowOrphans = 0,
+                                        allowWidows= 0,
+                                        splitLongWords = 1
                                         )
 
     footer_style = ParagraphStyle(name="base",
@@ -164,16 +193,16 @@ def create_meeting_task_card(meeting_item=None, school_class=None):
     header = Paragraph("<strong>ZADANIE PODCZAS ZEBRANIA CHRZESCIJAŃSKIEGO ŻYCIA I SŁUŻBY</strong>", header_style)
     page_content.append(header)
     page_content.append(Spacer(0, 8 * mm))
-    user_name = Paragraph("Imię i nazwisko:<font name='Arial' size='9'>........................................................</font>", introduction_style)
+    user_name = Paragraph(u"Imię i nazwisko:<font name='Courier_New' size='12'>  {name}</font>".format(name=dynamic_content.get("name")), introduction_style)
     page_content.append(user_name)
     slave_user = Paragraph(
-        "<para>Pomocnik(-ca):<font name='Arial' size='9'>..........................................................</font></para>",
+        "<para>Pomocnik(-ca):<font name='Courier_New' size='12'>  {slave}</font></para>".format(slave=dynamic_content.get("slave")),
         introduction_style)
     page_content.append(slave_user)
-    date = Paragraph("Data:<font name='Arial' size='9'>................................................................................</font>", introduction_style)
+    date = Paragraph("Data:<font name='Courier_New' size='12'>  {date}</font>".format(date=dynamic_content.get('date')), introduction_style)
     page_content.append(date)
-    property = Paragraph("Cecha przemawiania:.<font name='Arial' size='9'>...........................................</font>", introduction_style)
-    page_content.append(property)
+    lesson = Paragraph(u"Cecha przemawiania:<font name='Courier_New' size='12'>  {lesson}</font>".format(lesson=dynamic_content.get('lesson')), lesson_style)
+    page_content.append(lesson)
     page_content.append(Spacer(0, 5 * mm))
 
     d = Drawing(10, 15)
@@ -181,42 +210,42 @@ def create_meeting_task_card(meeting_item=None, school_class=None):
     page_content.append(d)
 
     d = Drawing(20, 13)
-    d.add(MyCrossBox(left_col_margin, selected=True if meeting_item == "Bible Reading" else False))
+    d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('task_type') == "Bible Reading" else False))
     d.add(String(15 + left_col_margin, 1, "Czytanie Biblii", fontName="Arial", fontSize=9))
     d.add(String(136, 14, "Zadanie przedstawisz", fontName="Arial_Bold", fontSize=9))
     d.add(String(136, 1, "w sali:", fontName="Arial_Bold", fontSize=9))
     page_content.append(d)
 
     d = Drawing(20, 13)
-    d.add(MyCrossBox(left_col_margin, selected=True if meeting_item == "Initial Call" else False))
+    d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('task_type') == "Initial Call" else False))
     d.add(String(15 + left_col_margin, 1, "Pierwsza rozmowa", fontName="Arial", fontSize=9))
 
-    d.add(MyCrossBox(right_col_margin - 2, selected=True if school_class == 1 else False))
+    d.add(MyCrossBox(right_col_margin - 2, selected=True if dynamic_content.get('class') == 1 else False))
     d.add(String(15 + right_col_margin, 1, "głównej", fontName="Arial", fontSize=9))
 
     page_content.append(d)
     d = Drawing(20, 13)
-    d.add(MyCrossBox(left_col_margin, selected=True if meeting_item == "Return Visit" else False))
+    d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('task_type') == "Return Visit" else False))
     d.add(String(15 + left_col_margin, 1, "Odwiedziny ponowne", fontName="Arial", fontSize=9))
 
-    d.add(MyCrossBox(right_col_margin - 2, selected=True if school_class == 2 else False))
+    d.add(MyCrossBox(right_col_margin - 2, selected=True if dynamic_content.get('class') == 2 else False))
     d.add(String(15 + right_col_margin, 1, "drugiej", fontName="Arial", fontSize=9))
 
     page_content.append(d)
     d = Drawing(20, 13)
-    d.add(MyCrossBox(left_col_margin, selected=True if meeting_item == "Bible Study" else False))
+    d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('task_type') == "Bible Study" else False))
     d.add(String(15 + left_col_margin, 1, "Studium biblijne", fontName="Arial", fontSize=9))
 
-    d.add(MyCrossBox(right_col_margin - 2, selected=True if school_class == 3 else False))
+    d.add(MyCrossBox(right_col_margin - 2, selected=True if dynamic_content.get('class') == 3 else False))
     d.add(String(15 + right_col_margin, 1, "trzeciej", fontName="Arial", fontSize=9))
 
     page_content.append(d)
     d = Drawing(20, 13)
-    d.add(MyCrossBox(left_col_margin, selected=True if meeting_item == "Other" else False))
+    d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('task_type') == "Other" else False))
     d.add(String(15 + left_col_margin, 1, "Inne: ................................", fontName="Arial", fontSize=9))
     page_content.append(d)
 
-    page_content.append(Spacer(0, 12.5 * mm))
+    page_content.append(Spacer(0, 9.5 * mm))
 
     footer = Paragraph(
         "<para><font name='Arial_Bold'>Wskazówki:</font> Potrzebne informacje dotyczące twojego wystąpie-<br/>nia znajdziesz w miesięczniku <font name='Arial_Italic'>Chrzescijańskie życie i słuzba - pro<br/>gram zebrań.</font>" \
@@ -224,14 +253,14 @@ def create_meeting_task_card(meeting_item=None, school_class=None):
         " na zebranie chrzescijańskiego życia i służby.</font></para>", footer_style)
     page_content.append(footer)
 
-    page_content.append(Spacer(0, 7.5 * mm))
+    page_content.append(Spacer(0, 7.0 * mm))
     annonation = Paragraph("S-89-P 10/15", annonation_style)
     page_content.append(annonation)
 
     return page_content
 
 
-def build_pdf():
+def build_pdf(data):
     A4_width, A4_height = A4[0], A4[1]
     doc = SimpleDocTemplate("form_letter.pdf", pagesize=A4,
                             rightMargin=0,
@@ -249,7 +278,7 @@ def build_pdf():
     frame_h = 140 * mm
     height_position = h_counter * frame_h
     frame_counter = 1
-    for task in tasks:
+    for d in data:
         if A4_width - w_counter * frame_w > frame_w:
             if w_counter % 2 == 0:
                 add = 0
@@ -269,15 +298,15 @@ def build_pdf():
                 same_line = True
         w_counter += 1
 
-        frame_content = create_meeting_task_card()
+        frame_content = create_meeting_task_card(d)
         left_padding = (A4_width - 2 * 88.5 * mm - 40) / 2
         bottom_padding = (A4_height - 2 * 140 * mm) / 2
         frames.append(MyFrame(left_padding + width_position, bottom_padding + height_position, 88.5 * mm, 140 * mm, showBoundary=1))
         pdf_content.extend(frame_content)
-        if len(frames) < len(tasks):
+        if len(frames) < len(data):
             pdf_content.append(FrameBreak())
 
-        if frame_counter % 4 == 0:
+        if frame_counter % 4 == 0 and len(data) - frame_counter * 4 > 0:
             w_counter = 0
             h_counter = 1
             same_line = True
