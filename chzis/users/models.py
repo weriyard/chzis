@@ -17,7 +17,7 @@ class PeopleProfile(models.Model):
     last_modification = models.DateTimeField(auto_now=True, null=True)
 
     def __unicode__(self):
-        return "ss{lastname} {firstname}".format(lastname=self.user.last_name, firstname=self.user.first_name)
+        return "{lastname} {firstname}".format(lastname=self.user.last_name, firstname=self.user.first_name)
 
     # class Meta:
     #     ordering = ['last_name', 'first_name']

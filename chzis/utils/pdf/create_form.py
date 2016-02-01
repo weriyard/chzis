@@ -2,7 +2,7 @@
 
 import time
 from reportlab.lib.pagesizes import letter, A4
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Frame, BaseDocTemplate, PageTemplate, FrameBreak, PageBreak
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Frame, BaseDocTemplate, PageTemplate, FrameBreak, PageBreak, NextPageTemplate
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch, mm
 from reportlab.graphics.shapes import Drawing, String
@@ -190,50 +190,60 @@ def create_meeting_task_card(meeting_item=None, school_class=None):
 
     return page_content
 
+
 def build_pdf():
     A4_width, A4_height = A4[0], A4[1]
-    print A4
     doc = SimpleDocTemplate("form_letter.pdf", pagesize=A4,
-                        rightMargin=0,
-                        leftMargin=0,
-                        topMargin=0,
-                        bottomMargin=0)
-    #page_size = (88.5 * mm, 140 * mm)
+                            rightMargin=0,
+                            leftMargin=0,
+                            topMargin=0,
+                            bottomMargin=0)
     pdf_content = []
     frames = []
-    tasks = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    tasks = xrange(0, 100)
     w_counter = 0
     h_counter = 1
-    width_wstart = 0
-    height_start = 0
+    width_position = 0
+    same_line = True
     frame_w = 88.5 * mm
     frame_h = 140 * mm
+    height_position = h_counter * frame_h
+    frame_counter = 1
     for task in tasks:
-        print "------------------"
-
-        print A4_width - w_counter * frame_w
-        if A4_width - w_counter * frame_w >= frame_w:
-            print 'licze szerokosc', w_counter * frame_w
-            width_wstart = w_counter * frame_w
-            w_counter += 1
+        if A4_width - w_counter * frame_w > frame_w:
+            width_position = w_counter * frame_w
+            same_line = True
         else:
-            h_counter -= 1
+            same_line = False
             w_counter = 0
-            width_wstart = 0
-            height_start = 0
+            width_position = 0
 
-        print h_counter * frame_h
-        if A4_height - h_counter * frame_h >= frame_h:
-            print 'licze wysokosccc', h_counter, frame_h
-            height_start = h_counter * frame_h
-
+        if not same_line:
+            if A4_height - h_counter * frame_h >= frame_h:
+                h_counter -= 1
+                height_position = h_counter * frame_h
+                same_line = True
+        w_counter += 1
 
         frame_content = create_meeting_task_card()
-        print "WYM->", width_wstart, height_start
-        frames.append(Frame(width_wstart, height_start, 88.5 * mm, 140 * mm))
+        left_padding = (A4_width - 2 * 88.5 * mm) / 2
+        bottom_padding = (A4_height - 2 * 140 * mm) / 2
+        frames.append(Frame(left_padding + width_position, bottom_padding + height_position, 88.5 * mm, 140 * mm))
         pdf_content.extend(frame_content)
         pdf_content.append(FrameBreak())
-    template = PageTemplate(frames=frames)
+
+        if frame_counter % 4 == 0:
+            w_counter = 0
+            h_counter = 1
+            same_line = True
+            width_position = 0
+            height_position = h_counter * frame_h
+            pdf_content.append(NextPageTemplate("main_template"))
+            pdf_content.append(PageBreak())
+
+        frame_counter += 1
+
+    template = PageTemplate(id = 'main_template', frames=frames)
     doc.addPageTemplates(template)
     doc.build(pdf_content)
 

@@ -5,7 +5,7 @@ from django.db import models
 
 from chzis.congregation.models import Congregation, CongregationMember
 from django.utils.translation import ugettext_lazy as _
-import vinaigrette
+#import vinaigrette
 
 
 
@@ -74,4 +74,4 @@ class MeetingTask(models.Model):
         return "{meeting} {person} {presentation_date}".format(meeting=self.meeting_item, person=self.person, presentation_date=self.presentation_date)
 
 
-vinaigrette.register(MeetingItem, ['full_name'])
+#vinaigrette.register(MeetingItem, ['full_name'])
