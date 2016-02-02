@@ -75,6 +75,7 @@ div.error-block {
 
 div.checkbox-task-list {
     float: left;
+    padding-top: 0!important;
 }
 
 table.school-lessons {
