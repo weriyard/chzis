@@ -2,9 +2,10 @@
 
 import datetime
 import simplejson
+import os
 
 from django.shortcuts import render
-from django.views.generic import View, TemplateView
+from django.views.generic import View, TemplateView, FormView
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.template import loader, Context
@@ -13,19 +14,18 @@ from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from chzis.school.models import SchoolTask
-from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm
+from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm, SchoolTaskFilterForm
 from chzis.meetings.models import MeetingTask
 from chzis.meetings.forms import MeetingTaskSchoolForm, MeetingTaskSchoolViewForm
 from chzis.utils.pdf import schooltask
 
-import os
-
 
 class Tasks(View):
     def get(self, request):
+        print request.GET
         tasks = SchoolTask.objects.all()
 
-        paginator = Paginator(tasks, 5)
+        paginator = Paginator(tasks, 25)
         page = request.GET.get('page')
 
         try:
@@ -39,6 +39,32 @@ class Tasks(View):
 
         context = dict()
         context['tasks'] = tasks
+        context['filter_form'] = SchoolTaskFilterForm()
+        return render(request, 'tasks.html', context)
+
+    def post(self, request):
+        print request.POST
+        filter_form = SchoolTaskFilterForm(request.POST)
+        filter_form.is_valid()
+        print filter_form.cleaned_data['start_date'], filter_form.cleaned_data['end_date']
+        tasks = SchoolTask.objects.filter(task__presentation_date__gte=filter_form.cleaned_data['start_date'],
+                                          task__presentation_date__lte=filter_form.cleaned_data['end_date'])
+
+        paginator = Paginator(tasks, 25)
+        page = request.GET.get('page')
+
+        try:
+            tasks = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            tasks = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            tasks = paginator.page(paginator.num_pages)
+
+        context = dict()
+        context['tasks'] = tasks
+        context['filter_form'] = SchoolTaskFilterForm()
         return render(request, 'tasks.html', context)
 
 
@@ -163,7 +189,7 @@ def school_tasks_print(request):
         min_date = min(tasks_to_print, key=lambda x: x['date'])
         max_date = max(tasks_to_print, key=lambda x: x['date'])
 
-        file_name = "{min_date}-{max_date}_{task_name}_[{counter}].pdf".format(min_date=min_date['date'].strftime("%d.%m.%y"),
+        file_name = u"{min_date}-{max_date}_{task_name}_[{counter}].pdf".format(min_date=min_date['date'].strftime("%d.%m.%y"),
                                                                max_date=max_date['date'].strftime("%d.%m.%y"),
                                                                task_name=_("school_tasks"),
                                                                counter=len(task_list))
@@ -171,7 +197,7 @@ def school_tasks_print(request):
         wrapper = FileWrapper(file(os.path.join('/tmp', file_name)))
         response = HttpResponse(wrapper, content_type='application/octet-stream')
         response['Content-Length'] = os.path.getsize(os.path.join('/tmp', file_name))
-        response['Content-Disposition'] = 'attachment; filename="{filename}"'.format(filename=file_name)
+        response['Content-Disposition'] = 'attachment; filename={filename}'.format(filename=file_name.encode('utf-8'))
     else:
         respone = HttpResponse("Please select least one task in order to generate pdf.")
 

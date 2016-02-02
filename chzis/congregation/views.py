@@ -61,7 +61,6 @@ class CongregationMemberDetails(TemplateView):
         context['member'] = member
         return context
 
-
     def post(self, request, congregation_id, member_id):
         cong_member = CongregationMember.objects.get(id=member_id)
 
@@ -79,7 +78,6 @@ class CongregationMemberProfileRedirect(RedirectView):
     url = ""
 
     def get_redirect_url(self, *args, **kwargs):
-        print args, kwargs, self.url
         try:
             member = CongregationMember.objects.get(user=self.request.user)
             redirect_url = member.get_absolute_url()

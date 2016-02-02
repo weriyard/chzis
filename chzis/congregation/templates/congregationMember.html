@@ -4,6 +4,9 @@
     {%  if member != None %}
         {% include "congregationMember.inc.html" %}
     {% else %}
-        <h2>"User is not congregation member !"</h2>
+        {% load i18n %}
+        {% autoescape on %}
+            <h2>{%  trans "User is not congregation member !" %}</h2>
+        {% endautoescape %}
     {% endif %}
 {% endblock %}

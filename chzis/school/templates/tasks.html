@@ -17,9 +17,21 @@
 {% load i18n %}
 <iframe id="downloadFrame" name="downloadFrame" style="display:none"></iframe>
 
+<div class="col-md-offset-3">
+    <form method="POST" role="form" class="form-inline" id="filter-form">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ filter_form.as_div }}
+        </div>
+        <div class="clearfix spacer10"></div>
+        <div class="col-md-offset-7">
+            <button type="submit" class="btn btn-sm btn-danger" name="Filter" id="filter_button">{% trans "Search" %}</button>
+        </div>
+    </form>
+</div>
 
-
-<br>
+<div class="clearfix spacer10"></div>
+<div class="spacer30"></div>
 <form method="POST" class="form-horizontal" role="form" id="pdf_form">
     {% csrf_token %}
     <div class="pull-right">

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-15 11:51+0000\n"
+"POT-Creation-Date: 2016-02-02 19:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,66 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: chzis/settings.py:119
+#: chzis/settings.py:120
 msgid "Polish"
 msgstr ""
 
-#: chzis/settings.py:120
+#: chzis/settings.py:121
 msgid "English"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:1
-msgid "Public Meeting"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:2
-msgid "Watchtower Study"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:3
-msgid "Opening Comments"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:4
-msgid "Treasuresfrom Bible"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:5
-msgid "Digging for Spiritual Gems"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:6
-msgid "Bible Reading"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:7
-msgid "Prepare This Month’s Presentations"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:8
-msgid "Pierwsza rozmowa"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:9
-msgid "Odwiedziny ponowne"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:10
-msgid "Studium biblijne"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:11
-msgid "Meeting1"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:12
-msgid "Meeting2"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:13
-msgid "Congregation Bible Study"
-msgstr ""
-
-#: meetings.MeetingItem/full_name:14
-msgid "Review Followed by Preview of Next Week"
 msgstr ""

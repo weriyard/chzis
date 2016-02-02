@@ -5,6 +5,7 @@ import copy
 
 from chzis.school.models import Lesson
 
+
 class InlineSelectDateWidget(SelectDateWidget):
 
     def render(self, name, value, attrs=None):
