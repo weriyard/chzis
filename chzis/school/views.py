@@ -9,12 +9,13 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.template import loader, Context
 from wsgiref.util import FileWrapper
+from django.utils.translation import ugettext as _
 
 from chzis.school.models import SchoolTask
 from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm
 from chzis.meetings.models import MeetingTask
 from chzis.meetings.forms import MeetingTaskSchoolForm, MeetingTaskSchoolViewForm
-from chzis.utils.pdf import create_form
+from chzis.utils.pdf import schooltask
 
 import os
 
@@ -72,9 +73,7 @@ class TaskView(TemplateView):
 
 class SchoolPlanDetails(View):
     def get(self, request, year, month, week_start):
-        year = int(year)
-        month = int(month)
-        week_start = datetime.datetime(year=year, month=month, day=int(week_start))
+        week_start = datetime.datetime(year=int(year), month=int(month), day=int(week_start))
         week_end = week_start + datetime.timedelta(days=6)
 
         prev_date = week_start - datetime.timedelta(days=7)
@@ -133,14 +132,12 @@ def school_member_lesson_passed(request, member_id):
 
 
 def school_tasks_print(request):
-    task_list = simplejson.loads(request.POST.get('tasks_ids'))
-    print [SchoolTask.objects.filter(id=task) for task in task_list]
-
+    task_list = request.POST.getlist('print')
     tasks_to_print = []
     for task in task_list:
         t = SchoolTask.objects.get(id=task)
         task_param = {"name": u"{firstname} {lastname}".format(firstname=t.task.person.user.first_name,
-                                                              lastname=t.task.person.user.last_name),
+                                                               lastname=t.task.person.user.last_name),
                       "slave": "",
                       "date": t.task.presentation_date,
                       "lesson": t.lesson.name,
@@ -148,13 +145,21 @@ def school_tasks_print(request):
                       "class": 1
                       }
         tasks_to_print.append(task_param)
-    create_form.build_pdf(tasks_to_print)
 
-    wrapper = FileWrapper(file("./form_letter.pdf"))
-    response = HttpResponse(wrapper, content_type='application/octet-stream')
-    #response['Content-Type'] = 'application/octet-stream'
-    response['Content-Length'] = os.path.getsize("./form_letter.pdf")
-    response['Content-Disposition'] = 'attachment; filename="form_letter.pdf"'
+    if tasks_to_print:
+        min_date = min(tasks_to_print, key=lambda x: x['date'])
+        max_date = max(tasks_to_print, key=lambda x: x['date'])
 
-    #return HttpResponse(request.POST.get('tasks_ids'))
+        file_name = "{min_date}-{max_date}_{task_name}_[{counter}].pdf".format(min_date=min_date['date'].strftime("%d.%m.%y"),
+                                                               max_date=max_date['date'].strftime("%d.%m.%y"),
+                                                               task_name=_("school_tasks"),
+                                                               counter=len(task_list))
+        schooltask.generate_school_task_cards(tasks_to_print, filename=os.path.join('/tmp', file_name))
+        wrapper = FileWrapper(file(os.path.join('/tmp', file_name)))
+        response = HttpResponse(wrapper, content_type='application/octet-stream')
+        response['Content-Length'] = os.path.getsize(os.path.join('/tmp', file_name))
+        response['Content-Disposition'] = 'attachment; filename="{filename}"'.format(filename=file_name)
+    else:
+        respone = HttpResponse("Please select least one task in order to generate pdf.")
+
     return response

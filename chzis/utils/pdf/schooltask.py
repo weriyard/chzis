@@ -263,9 +263,9 @@ def create_meeting_task_card(data=None, school_class=None):
     return page_content
 
 
-def build_pdf(data):
+def generate_school_task_cards(data, filename="/tmp/school_tasks.pdf"):
     A4_width, A4_height = A4[0], A4[1]
-    doc = SimpleDocTemplate("form_letter.pdf", pagesize=A4,
+    doc = SimpleDocTemplate(filename, pagesize=A4,
                             rightMargin=0,
                             leftMargin=0,
                             topMargin=0,
@@ -308,7 +308,7 @@ def build_pdf(data):
         if len(frames) < len(data):
             pdf_content.append(FrameBreak())
 
-        if frame_counter % 4 == 0 and len(data) - frame_counter * 4 > 0:
+        if frame_counter % 4 == 0 and len(data) - frame_counter > 0:
             w_counter = 0
             h_counter = 1
             same_line = True
@@ -324,4 +324,4 @@ def build_pdf(data):
     doc.build(pdf_content)
 
 if __name__ == '__main__':
-    build_pdf(data=None)
+    generate_school_task_cards(data=None)

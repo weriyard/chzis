@@ -33,40 +33,16 @@
 
     $(window).on('load', function() {
         $("#print_button").click(function () {
-            var task_to_print = [];
-            $(".print_checkbox:checkbox:checked").each(function () {
-                console.log($(this).val());
-                task_to_print.push($(this).val());
-            });
+            $("form#pdf_form").attr('action', '/school/tasks/print/')
+            $("#pdf_form").attr('target', 'downloadFrame');
+            $("form#pdf_form").submit();
+//            var task_to_print = [];
+//            $(".print_checkbox:checkbox:checked").each(function () {
+//                console.log($(this).val());
+//                task_to_print.push($(this).val());
+//            });
             //get_pdf_content(task_to_print);
             //$("#pdf_form").attr("action", "/school/tasks/print/");
-            //$("#pdf_form").attr('target', 'downloadFrame');
-            $("#pdf_form").submit(function (event) {
-
-                event.preventDefault();
-                var task_to_print = [];
-                $(".print_checkbox:checkbox:checked").each(function () {
-                    console.log($(this).val());
-                    task_to_print.push($(this).val());
-                });
-                var posting = $.post("/school/tasks/print/", {
-                    'tasks_ids': JSON.stringify(task_to_print, null)
-                    , 'csrfmiddlewaretoken': '{{ csrf_token }}'
-                });
-
-                posting.done(function (data) {
-                    console.log("XXXX");
-                    $('#downloadFrame').html(data);
-                    return data;
-                });
-                $("#pdf_form").attr('target', 'downloadFrame');
-                console.log("XXXX1");
-                //$('#downloadFrame').attr('src','/school/tasks/print/');
-                // Stop form from submitting normally
-
-                //return false;
-            });
-
         });
     });
 </script>
@@ -76,10 +52,10 @@
 {% load i18n %}
 <iframe id="downloadFrame" name="downloadFrame" style="display:none"></iframe>
 
-    <div class="pull-left">
-<form method="GET" action="/school/plan/{{prev_plan_date}}">
-    <button type="submit" class="btn btn-xs btn-danger"><<<</button>
-</form>
+<div class="pull-left">
+    <form method="GET" action="/school/plan/{{prev_plan_date}}">
+        <button type="submit" class="btn btn-xs btn-danger"><<<</button>
+    </form>
 </div>
 
 <div class="pull-right">
@@ -95,77 +71,80 @@
 </h2>
 <br>
 <div class="center-block">
-<div class="table-responsive">
-    <table class="table table-bordered table-hover table-condensed table-striped task_list">
-        <thead>
-            <th class="text-center">ID</th>
-            <th class="text-center">{% trans "Meeting item" %}</th>
-            <th class="text-center">{% trans "Person" %}</th>
-            <th class="text-center">{% trans "Lesson name" %}</th>
-            <th class="text-center">{% trans "Presentation date" %}</th>
-            <th class="text-center">{% trans "Creation date" %}</th>
-            {% if perms.congregation.can_manage %}
-            <th class="text-center">{% trans "Result" %}</th>
-            <th>{% trans "Print" %}</th>
-            {% endif %}
-        </thead>
-        <tbody>
-            {% for task in tasks %}
-                <tr>
-                <th class="text-center col-md-1-id">
-                {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
-                        <a href ="{{task.get_absolute_url}}">{{task.task.id}}</a>
-                    {% else %}
-                        {{task.task.id}}
-                    {% endif %}
-                </th>
-                <td class="col-xs-2">{{task.task.meeting_item.full_name}}</td>
-                <td class="col-xs-2">
-                    {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
-                        <a href="{{task.task.person.get_absolute_url}}">{{task.task.person}}</a>
-                    {% else %}
-                        {{task.task.person}}
-                    {% endif %}
-                 </td>
-                <td class="col-xs-2">{{task.lesson.name}}</td>
-                <td class="col-xs-2">{{task.task.presentation_date}}</td>
-                <td class="col-xs-2">{{task.task.creation_date}}</td>
+<form method="POST" class="form-horizontal" role="form" id="pdf_form">
+    {% csrf_token %}
+    <input type="hidden" id="start_week" name="start_week" value="{{current_week.week_start|date:"j.m"}}">
+    <input type="hidden" id="end_week" name="end_week" value="{{current_week.week_end|date:"j.m"}}">
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-condensed table-striped task_list">
+            <thead>
+                <th class="text-center">ID</th>
+                <th class="text-center">{% trans "Meeting item" %}</th>
+                <th class="text-center">{% trans "Person" %}</th>
+                <th class="text-center">{% trans "Lesson name" %}</th>
+                <th class="text-center">{% trans "Presentation date" %}</th>
+                <th class="text-center">{% trans "Creation date" %}</th>
                 {% if perms.congregation.can_manage %}
-                <td class="col-xs-1">
-                    {% if member.school_allow == None %}
-                        <div class="checkbox checkbox-danger checkbox-task-list">
-                            <input type="checkbox" id="{{task.id}}_fail" name="{{task.id}}_fail" onclick="set_result(this, {{task.id}}, 'fail');">
-                            <label for="{{task.id}}_fail"></label>
-                        </div>
-                        <div></div>
-                        <div class="checkbox checkbox-success checkbox-task-list">
-                            <input type="checkbox" id="{{task.id}}_ok" name="{{task.id}}_ok" onclick="set_result(this, {{task.id}}, 'ok');">
-                            <label for="{{task.id}}_ok"></label>
-                        </div>
-                    {% endif %}
-                    <!--<h3>-->
-                        <!--<span class="label {% if task.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{task.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>-->
-                    <!--</h3>-->
-                </td>
-                <td>
-                    <div class="checkbox checkbox-primary">
-                        <input type="checkbox" id="print_{{task.id}}" name="print_{{task.id}}" value="{{task.id}}" class="print_checkbox">
-                        <label for="print_{{task.id}}"></label>
-                    </div>
-                </td>
-                {% else %}
+                <th class="text-center">{% trans "Result" %}</th>
+                <th>{% trans "Print" %}</th>
                 {% endif %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% if perms.congregation.can_manage %}
-        <form method="POST" class="form-horizontal" role="form" id="pdf_form">
-            {% csrf_token %}
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                    <tr>
+                    <th class="text-center col-md-1-id">
+                    {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
+                            <a href ="{{task.get_absolute_url}}">{{task.task.id}}</a>
+                        {% else %}
+                            {{task.task.id}}
+                        {% endif %}
+                    </th>
+                    <td class="col-xs-2">{{task.task.meeting_item.full_name}}</td>
+                    <td class="col-xs-2">
+                        {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
+                            <a href="{{task.task.person.get_absolute_url}}">{{task.task.person}}</a>
+                        {% else %}
+                            {{task.task.person}}
+                        {% endif %}
+                     </td>
+                    <td class="col-xs-2">{{task.lesson.name}}</td>
+                    <td class="col-xs-2">{{task.task.presentation_date}}</td>
+                    <td class="col-xs-2">{{task.task.creation_date}}</td>
+                    {% if perms.congregation.can_manage %}
+                    <td class="col-xs-1">
+                        {% if member.school_allow == None %}
+                            <div class="checkbox checkbox-danger checkbox-task-list">
+                                <input type="checkbox" id="{{task.id}}_fail" name="{{task.id}}_fail" onclick="set_result(this, {{task.id}}, 'fail');">
+                                <label for="{{task.id}}_fail"></label>
+                            </div>
+                            <div></div>
+                            <div class="checkbox checkbox-success checkbox-task-list">
+                                <input type="checkbox" id="{{task.id}}_ok" name="{{task.id}}_ok" onclick="set_result(this, {{task.id}}, 'ok');">
+                                <label for="{{task.id}}_ok"></label>
+                            </div>
+                        {% endif %}
+                        <!--<h3>-->
+                            <!--<span class="label {% if task.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{task.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>-->
+                        <!--</h3>-->
+                    </td>
+                    <td>
+                        <div class="checkbox checkbox-primary">
+                            <input type="checkbox" id="print_{{task.id}}" name="print" value="{{task.id}}" class="print_checkbox">
+                            <label for="print_{{task.id}}"></label>
+                        </div>
+                    </td>
+                    {% else %}
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if perms.congregation.can_manage %}
             <button type="submit" class="btn btn-lg btn-danger" name="Add" id="print_button">{% trans "Print selected" %}</button>
-        </form>
-    {% endif %}
-</div>
+        {% endif %}
+    </div>
+</form>
 </div>
 
 {% endblock %}

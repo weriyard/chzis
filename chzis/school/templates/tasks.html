@@ -1,7 +1,21 @@
 {% extends "base.html" %}
 
+{% block head %}
+<script type='text/javascript'>
+
+    $(window).on('load', function() {
+        $("#print_button").click(function () {
+            $("form#pdf_form").attr('action', '/school/tasks/print/')
+            $("#pdf_form").attr('target', 'downloadFrame');
+            $("form#pdf_form").submit();
+        });
+    });
+</script>
+{% endblock %}
+
 {% block content %}
 {% load i18n %}
+<iframe id="downloadFrame" name="downloadFrame" style="display:none"></iframe>
 
 {% if perms.school.add_schooltask %}
 <form method="GET" action="/school/tasks/add">
@@ -10,7 +24,8 @@
 {% endif %}
 
 <br>
-<form>
+<form method="POST" class="form-horizontal" role="form" id="pdf_form">
+    {% csrf_token %}
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-condensed task_list">
             <thead>
@@ -18,10 +33,10 @@
                 <th class="text-center">{% trans "Person" %}</th>
                 <th class="text-center">{% trans "Meeting item" %}</th>
                 <th class="text-center">{% trans "Lesson name" %}</th>
-                <th class="text-center">{% trans "Topic" %}</th>
                 <th class="text-center">{% trans "Presentation date" %}</th>
                 <th class="text-center">{% trans "Creation date" %}</th>
                 <th class="text-center">{% trans "Result" %}</th>
+                <th class="text-center">{% trans "Print" %}</th>
             </thead>
             <tbody>
                 {% for task in tasks %}
@@ -29,20 +44,28 @@
                     <th scope="row" class="text-center"><a href ="{{task.get_absolute_url}}">{{task.id}}</a></th>
                     <td class="col-xs-2"><a href="{{task.task.person.get_absolute_url}}">{{task.task.person}}</a></td>
                     <td class="col-xs-2">{{task.task.meeting_item.full_name}}</td>
-                    <td class="col-xs-3">{{task.lesson.name}}</td>
-                    <td class="col-xs-2"><a href ="{{task.get_absolute_url}}">{{task.task.topic|default:""}}</a></td>
-                    <td class="col-xs-1">{{task.task.presentation_date}}</td>
-                    <td class="col-xs-1">{{task.task.creation_date}}</td>
+                    <td class="col-xs-2">{{task.lesson.name}}</td>
+                    <td class="col-xs-2">{{task.task.presentation_date}}</td>
+                    <td class="col-xs-2">{{task.task.creation_date}}</td>
                     <td class="col-xs-1">
                         <h3 class="lesson-passed">
                             <span class="label {% if task.lesson.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{task.lesson.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>
                         </h3>
+                    </td>
+                    <td>
+                        <div class="checkbox checkbox-primary">
+                            <input type="checkbox" id="print_{{task.id}}" name="print" value="{{task.id}}" class="print_checkbox">
+                            <label for="print_{{task.id}}"></label>
+                        </div>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+    {% if perms.congregation.can_manage %}
+        <button type="submit" class="btn btn-lg btn-danger" name="Add" id="print_button">{% trans "Print selected" %}</button>
+    {% endif %}
 </form>
 
 {% endblock %}
