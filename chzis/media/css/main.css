@@ -28,7 +28,7 @@ body, table{
     font-size: 19px;
 }
 
-div .data-field {
+div.data-field {
     border: 1px solid #B0B0B0;
     margin: 10px;
     padding: 10px;
@@ -107,9 +107,17 @@ table.school-lessons td .radio {
 }
 
 div.spacer {
-   height: 100px;
+   height: 80px;
 }
 
 div.spacer50 {
    height: 50px;
+}
+
+div.spacer30 {
+    height: 30px;
+}
+
+div.spacer10 {
+    height: 10px;
 }

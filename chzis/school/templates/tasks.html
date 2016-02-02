@@ -17,15 +17,23 @@
 {% load i18n %}
 <iframe id="downloadFrame" name="downloadFrame" style="display:none"></iframe>
 
-{% if perms.school.add_schooltask %}
-<form method="GET" action="/school/tasks/add">
-    <button type="submit" class="btn btn-lg btn-primary">+ {% trans "Add task" %}</button>
-</form>
-{% endif %}
+
 
 <br>
 <form method="POST" class="form-horizontal" role="form" id="pdf_form">
     {% csrf_token %}
+    <div class="pull-right">
+        {% if tasks.has_previous %}
+            <h4 style="display: inline"><a href="?page={{ tasks.previous_page_number }}"> <<< </a></h4>
+        {% endif %}
+
+        <h4 style="display: inline">{% trans "Page" %} {{ tasks.number }} {% trans "of" %} {{ tasks.paginator.num_pages }}</h4>
+
+        {% if tasks.has_next %}
+            <h4 style="display: inline"><a href="?page={{ tasks.next_page_number }}"> >>> </a></h4>
+        {% endif %}
+    </div>
+    <div class="clearfix spacer30"></div>
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-condensed task_list">
             <thead>
@@ -62,22 +70,13 @@
                 {% endfor %}
             </tbody>
         </table>
-
-        <div class="center-block">
-            {% if tasks.has_previous %}
-                <a href="?page={{ tasks.previous_page_number }}" class="btn btn-xs btn-danger"><<<</a>
-            {% endif %}
-
-                <h4 style="display: inline">{% trans "Page" %} {{ tasks.number }} {% trans "of" %} {{ tasks.paginator.num_pages }}</h4>
-
-            {% if tasks.has_next %}
-                <a href="?page={{ tasks.next_page_number }}" class="btn btn-xs btn-success">>>></a>
-            {% endif %}
-        </div>
     </div>
     {% if perms.congregation.can_manage %}
-        <div class="spacer50"></div>
-        <button type="submit" class="btn btn-lg btn-danger" name="Add" id="print_button">{% trans "Print selected" %}</button>
+        <div class="spacer10"></div>
+        <a href="/school/tasks/add" class="btn btn-lg btn-primary">{% trans "Add task" %}</a>
+        <div class="pull-right">
+            <button type="submit" class="btn btn-lg btn-danger" name="Add" id="print_button">{% trans "Print selected" %}</button>
+        </div>
     {% endif %}
 </form>
 

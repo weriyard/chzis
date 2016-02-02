@@ -41,25 +41,18 @@
 {% load i18n %}
 <iframe id="downloadFrame" name="downloadFrame" style="display:none"></iframe>
 
-<div class="pull-left">
-    <form method="GET" action="/school/plan/{{prev_plan_date}}">
-        <button type="submit" class="btn btn-xs btn-danger"><<<</button>
-    </form>
-</div>
+<h2>
+    <span class="label label-primary">{% trans "Week" %} {{current_week.week_start|date:"j.m"}}{% if current_week.week_start.year != current_week.week_end.year %}.{{current_week.week_start.year}}{% endif %} -
+    {{current_week.week_end|date:"j.m"}}{% if current_week.week_start.year != current_week.week_end.year %}.{{current_week.week_end.year}}{% endif %}</span>
+</h2>
 
 <div class="pull-right">
-<form method="GET" action="/school/plan/{{next_plan_date}}">
-    <button type="submit" class="btn btn-xs btn-success">>>></button>
-</form>
+    <h4 style="display: inline"><a href="/school/plan/{{prev_plan_date}}"> <<< </a></h4>
+    <h4 style="display: inline"><a href="/school/plan/{{next_plan_date}}"> >>> </a></h4>
 </div>
-
+<div class="spacer30"></div>
 <div style="clear: both;"></div>
-<h2>
-    <span class="label label-info">{% trans "Week" %} {{current_week.week_start|date:"j.m"}}{% if current_week.week_start.year != current_week.week_end.year %}.{{current_week.week_start.year}}{% endif %} -
-        {{current_week.week_end|date:"j.m"}}{% if current_week.week_start.year != current_week.week_end.year %}.{{current_week.week_end.year}}{% endif %}</span>
-</h2>
-<br>
-<div class="center-block">
+
 <form method="POST" class="form-horizontal" role="form" id="pdf_form">
     {% csrf_token %}
     <input type="hidden" id="start_week" name="start_week" value="{{current_week.week_start|date:"j.m"}}">
@@ -82,7 +75,7 @@
             <tbody>
                 {% for task in tasks %}
                     <tr>
-                    <th class="text-center col-md-1-id">
+                    <th scope="row" class="text-center">
                     {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
                             <a href ="{{task.get_absolute_url}}">{{task.task.id}}</a>
                         {% else %}
@@ -134,11 +127,14 @@
                 {% endfor %}
             </tbody>
         </table>
-        {% if perms.congregation.can_manage %}
-            <button type="submit" class="btn btn-lg btn-danger" name="Add" id="print_button">{% trans "Print selected" %}</button>
-        {% endif %}
     </div>
+    {% if perms.congregation.can_manage %}
+        <div class="spacer10"></div>
+        <a href="/school/tasks/add" class="btn btn-lg btn-primary">{% trans "Add task" %}</a>
+        <div class="pull-right">
+            <button type="submit" class="btn btn-lg btn-danger" name="Add" id="print_button">{% trans "Print selected" %}</button>
+        </div>
+    {% endif %}
 </form>
-</div>
 
 {% endblock %}
