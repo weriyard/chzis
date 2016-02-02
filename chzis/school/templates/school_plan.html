@@ -14,7 +14,6 @@
         });
     }
 
-
     function get_pdf_content(task_to_print){
         $.ajax({
             url: "/school/tasks/print/",
@@ -22,10 +21,7 @@
                 , csrfmiddlewaretoken: '{{ csrf_token }}'},
             type: 'post',
             success: function(data) {
-                //$("#pdf_form").attr('target', 'downloadFrame');
                 console.log(data);
-                //$('#downloadFrame').attr('src',data);
-                //$('#downloadFrame').html(data);
             }
         });
         return false;
@@ -36,13 +32,6 @@
             $("form#pdf_form").attr('action', '/school/tasks/print/')
             $("#pdf_form").attr('target', 'downloadFrame');
             $("form#pdf_form").submit();
-//            var task_to_print = [];
-//            $(".print_checkbox:checkbox:checked").each(function () {
-//                console.log($(this).val());
-//                task_to_print.push($(this).val());
-//            });
-            //get_pdf_content(task_to_print);
-            //$("#pdf_form").attr("action", "/school/tasks/print/");
         });
     });
 </script>
@@ -87,7 +76,7 @@
                 <th class="text-center">{% trans "Creation date" %}</th>
                 {% if perms.congregation.can_manage %}
                 <th class="text-center">{% trans "Result" %}</th>
-                <th>{% trans "Print" %}</th>
+                <th class="text-center">{% trans "Print" %}</th>
                 {% endif %}
             </thead>
             <tbody>
@@ -114,14 +103,16 @@
                     {% if perms.congregation.can_manage %}
                     <td class="col-xs-1">
                         {% if member.school_allow == None %}
-                            <div class="checkbox checkbox-danger checkbox-task-list">
-                                <input type="checkbox" id="{{task.id}}_fail" name="{{task.id}}_fail" onclick="set_result(this, {{task.id}}, 'fail');">
-                                <label for="{{task.id}}_fail"></label>
-                            </div>
-                            <div></div>
-                            <div class="checkbox checkbox-success checkbox-task-list">
-                                <input type="checkbox" id="{{task.id}}_ok" name="{{task.id}}_ok" onclick="set_result(this, {{task.id}}, 'ok');">
-                                <label for="{{task.id}}_ok"></label>
+                            <div class="center-block">
+                                <div class="checkbox checkbox-danger checkbox-task-list">
+                                    <input type="checkbox" id="{{task.id}}_fail" name="{{task.id}}_fail" onclick="set_result(this, {{task.id}}, 'fail');">
+                                    <label for="{{task.id}}_fail"></label>
+                                </div>
+                                <div class="checkbox checkbox-success checkbox-task-list">
+                                    <input type="checkbox" id="{{task.id}}_ok" name="{{task.id}}_ok" onclick="set_result(this, {{task.id}}, 'ok');">
+                                    <label for="{{task.id}}_ok"></label>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
                         {% endif %}
                         <!--<h3>-->
@@ -129,9 +120,12 @@
                         <!--</h3>-->
                     </td>
                     <td>
-                        <div class="checkbox checkbox-primary checkbox-task-list">
-                            <input type="checkbox" id="print_{{task.id}}" name="print" value="{{task.id}}" class="print_checkbox">
-                            <label for="print_{{task.id}}"></label>
+                        <div class="center-block">
+                            <div class="checkbox checkbox-primary checkbox-task-list">
+                                <input type="checkbox" id="print_{{task.id}}" name="print" value="{{task.id}}" class="print_checkbox">
+                                <label for="print_{{task.id}}"></label>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
                     </td>
                     {% else %}

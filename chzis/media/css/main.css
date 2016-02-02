@@ -105,3 +105,11 @@ table.school-lessons td:nth-child(2) {
 table.school-lessons td .radio {
     padding-top: 5px;
 }
+
+div.spacer {
+   height: 100px;
+}
+
+div.spacer50 {
+   height: 50px;
+}

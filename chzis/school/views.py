@@ -10,6 +10,7 @@ from django.http import HttpResponse
 from django.template import loader, Context
 from wsgiref.util import FileWrapper
 from django.utils.translation import ugettext as _
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from chzis.school.models import SchoolTask
 from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm
@@ -23,6 +24,18 @@ import os
 class Tasks(View):
     def get(self, request):
         tasks = SchoolTask.objects.all()
+
+        paginator = Paginator(tasks, 5)
+        page = request.GET.get('page')
+
+        try:
+            tasks = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            tasks = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            tasks = paginator.page(paginator.num_pages)
 
         context = dict()
         context['tasks'] = tasks
