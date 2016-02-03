@@ -1,4 +1,4 @@
-from django.forms import SelectDateWidget, Widget, RadioSelect, TextInput, ChoiceField
+from django.forms import SelectDateWidget, Widget, RadioSelect, TextInput, ChoiceField, CheckboxInput
 from django.forms import widgets
 from django.utils.safestring import mark_safe
 import copy
@@ -57,7 +57,13 @@ class LessonListWithLastDate(Widget):
         obj = copy.copy(self)
         obj.attrs = self.attrs.copy()
         memo[id(self)] = obj
-        print '-->', self.attrs
         return obj
+
+
+class AwesomeCheckbox(CheckboxInput):
+
+    def render(self, name, value, attrs=None):
+        render = super(AwesomeCheckbox, self).render(name, value, attrs)
+        return "<div class='%s'>%s<label for='%s'></label></div>" % (self.attrs.get('class'), render, attrs.get('id'))
 
 

@@ -78,6 +78,11 @@ div.checkbox-task-list {
     padding-top: 0!important;
 }
 
+div.checkbox-filter-date {
+    padding-right: 10px;
+    padding-bottom: 8px;
+}
+
 table.school-lessons {
     border-collapse: collapse;
     width: 99%;

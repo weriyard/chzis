@@ -22,9 +22,40 @@ from chzis.utils.pdf import schooltask
 
 class Tasks(View):
     def get(self, request):
-        print request.GET
+        date_now = datetime.datetime.now()
+        month_days = datetime.datetime(year=date_now.year, month=date_now.month + 1, day=1) - datetime.datetime(
+            year=date_now.year, month=date_now.month, day=1)
         tasks = SchoolTask.objects.all()
 
+        action = request.GET.get('action')
+        if action == "filter":
+            task_filter_form = SchoolTaskFilterForm(request.GET)
+            if task_filter_form.is_valid():
+                start = task_filter_form.cleaned_data['start']
+                end = task_filter_form.cleaned_data['end']
+
+                if start is not None:
+                    tasks = tasks.filter(task__presentation_date__gte=start)
+                else:
+                    task_filter_form.fields['start'].widget.attrs['disabled'] = True
+                if end is not None:
+                    tasks = tasks.filter(task__presentation_date__lte=end)
+                else:
+                    task_filter_form.fields['end'].widget.attrs['disabled'] = True
+        elif action == "filter_month_now":
+            start = datetime.datetime(year=date_now.year, month=date_now.month, day=1)
+            end = datetime.datetime(year=date_now.year, month=date_now.month, day=month_days.days)
+            task_filter_form = SchoolTaskFilterForm(initial={"start": start,
+                                                             "end": end,
+                                                             'start_active': True,
+                                                             'end_active': True})
+            tasks = tasks.filter(task__presentation_date__gte=start,
+                                 task__presentation_date__lte=end)
+        else:
+            task_filter_form = SchoolTaskFilterForm()
+            task_filter_form.fields['start'].widget.attrs['disabled'] = True
+            task_filter_form.fields['end'].widget.attrs['disabled'] = True
+
         paginator = Paginator(tasks, 25)
         page = request.GET.get('page')
 
@@ -39,32 +70,7 @@ class Tasks(View):
 
         context = dict()
         context['tasks'] = tasks
-        context['filter_form'] = SchoolTaskFilterForm()
-        return render(request, 'tasks.html', context)
-
-    def post(self, request):
-        print request.POST
-        filter_form = SchoolTaskFilterForm(request.POST)
-        filter_form.is_valid()
-        print filter_form.cleaned_data['start_date'], filter_form.cleaned_data['end_date']
-        tasks = SchoolTask.objects.filter(task__presentation_date__gte=filter_form.cleaned_data['start_date'],
-                                          task__presentation_date__lte=filter_form.cleaned_data['end_date'])
-
-        paginator = Paginator(tasks, 25)
-        page = request.GET.get('page')
-
-        try:
-            tasks = paginator.page(page)
-        except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
-            tasks = paginator.page(1)
-        except EmptyPage:
-            # If page is out of range (e.g. 9999), deliver last page of results.
-            tasks = paginator.page(paginator.num_pages)
-
-        context = dict()
-        context['tasks'] = tasks
-        context['filter_form'] = SchoolTaskFilterForm()
+        context['filter_form'] = task_filter_form
         return render(request, 'tasks.html', context)
 
 
@@ -189,10 +195,11 @@ def school_tasks_print(request):
         min_date = min(tasks_to_print, key=lambda x: x['date'])
         max_date = max(tasks_to_print, key=lambda x: x['date'])
 
-        file_name = u"{min_date}-{max_date}_{task_name}_[{counter}].pdf".format(min_date=min_date['date'].strftime("%d.%m.%y"),
-                                                               max_date=max_date['date'].strftime("%d.%m.%y"),
-                                                               task_name=_("school_tasks"),
-                                                               counter=len(task_list))
+        file_name = u"{min_date}-{max_date}_{task_name}_[{counter}].pdf".format(
+                min_date=min_date['date'].strftime("%d.%m.%y"),
+                max_date=max_date['date'].strftime("%d.%m.%y"),
+                task_name=_("school_tasks"),
+                counter=len(task_list))
         schooltask.generate_school_task_cards(tasks_to_print, filename=os.path.join('/tmp', file_name))
         wrapper = FileWrapper(file(os.path.join('/tmp', file_name)))
         response = HttpResponse(wrapper, content_type='application/octet-stream')

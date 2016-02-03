@@ -9,6 +9,30 @@
             $("#pdf_form").attr('target', 'downloadFrame');
             $("form#pdf_form").submit();
         });
+
+        $("input#id_start_active").click(function() {
+            if ($(this).is(':checked')) {
+                $("div select[name^=start]").removeAttr('disabled')
+                $("button#filter_button").removeAttr('disabled')
+            } else {
+                $("div select[name^=start]").attr('disabled', "on")
+                if (! $("input#id_end_active").is(":checked")) {
+                    $("button#filter_button").attr('disabled', "on")
+                }
+            }
+        })
+
+        $("input#id_end_active").click(function() {
+            if ($(this).is(':checked')) {
+               $("div select[name^=end]").removeAttr('disabled')
+               $("button#filter_button").removeAttr('disabled')
+            } else {
+                $("div select[name^=end]").attr('disabled', "on")
+                if (! $("input#id_start_active").is(":checked")) {
+                    $("button#filter_button").attr('disabled', "on")
+                }
+            }
+        })
     });
 </script>
 {% endblock %}
@@ -16,22 +40,32 @@
 {% block content %}
 {% load i18n %}
 <iframe id="downloadFrame" name="downloadFrame" style="display:none"></iframe>
-
-<div class="col-md-offset-3">
-    <form method="POST" role="form" class="form-inline" id="filter-form">
-        {% csrf_token %}
-        <div class="form-group">
-            {{ filter_form.as_div }}
-        </div>
-        <div class="clearfix spacer10"></div>
-        <div class="col-md-offset-7">
-            <button type="submit" class="btn btn-sm btn-danger" name="Filter" id="filter_button">{% trans "Search" %}</button>
-        </div>
+{{ filter_form.errors }}
+<div class="row col-lg-offset-2 col-lg-10">
+    <form method="GET" role="form" class="form-inline" id="filter-form">
+            <div class="form-group">
+                {{ filter_form.start_active }}
+            </div>
+            <div class="form-group">
+                {{ filter_form.start }}
+            </div>
+            <div class="form-group">
+                {{ filter_form.end_active }}
+            </div>
+            <div class="form-group">
+                {{ filter_form.end }}
+            </div>
+            <div class="clearfix spacer10"></div>
+            <div class="col-lg-offset-8">
+                <button type="submit" class="btn btn-sm btn-danger" name="action" id="filter_button" value="filter" {% if not filter_form.start_active.value and not filter_form.end_active.value %}disabled{% endif %}>{% trans "Search" %}</button>
+                <button type="submit" class="btn btn-sm btn-default" name="action" id="filter_button_month" value="filter_month_now">{% trans "Show this month" %}</button>
+                <a href="/school/tasks" class="btn btn-sm btn-default">{% trans "Show all" %}</a>
+            </div>
     </form>
 </div>
 
-<div class="clearfix spacer10"></div>
-<div class="spacer30"></div>
+<div class="clearfix"></div>
+<div class="spacer10"></div>
 <form method="POST" class="form-horizontal" role="form" id="pdf_form">
     {% csrf_token %}
     <div class="pull-right">
@@ -91,5 +125,4 @@
         </div>
     {% endif %}
 </form>
-
 {% endblock %}

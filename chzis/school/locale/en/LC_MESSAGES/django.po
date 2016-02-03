@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-02 19:22+0000\n"
+"POT-Creation-Date: 2016-02-03 13:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: chzis/school/forms.py:68 chzis/school/forms.py:74
+msgid "Year"
+msgstr ""
+
+#: chzis/school/forms.py:68 chzis/school/forms.py:74
+msgid "Month"
+msgstr ""
+
+#: chzis/school/forms.py:68 chzis/school/forms.py:74
+msgid "Day"
+msgstr ""
+
 #: chzis/school/templates/add_task.html:40
 #: chzis/school/templates/manage/manage_tasks.html:8
 #: chzis/school/templates/school_plan.html:133
-#: chzis/school/templates/tasks.html:73
+#: chzis/school/templates/tasks.html:112
 msgid "Add task"
 msgstr ""
 
@@ -40,42 +52,42 @@ msgstr ""
 #: chzis/school/templates/manage/manage_school_plan.html:44
 #: chzis/school/templates/manage/manage_tasks.html:19
 #: chzis/school/templates/school_plan.html:65
-#: chzis/school/templates/tasks.html:39
+#: chzis/school/templates/tasks.html:78
 msgid "Meeting item"
 msgstr ""
 
 #: chzis/school/templates/manage/manage_school_plan.html:45
 #: chzis/school/templates/manage/manage_tasks.html:18
 #: chzis/school/templates/school_plan.html:66
-#: chzis/school/templates/tasks.html:38
+#: chzis/school/templates/tasks.html:77
 msgid "Person"
 msgstr ""
 
 #: chzis/school/templates/manage/manage_school_plan.html:46
 #: chzis/school/templates/manage/manage_tasks.html:20
 #: chzis/school/templates/school_plan.html:67
-#: chzis/school/templates/tasks.html:40
+#: chzis/school/templates/tasks.html:79
 msgid "Lesson name"
 msgstr ""
 
 #: chzis/school/templates/manage/manage_school_plan.html:47
 #: chzis/school/templates/manage/manage_tasks.html:22
 #: chzis/school/templates/school_plan.html:68
-#: chzis/school/templates/tasks.html:41
+#: chzis/school/templates/tasks.html:80
 msgid "Presentation date"
 msgstr ""
 
 #: chzis/school/templates/manage/manage_school_plan.html:48
 #: chzis/school/templates/manage/manage_tasks.html:23
 #: chzis/school/templates/school_plan.html:69
-#: chzis/school/templates/tasks.html:42
+#: chzis/school/templates/tasks.html:81
 msgid "Creation date"
 msgstr ""
 
 #: chzis/school/templates/manage/manage_school_plan.html:49
 #: chzis/school/templates/manage/manage_tasks.html:24
 #: chzis/school/templates/school_plan.html:71
-#: chzis/school/templates/tasks.html:43
+#: chzis/school/templates/tasks.html:82
 msgid "Result"
 msgstr ""
 
@@ -92,23 +104,35 @@ msgid "Topic"
 msgstr ""
 
 #: chzis/school/templates/school_plan.html:72
-#: chzis/school/templates/tasks.html:44
+#: chzis/school/templates/tasks.html:83
 msgid "Print"
 msgstr ""
 
 #: chzis/school/templates/school_plan.html:135
-#: chzis/school/templates/tasks.html:75
+#: chzis/school/templates/tasks.html:114
 msgid "Print selected"
 msgstr ""
 
-#: chzis/school/templates/tasks.html:27
+#: chzis/school/templates/tasks.html:50
+msgid "Search"
+msgstr ""
+
+#: chzis/school/templates/tasks.html:51
+msgid "Show this month"
+msgstr ""
+
+#: chzis/school/templates/tasks.html:52
+msgid "Show all"
+msgstr ""
+
+#: chzis/school/templates/tasks.html:66
 msgid "Page"
 msgstr ""
 
-#: chzis/school/templates/tasks.html:27
+#: chzis/school/templates/tasks.html:66
 msgid "of"
 msgstr ""
 
-#: chzis/school/views.py:168
+#: chzis/school/views.py:197
 msgid "school_tasks"
 msgstr ""
