@@ -10,8 +10,9 @@ from chzis.meetings.models import MeetingItem, MeetingTask
 class SchoolTaskForm(ModelForm):
     class Meta:
         model = SchoolTask
-        exclude = ['task', 'lesson_passed']
+        exclude = ['task', 'lesson_passed', 'supervisor']
         widgets = {
+            'slave': Select(attrs={'class': 'form-control'}),
             'lesson': RadioSelect(attrs={'class': 'radio-primary'}),
             # 'lesson': LessonListWithLastDate(attrs={'class': 'form-control'}),
             'background': Select(attrs={'class': 'form-control'}),
@@ -43,6 +44,8 @@ class SchoolTaskViewForm(SchoolTaskForm):
         model = SchoolTask
         exclude = ['task']
         widgets = {
+            'slave': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
+            'supervisor': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
             'lesson': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
             'lesson_passed': LessonPassedWidget(attrs={'class': 'form-control', 'disabled': ''}),
             'background': TextInput(attrs={'class': 'form-control', 'disabled': ''}),

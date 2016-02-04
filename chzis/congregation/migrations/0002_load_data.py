@@ -7,7 +7,7 @@ from django.core.management import call_command
 
 
 def load_fixtures(state_apps, schema_editor):
-    call_command('loaddata', 'congregations', 'congregations_members_pie_ka')
+    call_command('loaddata', 'congregation_member_privilages', 'congregations', 'congregations_members_pie_ka')
 
 
 class Migration(migrations.Migration):

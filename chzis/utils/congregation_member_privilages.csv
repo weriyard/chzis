@@ -1,0 +1,12 @@
+id,name,full_name,allow_gender
+1,school_member,School member,A
+2,servant,Servant minister,M
+3,elder,Elder,M
+4,aux_pioneer,Auxiliary pioneer,A
+5,pioneer,Pioneer,A
+6,master,Master,A
+7,slave,Slave,A
+8,reader,Reader,M
+9,lector,lector,M
+10,sound_sysop,Sound operator,M
+11,coordinator,Congregation coordinator,M

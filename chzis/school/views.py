@@ -12,10 +12,11 @@ from django.template import loader, Context
 from wsgiref.util import FileWrapper
 from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core import exceptions
 
 from chzis.school.models import SchoolTask
 from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm, SchoolTaskFilterForm
-from chzis.meetings.models import MeetingTask
+from chzis.congregation.models import CongregationMember
 from chzis.meetings.forms import MeetingTaskSchoolForm, MeetingTaskSchoolViewForm
 from chzis.utils.pdf import schooltask
 
@@ -92,6 +93,11 @@ class AddTasks(TemplateView):
                 task_form.instance.description = school_task_form.instance.description
                 task = task_form.save()
                 school_task_form.instance.task = task
+                try:
+                    school_task_form.instance.supervisor = CongregationMember.objects.get(id=request.user.id)
+                except exceptions.ObjectDoesNotExist:
+                    pass
+
                 school_task = school_task_form.save()
                 return redirect('/school/tasks/{}'.format(school_task.id))
 

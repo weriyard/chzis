@@ -1,0 +1,1081 @@
+[
+    {
+        "pk": 1,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "KarolinaAdamska"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 2,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "MateuszAdamski"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 3,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "EwaBanas"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 4,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "GrzegorzBanas"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 5,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "IwonaBanas"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 6,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "KingaBanas"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 7,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "BozenaBinek"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 8,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "AlinaBrodziak"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 9,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "GrzegorzBrodziak"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 10,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "AnnaCiszek"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 11,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "DanielCiszek"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 12,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "GrzegorzCot"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 13,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "KrystynaCot"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 14,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "MichalinaCot"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 15,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "EugeniuszCzaja"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 16,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "MateuszCzaja"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 17,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "TeresaCzaja"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 18,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "BeataCzepiczek"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 19,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "KamilCzepiczek"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 20,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "ZbigniewCzepiczek"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 21,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "DariuszDuda"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 22,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "JolantaGajdzik"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 23,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "TadeuszGajdzik"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 24,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "RenataGarov"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 25,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "KrystynaGbur"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 26,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "HalinaGil"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 27,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "ZdzislawaGubala"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 28,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "BeataGugnacka"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 29,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "PiotrGugnacki"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 30,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "GrazynaJordan"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 31,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "SzymonJordan"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 32,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "ZdzislawJordan"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 33,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "CzeslawKasperek"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 34,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "IrenaKasperek"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 35,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "MarekKasprzak"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 36,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "MieczyslawaKasprzak"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 37,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "AgnieszkaKosiorska"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 38,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "MariuszKosiorski"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 39,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "BeataKurzac"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 40,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "DariaKurzac"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 41,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "AnnaKwiecinska"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 42,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "IzabelaKwiecinska"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 43,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "NataliaLubkowska"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 44,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "EdwardLubkowski"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 45,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "AnetaMarcinkowska"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 46,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "SebastianMarcinkowski"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 47,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "IlonaMaruszczyk"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 48,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "PiotrMaruszczyk"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 49,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "KrystynaMatusiak"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 50,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "DamianMatuszewski"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 51,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "AnnaMucka"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 52,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "KrzysztofMucka"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 53,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "MalgorzataMucka"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 54,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "MichalMucka"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 55,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "RozaliaMucka"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 56,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "SabinaMucka"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 57,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "SlawomirMucka"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 58,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "AndrzejNalewajka"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 59,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "MalgorzataNalewajka"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 60,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "AnnaNaumczyk"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 61,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "ZeonNaumczyk"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 62,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "JoannaPander"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 63,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "KatarzynaPeplowska"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 64,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "RomualdPeplowski"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 65,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "EugeniaPoloczek"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 66,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "HenrykPoloczek"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 67,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "RoksanaPoloczek"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 68,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "EsteraRadsak"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 69,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "AdamSkowronek"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 70,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "GabrielaSkowronek"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 71,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "EdeltrautaSobocinska"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 72,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "HalinaSobocinska"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 73,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "WladyslawSobocinski"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 74,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "RafalSobocinski"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 75,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "HelenaSzafranek"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 76,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "HelenaSzulc"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 77,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "WlodzimierzTide"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 78,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "MalgorzataWachowiak"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 79,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "CecyliaZenczak"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 80,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "AndrzejZydek"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 81,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "DorotaZydek"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 82,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "MalwinaZydek"
+            ],
+            "gender": "F",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    },
+    {
+        "pk": 83,
+        "model": "users.PeopleProfile",
+        "fields": {
+            "user": [
+                "MichalZydek"
+            ],
+            "gender": "M",
+            "default_congregation": [
+                "Piekary-Kamie\u0144"
+            ]
+        }
+    }
+]

@@ -4,18 +4,51 @@
 {% block content %}
 {% load i18n %}
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover task_list">
         <thead>
-            <th>{% trans "Congregation name" %}</th>
-            <th>{% trans "Congregation number" %}</th>
-            <th>{% trans "Default" %}</th>
+            <th class="text-center">{% trans "No." %}</th>
+            <th class="text-center">{% trans "Congregation member" %}</th>
+            <th class="text-center">{% trans "Active" %}</th>
+            <th class="text-center">{% trans "School allow" %}</th>
+            <th class="text-center">{% trans "Pionner" %}</th>
+            <th class="text-center">{% trans "Servant" %}</th>
+            <th class="text-center">{% trans "Elder" %}</th>
         </thead>
         <tbody>
         {% for cong_member in cong_members %}
         <tr>
-            <td><a href="{{cong_member.get_absolute_url}}">{{cong_member}}</a></td>
-            <td></td>
-            <td></td>
+            <th class="col-md-1-id"><a href="{{cong_member.get_absolute_url}}">{{ cong_member.id }}</a></th>
+            <td class="col-md-3"><a href="{{cong_member.get_absolute_url}}">{{cong_member}}</a></td>
+            <td class="col-md-1 text-center">
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" id="active_{{cong_member.id}}" name="active" value="{{cong_member.id}}" class="print_checkbox" {%  if cong_member.active %}checked{% endif %}>
+                    <label for="active_{{cong_member.id}}"></label>
+                </div>
+            </td>
+            <td class="col-md-1 text-center">
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" id="school_allow_{{cong_member.id}}" name="school_allow" value="{{cong_member.id}}" class="print_checkbox" {%  if cong_member.school_allow %}checked{% endif %}>
+                    <label for="school_allow_{{cong_member.id}}"></label>
+                </div>
+            </td>
+            <td class="col-md-1 text-center">
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" id="pioneer_{{cong_member.id}}" name="pioneer" value="{{cong_member.id}}" class="print_checkbox" {%  if cong_member.pioneer %}checked{% endif %}>
+                    <label for="pioneer_{{cong_member.id}}"></label>
+                </div>
+            </td>
+            <td class="col-md-1 text-center">
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" id="servant_{{cong_member.id}}" name="servant" value="{{cong_member.id}}" class="print_checkbox" {%  if cong_member.servant %}checked{% endif %}>
+                    <label for="servant_{{cong_member.id}}"></label>
+                </div>
+            </td>
+            <td class="col-md-1 text-center">
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" id="elder_{{cong_member.id}}" name="elder" value="{{cong_member.id}}" class="print_checkbox" {%  if cong_member.elder %}checked{% endif %}>
+                    <label for="elder_{{cong_member.id}}"></label>
+                </div>
+            </td>
         </tr>
         {% endfor %}
         </tbody>

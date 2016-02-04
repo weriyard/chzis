@@ -40,9 +40,11 @@ class Background(models.Model):
 
 class SchoolTask(models.Model):
     task = models.ForeignKey(MeetingTask, null=True, blank=True)
+    slave = models.ForeignKey(CongregationMember, null=True, blank=True, related_name='slave_person')
     lesson = models.ForeignKey(Lesson)
     lesson_passed = models.NullBooleanField(null=True, blank=True)
     lesson_passed_date = models.DateTimeField(auto_now=True, null=True)
+    supervisor = models.ForeignKey(CongregationMember, null=True, blank=True, related_name='supervisor_person')
     background = models.ForeignKey(Background, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     last_modification = models.DateTimeField(auto_now=True, null=True)

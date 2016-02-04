@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 
+from chzis.users.models import PeopleProfile
+
 
 class CongregationManager(models.Manager):
     def get_by_natural_key(self, congregation_name, *other):
@@ -63,3 +65,33 @@ class CongregationMember(models.Model):
         permissions = (
             ("can_manage", "Can manage"),
         )
+
+
+class CongregationPrivileges(models.Model):
+    GENDER = (
+        ('M', 'male'),
+        ('F', 'female'),
+        ('A', 'all')
+    )
+
+    name = models.CharField(max_length=255, null=True, blank=True)
+    full_name = models.CharField(max_length=255, null=True, blank=True)
+    allow_gender = models.CharField(max_length=1, choices=PeopleProfile.GENDER, default='all')
+    description = description = models.TextField(null=True, blank=True)
+
+    def __unicode__(self):
+        return "{name} ({full_name})".format(name=self.name, full_name=self.full_name)
+
+
+class CongregationMemberPrivileges(models.Model):
+    member = models.ForeignKey(CongregationMember, null=True, blank=True)
+    privilage = models.ForeignKey(CongregationPrivileges, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        member_gender = self.member.user.profile.gender
+        if member_gender != 'all' and member_gender != self.privilage.allow_gender:
+            raise[]
+
+        super(CongregationMemberPrivileges, self).save(*args, **kwargs)
+
+

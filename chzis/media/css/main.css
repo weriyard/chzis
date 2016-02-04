@@ -61,6 +61,7 @@ table.add-task td#id_topic {
 
 table.task_list th:first-child.col-md-1-id {
     width: 1%;
+    text-align: center;
 }
 
 h3.lesson-passed {
@@ -125,4 +126,8 @@ div.spacer30 {
 
 div.spacer10 {
     height: 10px;
+}
+
+.table-nonfluid {
+   width: auto ;
 }

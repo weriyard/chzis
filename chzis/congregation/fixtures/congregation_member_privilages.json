@@ -1,0 +1,101 @@
+[
+    {
+        "pk": 1,
+        "model": "congregation.CongregationPrivilages",
+        "fields": {
+            "name": "school_member",
+            "full_name": "School member",
+            "allow_gender": "A"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "congregation.CongregationPrivilages",
+        "fields": {
+            "name": "servant",
+            "full_name": "Servant minister",
+            "allow_gender": "M"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "congregation.CongregationPrivilages",
+        "fields": {
+            "name": "elder",
+            "full_name": "Elder",
+            "allow_gender": "M"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "congregation.CongregationPrivilages",
+        "fields": {
+            "name": "aux_pioneer",
+            "full_name": "Auxiliary pioneer",
+            "allow_gender": "A"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "congregation.CongregationPrivilages",
+        "fields": {
+            "name": "pioneer",
+            "full_name": "Pioneer",
+            "allow_gender": "A"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "congregation.CongregationPrivilages",
+        "fields": {
+            "name": "master",
+            "full_name": "Master",
+            "allow_gender": "A"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "congregation.CongregationPrivilages",
+        "fields": {
+            "name": "slave",
+            "full_name": "Slave",
+            "allow_gender": "A"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "congregation.CongregationPrivilages",
+        "fields": {
+            "name": "reader",
+            "full_name": "Reader",
+            "allow_gender": "M"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "congregation.CongregationPrivilages",
+        "fields": {
+            "name": "lector",
+            "full_name": "lector",
+            "allow_gender": "M"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "congregation.CongregationPrivilages",
+        "fields": {
+            "name": "sound_sysop",
+            "full_name": "Sound operator",
+            "allow_gender": "M"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "congregation.CongregationPrivilages",
+        "fields": {
+            "name": "coordinator",
+            "full_name": "Congregation coordinator",
+            "allow_gender": "M"
+        }
+    }
+]
