@@ -15,38 +15,38 @@
             <th class="text-center">{% trans "Elder" %}</th>
         </thead>
         <tbody>
-        {% for cong_member in cong_members %}
+        {% for member_id, member in cong_members.items %}
         <tr>
-            <th class="col-md-1-id"><a href="{{cong_member.get_absolute_url}}">{{ cong_member.id }}</a></th>
-            <td class="col-md-3"><a href="{{cong_member.get_absolute_url}}">{{cong_member}}</a></td>
+            <th class="col-md-1-id"><a href="{{member.member.get_absolute_url}}">{{member_id}}</a></th>
+            <td class="col-md-6"><a href="{{member.member.get_absolute_url}}">{{member.member.user.username}}</a></td>
             <td class="col-md-1 text-center">
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" id="active_{{cong_member.id}}" name="active" value="{{cong_member.id}}" class="print_checkbox" {%  if cong_member.active %}checked{% endif %}>
-                    <label for="active_{{cong_member.id}}"></label>
+                <div class="checkbox checkbox-default">
+                    <input type="checkbox" id="active_{{cong_member.id}}" name="active" value="{{member_id}}" class="print_checkbox" {%  if member.privileges.active %}checked{% endif %}>
+                    <label for="active_{{member_id}}"></label>
+                </div>
+            </td>
+            <td class="col-md-1 text-center">
+                <div class="checkbox checkbox-info">
+                    <input type="checkbox" id="school_allow_{{cong_member.id}}" name="school_allow" value="{{member_id}}" class="print_checkbox" {%  if member.privileges.school_member %}checked{% endif %}>
+                    <label for="school_allow_{{member_id}}"></label>
                 </div>
             </td>
             <td class="col-md-1 text-center">
                 <div class="checkbox checkbox-primary">
-                    <input type="checkbox" id="school_allow_{{cong_member.id}}" name="school_allow" value="{{cong_member.id}}" class="print_checkbox" {%  if cong_member.school_allow %}checked{% endif %}>
-                    <label for="school_allow_{{cong_member.id}}"></label>
+                    <input type="checkbox" id="pioneer_{{cong_member.id}}" name="pioneer" value="{{member_id}}" class="print_checkbox" {%  if member.privileges.pioneer %}checked{% endif %}>
+                    <label for="pioneer_{{member_id}}"></label>
                 </div>
             </td>
             <td class="col-md-1 text-center">
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" id="pioneer_{{cong_member.id}}" name="pioneer" value="{{cong_member.id}}" class="print_checkbox" {%  if cong_member.pioneer %}checked{% endif %}>
-                    <label for="pioneer_{{cong_member.id}}"></label>
+                <div class="checkbox checkbox-warning">
+                    <input type="checkbox" id="servant_{{cong_member.id}}" name="servant" value="{{member_id}}" class="print_checkbox" {%  if member.privileges.servant %}checked{% endif %}>
+                    <label for="servant_{{member_id}}"></label>
                 </div>
             </td>
             <td class="col-md-1 text-center">
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" id="servant_{{cong_member.id}}" name="servant" value="{{cong_member.id}}" class="print_checkbox" {%  if cong_member.servant %}checked{% endif %}>
-                    <label for="servant_{{cong_member.id}}"></label>
-                </div>
-            </td>
-            <td class="col-md-1 text-center">
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" id="elder_{{cong_member.id}}" name="elder" value="{{cong_member.id}}" class="print_checkbox" {%  if cong_member.elder %}checked{% endif %}>
-                    <label for="elder_{{cong_member.id}}"></label>
+                <div class="checkbox checkbox-danger">
+                    <input type="checkbox" id="elder_{{cong_member.id}}" name="elder" value="{{member_id}}" class="print_checkbox" {%  if member.privileges.elder %}checked{% endif %}>
+                    <label for="elder_{{member_id}}"></label>
                 </div>
             </td>
         </tr>

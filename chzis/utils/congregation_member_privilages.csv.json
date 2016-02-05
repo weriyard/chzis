@@ -1,101 +1,2606 @@
 [
     {
         "pk": 1,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationMemberPrivileges",
         "fields": {
-            "name": "school_member",
-            "full_name": "School member",
-            "allow_gender": "A"
+            "member": [
+                "KarolinaAdamska"
+            ],
+            "privilege": [
+                "school_member"
+            ]
         }
     },
     {
         "pk": 2,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationMemberPrivileges",
         "fields": {
-            "name": "servant",
-            "full_name": "Servant minister",
-            "allow_gender": "M"
+            "member": [
+                "KarolinaAdamska"
+            ],
+            "privilege": [
+                "pioneer"
+            ]
         }
     },
     {
         "pk": 3,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationMemberPrivileges",
         "fields": {
-            "name": "elder",
-            "full_name": "Elder",
-            "allow_gender": "M"
+            "member": [
+                "KarolinaAdamska"
+            ],
+            "privilege": [
+                "master"
+            ]
         }
     },
     {
         "pk": 4,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationMemberPrivileges",
         "fields": {
-            "name": "aux_pioneer",
-            "full_name": "Auxiliary pioneer",
-            "allow_gender": "A"
+            "member": [
+                "KarolinaAdamska"
+            ],
+            "privilege": [
+                "slave"
+            ]
         }
     },
     {
         "pk": 5,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationMemberPrivileges",
         "fields": {
-            "name": "pioneer",
-            "full_name": "Pioneer",
-            "allow_gender": "A"
+            "member": [
+                "MateuszAdamski"
+            ],
+            "privilege": [
+                "school_member"
+            ]
         }
     },
     {
         "pk": 6,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationMemberPrivileges",
         "fields": {
-            "name": "master",
-            "full_name": "Master",
-            "allow_gender": "A"
+            "member": [
+                "MateuszAdamski"
+            ],
+            "privilege": [
+                "master"
+            ]
         }
     },
     {
         "pk": 7,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationMemberPrivileges",
         "fields": {
-            "name": "slave",
-            "full_name": "Slave",
-            "allow_gender": "A"
+            "member": [
+                "MateuszAdamski"
+            ],
+            "privilege": [
+                "slave"
+            ]
         }
     },
     {
         "pk": 8,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationMemberPrivileges",
         "fields": {
-            "name": "reader",
-            "full_name": "Reader",
-            "allow_gender": "M"
+            "member": [
+                "MateuszAdamski"
+            ],
+            "privilege": [
+                "lector"
+            ]
         }
     },
     {
         "pk": 9,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationMemberPrivileges",
         "fields": {
-            "name": "lector",
-            "full_name": "lector",
-            "allow_gender": "M"
+            "member": [
+                "MateuszAdamski"
+            ],
+            "privilege": [
+                "reader"
+            ]
         }
     },
     {
         "pk": 10,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationMemberPrivileges",
         "fields": {
-            "name": "sound_sysop",
-            "full_name": "Sound operator",
-            "allow_gender": "M"
+            "member": [
+                "MateuszAdamski"
+            ],
+            "privilege": [
+                "sound_sysop"
+            ]
         }
     },
     {
         "pk": 11,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationMemberPrivileges",
         "fields": {
-            "name": "coordinator",
-            "full_name": "Congregation coordinator",
-            "allow_gender": "M"
+            "member": [
+                "EwaBanas"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 12,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EwaBanas"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 13,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzBanas"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 14,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzBanas"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 15,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "IwonaBanas"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 16,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "IwonaBanas"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 17,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "IwonaBanas"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 18,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KingaBanas"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 19,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KingaBanas"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 20,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KingaBanas"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 21,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AlinaBrodziak"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 22,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AlinaBrodziak"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 23,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AlinaBrodziak"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 24,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzBrodziak"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 25,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzBrodziak"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 26,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzBrodziak"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 27,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzBrodziak"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 28,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzBrodziak"
+            ],
+            "privilege": [
+                "elder"
+            ]
+        }
+    },
+    {
+        "pk": 29,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaCiszek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 30,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaCiszek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 31,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaCiszek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 32,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "DanielCiszek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 33,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "DanielCiszek"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 34,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "DanielCiszek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 35,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "DanielCiszek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 36,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzCot"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 37,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzCot"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 38,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzCot"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 39,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzCot"
+            ],
+            "privilege": [
+                "lector"
+            ]
+        }
+    },
+    {
+        "pk": 40,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzCot"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 41,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrzegorzCot"
+            ],
+            "privilege": [
+                "elder"
+            ]
+        }
+    },
+    {
+        "pk": 42,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KrystynaCot"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 43,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KrystynaCot"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 44,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KrystynaCot"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 45,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalinaCot"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 46,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalinaCot"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 47,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalinaCot"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 48,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EugeniuszCzaja"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 49,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EugeniuszCzaja"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 50,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EugeniuszCzaja"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 51,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EugeniuszCzaja"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 52,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MateuszCzaja"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 53,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MateuszCzaja"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 54,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MateuszCzaja"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 55,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MateuszCzaja"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 56,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MateuszCzaja"
+            ],
+            "privilege": [
+                "lector"
+            ]
+        }
+    },
+    {
+        "pk": 57,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MateuszCzaja"
+            ],
+            "privilege": [
+                "sound_sysop"
+            ]
+        }
+    },
+    {
+        "pk": 58,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MateuszCzaja"
+            ],
+            "privilege": [
+                "servant"
+            ]
+        }
+    },
+    {
+        "pk": 59,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "TeresaCzaja"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 60,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "TeresaCzaja"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 61,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "TeresaCzaja"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 62,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "BeataCzepiczek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 63,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "BeataCzepiczek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 64,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "BeataCzepiczek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 65,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KamilCzepiczek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 66,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KamilCzepiczek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 67,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KamilCzepiczek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 68,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KamilCzepiczek"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 69,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZbigniewCzepiczek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 70,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZbigniewCzepiczek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 71,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZbigniewCzepiczek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 72,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZbigniewCzepiczek"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 73,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "TadeuszGajdzik"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 74,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "TadeuszGajdzik"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 75,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "TadeuszGajdzik"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 76,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "TadeuszGajdzik"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 77,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RenataGarov"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 78,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RenataGarov"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 79,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RenataGarov"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 80,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "PiotrGugnacki"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 81,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "PiotrGugnacki"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 82,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrazynaJordan"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 83,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrazynaJordan"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 84,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GrazynaJordan"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 85,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SzymonJordan"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 86,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SzymonJordan"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 87,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SzymonJordan"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 88,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SzymonJordan"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 89,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SzymonJordan"
+            ],
+            "privilege": [
+                "lector"
+            ]
+        }
+    },
+    {
+        "pk": 90,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SzymonJordan"
+            ],
+            "privilege": [
+                "sound_sysop"
+            ]
+        }
+    },
+    {
+        "pk": 91,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZdzislawJordan"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 92,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZdzislawJordan"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 93,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZdzislawJordan"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 94,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZdzislawJordan"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 95,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZdzislawJordan"
+            ],
+            "privilege": [
+                "coordinator"
+            ]
+        }
+    },
+    {
+        "pk": 96,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZdzislawJordan"
+            ],
+            "privilege": [
+                "elder"
+            ]
+        }
+    },
+    {
+        "pk": 97,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "CzeslawKasperek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 98,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "CzeslawKasperek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 99,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "CzeslawKasperek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 100,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "CzeslawKasperek"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 101,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "IrenaKasperek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 102,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "IrenaKasperek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 103,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "IrenaKasperek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 104,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MarekKasprzak"
+            ],
+            "privilege": [
+                "sound_sysop"
+            ]
+        }
+    },
+    {
+        "pk": 105,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AgnieszkaKosiorska"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 106,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AgnieszkaKosiorska"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 107,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AgnieszkaKosiorska"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 108,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MariuszKosiorski"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 109,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MariuszKosiorski"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 110,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MariuszKosiorski"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 111,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MariuszKosiorski"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 112,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MariuszKosiorski"
+            ],
+            "privilege": [
+                "lector"
+            ]
+        }
+    },
+    {
+        "pk": 113,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MariuszKosiorski"
+            ],
+            "privilege": [
+                "servant"
+            ]
+        }
+    },
+    {
+        "pk": 114,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "DariaKurzac"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 115,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "DariaKurzac"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 116,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaKwiecinska"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 117,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaKwiecinska"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 118,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaKwiecinska"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 119,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "IzabelaKwiecinska"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 120,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "IzabelaKwiecinska"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 121,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "IzabelaKwiecinska"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 122,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "NataliaLubkowska"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 123,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "NataliaLubkowska"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 124,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "NataliaLubkowska"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 125,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "NataliaLubkowska"
+            ],
+            "privilege": [
+                "pioneer"
+            ]
+        }
+    },
+    {
+        "pk": 126,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EdwardLubkowski"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 127,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EdwardLubkowski"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 128,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EdwardLubkowski"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 129,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EdwardLubkowski"
+            ],
+            "privilege": [
+                "pioneer"
+            ]
+        }
+    },
+    {
+        "pk": 130,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EdwardLubkowski"
+            ],
+            "privilege": [
+                "elder"
+            ]
+        }
+    },
+    {
+        "pk": 131,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EdwardLubkowski"
+            ],
+            "privilege": [
+                "lector"
+            ]
+        }
+    },
+    {
+        "pk": 132,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnetaMarcinkowska"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 133,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnetaMarcinkowska"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 134,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnetaMarcinkowska"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 135,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "PiotrMaruszczyk"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 136,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "PiotrMaruszczyk"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 137,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaMucka"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 138,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaMucka"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 139,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaMucka"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 140,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaMucka"
+            ],
+            "privilege": [
+                "pioneer"
+            ]
+        }
+    },
+    {
+        "pk": 141,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KrzysztofMucka"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 142,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KrzysztofMucka"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 143,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KrzysztofMucka"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 144,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "KrzysztofMucka"
+            ],
+            "privilege": [
+                "elder"
+            ]
+        }
+    },
+    {
+        "pk": 145,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MalgorzataMucka"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 146,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MalgorzataMucka"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 147,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MalgorzataMucka"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 148,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalMucka"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 149,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalMucka"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 150,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalMucka"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 151,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalMucka"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 152,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SabinaMucka"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 153,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SabinaMucka"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 154,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SabinaMucka"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 155,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SlawomirMucka"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 156,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SlawomirMucka"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 157,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SlawomirMucka"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 158,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SlawomirMucka"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 159,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SlawomirMucka"
+            ],
+            "privilege": [
+                "elder"
+            ]
+        }
+    },
+    {
+        "pk": 160,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "SlawomirMucka"
+            ],
+            "privilege": [
+                "lector"
+            ]
+        }
+    },
+    {
+        "pk": 161,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AndrzejNalewajka"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 162,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AndrzejNalewajka"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 163,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AndrzejNalewajka"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 164,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AndrzejNalewajka"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 165,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MalgorzataNalewajka"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 166,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MalgorzataNalewajka"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 167,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MalgorzataNalewajka"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 168,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaNaumczyk"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 169,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaNaumczyk"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 170,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AnnaNaumczyk"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 171,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZeonNaumczyk"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 172,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZeonNaumczyk"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 173,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZeonNaumczyk"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 174,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZeonNaumczyk"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 175,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "ZeonNaumczyk"
+            ],
+            "privilege": [
+                "elder"
+            ]
+        }
+    },
+    {
+        "pk": 176,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RomualdPeplowski"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 177,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RomualdPeplowski"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 178,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RomualdPeplowski"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 179,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RomualdPeplowski"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 180,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RomualdPeplowski"
+            ],
+            "privilege": [
+                "lector"
+            ]
+        }
+    },
+    {
+        "pk": 181,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EugeniaPoloczek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 182,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EugeniaPoloczek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 183,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EugeniaPoloczek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 184,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "HenrykPoloczek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 185,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "HenrykPoloczek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 186,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "HenrykPoloczek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 187,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "HenrykPoloczek"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 188,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RoksanaPoloczek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 189,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RoksanaPoloczek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 190,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RoksanaPoloczek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 191,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EsteraRadsak"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 192,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EsteraRadsak"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 193,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "EsteraRadsak"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 194,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AdamSkowronek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 195,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AdamSkowronek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 196,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AdamSkowronek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 197,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AdamSkowronek"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 198,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AdamSkowronek"
+            ],
+            "privilege": [
+                "lector"
+            ]
+        }
+    },
+    {
+        "pk": 199,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AdamSkowronek"
+            ],
+            "privilege": [
+                "sound_sysop"
+            ]
+        }
+    },
+    {
+        "pk": 200,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AdamSkowronek"
+            ],
+            "privilege": [
+                "servant"
+            ]
+        }
+    },
+    {
+        "pk": 201,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GabrielaSkowronek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 202,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GabrielaSkowronek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 203,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "GabrielaSkowronek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 204,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RafalSobocinski"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 205,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "RafalSobocinski"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 206,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AndrzejZydek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 207,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "AndrzejZydek"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 208,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MalwinaZydek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 209,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MalwinaZydek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 210,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MalwinaZydek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 211,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalZydek"
+            ],
+            "privilege": [
+                "school_member"
+            ]
+        }
+    },
+    {
+        "pk": 212,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalZydek"
+            ],
+            "privilege": [
+                "master"
+            ]
+        }
+    },
+    {
+        "pk": 213,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalZydek"
+            ],
+            "privilege": [
+                "slave"
+            ]
+        }
+    },
+    {
+        "pk": 214,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalZydek"
+            ],
+            "privilege": [
+                "reader"
+            ]
+        }
+    },
+    {
+        "pk": 215,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalZydek"
+            ],
+            "privilege": [
+                "lector"
+            ]
+        }
+    },
+    {
+        "pk": 216,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalZydek"
+            ],
+            "privilege": [
+                "sound_sysop"
+            ]
+        }
+    },
+    {
+        "pk": 217,
+        "model": "congregation.CongregationMemberPrivileges",
+        "fields": {
+            "member": [
+                "MichalZydek"
+            ],
+            "privilege": [
+                "servant"
+            ]
         }
     }
 ]

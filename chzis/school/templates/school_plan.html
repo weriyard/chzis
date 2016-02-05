@@ -1,66 +1,71 @@
 {% extends "base.html" %}
 
 {% block head %}
-<script type='text/javascript'>
+    <script type='text/javascript'>
 
-    function set_result(obj, task_id, result) {
-        $.ajax({
-            url: "/school/tasks/"+ task_id +"/result/",
-            data: {'result': result, csrfmiddlewaretoken: '{{ csrf_token }}'},
-            type: 'post',
-            success: function(data) {
+        function set_result(obj, task_id, result) {
+            $.ajax({
+                url: "/school/tasks/" + task_id + "/result/",
+                data: {'result': result, csrfmiddlewaretoken: '{{ csrf_token }}'},
+                type: 'post',
+                success: function (data) {
 
-            }
+                }
+            });
+        }
+
+        function get_pdf_content(task_to_print) {
+            $.ajax({
+                url: "/school/tasks/print/",
+                data: {
+                    'tasks_ids': JSON.stringify(task_to_print, null)
+                    , csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                type: 'post',
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+            return false;
+        }
+
+        $(window).on('load', function () {
+            $("#print_button").click(function () {
+                $("form#pdf_form").attr('action', '/school/tasks/print/')
+                $("#pdf_form").attr('target', 'downloadFrame');
+                $("form#pdf_form").submit();
+            });
         });
-    }
-
-    function get_pdf_content(task_to_print){
-        $.ajax({
-            url: "/school/tasks/print/",
-            data: {'tasks_ids': JSON.stringify(task_to_print, null)
-                , csrfmiddlewaretoken: '{{ csrf_token }}'},
-            type: 'post',
-            success: function(data) {
-                console.log(data);
-            }
-        });
-        return false;
-    }
-
-    $(window).on('load', function() {
-        $("#print_button").click(function () {
-            $("form#pdf_form").attr('action', '/school/tasks/print/')
-            $("#pdf_form").attr('target', 'downloadFrame');
-            $("form#pdf_form").submit();
-        });
-    });
-</script>
+    </script>
 {% endblock %}
 
 {% block content %}
-{% load i18n %}
-<iframe id="downloadFrame" name="downloadFrame" style="display:none"></iframe>
+    {% load i18n %}
+    <iframe id="downloadFrame" name="downloadFrame" style="display:none"></iframe>
 
-<h2>
-    <span class="label label-primary">{% trans "Week" %} {{current_week.week_start|date:"j.m"}}{% if current_week.week_start.year != current_week.week_end.year %}.{{current_week.week_start.year}}{% endif %} -
-    {{current_week.week_end|date:"j.m"}}{% if current_week.week_start.year != current_week.week_end.year %}.{{current_week.week_end.year}}{% endif %}</span>
-</h2>
+    <h2>
+    <span class="label label-primary">{% trans "Week" %} {{ current_week.week_start|date:"j.m" }}
+            {% if current_week.week_start.year != current_week.week_end.year %}.
+                {{ current_week.week_start.year }}{% endif %} -
+    {{ current_week.week_end|date:"j.m" }}{% if current_week.week_start.year != current_week.week_end.year %}.
+        {{ current_week.week_end.year }}{% endif %}</span>
+    </h2>
 
-<div class="pull-right">
-    <h4 style="display: inline"><a href="/school/plan/{{prev_plan_date}}"> <<< </a></h4>
-    <h4 style="display: inline"><a href="/school/plan/{{next_plan_date}}"> >>> </a></h4>
-</div>
-<div class="spacer30"></div>
-<div style="clear: both;"></div>
+    <div class="pull-right">
+        <h4 style="display: inline"><a href="/school/plan/{{ prev_plan_date }}"> <<< </a></h4>
+        <h4 style="display: inline"><a href="/school/plan/{{ next_plan_date }}"> >>> </a></h4>
+    </div>
+    <div class="spacer30"></div>
+    <div style="clear: both;"></div>
 
-<form method="POST" class="form-horizontal" role="form" id="pdf_form">
-    {% csrf_token %}
-    <input type="hidden" id="start_week" name="start_week" value="{{current_week.week_start|date:"j.m"}}">
-    <input type="hidden" id="end_week" name="end_week" value="{{current_week.week_end|date:"j.m"}}">
+    <form method="POST" class="form-horizontal" role="form" id="pdf_form">
+        {% csrf_token %}
+        <input type="hidden" id="start_week" name="start_week" value="{{ current_week.week_start|date:"j.m" }}">
+        <input type="hidden" id="end_week" name="end_week" value="{{ current_week.week_end|date:"j.m" }}">
 
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover table-condensed table-striped task_list">
-            <thead>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-condensed table-striped task_list">
+                <thead>
                 <th class="text-center">ID</th>
                 <th class="text-center">{% trans "Meeting item" %}</th>
                 <th class="text-center">{% trans "Person" %}</th>
@@ -68,73 +73,78 @@
                 <th class="text-center">{% trans "Presentation date" %}</th>
                 <th class="text-center">{% trans "Creation date" %}</th>
                 {% if perms.congregation.can_manage %}
-                <th class="text-center">{% trans "Result" %}</th>
-                <th class="text-center">{% trans "Print" %}</th>
+                    <th class="text-center">{% trans "Result" %}</th>
+                    <th class="text-center">{% trans "Print" %}</th>
                 {% endif %}
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 {% for task in tasks %}
                     <tr>
-                    <th scope="row" class="text-center">
-                    {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
-                            <a href ="{{task.get_absolute_url}}">{{task.task.id}}</a>
-                        {% else %}
-                            {{task.task.id}}
-                        {% endif %}
-                    </th>
-                    <td class="col-xs-2">{{task.task.meeting_item.full_name}}</td>
-                    <td class="col-xs-2">
-                        {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
-                            <a href="{{task.task.person.get_absolute_url}}">{{task.task.person}}</a>
-                        {% else %}
-                            {{task.task.person}}
-                        {% endif %}
-                     </td>
-                    <td class="col-xs-2">{{task.lesson.name}}</td>
-                    <td class="col-xs-2">{{task.task.presentation_date}}</td>
-                    <td class="col-xs-2">{{task.task.creation_date}}</td>
-                    {% if perms.congregation.can_manage %}
-                    <td class="col-xs-1">
-                        {% if member.school_allow == None %}
-                            <div class="center-block">
-                                <div class="checkbox checkbox-danger checkbox-task-list">
-                                    <input type="checkbox" id="{{task.id}}_fail" name="{{task.id}}_fail" onclick="set_result(this, {{task.id}}, 'fail');">
-                                    <label for="{{task.id}}_fail"></label>
+                        <th scope="row" class="text-center">
+                            {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
+                                <a href="{{ task.get_absolute_url }}">{{ task.task.id }}</a>
+                            {% else %}
+                                {{ task.task.id }}
+                            {% endif %}
+                        </th>
+                        <td class="col-xs-2">{{ task.task.meeting_item.full_name }}</td>
+                        <td class="col-xs-2">
+                            {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
+                                <a href="{{ task.task.person.get_absolute_url }}">{{ task.task.person }}</a>
+                            {% else %}
+                                {{ task.task.person }}
+                            {% endif %}
+                        </td>
+                        <td class="col-xs-2">{{ task.lesson.name }}</td>
+                        <td class="col-xs-2">{{ task.task.presentation_date }}</td>
+                        <td class="col-xs-2">{{ task.task.creation_date }}</td>
+                        {% if perms.congregation.can_manage %}
+                            <td class="col-xs-1">
+                                {% if member.school_allow == None %}
+                                    <div class="center-block">
+                                        <div class="checkbox checkbox-danger checkbox-task-list">
+                                            <input type="checkbox" id="{{ task.id }}_fail" name="{{ task.id }}_fail"
+                                                   onclick="set_result(this, {{ task.id }}, 'fail');">
+                                            <label for="{{ task.id }}_fail"></label>
+                                        </div>
+                                        <div class="checkbox checkbox-success checkbox-task-list">
+                                            <input type="checkbox" id="{{ task.id }}_ok" name="{{ task.id }}_ok"
+                                                   onclick="set_result(this, {{ task.id }}, 'ok');">
+                                            <label for="{{ task.id }}_ok"></label>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                {% endif %}
+                                <!--<h3>-->
+                                <!--<span class="label {% if task.lesson_passed %}label-success{% else %}
+                                    label-danger{% endif %}">{{task.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>-->
+                                <!--</h3>-->
+                            </td>
+                            <td>
+                                <div class="center-block">
+                                    <div class="checkbox checkbox-primary checkbox-task-list">
+                                        <input type="checkbox" id="print_{{ task.id }}" name="print"
+                                               value="{{ task.id }}" class="print_checkbox">
+                                        <label for="print_{{ task.id }}"></label>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="checkbox checkbox-success checkbox-task-list">
-                                    <input type="checkbox" id="{{task.id}}_ok" name="{{task.id}}_ok" onclick="set_result(this, {{task.id}}, 'ok');">
-                                    <label for="{{task.id}}_ok"></label>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
+                            </td>
+                        {% else %}
                         {% endif %}
-                        <!--<h3>-->
-                            <!--<span class="label {% if task.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{task.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>-->
-                        <!--</h3>-->
-                    </td>
-                    <td>
-                        <div class="center-block">
-                            <div class="checkbox checkbox-primary checkbox-task-list">
-                                <input type="checkbox" id="print_{{task.id}}" name="print" value="{{task.id}}" class="print_checkbox">
-                                <label for="print_{{task.id}}"></label>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </td>
-                    {% else %}
-                    {% endif %}
-                </tr>
+                    </tr>
                 {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% if perms.congregation.can_manage %}
-        <div class="spacer10"></div>
-        <a href="/school/tasks/add" class="btn btn-lg btn-primary">{% trans "Add task" %}</a>
-        <div class="pull-right">
-            <button type="submit" class="btn btn-lg btn-danger" name="Add" id="print_button">{% trans "Print selected" %}</button>
+                </tbody>
+            </table>
         </div>
-    {% endif %}
-</form>
+        {% if perms.congregation.can_manage %}
+            <div class="spacer10"></div>
+            <a href="/school/tasks/add" class="btn btn-lg btn-primary">{% trans "Add task" %}</a>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-lg btn-danger" name="Add"
+                        id="print_button">{% trans "Print selected" %}</button>
+            </div>
+        {% endif %}
+    </form>
 
 {% endblock %}

@@ -7,7 +7,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('congregation', '0004_auto_20160204_1130'),
         ('school', '0003_auto_20160111_2214'),
@@ -15,13 +14,15 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name='schooltask',
-            name='slave',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='slave_person', to='congregation.CongregationMember'),
+                model_name='schooltask',
+                name='slave',
+                field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                                        related_name='slave_person', to='congregation.CongregationMember'),
         ),
         migrations.AddField(
-            model_name='schooltask',
-            name='supervisor',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='supervisor_person', to='congregation.CongregationMember'),
+                model_name='schooltask',
+                name='supervisor',
+                field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                                        related_name='supervisor_person', to='congregation.CongregationMember'),
         ),
     ]

@@ -57,6 +57,6 @@ class SchoolTask(models.Model):
 
     class Meta:
         permissions = (
-                    ("can_view_all_tasks", "Can see all available tasks"),
-                    ("can_judge_tasks", "Can judge presented tasks by popele"),
-                )
+            ("can_view_all_tasks", "Can see all available tasks"),
+            ("can_judge_tasks", "Can judge presented tasks by popele"),
+        )

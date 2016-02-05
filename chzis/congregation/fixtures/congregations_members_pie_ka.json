@@ -5,7 +5,8 @@
         "fields": {
             "user":[
                 "KarolinaAdamska"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -17,7 +18,8 @@
         "fields": {
             "user": [
                 "MateuszAdamski"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -29,7 +31,8 @@
         "fields": {
             "user": [
                 "EwaBanas"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -41,7 +44,8 @@
         "fields": {
             "user": [
                 "GrzegorzBanas"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -53,7 +57,8 @@
         "fields": {
             "user": [
                 "IwonaBanas"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -65,7 +70,8 @@
         "fields": {
             "user": [
                 "KingaBanas"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -77,7 +83,8 @@
         "fields": {
             "user": [
                 "BozenaBinek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -89,7 +96,8 @@
         "fields": {
             "user": [
                 "AlinaBrodziak"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -101,7 +109,8 @@
         "fields": {
             "user": [
                 "GrzegorzBrodziak"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -113,7 +122,8 @@
         "fields": {
             "user": [
                 "AnnaCiszek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -125,7 +135,8 @@
         "fields": {
             "user": [
                 "DanielCiszek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -137,7 +148,8 @@
         "fields": {
             "user": [
                 "GrzegorzCot"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -149,7 +161,8 @@
         "fields": {
             "user": [
                 "KrystynaCot"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -161,7 +174,8 @@
         "fields": {
             "user": [
                 "MichalinaCot"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -173,7 +187,8 @@
         "fields": {
             "user": [
                 "EugeniuszCzaja"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -185,7 +200,8 @@
         "fields": {
             "user": [
                 "MateuszCzaja"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -197,7 +213,8 @@
         "fields": {
             "user": [
                 "TeresaCzaja"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -209,7 +226,8 @@
         "fields": {
             "user": [
                 "BeataCzepiczek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -221,7 +239,8 @@
         "fields": {
             "user": [
                 "KamilCzepiczek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -233,7 +252,8 @@
         "fields": {
             "user": [
                 "ZbigniewCzepiczek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -245,7 +265,8 @@
         "fields": {
             "user": [
                 "DariuszDuda"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -257,7 +278,8 @@
         "fields": {
             "user": [
                 "JolantaGajdzik"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -269,7 +291,8 @@
         "fields": {
             "user": [
                 "TadeuszGajdzik"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -281,7 +304,8 @@
         "fields": {
             "user": [
                 "RenataGarov"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -293,7 +317,8 @@
         "fields": {
             "user": [
                 "KrystynaGbur"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -305,7 +330,8 @@
         "fields": {
             "user": [
                 "HalinaGil"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -317,7 +343,8 @@
         "fields": {
             "user": [
                 "ZdzislawaGubala"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -329,7 +356,8 @@
         "fields": {
             "user": [
                 "BeataGugnacka"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -341,7 +369,8 @@
         "fields": {
             "user": [
                 "PiotrGugnacki"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -353,7 +382,8 @@
         "fields": {
             "user": [
                 "GrazynaJordan"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -365,7 +395,8 @@
         "fields": {
             "user": [
                 "SzymonJordan"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -377,7 +408,8 @@
         "fields": {
             "user": [
                 "ZdzislawJordan"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -389,7 +421,8 @@
         "fields": {
             "user": [
                 "CzeslawKasperek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -401,7 +434,8 @@
         "fields": {
             "user": [
                 "IrenaKasperek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -413,7 +447,8 @@
         "fields": {
             "user": [
                 "MarekKasprzak"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -425,7 +460,8 @@
         "fields": {
             "user": [
                 "MieczyslawaKasprzak"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -437,7 +473,8 @@
         "fields": {
             "user": [
                 "AgnieszkaKosiorska"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -449,7 +486,8 @@
         "fields": {
             "user": [
                 "MariuszKosiorski"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -461,7 +499,8 @@
         "fields": {
             "user": [
                 "BeataKurzac"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -473,7 +512,8 @@
         "fields": {
             "user": [
                 "DariaKurzac"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -485,7 +525,8 @@
         "fields": {
             "user": [
                 "AnnaKwiecinska"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -497,7 +538,8 @@
         "fields": {
             "user": [
                 "IzabelaKwiecinska"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -509,7 +551,8 @@
         "fields": {
             "user": [
                 "NataliaLubkowska"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -521,7 +564,8 @@
         "fields": {
             "user": [
                 "EdwardLubkowski"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -533,7 +577,8 @@
         "fields": {
             "user": [
                 "AnetaMarcinkowska"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -545,7 +590,8 @@
         "fields": {
             "user": [
                 "SebastianMarcinkowski"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -557,7 +603,8 @@
         "fields": {
             "user": [
                 "IlonaMaruszczyk"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -569,7 +616,8 @@
         "fields": {
             "user": [
                 "PiotrMaruszczyk"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -581,7 +629,8 @@
         "fields": {
             "user": [
                 "KrystynaMatusiak"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -593,7 +642,8 @@
         "fields": {
             "user": [
                 "DamianMatuszewski"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -605,7 +655,8 @@
         "fields": {
             "user": [
                 "AnnaMucka"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -617,7 +668,8 @@
         "fields": {
             "user": [
                 "KrzysztofMucka"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -629,7 +681,8 @@
         "fields": {
             "user": [
                 "MalgorzataMucka"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -641,7 +694,8 @@
         "fields": {
             "user": [
                 "MichalMucka"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -653,7 +707,8 @@
         "fields": {
             "user": [
                 "RozaliaMucka"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -665,7 +720,8 @@
         "fields": {
             "user": [
                 "SabinaMucka"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -677,7 +733,8 @@
         "fields": {
             "user": [
                 "SlawomirMucka"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -689,7 +746,8 @@
         "fields": {
             "user": [
                 "AndrzejNalewajka"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -701,7 +759,8 @@
         "fields": {
             "user": [
                 "MalgorzataNalewajka"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -713,7 +772,8 @@
         "fields": {
             "user": [
                 "AnnaNaumczyk"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -725,7 +785,8 @@
         "fields": {
             "user": [
                 "ZeonNaumczyk"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -737,7 +798,8 @@
         "fields": {
             "user": [
                 "JoannaPander"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -749,7 +811,8 @@
         "fields": {
             "user": [
                 "KatarzynaPeplowska"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -761,7 +824,8 @@
         "fields": {
             "user": [
                 "RomualdPeplowski"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -773,7 +837,8 @@
         "fields": {
             "user": [
                 "EugeniaPoloczek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -785,7 +850,8 @@
         "fields": {
             "user": [
                 "HenrykPoloczek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -797,7 +863,8 @@
         "fields": {
             "user": [
                 "RoksanaPoloczek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -809,7 +876,8 @@
         "fields": {
             "user": [
                 "EsteraRadsak"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -821,7 +889,8 @@
         "fields": {
             "user": [
                 "AdamSkowronek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -833,7 +902,8 @@
         "fields": {
             "user": [
                 "GabrielaSkowronek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -845,7 +915,8 @@
         "fields": {
             "user": [
                 "EdeltrautaSobocinska"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -857,7 +928,8 @@
         "fields": {
             "user": [
                 "HalinaSobocinska"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -869,7 +941,8 @@
         "fields": {
             "user": [
                 "WladyslawSobocinski"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -881,7 +954,8 @@
         "fields": {
             "user": [
                 "RafalSobocinski"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -893,7 +967,8 @@
         "fields": {
             "user": [
                 "HelenaSzafranek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -905,7 +980,8 @@
         "fields": {
             "user": [
                 "HelenaSzulc"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -917,7 +993,8 @@
         "fields": {
             "user": [
                 "WlodzimierzTide"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -929,7 +1006,8 @@
         "fields": {
             "user": [
                 "MalgorzataWachowiak"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -941,7 +1019,8 @@
         "fields": {
             "user": [
                 "CecyliaZenczak"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -953,7 +1032,8 @@
         "fields": {
             "user": [
                 "AndrzejZydek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -965,7 +1045,8 @@
         "fields": {
             "user": [
                 "DorotaZydek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -977,7 +1058,8 @@
         "fields": {
             "user": [
                 "MalwinaZydek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]
@@ -989,7 +1071,8 @@
         "fields": {
             "user": [
                 "MichalZydek"
-            ],
+            ], 
+            "active": true,
             "congregation": [
                 "Piekary-Kamie\u0144"
             ]

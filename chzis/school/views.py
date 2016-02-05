@@ -25,7 +25,7 @@ class Tasks(View):
     def get(self, request):
         date_now = datetime.datetime.now()
         month_days = datetime.datetime(year=date_now.year, month=date_now.month + 1, day=1) - datetime.datetime(
-            year=date_now.year, month=date_now.month, day=1)
+                year=date_now.year, month=date_now.month, day=1)
         tasks = SchoolTask.objects.all()
 
         action = request.GET.get('action')

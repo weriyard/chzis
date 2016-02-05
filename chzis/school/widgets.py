@@ -7,7 +7,6 @@ from chzis.school.models import Lesson
 
 
 class InlineSelectDateWidget(SelectDateWidget):
-
     def render(self, name, value, attrs=None):
         render_output = super(InlineSelectDateWidget, self).render(name, value, attrs=None)
         output = '<div class="form-inline">%s</div>'
@@ -15,7 +14,6 @@ class InlineSelectDateWidget(SelectDateWidget):
 
 
 class LessonPassedWidget(Widget):
-
     def render(self, name, value, attrs=None):
         if value is None:
             css_class = "label-default"
@@ -33,14 +31,12 @@ class LessonPassedWidget(Widget):
 
 
 class LessonListWithLastDate(Widget):
-
     def __init__(self, *args, **kwargs):
         print args, kwargs
         super(LessonListWithLastDate, self).__init__(*args, **kwargs)
 
-
     def render(self, name, value, attrs=None, choices=()):
-        print name , value, choices
+        print name, value, choices
         return "llaaldsffdsf"
 
     def value_from_datadict(self, data, files, name):
@@ -52,7 +48,7 @@ class LessonListWithLastDate(Widget):
         return data.get(name)
 
     def __deepcopy__(self, memo):
-        #print memo
+        # print memo
         print self.__dict__
         obj = copy.copy(self)
         obj.attrs = self.attrs.copy()
@@ -61,9 +57,6 @@ class LessonListWithLastDate(Widget):
 
 
 class AwesomeCheckbox(CheckboxInput):
-
     def render(self, name, value, attrs=None):
         render = super(AwesomeCheckbox, self).render(name, value, attrs)
         return "<div class='%s'>%s<label for='%s'></label></div>" % (self.attrs.get('class'), render, attrs.get('id'))
-
-

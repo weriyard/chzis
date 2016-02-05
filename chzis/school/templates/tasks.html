@@ -1,48 +1,48 @@
 {% extends "base.html" %}
 
 {% block head %}
-<script type='text/javascript'>
+    <script type='text/javascript'>
 
-    $(window).on('load', function() {
-        $("#print_button").click(function () {
-            $("form#pdf_form").attr('action', '/school/tasks/print/')
-            $("#pdf_form").attr('target', 'downloadFrame');
-            $("form#pdf_form").submit();
+        $(window).on('load', function () {
+            $("#print_button").click(function () {
+                $("form#pdf_form").attr('action', '/school/tasks/print/')
+                $("#pdf_form").attr('target', 'downloadFrame');
+                $("form#pdf_form").submit();
+            });
+
+            $("input#id_start_active").click(function () {
+                if ($(this).is(':checked')) {
+                    $("div select[name^=start]").removeAttr('disabled')
+                    $("button#filter_button").removeAttr('disabled')
+                } else {
+                    $("div select[name^=start]").attr('disabled', "on")
+                    if (!$("input#id_end_active").is(":checked")) {
+                        $("button#filter_button").attr('disabled', "on")
+                    }
+                }
+            })
+
+            $("input#id_end_active").click(function () {
+                if ($(this).is(':checked')) {
+                    $("div select[name^=end]").removeAttr('disabled')
+                    $("button#filter_button").removeAttr('disabled')
+                } else {
+                    $("div select[name^=end]").attr('disabled', "on")
+                    if (!$("input#id_start_active").is(":checked")) {
+                        $("button#filter_button").attr('disabled', "on")
+                    }
+                }
+            })
         });
-
-        $("input#id_start_active").click(function() {
-            if ($(this).is(':checked')) {
-                $("div select[name^=start]").removeAttr('disabled')
-                $("button#filter_button").removeAttr('disabled')
-            } else {
-                $("div select[name^=start]").attr('disabled', "on")
-                if (! $("input#id_end_active").is(":checked")) {
-                    $("button#filter_button").attr('disabled', "on")
-                }
-            }
-        })
-
-        $("input#id_end_active").click(function() {
-            if ($(this).is(':checked')) {
-               $("div select[name^=end]").removeAttr('disabled')
-               $("button#filter_button").removeAttr('disabled')
-            } else {
-                $("div select[name^=end]").attr('disabled', "on")
-                if (! $("input#id_start_active").is(":checked")) {
-                    $("button#filter_button").attr('disabled', "on")
-                }
-            }
-        })
-    });
-</script>
+    </script>
 {% endblock %}
 
 {% block content %}
-{% load i18n %}
-<iframe id="downloadFrame" name="downloadFrame" style="display:none"></iframe>
-{{ filter_form.errors }}
-<div class="row col-lg-offset-2 col-lg-10">
-    <form method="GET" role="form" class="form-inline" id="filter-form">
+    {% load i18n %}
+    <iframe id="downloadFrame" name="downloadFrame" style="display:none"></iframe>
+    {{ filter_form.errors }}
+    <div class="row col-lg-offset-2 col-lg-10">
+        <form method="GET" role="form" class="form-inline" id="filter-form">
             <div class="form-group">
                 {{ filter_form.start_active }}
             </div>
@@ -57,32 +57,34 @@
             </div>
             <div class="clearfix spacer10"></div>
             <div class="col-lg-offset-8">
-                <button type="submit" class="btn btn-sm btn-danger" name="action" id="filter_button" value="filter" {% if not filter_form.start_active.value and not filter_form.end_active.value %}disabled{% endif %}>{% trans "Search" %}</button>
-                <button type="submit" class="btn btn-sm btn-default" name="action" id="filter_button_month" value="filter_month_now">{% trans "Show this month" %}</button>
+                <button type="submit" class="btn btn-sm btn-danger" name="action" id="filter_button" value="filter"
+                        {% if not filter_form.start_active.value and not filter_form.end_active.value %}disabled{% endif %}>{% trans "Search" %}</button>
+                <button type="submit" class="btn btn-sm btn-default" name="action" id="filter_button_month"
+                        value="filter_month_now">{% trans "Show this month" %}</button>
                 <a href="/school/tasks" class="btn btn-sm btn-default">{% trans "Show all" %}</a>
             </div>
-    </form>
-</div>
-
-<div class="clearfix"></div>
-<div class="spacer10"></div>
-<form method="POST" class="form-horizontal" role="form" id="pdf_form">
-    {% csrf_token %}
-    <div class="pull-right">
-        {% if tasks.has_previous %}
-            <h4 style="display: inline"><a href="?page={{ tasks.previous_page_number }}"> <<< </a></h4>
-        {% endif %}
-
-        <h4 style="display: inline">{% trans "Page" %} {{ tasks.number }} {% trans "of" %} {{ tasks.paginator.num_pages }}</h4>
-
-        {% if tasks.has_next %}
-            <h4 style="display: inline"><a href="?page={{ tasks.next_page_number }}"> >>> </a></h4>
-        {% endif %}
+        </form>
     </div>
-    <div class="clearfix spacer30"></div>
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover table-condensed task_list">
-            <thead>
+
+    <div class="clearfix"></div>
+    <div class="spacer10"></div>
+    <form method="POST" class="form-horizontal" role="form" id="pdf_form">
+        {% csrf_token %}
+        <div class="pull-right">
+            {% if tasks.has_previous %}
+                <h4 style="display: inline"><a href="?page={{ tasks.previous_page_number }}"> <<< </a></h4>
+            {% endif %}
+
+            <h4 style="display: inline">{% trans "Page" %} {{ tasks.number }} {% trans "of" %} {{ tasks.paginator.num_pages }}</h4>
+
+            {% if tasks.has_next %}
+                <h4 style="display: inline"><a href="?page={{ tasks.next_page_number }}"> >>> </a></h4>
+            {% endif %}
+        </div>
+        <div class="clearfix spacer30"></div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-condensed task_list">
+                <thead>
                 <th class="text-center">ID</th>
                 <th class="text-center">{% trans "Person" %}</th>
                 <th class="text-center">{% trans "Meeting item" %}</th>
@@ -91,38 +93,41 @@
                 <th class="text-center">{% trans "Creation date" %}</th>
                 <th class="text-center">{% trans "Result" %}</th>
                 <th class="text-center">{% trans "Print" %}</th>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 {% for task in tasks %}
-                <tr>
-                    <th scope="row" class="text-center"><a href ="{{task.get_absolute_url}}">{{task.id}}</a></th>
-                    <td class="col-xs-2"><a href="{{task.task.person.get_absolute_url}}">{{task.task.person}}</a></td>
-                    <td class="col-xs-2">{{task.task.meeting_item.full_name}}</td>
-                    <td class="col-xs-2">{{task.lesson.name}}</td>
-                    <td class="col-xs-2">{{task.task.presentation_date}}</td>
-                    <td class="col-xs-2">{{task.task.creation_date}}</td>
-                    <td class="col-xs-1">
-                        <h3 class="lesson-passed">
-                            <span class="label {% if task.lesson.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{task.lesson.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>
-                        </h3>
-                    </td>
-                    <td>
-                        <div class="checkbox checkbox-primary checkbox-task-list">
-                            <input type="checkbox" id="print_{{task.id}}" name="print" value="{{task.id}}" class="print_checkbox">
-                            <label for="print_{{task.id}}"></label>
-                        </div>
-                    </td>
-                </tr>
+                    <tr>
+                        <th scope="row" class="text-center"><a href="{{ task.get_absolute_url }}">{{ task.id }}</a></th>
+                        <td class="col-xs-2"><a
+                                href="{{ task.task.person.get_absolute_url }}">{{ task.task.person }}</a></td>
+                        <td class="col-xs-2">{{ task.task.meeting_item.full_name }}</td>
+                        <td class="col-xs-2">{{ task.lesson.name }}</td>
+                        <td class="col-xs-2">{{ task.task.presentation_date }}</td>
+                        <td class="col-xs-2">{{ task.task.creation_date }}</td>
+                        <td class="col-xs-1">
+                            <h3 class="lesson-passed">
+                                <span class="label {% if task.lesson.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{ task.lesson.lesson_passed|yesno:"PASSED,FAIL,FAIL" }}</span>
+                            </h3>
+                        </td>
+                        <td>
+                            <div class="checkbox checkbox-primary checkbox-task-list">
+                                <input type="checkbox" id="print_{{ task.id }}" name="print" value="{{ task.id }}"
+                                       class="print_checkbox">
+                                <label for="print_{{ task.id }}"></label>
+                            </div>
+                        </td>
+                    </tr>
                 {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% if perms.congregation.can_manage %}
-        <div class="spacer10"></div>
-        <a href="/school/tasks/add" class="btn btn-lg btn-primary">{% trans "Add task" %}</a>
-        <div class="pull-right">
-            <button type="submit" class="btn btn-lg btn-danger" name="Add" id="print_button">{% trans "Print selected" %}</button>
+                </tbody>
+            </table>
         </div>
-    {% endif %}
-</form>
+        {% if perms.congregation.can_manage %}
+            <div class="spacer10"></div>
+            <a href="/school/tasks/add" class="btn btn-lg btn-primary">{% trans "Add task" %}</a>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-lg btn-danger" name="Add"
+                        id="print_button">{% trans "Print selected" %}</button>
+            </div>
+        {% endif %}
+    </form>
 {% endblock %}

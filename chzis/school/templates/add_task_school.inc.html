@@ -4,9 +4,9 @@
 
 
 <div class="form-group">
-    <label for="{{school_task_form.slave.id_for_label}}">{{school_task_form.slave.label}}</label>
+    <label for="{{ school_task_form.slave.id_for_label }}">{{ school_task_form.slave.label }}</label>
     {{ school_task_form.slave.errors }}
-    {{school_task_form.slave}}
+    {{ school_task_form.slave }}
 </div>
 <div class="error-block">
     {{ school_task_form.lesson.errors }}
@@ -15,21 +15,21 @@
     <div class="table-responsive">
         <table class="table-condensed school-lessons">
             <thead>
-                <th>{% trans "No." %}</th>
-                <th>
-                    {{school_task_form.lesson.label}}
-                </th>
-                <th>
-                    {% trans "Last" %}
-                </th>
-                <th></th>
+            <th>{% trans "No." %}</th>
+            <th>
+                {{ school_task_form.lesson.label }}
+            </th>
+            <th>
+                {% trans "Last" %}
+            </th>
+            <th></th>
             </thead>
             {% for it in  school_task_form.lesson %}
                 <tr>
                     {% if not forloop.first %}
-                        <td class="col-md-1">{{ forloop.counter0}}</td>
+                        <td class="col-md-1">{{ forloop.counter0 }}</td>
                         <td class="col-md-6">
-                            {{it.choice_label}}
+                            {{ it.choice_label }}
                         </td>
                         <td class="col-md-2">
                             {% if passed_lessons %}
@@ -37,18 +37,18 @@
                                     {% if forloop.first %}
                                         {{ a|date:"d.m.y" }}
                                     {% endif %}
-                                 {% empty %}
+                                {% empty %}
                                     &nbsp;
                                 {% endfor %}
                                 {% if passed_lessons|access_by_key:forloop.counter0|length > 2 %}
-                                    (x{{passed_lessons|access_by_key:forloop.counter0|length|add:"-1" }})
+                                    (x{{ passed_lessons|access_by_key:forloop.counter0|length|add:"-1" }})
                                 {% endif %}
                             {% endif %}
                         </td>
                         <td class="col-md-1">
                             <div class="radio">
                                 {{ it.tag }}
-                                <label for="{{it.id_for_label}}"></label>
+                                <label for="{{ it.id_for_label }}"></label>
                             </div>
                         </td>
                     {% endif %}
@@ -58,12 +58,12 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="{{school_task_form.background.id_for_label}}">{{school_task_form.background.label}}</label>
+    <label for="{{ school_task_form.background.id_for_label }}">{{ school_task_form.background.label }}</label>
     {{ school_task_form.background.errors }}
-    {{school_task_form.background}}
+    {{ school_task_form.background }}
 </div>
 <div class="form-group">
-    <label for="{{school_task_form.description.id_for_label}}">{{school_task_form.description.label}}</label>
-    {{school_task_form.description.errors }}
-    {{school_task_form.description}}
+    <label for="{{ school_task_form.description.id_for_label }}">{{ school_task_form.description.label }}</label>
+    {{ school_task_form.description.errors }}
+    {{ school_task_form.description }}
 </div>

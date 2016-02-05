@@ -4,10 +4,17 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 from django.core.management import call_command
+from django.contrib.auth.models import User
 
 
 def load_fixtures(state_apps, schema_editor):
     call_command('loaddata', 'users_django', 'users_profile')
+
+
+def set_default_users_password():
+    for user in User.objects.all():
+        user.set_password(user.username)
+        user.save()
 
 
 class Migration(migrations.Migration):
@@ -19,5 +26,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(load_fixtures)
+        migrations.RunPython(load_fixtures),
+        migrations.RunPython(set_default_users_password)
     ]

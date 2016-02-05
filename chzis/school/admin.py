@@ -1,6 +1,7 @@
 from django.contrib import admin
 from chzis.school.models import Lesson, Background, SchoolTask
 
+
 class LessonAdmin(admin.ModelAdmin):
     pass
 

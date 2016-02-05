@@ -4,34 +4,34 @@
 {% block head %}
     <script type='text/javascript'>
 
-    function get_lessons(){
-        var member_id = $("#id_person").val();
-        $.ajax({
-           url: '/school/lessons/passed/' + member_id,
-           success: function(data) {
-                console.log(data);
-                $("#school_task_content").html(data);
-           }
-        });
-    }
-    $(window).on('load', function() {
-        $("#id_person").change(function() {
-            get_lessons();
-        });
-        if ($("#id_person").val() != "") {
-            get_lessons();
+        function get_lessons() {
+            var member_id = $("#id_person").val();
+            $.ajax({
+                url: '/school/lessons/passed/' + member_id,
+                success: function (data) {
+                    console.log(data);
+                    $("#school_task_content").html(data);
+                }
+            });
         }
-    });
+        $(window).on('load', function () {
+            $("#id_person").change(function () {
+                get_lessons();
+            });
+            if ($("#id_person").val() != "") {
+                get_lessons();
+            }
+        });
     </script>
 {% endblock %}
 
 
 {% block content %}
 
-<form method="POST" class="form-horizontal" role="form">
-    {% csrf_token %}
+    <form method="POST" class="form-horizontal" role="form">
+        {% csrf_token %}
         <div class="col-md-offset-3 col-md-6 ">
-            {{task_form.as_div}}
+            {{ task_form.as_div }}
             <div id="school_task_content">
                 {% if school_task_form %}
                     {% include "add_task_school.inc.html" %}
@@ -39,7 +39,7 @@
             </div>
             <button type="submit" class="btn btn-lg btn-warning" name="Add">{% trans "Add task" %}</button>
         </div>
-</form>
+    </form>
 
 
 

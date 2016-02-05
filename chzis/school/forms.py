@@ -7,6 +7,7 @@ from chzis.school.widgets import InlineSelectDateWidget, LessonPassedWidget, Les
 from chzis.congregation.models import CongregationMember
 from chzis.meetings.models import MeetingItem, MeetingTask
 
+
 class SchoolTaskForm(ModelForm):
     class Meta:
         model = SchoolTask
@@ -64,15 +65,17 @@ class SchoolTaskViewForm(SchoolTaskForm):
 
 
 class SchoolTaskFilterForm(forms.Form):
-    start_active = forms.BooleanField(widget=AwesomeCheckbox(attrs={"class": "checkbox checkbox-default checkbox-filter-date"}),
-                                      label="",
-                                      initial=False, required=False)
+    start_active = forms.BooleanField(
+        widget=AwesomeCheckbox(attrs={"class": "checkbox checkbox-default checkbox-filter-date"}),
+        label="",
+        initial=False, required=False)
     start = forms.DateField(widget=InlineSelectDateWidget(attrs={'class': 'form-control'},
                                                           empty_label=(_("Year"), _("Month"), _("Day"))),
                             label="", required=False)
-    end_active = forms.BooleanField(widget=AwesomeCheckbox(attrs={"class": "checkbox checkbox-default checkbox-filter-date"}),
-                                    label="",
-                                    initial=False, required=False)
+    end_active = forms.BooleanField(
+        widget=AwesomeCheckbox(attrs={"class": "checkbox checkbox-default checkbox-filter-date"}),
+        label="",
+        initial=False, required=False)
     end = forms.DateField(widget=InlineSelectDateWidget(attrs={'class': 'form-control'},
                                                         empty_label=(_("Year"), _("Month"), _("Day"))),
                           label="", required=False)
@@ -80,7 +83,6 @@ class SchoolTaskFilterForm(forms.Form):
     def clean_end(self):
         data = self.cleaned_data['end']
         return data
-
 
     def as_div(self):
         "Returns this form rendered as HTML <p>s."

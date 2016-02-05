@@ -6,15 +6,14 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('school', '0002_load_data'),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='schooltask',
-            options={'permissions': (('can_view_all_tasks', 'Can see all available tasks'),
-                                     ('can_judge_tasks', 'Can judge presented tasks by popele'))},
+                name='schooltask',
+                options={'permissions': (('can_view_all_tasks', 'Can see all available tasks'),
+                                         ('can_judge_tasks', 'Can judge presented tasks by popele'))},
         ),
     ]

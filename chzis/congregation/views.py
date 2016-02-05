@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView, RedirectView
 from django.shortcuts import redirect
-from chzis.congregation.models import Congregation, CongregationMember
 from django.core import exceptions
+from django.db.models import Q
+
+from chzis.congregation.models import Congregation, CongregationMember, CongregationMemberPrivileges, \
+    CongregationPrivileges
 
 
 class CongregationRedirect(RedirectView):
@@ -40,8 +43,20 @@ class CongregationDetails(TemplateView):
 
     def get_context_data(self, congregation_id):
         cong_members = CongregationMember.objects.filter(congregation_id=congregation_id)
+        priv_cong_members = CongregationMemberPrivileges.objects.filter(member__congregation_id=congregation_id)
+
+        members = {}
+        for cong_member in cong_members:
+            member_privileges = members.setdefault(cong_member.id, {})
+            member_privileges['member'] = cong_member
+            priv_cong_member = priv_cong_members.filter(member=cong_member)
+            privileges = member_privileges.setdefault('privileges', {'active': cong_member.active})
+            for priv in priv_cong_member:
+                privileges[priv.privilege.name] = True
+
+        print members, len(members)
         context = dict()
-        context['cong_members'] = cong_members
+        context['cong_members'] = members
         return context
 
 
@@ -49,28 +64,52 @@ class CongregationMemberDetails(TemplateView):
     template_name = "congregationMember.html"
 
     def get_context_data(self, member_id, *args, **kwargs):
+        context = dict()
+
         if 'congregation_id' in kwargs:
-            member = CongregationMember.objects.get(congregation__id=kwargs.get('congregation_id'), user__id=member_id)
+            cong_member = CongregationMember.objects.get(congregation__id=kwargs.get('congregation_id'),
+                                                         user__id=member_id)
         else:
             try:
-                member = CongregationMember.objects.get(user__id=member_id)
+                cong_member = CongregationMember.objects.get(user__id=member_id)
             except exceptions.ObjectDoesNotExist:
-                member = None
+                cong_member = None
 
-        context = dict()
-        context['member'] = member
+        member_privileges = CongregationMemberPrivileges.objects.filter(member=cong_member).values_list(
+            'privilege__name', 'id')
+        all_allowed_privileges = CongregationPrivileges.objects.filter(
+            Q(allow_gender=cong_member.user.profile.gender) | Q(allow_gender='A')).values('id', 'name', 'full_name')
+        current_member_privileges = dict(member_privileges)
+
+        if cong_member is not None:
+            member_privileges = []
+            for priv in all_allowed_privileges:
+                id = current_member_privileges.get(priv['name'], None)
+                pr = dict(name=priv['name'], id=id, full_name=priv['full_name'])
+                member_privileges.append(pr)
+
+            context['member_privileges'] = member_privileges
+
+        context['member'] = cong_member
         return context
 
     def post(self, request, congregation_id, member_id):
         cong_member = CongregationMember.objects.get(id=member_id)
+        all_allowed_privileges = CongregationPrivileges.objects.filter(
+            Q(allow_gender=cong_member.user.profile.gender) | Q(allow_gender='A')).values('id', 'name', 'full_name')
+        current_privs = CongregationMemberPrivileges.objects.filter(member=cong_member).values_list('id', 'privilege__name')
+        print request.POST
 
-        for field in CongregationMember._meta.fields:
-            if field.name in ['id', 'owner', 'user', 'congregation',
-                              'last_modification', 'baptism_date', 'age', 'coordinator', 'active']:
-                continue
-            setattr(cong_member, field.name, bool(request.POST.get(field.name, False)))
+        for priv in all_allowed_privileges:
+            if priv['name'] in request.POST and request.POST[priv['name']] is None:
+                cmp = CongregationMemberPrivileges()
+                cmp.member = cong_member
+                cmp.privilege = CongregationPrivileges.objects.get(name=priv['name'])
+                cmp.save()
 
-        cong_member.save()
+        for priv_id, priv_name in current_privs:
+            if priv_name not in request.POST:
+                CongregationMemberPrivileges.objects.get(id=priv_id).delete()
         return redirect(request.path)
 
 

@@ -18,7 +18,8 @@ class Congregation(models.Model):
     address = models.CharField(max_length=255, null=True, blank=True)
     number = models.IntegerField(null=True, blank=True)
     circuit = models.IntegerField(null=True, blank=True)
-    coordinator = models.ForeignKey('congregation.CongregationMember', models.SET_NULL, related_name='owner', null=True, blank=True, default=None)
+    coordinator = models.ForeignKey('congregation.CongregationMember', models.SET_NULL, related_name='owner', null=True,
+                                    blank=True, default=None)
 
     def __unicode__(self):
         return "{name}".format(name=self.name)
@@ -30,29 +31,26 @@ class Congregation(models.Model):
         return "{manage_url}{absolute_url}".format(manage_url=settings.MANAGE_URL, absolute_url=self.get_absolute_url())
 
 
+class CongregationMemberManager(models.Manager):
+    def get_by_natural_key(self, congregation_member, *other):
+        return self.get(user__username=congregation_member)
+
 
 class CongregationMember(models.Model):
+    objects = CongregationMemberManager()
+
     user = models.ForeignKey(User)
     congregation = models.ForeignKey(Congregation, null=True, blank=True)
     active = models.BooleanField(default=False)
-    servant = models.BooleanField(default=False)
-    elder = models.BooleanField(default=False)
-    coordinator = models.BooleanField(default=False)
-    pioneer = models.BooleanField(default=False)
-    school_allow = models.BooleanField(default=False)
-    master = models.BooleanField(default=False)
-    slave = models.BooleanField(default=False)
-    reader_only = models.BooleanField(default=False)
-    lector = models.BooleanField(default=False)
-    sound_sysop = models.BooleanField(default=False)
     last_modification = models.DateTimeField(auto_now=True, null=True)
 
     def __unicode__(self):
         return "{lastname} {firstname}".format(lastname=self.user.last_name, firstname=self.user.first_name)
 
     def get_absolute_url(self):
-        return "/congregations/{congregation_id}/members/{members_id}".format(congregation_id=self.congregation.id if self.congregation is not None else 'unknown',
-                                                                             members_id=self.id)
+        return "/congregations/{congregation_id}/members/{members_id}".format(
+            congregation_id=self.congregation.id if self.congregation is not None else 'unknown',
+            members_id=self.id)
 
     def get_manage_absolute_url(self):
         return "{manage_url}{absolute_url}".format(manage_url=settings.MANAGE_URL, absolute_url=self.get_absolute_url())
@@ -67,7 +65,14 @@ class CongregationMember(models.Model):
         )
 
 
+class CongregationPrivilegesManager(models.Manager):
+    def get_by_natural_key(self, privilege_name, *other):
+        return self.get(name=privilege_name)
+
+
 class CongregationPrivileges(models.Model):
+    objects = CongregationPrivilegesManager()
+
     GENDER = (
         ('M', 'male'),
         ('F', 'female'),
@@ -85,13 +90,16 @@ class CongregationPrivileges(models.Model):
 
 class CongregationMemberPrivileges(models.Model):
     member = models.ForeignKey(CongregationMember, null=True, blank=True)
-    privilage = models.ForeignKey(CongregationPrivileges, null=True, blank=True)
+    privilege = models.ForeignKey(CongregationPrivileges, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         member_gender = self.member.user.profile.gender
-        if member_gender != 'all' and member_gender != self.privilage.allow_gender:
-            raise[]
+        print member_gender, self.privilege.allow_gender
+        if self.privilege.allow_gender != 'A' and member_gender != self.privilege.allow_gender:
+            raise RuntimeError
 
         super(CongregationMemberPrivileges, self).save(*args, **kwargs)
 
-
+    def __unicode__(self):
+        return "{member_name} ({privlege_name})".format(member_name=self.member.user.username,
+                                                        privlege_name=self.privilege.full_name)
