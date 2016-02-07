@@ -21,6 +21,9 @@ class Lesson(models.Model):
     def __unicode__(self):
         return "{name}".format(name=self.name)
 
+    def get_absolute_url(self):
+        return "/school/lesson/{id}".format(id=self.id)
+
     class Meta:
         ordering = ['number']
 
@@ -45,6 +48,7 @@ class SchoolTask(models.Model):
     lesson_passed = models.NullBooleanField(null=True, blank=True)
     lesson_passed_date = models.DateTimeField(auto_now=True, null=True)
     supervisor = models.ForeignKey(CongregationMember, null=True, blank=True, related_name='supervisor_person')
+    # created_by!!!
     background = models.ForeignKey(Background, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     last_modification = models.DateTimeField(auto_now=True, null=True)

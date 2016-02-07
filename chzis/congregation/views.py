@@ -84,8 +84,8 @@ class CongregationMemberDetails(TemplateView):
         if cong_member is not None:
             member_privileges = []
             for priv in all_allowed_privileges:
-                id = current_member_privileges.get(priv['name'], None)
-                pr = dict(name=priv['name'], id=id, full_name=priv['full_name'])
+                priv_id = current_member_privileges.get(priv['name'], None)
+                pr = dict(name=priv['name'], id=priv_id, full_name=priv['full_name'])
                 member_privileges.append(pr)
 
             context['member_privileges'] = member_privileges
@@ -96,20 +96,27 @@ class CongregationMemberDetails(TemplateView):
     def post(self, request, congregation_id, member_id):
         cong_member = CongregationMember.objects.get(id=member_id)
         all_allowed_privileges = CongregationPrivileges.objects.filter(
-            Q(allow_gender=cong_member.user.profile.gender) | Q(allow_gender='A')).values('id', 'name', 'full_name')
+                Q(allow_gender=cong_member.user.profile.gender) | Q(allow_gender='A')).values('id', 'name', 'full_name')
         current_privs = CongregationMemberPrivileges.objects.filter(member=cong_member).values_list('id', 'privilege__name')
-        print request.POST
+        set_last_modification = False
 
         for priv in all_allowed_privileges:
-            if priv['name'] in request.POST and request.POST[priv['name']] is None:
+            if priv['name'] in request.POST and request.POST[priv['name']] == 'None':
                 cmp = CongregationMemberPrivileges()
                 cmp.member = cong_member
                 cmp.privilege = CongregationPrivileges.objects.get(name=priv['name'])
                 cmp.save()
+                set_last_modification = True
 
         for priv_id, priv_name in current_privs:
             if priv_name not in request.POST:
                 CongregationMemberPrivileges.objects.get(id=priv_id).delete()
+                cong_member.save(force_update=True)
+                set_last_modification = True
+
+        if set_last_modification:
+            cong_member.save(force_update=True)
+
         return redirect(request.path)
 
 

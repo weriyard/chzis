@@ -13,6 +13,7 @@ from wsgiref.util import FileWrapper
 from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core import exceptions
+from django.db.models import Q
 
 from chzis.school.models import SchoolTask
 from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm, SchoolTaskFilterForm
@@ -117,7 +118,9 @@ class TaskView(TemplateView):
             'meeting_item': school_task.task.meeting_item.full_name if school_task.task is not None else None,
             'person': str(school_task.task.person) if school_task.task is not None else None})
         context['school_task_form'] = SchoolTaskViewForm(instance=school_task,
-                                                         initial={'lesson': school_task.lesson.name,
+                                                         initial={'slave': str(school_task.slave) if school_task.slave is not None else "",
+                                                                  'supervisor': str(school_task.supervisor) if school_task.supervisor is not None else "",
+                                                                  'lesson': school_task.lesson.name,
                                                                   'background': school_task.background.name if school_task.background is not None else None})
         return context
 
@@ -167,14 +170,12 @@ def set_task_result(request, task_id):
 
 def school_member_lesson_passed(request, member_id):
     member_passsed_lessons = SchoolTask.objects.filter(task__person__id=member_id).only('lesson', 'lesson_passed_date')
-    print '-->', member_passsed_lessons
     passed_lessons = {}
     for lesson_passed in member_passsed_lessons:
         passed_dates = passed_lessons.setdefault(lesson_passed.lesson.number, [])
         passed_dates.append(lesson_passed.lesson_passed_date)
         passed_dates.sort()
 
-    print passed_lessons
     tpl = loader.get_template('add_task_school.inc.html')
     context = {'school_task_form': SchoolTaskForm(),
                'passed_lessons': passed_lessons
@@ -215,3 +216,15 @@ def school_tasks_print(request):
         respone = HttpResponse("Please select least one task in order to generate pdf.")
 
     return response
+
+
+def school_member_history(request, member_id):
+    # szukanie jako master i slave !! dodac Q | dla slave
+    member_history = SchoolTask.objects.filter(Q(task__person__id=member_id) | Q(slave__id=member_id))
+    p = reversed(sorted(member_history, key=lambda x: x.task.presentation_date))
+    b = [ a for a in p ][:5]
+    print b
+    tpl = loader.get_template('add_task_mamber_history.inc.html')
+    context = {'member_history': b}
+    return HttpResponse(tpl.render(context))
+

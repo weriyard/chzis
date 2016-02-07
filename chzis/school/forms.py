@@ -3,9 +3,7 @@ from django import forms
 from django.utils.translation import ugettext as _
 
 from chzis.school.models import SchoolTask, Lesson, Background
-from chzis.school.widgets import InlineSelectDateWidget, LessonPassedWidget, LessonListWithLastDate, AwesomeCheckbox
-from chzis.congregation.models import CongregationMember
-from chzis.meetings.models import MeetingItem, MeetingTask
+from chzis.school.widgets import InlineSelectDateWidget, LessonPassedWidget, AwesomeCheckbox
 
 
 class SchoolTaskForm(ModelForm):
@@ -22,7 +20,6 @@ class SchoolTaskForm(ModelForm):
         }
 
     def as_table(self):
-        "Returns this form rendered as HTML <tr>s -- excluding the <table></table>."
         return self._html_output(
                 normal_row='<tr%(html_class_attr)s><th>%(label)s</th></tr><tr><td>%(errors)s%(field)s%(help_text)s</td></tr>',
                 error_row='<tr><td colspan="2">%s</td></tr>',
@@ -31,7 +28,6 @@ class SchoolTaskForm(ModelForm):
                 errors_on_separate_row=False)
 
     def as_div(self):
-        "Returns this form rendered as HTML <div>s."
         return self._html_output(
                 normal_row='<div class="form-group %(html_class_attr)s">%(errors)s %(label)s %(field)s %(help_text)s</div>',
                 error_row='%s',
@@ -52,16 +48,6 @@ class SchoolTaskViewForm(SchoolTaskForm):
             'background': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
             'description': Textarea(attrs={'class': 'form-control', 'disabled': ''})
         }
-
-
-#
-# class SchoolTaskForm2(ModelForm):
-#     meeting_item = forms.ModelChoiceField(queryset=MeetingTask.objects.filter(meeting_item__part__name=""))
-#     person = forms.ModelChoiceField(queryset=CongregationMember.objects.filter(school_allow=True))
-#     lesson = forms.ModelChoiceField(queryset=Lesson.objects.all())
-#     backgrounds = forms.ModelChoiceField(queryset=Background.objects.all())
-#     presentation_date = forms.SelectDateWidget()
-#     description = forms.Textarea()
 
 
 class SchoolTaskFilterForm(forms.Form):
@@ -85,7 +71,6 @@ class SchoolTaskFilterForm(forms.Form):
         return data
 
     def as_div(self):
-        "Returns this form rendered as HTML <p>s."
         return self._html_output(
                 normal_row='<div class="form-group %(html_class_attr)s">%(label)s %(field)s%(help_text)s</div>',
                 error_row='<div class="error-block">%s</div>',

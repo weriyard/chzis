@@ -131,3 +131,12 @@ div.spacer10 {
 .table-nonfluid {
    width: auto ;
 }
+
+div.panel-zero-padding {
+    padding: 0px;
+}
+
+div.panel-zero-padding table {
+    width: 100%;
+    margin: 0px;
+}

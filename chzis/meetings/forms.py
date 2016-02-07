@@ -59,9 +59,9 @@ class MeetingTaskSchoolViewForm(forms.ModelForm):
         exclude = ['topic', 'description']
 
         widgets = {
-            'meeting_item': TextInput(attrs={'class': 'form-control', 'disabled':''}),
-            'person': TextInput(attrs={'class': 'form-control', 'disabled':''}),
-            'presentation_date': InlineSelectDateWidget(attrs={'class': 'form-control', 'disabled':''},
+            'meeting_item': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
+            'person': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
+            'presentation_date': InlineSelectDateWidget(attrs={'class': 'form-control', 'disabled': ''},
                                                         empty_label=("Year", "Month", "Day")),
         }
 
