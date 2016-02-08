@@ -47,8 +47,8 @@ class SchoolTask(models.Model):
     lesson = models.ForeignKey(Lesson)
     lesson_passed = models.NullBooleanField(null=True, blank=True)
     lesson_passed_date = models.DateTimeField(auto_now=True, null=True)
+    creator = models.ForeignKey(CongregationMember, null=True, blank=True, related_name='creator_person')
     supervisor = models.ForeignKey(CongregationMember, null=True, blank=True, related_name='supervisor_person')
-    # created_by!!!
     background = models.ForeignKey(Background, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     last_modification = models.DateTimeField(auto_now=True, null=True)
@@ -57,7 +57,13 @@ class SchoolTask(models.Model):
         return "{number}".format(number=self.id)
 
     def get_absolute_url(self):
-        return "/school/tasks/{id}".format(id=self.id)
+        return "/school/tasks/{id}".format(id=self.task.id)
+
+    def delete(self, *args, **kwargs):
+        try:
+            MeetingTask.objects.get(id=self.task.id).delete()
+        except exceptions.ObjectDoesNotExist:
+            super(SchoolTask, self).delete( *args, **kwargs)
 
     class Meta:
         permissions = (

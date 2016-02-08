@@ -2,7 +2,7 @@
 
 
 {% block content %}
-    <br>
+    {% load i18n %}
     <div class="col-md-offset-3 col-md-6">
         <div class="table-responsive">
             <table class="add-task">
@@ -10,12 +10,11 @@
                 {{ school_task_form.as_div }}
             </table>
         </div>
-
         {% if perms.add_schooltask %}
-            <form method="GET" action="/school/tasks/add">
-                <button type="submit" class="btn btn-lg btn-warning">+ Add next tasks</button>
-            </form>
-            </div>
+            <a href="/school/tasks/add" class="btn btn-lg btn-info">{% trans "Add task" %}</a>
+            <a href="/school/tasks/{{ school_task_form.instance.task.id }}/edit" class="btn btn-lg btn-warning">{% trans "Edit" %}</a>
+            <a href="/school/tasks/{{ school_task_form.instance.task.id }}/delete?ref={{ request.META.HTTP_REFERER }}" class="btn btn-lg btn-danger">{% trans "Delete" %}</a>
         {% endif %}
-
+        <div class="spacer50"></div>
+    </div>
 {% endblock %}

@@ -81,8 +81,8 @@ class AddTasks(TemplateView):
 
     def get_context_data(self):
         context = dict()
-        context['task_form'] = MeetingTaskSchoolForm()
-        context['school_task_form'] = None
+        context['task_form'] = MeetingTaskSchoolForm(instance=SchoolTask.objects.get(task__id=40).task)
+        context['school_task_form'] = SchoolTaskForm(instance=SchoolTask.objects.get(id=35))
         return context
 
     def post(self, request):
@@ -95,7 +95,8 @@ class AddTasks(TemplateView):
                 task = task_form.save()
                 school_task_form.instance.task = task
                 try:
-                    school_task_form.instance.supervisor = CongregationMember.objects.get(id=request.user.id)
+                    # school_task_form.instance.supervisor = CongregationMember.objects.get(id=request.user.id)
+                    school_task_form.instance.creator = CongregationMember.objects.get(id=request.user.id)
                 except exceptions.ObjectDoesNotExist:
                     pass
 
@@ -112,17 +113,56 @@ class TaskView(TemplateView):
     template_name = "task.html"
 
     def get_context_data(self, task_id):
-        school_task = SchoolTask.objects.get(id=task_id)
+        school_task = SchoolTask.objects.get(task__id=task_id)
         context = dict()
         context['task_form'] = MeetingTaskSchoolViewForm(instance=school_task.task, initial={
             'meeting_item': school_task.task.meeting_item.full_name if school_task.task is not None else None,
             'person': str(school_task.task.person) if school_task.task is not None else None})
         context['school_task_form'] = SchoolTaskViewForm(instance=school_task,
-                                                         initial={'slave': str(school_task.slave) if school_task.slave is not None else "",
-                                                                  'supervisor': str(school_task.supervisor) if school_task.supervisor is not None else "",
+                                                         initial={'slave': str(
+                                                             school_task.slave) if school_task.slave is not None else "",
+                                                                  'supervisor': str(
+                                                                      school_task.supervisor) if school_task.supervisor is not None else "",
+                                                                  'creator': str(
+                                                                      school_task.creator) if school_task.creator is not None else "",
                                                                   'lesson': school_task.lesson.name,
                                                                   'background': school_task.background.name if school_task.background is not None else None})
         return context
+
+
+class EditTask(TemplateView):
+    template_name = "edit_task.html"
+
+    def get_context_data(self, task_id):
+        school_task = SchoolTask.objects.get(task__id=task_id)
+        context = dict()
+        context['task_form'] = MeetingTaskSchoolForm(instance=school_task.task)
+        context['school_task_form'] = SchoolTaskForm(instance=school_task)
+        context['task_id'] = school_task.task.id
+        context['school_task_id'] = school_task.id
+        return context
+
+    def post(self, request, task_id):
+        context = dict()
+        task_form = MeetingTaskSchoolForm(request.POST)
+        school_task_form = SchoolTaskForm(request.POST)
+
+        if task_form.is_valid():
+            if school_task_form.is_valid():
+                task_form.instance.description = school_task_form.instance.description
+                task_form.instance.id = request.POST['task_id']
+                task = task_form.save()
+                school_task_form.instance.task = task
+                school_task_form.instance.id = request.POST['school_task_id']
+                school_task = school_task_form.save()
+                return redirect('/school/tasks/{}'.format(school_task.task.id))
+
+        context['task_id'] = request.POST['task_id']
+        context['school_task_id'] = request.POST['school_task_id']
+
+        context['task_form'] = task_form
+        context['school_task_form'] = school_task_form
+        return render(request, "edit_task.html", context)
 
 
 class SchoolPlanDetails(View):
@@ -176,7 +216,12 @@ def school_member_lesson_passed(request, member_id):
         passed_dates.append(lesson_passed.lesson_passed_date)
         passed_dates.sort()
 
-    tpl = loader.get_template('add_task_school.inc.html')
+    if request.GET.get('action', None) == "edit":
+        template_name = 'edit_task_school.inc.html'
+    else:
+        template_name = 'add_task_school.inc.html'
+
+    tpl = loader.get_template(template_name)
     context = {'school_task_form': SchoolTaskForm(),
                'passed_lessons': passed_lessons
                }
@@ -219,12 +264,15 @@ def school_tasks_print(request):
 
 
 def school_member_history(request, member_id):
-    # szukanie jako master i slave !! dodac Q | dla slave
     member_history = SchoolTask.objects.filter(Q(task__person__id=member_id) | Q(slave__id=member_id))
     p = reversed(sorted(member_history, key=lambda x: x.task.presentation_date))
-    b = [ a for a in p ][:5]
-    print b
+    b = [a for a in p][:5]
     tpl = loader.get_template('add_task_mamber_history.inc.html')
     context = {'member_history': b}
     return HttpResponse(tpl.render(context))
 
+
+def school_task_delete(request, task_id):
+    print request.GET
+    SchoolTask.objects.get(task__id=task_id).delete()
+    return redirect(request.GET.get('ref', '/school/tasks'))

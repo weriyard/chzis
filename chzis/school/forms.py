@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput, Select, Textarea, RadioSelect, ChoiceField
+from django.forms import ModelForm, TextInput, Select, Textarea, RadioSelect, HiddenInput
 from django import forms
 from django.utils.translation import ugettext as _
 
@@ -11,6 +11,7 @@ class SchoolTaskForm(ModelForm):
         model = SchoolTask
         exclude = ['task', 'lesson_passed', 'supervisor']
         widgets = {
+            'id': HiddenInput(),
             'slave': Select(attrs={'class': 'form-control'}),
             'lesson': RadioSelect(attrs={'class': 'radio-primary'}),
             # 'lesson': LessonListWithLastDate(attrs={'class': 'form-control'}),
@@ -43,10 +44,11 @@ class SchoolTaskViewForm(SchoolTaskForm):
         widgets = {
             'slave': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
             'supervisor': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
-            'lesson': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
             'lesson_passed': LessonPassedWidget(attrs={'class': 'form-control', 'disabled': ''}),
             'background': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
-            'description': Textarea(attrs={'class': 'form-control', 'disabled': ''})
+            'description': Textarea(attrs={'class': 'form-control', 'disabled': ''}),
+            'creator': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
+            'lesson': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
         }
 
 

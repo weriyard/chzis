@@ -26,7 +26,8 @@ from chzis.manage_urls import urlpatterns as manage_urlpatterns
 from chzis.mainpage.views import Index
 from chzis.congregation.views import Congregations, CongregationMemberDetails, CongregationDetails, CongregationMemberProfileRedirect, CongregationRedirect
 from chzis.users.views import PeopleProfileSetting, PeopleLogin
-from chzis.school.views import Tasks, AddTasks, TaskView, SchoolPlanDetails, school_plan, set_task_result, school_member_lesson_passed, school_tasks_print, school_member_history
+from chzis.school.views import Tasks, AddTasks, TaskView, SchoolPlanDetails, school_plan, set_task_result, \
+    school_member_lesson_passed, school_tasks_print, school_member_history, school_task_delete, EditTask
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -44,6 +45,8 @@ urlpatterns = [
     url(r'^congregations/unknown/members/(?P<member_id>\d+)$', login_required(CongregationMemberDetails.as_view())),
     url(r'^school/tasks/$', Tasks.as_view()),
     url(r'^school/tasks/add/$', AddTasks.as_view()),
+    url(r'^school/tasks/(?P<task_id>\d+)/edit/$', EditTask.as_view()),
+    url(r'^school/tasks/(?P<task_id>\d+)/delete', school_task_delete),
     url(r'^school/tasks/(?P<task_id>\d+)/$', TaskView.as_view()),
     url(r'^school/tasks/(?P<task_id>\d+)/result/$', set_task_result),
     url(r'^school/lessons/passed/(?P<member_id>\d+)', school_member_lesson_passed),

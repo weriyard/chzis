@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% block head %}
+    <script type='text/javascript'>
+
+        function get_lessons() {
+            var member_id = $("#id_person").val();
+            $.ajax({
+                url: '/school/lessons/passed/' + member_id,
+                data: {action: 'edit'},
+                success: function (data) {
+                    console.log(data);
+                    $("#school_task_content").html(data);
+
+                }
+            });
+        }
+
+        function get_member_history(member_id, id) {
+            var member_id = $(member_id).val();
+            $.ajax({
+                url: '/school/member/history/' + member_id,
+                success: function (data) {
+                    console.log(data);
+                    $(id).show();
+                    $(id).html(data);
+                }
+            });
+        }
+
+        $(window).on('load', function () {
+            $("#id_person").change(function () {
+                get_lessons();
+                get_member_history("#id_person", "#master_history");
+            });
+            $("#id_slave").change(function () {
+                get_member_history("#id_slave", "#slave_history");
+            });
+
+            if ($("#id_person").val() != "") {
+                //get_lessons();
+                get_member_history("#id_person", "#master_history");
+                get_member_history("#id_slave", "#slave_history");
+            if ($("#id_slave").val() != "") {
+                get_member_history("#id_slave", "#slave_history");
+            }
+            }
+        });
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    <form method="POST" class="form-horizontal" role="form">
+        {% csrf_token %}
+        <div class="col-md-offset-3 col-md-8">
+            <div class="col-md-8">
+            {{ task_form.instance.id }}
+            {{ task_form.id }}
+                <input type="hidden" id="task_id" name="task_id" value="{{ task_id }}">
+                {{ task_form.as_div }}
+            <div id="master_history"></div>
+            <div class="clearfix"></div>
+                    {% if school_task_form %}
+                        <input type="hidden" id="school_task_id" name="school_task_id" value="{{ school_task_id }}">
+                        <div class="form-group">
+                            <label for="{{ school_task_form.slave.id_for_label }}">{{ school_task_form.slave.label }}</label>
+                            {{ school_task_form.slave.errors }}
+                            {{ school_task_form.slave }}
+                        </div>
+                        <div id="{{ school_task_form.slave.id_for_label }}"></div>
+                        <div id="slave_history"></div>
+                        <div class="clearfix"></div>
+                        <div class="error-block">
+                            {{ school_task_form.lesson.errors }}
+                        </div>
+                        <div id="school_task_content">
+                            {% include "edit_task_school.inc.html" %}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ school_task_form.background.id_for_label }}">{{ school_task_form.background.label }}</label>
+                            {{ school_task_form.background.errors }}
+                            {{ school_task_form.background }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ school_task_form.description.id_for_label }}">{{ school_task_form.description.label }}</label>
+                            {{ school_task_form.description.errors }}
+                            {{ school_task_form.description }}
+                        </div>
+                    {% endif %}
+                <button type="submit" class="btn btn-lg btn-warning" name="Add">{% trans "Save changes" %}</button>
+            </div>
+            <div class="clearfix"></div>
+            <div class="spacer50"></div>
+        </div>
+    </form>
+{% endblock %}

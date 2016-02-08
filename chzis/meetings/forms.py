@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput, Select, Textarea
+from django.forms import ModelForm, TextInput, Select, Textarea, HiddenInput
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
@@ -18,11 +18,8 @@ class EmptyChoiceField(forms.ChoiceField):
 
 class MeetingTaskSchoolForm(forms.ModelForm):
     meeting_item_choices = MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'name')
-    # meeting_item = EmptyChoiceField(choices=[(id, _(item)) for id, item in meeting_item_choices],
-    #                                  widget=Select(attrs={'class': 'form-control', 'label': None}), empty_label='---------')
     meeting_item = EmptyChoiceField(choices=meeting_item_choices,
                                     widget=Select(attrs={'class': 'form-control', 'label': None}), empty_label='---------')
-
 
     class Meta:
         model = MeetingTask
@@ -57,6 +54,7 @@ class MeetingTaskSchoolViewForm(forms.ModelForm):
     class Meta:
         model = MeetingTask
         exclude = ['topic', 'description']
+
 
         widgets = {
             'meeting_item': TextInput(attrs={'class': 'form-control', 'disabled': ''}),

@@ -21,7 +21,7 @@ class MeetingItemAdmin(admin.ModelAdmin):
 
 
 class MeetingTaskAdmin(admin.ModelAdmin):
-    list_display = ('meeting_item', 'person', 'presentation_date')
+    list_display = ('id', 'meeting_item', 'person', 'presentation_date')
     list_filter = list_display
 
 

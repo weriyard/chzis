@@ -2,12 +2,10 @@
 
 from __future__ import unicode_literals
 from django.db import models
+from django.core import exceptions
 
 from chzis.congregation.models import Congregation, CongregationMember
 from django.utils.translation import ugettext_lazy as _
-#import vinaigrette
-
-
 
 
 class MeetingTypeManager(models.Manager):
@@ -71,7 +69,8 @@ class MeetingTask(models.Model):
     last_modification = models.DateTimeField(auto_now=True, null=True)
 
     def __unicode__(self):
-        return "{meeting} {person} {presentation_date}".format(meeting=self.meeting_item, person=self.person, presentation_date=self.presentation_date)
+        return "{id} {meeting} {person} {presentation_date}".format(id=self.id,
+                                                                    meeting=self.meeting_item,
+                                                                    person=self.person,
+                                                                    presentation_date=self.presentation_date)
 
-
-#vinaigrette.register(MeetingItem, ['full_name'])
