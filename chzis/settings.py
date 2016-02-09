@@ -39,13 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chzis.mainpage',
-    'chzis.manage',
     'chzis.congregation',
     'chzis.users',
     'chzis.meetings',
     'chzis.school',
     'chzis.layout',
-#    'vinaigrette',
 
 ]
 MIDDLEWARE_CLASSES = [

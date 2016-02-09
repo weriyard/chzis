@@ -2,22 +2,6 @@
 
 {% load extra_filters %}
 
-
-<div class="form-group">
-    <label for="{{ school_task_form.slave.id_for_label }}">{{ school_task_form.slave.label }}</label>
-    {{ school_task_form.slave.errors }}
-    {{ school_task_form.slave }}
-</div>
-
-<div id="{{ school_task_form.slave.id_for_label }}"></div>
-<div class="clearfix"></div>
-
-<div id="slave_history"></div>
-<div class="clearfix"></div>
-
-<div class="error-block">
-    {{ school_task_form.lesson.errors }}
-</div>
 <div class="form-group">
     <div class="table-responsive">
         <table class="table-condensed school-lessons">
@@ -63,14 +47,4 @@
             {% endfor %}
         </table>
     </div>
-</div>
-<div class="form-group">
-    <label for="{{ school_task_form.background.id_for_label }}">{{ school_task_form.background.label }}</label>
-    {{ school_task_form.background.errors }}
-    {{ school_task_form.background }}
-</div>
-<div class="form-group">
-    <label for="{{ school_task_form.description.id_for_label }}">{{ school_task_form.description.label }}</label>
-    {{ school_task_form.description.errors }}
-    {{ school_task_form.description }}
 </div>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+    <div class="col-md-offset-3 col-md-6">
+        <form method="POST" class="form-horizontal" role="form">
+        {% csrf_token %}
+            <p>
+                {% blocktrans %}
+                Please put all passed lesson for selected member.
+                {% endblocktrans %}
+            </p>
+
+            {{ passed_lesson_form }}
+            <div class="spacer10"></div>
+            <button type="submit" class="btn btn-lg btn-warning" name="Add">{% trans "Add task" %}</button>
+        </form>
+
+    </div>
+{% endblock %}

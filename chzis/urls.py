@@ -21,13 +21,11 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 
-from chzis.manage_urls import urlpatterns as manage_urlpatterns
-
 from chzis.mainpage.views import Index
 from chzis.congregation.views import Congregations, CongregationMemberDetails, CongregationDetails, CongregationMemberProfileRedirect, CongregationRedirect
 from chzis.users.views import PeopleProfileSetting, PeopleLogin
 from chzis.school.views import Tasks, AddTasks, TaskView, SchoolPlanDetails, school_plan, set_task_result, \
-    school_member_lesson_passed, school_tasks_print, school_member_history, school_task_delete, EditTask
+    school_member_lesson_passed, school_tasks_print, school_member_history, school_task_delete, EditTask, SchoolLessonImport
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -50,6 +48,7 @@ urlpatterns = [
     url(r'^school/tasks/(?P<task_id>\d+)/$', TaskView.as_view()),
     url(r'^school/tasks/(?P<task_id>\d+)/result/$', set_task_result),
     url(r'^school/lessons/passed/(?P<member_id>\d+)', school_member_lesson_passed),
+    url(r'^school/lessons/import/', SchoolLessonImport.as_view()),
     url(r'^school/member/history/(?P<member_id>\d+)', school_member_history),
     url(r'^school/tasks/print/$', school_tasks_print),
     url(r'^school/plan/$', school_plan),
@@ -57,5 +56,3 @@ urlpatterns = [
 
 
 ] + static(settings.STATIC_URL)
-
-# urlpatterns += manage_urlpatterns

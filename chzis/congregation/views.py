@@ -54,7 +54,6 @@ class CongregationDetails(TemplateView):
             for priv in priv_cong_member:
                 privileges[priv.privilege.name] = True
 
-        print members, len(members)
         context = dict()
         context['cong_members'] = members
         return context
@@ -72,8 +71,8 @@ class CongregationMemberDetails(TemplateView):
         else:
             try:
                 cong_member = CongregationMember.objects.get(user__id=member_id)
-            except exceptions.ObjectDoesNotExist:
-                cong_member = None
+            except exceptions.ObjectDoesNotExist as e:
+                return context
 
         member_privileges = CongregationMemberPrivileges.objects.filter(member=cong_member).values_list(
             'privilege__name', 'id')

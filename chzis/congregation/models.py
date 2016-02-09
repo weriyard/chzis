@@ -52,11 +52,10 @@ class CongregationMember(models.Model):
             congregation_id=self.congregation.id if self.congregation is not None else 'unknown',
             members_id=self.id)
 
-    def get_manage_absolute_url(self):
-        return "{manage_url}{absolute_url}".format(manage_url=settings.MANAGE_URL, absolute_url=self.get_absolute_url())
-
-    def get_absolute_url_by_user(self, user_id):
-        pass
+    @property
+    def member_fullname(self):
+        return "{firstname} {lastname}".format(firstname=self.user.first_name,
+                                               lastname=self.user.last_name)
 
     class Meta:
         ordering = ['user']
@@ -94,7 +93,6 @@ class CongregationMemberPrivileges(models.Model):
 
     def save(self, *args, **kwargs):
         member_gender = self.member.user.profile.gender
-        print member_gender, self.privilege.allow_gender
         if self.privilege.allow_gender != 'A' and member_gender != self.privilege.allow_gender:
             raise RuntimeError
 

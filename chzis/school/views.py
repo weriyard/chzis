@@ -15,10 +15,11 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core import exceptions
 from django.db.models import Q
 
-from chzis.school.models import SchoolTask
-from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm, SchoolTaskFilterForm
+from chzis.school.models import SchoolTask, Lesson
+from chzis.school.forms import SchoolTaskForm, SchoolTaskViewForm, SchoolTaskFilterForm, PassedLessonImportForm
 from chzis.congregation.models import CongregationMember
 from chzis.meetings.forms import MeetingTaskSchoolForm, MeetingTaskSchoolViewForm
+from chzis.meetings.models import MeetingTask, MeetingItem
 from chzis.utils.pdf import schooltask
 
 
@@ -27,7 +28,7 @@ class Tasks(View):
         date_now = datetime.datetime.now()
         month_days = datetime.datetime(year=date_now.year, month=date_now.month + 1, day=1) - datetime.datetime(
                 year=date_now.year, month=date_now.month, day=1)
-        tasks = SchoolTask.objects.all()
+        tasks = SchoolTask.objects.all().exclude(task__meeting_item__name='Unknown')
 
         action = request.GET.get('action')
         if action == "filter":
@@ -81,8 +82,8 @@ class AddTasks(TemplateView):
 
     def get_context_data(self):
         context = dict()
-        context['task_form'] = MeetingTaskSchoolForm(instance=SchoolTask.objects.get(task__id=40).task)
-        context['school_task_form'] = SchoolTaskForm(instance=SchoolTask.objects.get(id=35))
+        context['task_form'] = MeetingTaskSchoolForm()
+        context['school_task_form'] = SchoolTaskForm()
         return context
 
     def post(self, request):
@@ -101,7 +102,7 @@ class AddTasks(TemplateView):
                     pass
 
                 school_task = school_task_form.save()
-                return redirect('/school/tasks/{}'.format(school_task.id))
+                return redirect('/school/tasks/{}'.format(school_task.task.id))
 
         context = dict()
         context['task_form'] = task_form
@@ -264,8 +265,8 @@ def school_tasks_print(request):
 
 
 def school_member_history(request, member_id):
-    member_history = SchoolTask.objects.filter(Q(task__person__id=member_id) | Q(slave__id=member_id))
-    p = reversed(sorted(member_history, key=lambda x: x.task.presentation_date))
+    member_history = SchoolTask.objects.filter(Q(task__person__id=member_id) | Q(slave__id=member_id)).exclude(task__meeting_item__name='Unknown')
+    p = reversed(sorted(member_history, key=lambda x: x.task.presentation_date if x.task.presentation_date else datetime.date(1900, 1, 1)))
     b = [a for a in p][:5]
     tpl = loader.get_template('add_task_mamber_history.inc.html')
     context = {'member_history': b}
@@ -273,6 +274,44 @@ def school_member_history(request, member_id):
 
 
 def school_task_delete(request, task_id):
-    print request.GET
     SchoolTask.objects.get(task__id=task_id).delete()
     return redirect(request.GET.get('ref', '/school/tasks'))
+
+
+class SchoolLessonImport(TemplateView):
+    template_name = "lesson_import.html"
+
+    def get_context_data(self):
+        context = dict()
+        context['passed_lesson_form'] = PassedLessonImportForm()
+        return context
+
+    def post(self, request):
+        lesson_passed_form = PassedLessonImportForm(request.POST)
+
+        if lesson_passed_form.is_valid():
+            member = lesson_passed_form.cleaned_data['members']
+            passed_lessons = lesson_passed_form.cleaned_data['passed_lessons']
+            cong_memeber = CongregationMember.objects.get(id=member)
+            try:
+                creator = CongregationMember.objects.get(user__id=request.user.id)
+            except exceptions.ObjectDoesNotExist:
+                creator = None
+            lessons = Lesson.objects.all()
+            for lesson_number in passed_lessons:
+                meeting_task = MeetingTask()
+                meeting_task.person = cong_memeber
+                meeting_task.meeting_item = MeetingItem.objects.get(name='Unknown')
+                meeting_task.presentation_date = datetime.datetime(1900, 1, 1)
+                meeting_task.save()
+                school_task = SchoolTask()
+                school_task.creator = creator
+                school_task.lesson = lessons.get(number=lesson_number)
+                school_task.lesson_passed = True
+                school_task.lesson_passed_date = datetime.datetime(1900, 1, 1)
+                school_task.task = meeting_task
+                school_task.save()
+
+        context = dict()
+        context['passed_lesson_form'] = lesson_passed_form
+        return render(request, "lesson_import.html", context)

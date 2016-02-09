@@ -32,15 +32,32 @@
                 }
             });
         }
-
+{#        $(window).on('load', function () {#}
+{#            $("#id_person").change(function () {#}
+{#                get_lessons();#}
+{#                get_member_history("#id_person", "#master_history");#}
+{#            });#}
+{#            if ($("#id_person").val() != "") {#}
+{#                get_lessons();#}
+{#                get_member_history("#id_person", "#master_history");#}
+{#            }#}
+{#        });#}
         $(window).on('load', function () {
             $("#id_person").change(function () {
                 get_lessons();
                 get_member_history("#id_person", "#master_history");
             });
+            $("#id_slave").change(function () {
+                get_member_history("#id_slave", "#slave_history");
+            });
+
             if ($("#id_person").val() != "") {
-                get_lessons();
+                //get_lessons();
                 get_member_history("#id_person", "#master_history");
+                get_member_history("#id_slave", "#slave_history");
+            if ($("#id_slave").val() != "") {
+                get_member_history("#id_slave", "#slave_history");
+            }
             }
         });
     </script>
@@ -48,7 +65,6 @@
 
 
 {% block content %}
-
     <form method="POST" class="form-horizontal" role="form">
         {% csrf_token %}
         <div class="col-md-offset-3 col-md-8">
@@ -56,16 +72,34 @@
                 {{ task_form.as_div }}
             <div id="master_history"></div>
             <div class="clearfix"></div>
-                <div id="school_task_content">
-                    {% if school_task_form %}
-                        {% include "add_task_school.inc.html" %}
-                    {% endif %}
-                </div>
-                <button type="submit" class="btn btn-lg btn-warning" name="Add">{% trans "Add task" %}</button>
-            </div>
+                {% if school_task_form %}
+                    <div class="form-group">
+                        <label for="{{ school_task_form.slave.id_for_label }}">{{ school_task_form.slave.label }}</label>
+                            {{ school_task_form.slave.errors }}
+                            {{ school_task_form.slave }}
+                        </div>
+                        <div id="{{ school_task_form.slave.id_for_label }}"></div>
+                        <div id="slave_history"></div>
+                        <div class="clearfix"></div>
+                        <div class="error-block">
+                            {{ school_task_form.lesson.errors }}
+                        </div>
+                        <div id="school_task_content">
+                            {% include "add_task_school.inc.html" %}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ school_task_form.background.id_for_label }}">{{ school_task_form.background.label }}</label>
+                            {{ school_task_form.background.errors }}
+                            {{ school_task_form.background }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ school_task_form.description.id_for_label }}">{{ school_task_form.description.label }}</label>
+                            {{ school_task_form.description.errors }}
+                            {{ school_task_form.description }}
+                        </div>
+                            <button type="submit" class="btn btn-lg btn-warning" name="Add">{% trans "Add task" %}</button>
+                        </div>
+                {% endif %}
         </div>
     </form>
-
-
-
 {% endblock %}
