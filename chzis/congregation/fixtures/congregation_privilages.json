@@ -1,7 +1,7 @@
 [
     {
         "pk": 1,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationPrivileges",
         "fields": {
             "name": "school_member",
             "full_name": "School member",
@@ -10,7 +10,7 @@
     },
     {
         "pk": 2,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationPrivileges",
         "fields": {
             "name": "servant",
             "full_name": "Servant minister",
@@ -19,7 +19,7 @@
     },
     {
         "pk": 3,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationPrivileges",
         "fields": {
             "name": "elder",
             "full_name": "Elder",
@@ -28,7 +28,7 @@
     },
     {
         "pk": 4,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationPrivileges",
         "fields": {
             "name": "aux_pioneer",
             "full_name": "Auxiliary pioneer",
@@ -37,7 +37,7 @@
     },
     {
         "pk": 5,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationPrivileges",
         "fields": {
             "name": "pioneer",
             "full_name": "Pioneer",
@@ -46,7 +46,7 @@
     },
     {
         "pk": 6,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationPrivileges",
         "fields": {
             "name": "master",
             "full_name": "Master",
@@ -55,7 +55,7 @@
     },
     {
         "pk": 7,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationPrivileges",
         "fields": {
             "name": "slave",
             "full_name": "Slave",
@@ -64,7 +64,7 @@
     },
     {
         "pk": 8,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationPrivileges",
         "fields": {
             "name": "reader",
             "full_name": "Reader",
@@ -73,7 +73,7 @@
     },
     {
         "pk": 9,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationPrivileges",
         "fields": {
             "name": "lector",
             "full_name": "lector",
@@ -82,7 +82,7 @@
     },
     {
         "pk": 10,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationPrivileges",
         "fields": {
             "name": "sound_sysop",
             "full_name": "Sound operator",
@@ -91,7 +91,7 @@
     },
     {
         "pk": 11,
-        "model": "congregation.CongregationPrivilages",
+        "model": "congregation.CongregationPrivileges",
         "fields": {
             "name": "coordinator",
             "full_name": "Congregation coordinator",

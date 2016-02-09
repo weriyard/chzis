@@ -194,5 +194,19 @@
             "weekend": null,
             "order": 4
         }
+    },
+    {
+        "pk": 15,
+        "model": "meetings.MeetingItem",
+        "fields": {
+            "name": "Old school",
+            "part": [
+                "Old school"
+            ],
+            "full_name": "Old school before 2016",
+            "duration": 45,
+            "weekend": null,
+            "order": 0
+        }
     }
 ]

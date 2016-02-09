@@ -84,9 +84,15 @@ class SchoolTaskFilterForm(forms.Form):
 
 
 class PassedLessonImportForm(forms.Form):
-    congr_members_choices = CongregationMember.objects.filter(congregation_id=1).values_list('id', 'user__last_name', 'user__first_name')
-    members = forms.CharField(widget=Select(attrs={'class': 'form-control'}, choices=[(id, u"{0} {1}".format(last, first)) for id, last, first in congr_members_choices]))
     passed_lessons = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+    members = forms.CharField(widget=Select(attrs={'class': 'form-control'}))
+    #, choices=[(id, u"{0} {1}".format(last, first)) for id, last, first in congr_members_choices])
+
+    def __init__(self, *args, **kwargs):
+        super(PassedLessonImportForm, self).__init__(*args, **kwargs)
+        congr_members_choices = CongregationMember.objects.filter(congregation_id=1).values_list('id', 'user__last_name', 'user__first_name')
+        self.fields['members'].widget.choices = [(id, u"{0} {1}".format(last, first)) for id, last, first in congr_members_choices]
+
 
     def as_div(self):
         return self._html_output(

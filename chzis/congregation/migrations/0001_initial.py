@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('users', '0003_add_superuser'),
+        ('users', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
@@ -32,16 +32,6 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('active', models.BooleanField(default=False)),
-                ('servant', models.BooleanField(default=False)),
-                ('elder', models.BooleanField(default=False)),
-                ('coordinator', models.BooleanField(default=False)),
-                ('pioneer', models.BooleanField(default=False)),
-                ('school_allow', models.BooleanField(default=False)),
-                ('master', models.BooleanField(default=False)),
-                ('slave', models.BooleanField(default=False)),
-                ('reader_only', models.BooleanField(default=False)),
-                ('lector', models.BooleanField(default=False)),
-                ('sound_sysop', models.BooleanField(default=False)),
                 ('last_modification', models.DateTimeField(auto_now=True, null=True)),
                 ('congregation', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='congregation.Congregation')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
@@ -49,6 +39,24 @@ class Migration(migrations.Migration):
             options={
                 'ordering': ['user'],
             },
+        ),
+        migrations.CreateModel(
+            name='CongregationPrivileges',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(blank=True, max_length=255, null=True)),
+                ('full_name', models.CharField(blank=True, max_length=255, null=True)),
+                ('allow_gender', models.CharField(choices=[('M', 'male'), ('F', 'female')], default='all', max_length=1)),
+                ('description', models.TextField(blank=True, null=True)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='CongregationMemberPrivileges',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('member', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='congregation.CongregationMember')),
+                ('privilege', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='congregation.CongregationPrivileges'))
+            ],
         ),
         migrations.AddField(
             model_name='congregation',

@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('congregation', '0003_auto_20160126_1759'),
+        ('users', '0002_load_data'),
     ]
 
     operations = [

@@ -17,9 +17,12 @@ class EmptyChoiceField(forms.ChoiceField):
 
 
 class MeetingTaskSchoolForm(forms.ModelForm):
-    meeting_item_choices = MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'name')
-    meeting_item = EmptyChoiceField(choices=meeting_item_choices,
-                                    widget=Select(attrs={'class': 'form-control', 'label': None}), empty_label='---------')
+    meeting_item = EmptyChoiceField(widget=Select(attrs={'class': 'form-control', 'label': None}), empty_label='---------')
+
+    def __init__(self, *args, **kwargs):
+        super(MeetingTaskSchoolForm, self).__init__(*args, **kwargs)
+        meeting_item_choices = MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'name')
+        self.fields['meeting_item'].choices = meeting_item_choices
 
     class Meta:
         model = MeetingTask

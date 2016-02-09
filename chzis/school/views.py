@@ -28,7 +28,7 @@ class Tasks(View):
         date_now = datetime.datetime.now()
         month_days = datetime.datetime(year=date_now.year, month=date_now.month + 1, day=1) - datetime.datetime(
                 year=date_now.year, month=date_now.month, day=1)
-        tasks = SchoolTask.objects.all().exclude(task__meeting_item__name='Unknown')
+        tasks = SchoolTask.objects.all().exclude(task__meeting_item__name='Old school')
 
         action = request.GET.get('action')
         if action == "filter":
@@ -265,7 +265,7 @@ def school_tasks_print(request):
 
 
 def school_member_history(request, member_id):
-    member_history = SchoolTask.objects.filter(Q(task__person__id=member_id) | Q(slave__id=member_id)).exclude(task__meeting_item__name='Unknown')
+    member_history = SchoolTask.objects.filter(Q(task__person__id=member_id) | Q(slave__id=member_id)).exclude(task__meeting_item__name='Old school')
     p = reversed(sorted(member_history, key=lambda x: x.task.presentation_date if x.task.presentation_date else datetime.date(1900, 1, 1)))
     b = [a for a in p][:5]
     tpl = loader.get_template('add_task_mamber_history.inc.html')
@@ -301,7 +301,7 @@ class SchoolLessonImport(TemplateView):
             for lesson_number in passed_lessons:
                 meeting_task = MeetingTask()
                 meeting_task.person = cong_memeber
-                meeting_task.meeting_item = MeetingItem.objects.get(name='Unknown')
+                meeting_task.meeting_item = MeetingItem.objects.get(name='Old school')
                 meeting_task.presentation_date = datetime.datetime(1900, 1, 1)
                 meeting_task.save()
                 school_task = SchoolTask()

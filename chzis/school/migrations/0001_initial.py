@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('meetings', '0001_initial'),
+        ('meetings', '0002_load_data'),
     ]
 
     operations = [
@@ -48,8 +48,13 @@ class Migration(migrations.Migration):
                 name='SchoolTask',
                 fields=[
                     ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                    ('slave', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                                        related_name='slave_person', to='congregation.CongregationMember')),
+                    ('supervisor', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                                        related_name='supervisor_person', to='congregation.CongregationMember')),
+                    ('creator', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='creator_person', to='congregation.CongregationMember')),
                     ('lesson_passed', models.NullBooleanField()),
-                    ('lesson_passed_date', models.DateTimeField(auto_now=True, null=True)),
+                    ('lesson_passed_date', models.DateTimeField(blank=True, null=True)),
                     ('description', models.TextField(blank=True, null=True)),
                     ('last_modification', models.DateTimeField(auto_now=True, null=True)),
                     ('background', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,

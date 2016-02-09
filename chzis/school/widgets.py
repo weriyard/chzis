@@ -45,7 +45,6 @@ class LessonListWithLastDate(Widget):
         return data.get(name)
 
     def __deepcopy__(self, memo):
-        # print memo
         obj = copy.copy(self)
         obj.attrs = self.attrs.copy()
         memo[id(self)] = obj

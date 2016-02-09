@@ -89,5 +89,18 @@
             ],
             "name": "Field service"
         }
+    },
+    {
+        "pk": 8,
+        "model": "meetings.MeetingType",
+        "fields": {
+            "duration": 45,
+            "start_time": null,
+            "week_day": 3,
+            "congregation": [
+                "Piekary-Kamie\u0144"
+            ],
+            "name": "Old school"
+        }
     }
 ]

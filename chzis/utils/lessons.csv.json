@@ -1,0 +1,585 @@
+[
+    {
+        "pk": 1,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 1,
+            "name": "Staranne czytanie"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 2,
+            "name": "Wyra\u017ana wymowa"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 3,
+            "name": "Poprawna wymowa"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 4,
+            "name": "P\u0142ynno\u015b\u0107"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 5,
+            "name": "Odpowiednie pauzy"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 6,
+            "name": "Akcent zdaniowy"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 0,
+            "discourse": 0,
+            "reading": 1,
+            "number": 7,
+            "name": "Podkre\u015blanie g\u0142\u00f3wnych mysli"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 8,
+            "name": "Odpowiednia si\u0142a g\u0142osu"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 9,
+            "name": "Modulacja"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 10,
+            "name": "Zapa\u0142"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 11,
+            "name": "Serdeczno\u015bc i inne uczucia"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 12,
+            "name": "Gesty i mimika"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 13,
+            "name": "Kontakt wzrokowy"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 14,
+            "name": "Naturalno\u015b\u0107"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 15,
+            "name": "Stosowny wygl\u0105d"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 16,
+            "name": "Opanowanie"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 1,
+            "number": 17,
+            "name": "Korzystanie z mikrofonu"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 0,
+            "reading": 0,
+            "number": 18,
+            "name": "Udzielanie odpowiedzi na podstawie Biblii"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 19,
+            "name": "Zach\u0119canie do u\u017cywania Biblii"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 20,
+            "name": "Skuteczne wprowadzanie werset\u00f3w biblijnych"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 21,
+            "name": "Odczytywanie werset\u00f3w z odpowiednim naciskiem i eskpresj\u0105"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 22,
+            "name": "Poprawne objasnianie werset\u00f3w biblijnych"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 23,
+            "name": "Uwypuklanie praktycznej warto\u015bci materia\u0142u"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 24,
+            "name": "Dob\u00f3r s\u0142\u00f3w"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 25,
+            "name": "Korzystanie ze szkicu"
+        }
+    },
+    {
+        "pk": 26,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 26,
+            "name": "Logiczne uporz\u0105dowanie materia\u0142u"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 27,
+            "name": "Przemawianie z g\u0142owy"
+        }
+    },
+    {
+        "pk": 28,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 28,
+            "name": "Styl konwersacyjny"
+        }
+    },
+    {
+        "pk": 29,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 29,
+            "name": "Brzmienie g\u0142osu"
+        }
+    },
+    {
+        "pk": 30,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 0,
+            "reading": 0,
+            "number": 30,
+            "name": "Okazywanie drugim zainteresowania"
+        }
+    },
+    {
+        "pk": 31,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 31,
+            "name": "Okazywanie innym szacunku"
+        }
+    },
+    {
+        "pk": 32,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 32,
+            "name": "M\u00f3wienie z przekonaniem"
+        }
+    },
+    {
+        "pk": 33,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 33,
+            "name": "Takt po\u0142\u0105czony ze stanowczo\u015bci\u0105"
+        }
+    },
+    {
+        "pk": 34,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 34,
+            "name": "Buduj\u0105co i pozytywnie"
+        }
+    },
+    {
+        "pk": 35,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 35,
+            "name": "Powtarzanie w celu uwypuklenia my\u015bli"
+        }
+    },
+    {
+        "pk": 36,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 36,
+            "name": "Uwypuklenie tematu"
+        }
+    },
+    {
+        "pk": 37,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 37,
+            "name": "Uwypuklenie punkt\u00f3w g\u0142\u00f3wnych"
+        }
+    },
+    {
+        "pk": 38,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 38,
+            "name": "Wst\u0119p wzbudzaj\u0105cy zainteresowanie"
+        }
+    },
+    {
+        "pk": 39,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 39,
+            "name": "Skuteczne zako\u0144czenie"
+        }
+    },
+    {
+        "pk": 40,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 40,
+            "name": "Scis\u0142o\u015b\u0107 informacji"
+        }
+    },
+    {
+        "pk": 41,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 41,
+            "name": "Wypowiadanie si\u0119 w spos\u00f3b zrozumia\u0142y"
+        }
+    },
+    {
+        "pk": 42,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 42,
+            "name": "Materia\u0142 pouczaj\u0105cy dla s\u0142uchaczy"
+        }
+    },
+    {
+        "pk": 43,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 43,
+            "name": "Korzystanie z wyznczonego materia\u0142u"
+        }
+    },
+    {
+        "pk": 44,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 44,
+            "name": "Skuteczne pos\u0142ugiwanie si\u0119 pytaniami"
+        }
+    },
+    {
+        "pk": 45,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 45,
+            "name": "Pouczaj\u0105ce figury stylistyczne i przyk\u0142ady"
+        }
+    },
+    {
+        "pk": 46,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 46,
+            "name": "Przyk\u0142ady nawi\u0105zuj\u0105ce do znanych sytuacji"
+        }
+    },
+    {
+        "pk": 47,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 47,
+            "name": "Umiej\u0119tne pos\u0142ugiwanie si\u0119 pomocami wizualnymi"
+        }
+    },
+    {
+        "pk": 48,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 48,
+            "name": "Rozs\u0105dna argumentacja"
+        }
+    },
+    {
+        "pk": 49,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 49,
+            "name": "Argumenty przkonuj\u0105ce i rzetelne"
+        }
+    },
+    {
+        "pk": 50,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 50,
+            "name": "Trafianie do serca"
+        }
+    },
+    {
+        "pk": 51,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 1,
+            "discourse": 1,
+            "reading": 0,
+            "number": 51,
+            "name": "Odpowiednie rozplanowanie czasu"
+        }
+    },
+    {
+        "pk": 52,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 0,
+            "discourse": 1,
+            "reading": 0,
+            "number": 52,
+            "name": "Skuteczne zach\u0119ty"
+        }
+    },
+    {
+        "pk": 53,
+        "model": "user.OOO",
+        "fields": {
+            "demo": 0,
+            "discourse": 1,
+            "reading": 0,
+            "number": 53,
+            "name": "Pokrzepienie s\u0142uchaczy"
+        }
+    }
+]

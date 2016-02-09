@@ -89,5 +89,18 @@
             "full_name": "Review Followed by Preview of Next Week",
             "order": 5
         }
+    },
+    {
+        "pk": 8,
+        "model": "meetings.MeetingPart",
+        "fields": {
+            "duration": 45,
+            "type": [
+                "Old school"
+            ],
+            "name": "Old school",
+            "full_name": "Old school before 2016.",
+            "order": 0
+        }
     }
 ]

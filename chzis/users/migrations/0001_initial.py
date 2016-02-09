@@ -20,6 +20,7 @@ class Migration(migrations.Migration):
             name='PeopleProfile',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('default_congregation', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to='congregation.Congregation')),
                 ('gender', models.CharField(choices=[('M', 'male'), ('F', 'female')], default='male', max_length=1)),
                 ('last_modification', models.DateTimeField(auto_now=True, null=True)),
                 ('default_congregation', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
