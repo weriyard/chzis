@@ -199,7 +199,7 @@ def create_meeting_task_card(data=None, school_class=None):
     user_name = Paragraph(u"Imię i nazwisko:<font name='Courier_New' size='12'>  {name}</font>".format(name=dynamic_content.get("name")), introduction_style)
     page_content.append(user_name)
     slave_user = Paragraph(
-        "<para>Pomocnik(-ca):<font name='Courier_New' size='12'>  {slave}</font></para>".format(slave=dynamic_content.get("slave")),
+        u"<para>Pomocnik(-ca):<font name='Courier_New' size='12'>  {slave}</font></para>".format(slave=dynamic_content.get("slave")),
         introduction_style)
     page_content.append(slave_user)
     date = Paragraph("Data:<font name='Courier_New' size='12'>  {date}</font>".format(date=dynamic_content.get('date')), introduction_style)

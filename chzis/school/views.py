@@ -235,9 +235,10 @@ def school_tasks_print(request):
     for task in task_list:
         t = SchoolTask.objects.get(id=task)
         task_param = {"name": u"{fullname}".format(fullname=t.task.person.member_fullname),
-                      "slave":  u"{fullname}".format(fullname=t.slave.member_fullname),
+                      "slave":  u"{fullname}".format(fullname=t.slave.member_fullname if t.slave is not None else u""),
                       "date": t.task.presentation_date,
-                      "lesson": t.lesson.name,
+                      "lesson": u"({lesson_number}){lesson_name}".format(lesson_name=t.lesson.name,
+									  lesson_number=t.lesson.number),
                       "task_type": t.task.meeting_item.name,
                       "class": 1
                       }
