@@ -22,13 +22,13 @@
                             {{ item.task.meeting_item.full_name  }}
                         </td>
                         <td>
-                            <a href="item.lesson.get_absolute_url">{{ item.lesson.number }}</a>
+                            <a href="item.lesson.get_absolute_url" tabindex="-1">{{ item.lesson.number }}</a>
                         </td>
                         <td>
                             {{ item.slave|default_if_none:""  }}
                         </td>
                         <td>
-                        <a href="{{ item.get_absolute_url }}" target="_blank">{{ item.id }}</a>
+                        <a href="{{ item.get_absolute_url }}" target="_blank" tabindex="-1">{{ item.id }}</a>
                         </td>
                     </tr>
                 {% endfor %}

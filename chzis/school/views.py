@@ -82,7 +82,7 @@ class AddTasks(TemplateView):
 
     def get_context_data(self):
         context = dict()
-        context['task_form'] = MeetingTaskSchoolForm()
+        context['task_form'] = MeetingTaskSchoolForm(initial={'presentation_date': self.request.session.get('last_schooltask_date', None)})
         context['school_task_form'] = SchoolTaskForm()
         return context
 
@@ -102,6 +102,7 @@ class AddTasks(TemplateView):
                     pass
 
                 school_task = school_task_form.save()
+                request.session['last_schooltask_date'] = str(task.presentation_date)
                 return redirect('/school/tasks/{}'.format(school_task.task.id))
 
         context = dict()

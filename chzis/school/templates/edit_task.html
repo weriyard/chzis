@@ -30,6 +30,10 @@
         }
 
         $(window).on('load', function () {
+            $(function() {
+                $("#id_meeting_item").focus();
+            });
+
             $("#id_person").change(function () {
                 get_lessons();
                 get_member_history("#id_person", "#master_history");
@@ -42,10 +46,12 @@
                 //get_lessons();
                 get_member_history("#id_person", "#master_history");
                 get_member_history("#id_slave", "#slave_history");
+            }
             if ($("#id_slave").val() != "") {
                 get_member_history("#id_slave", "#slave_history");
             }
-            }
+
+            $(".chosen-select").chosen();
         });
     </script>
 {% endblock %}

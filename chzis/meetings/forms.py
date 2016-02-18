@@ -29,7 +29,7 @@ class MeetingTaskSchoolForm(forms.ModelForm):
         exclude = ['topic', 'description']
 
         widgets = {
-            'person': Select(attrs={'class': 'form-control'}),
+            'person': Select(attrs={'class': 'form-control chosen-select'}),
             'topic': TextInput(attrs={'class': 'form-control'}),
             'presentation_date': InlineSelectDateWidget(attrs={'class': 'form-control'},
                                                         empty_label=("Year", "Month", "Day")),
@@ -63,7 +63,8 @@ class MeetingTaskSchoolViewForm(forms.ModelForm):
             'meeting_item': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
             'person': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
             'presentation_date': InlineSelectDateWidget(attrs={'class': 'form-control', 'disabled': ''},
-                                                        empty_label=("Year", "Month", "Day")),
+                                                        empty_label=("Year", "Month", "Day"),
+                                                        ),
         }
 
     def as_div(self):

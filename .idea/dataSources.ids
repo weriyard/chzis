@@ -86,8 +86,6 @@
       <primary-key columns="id"/>
       <foreign-key name="#FAKE_congregation_congregationmember_1" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <foreign-key name="#FAKE_congregation_congregationmember_2" columns="congregation_id" ref-table="congregation_congregation" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="congregation_congregationmember_e8701ad4" unique="true" columns="user_id"/>
-      <index name="congregation_congregationmember_36212db0" unique="true" columns="congregation_id"/>
     </table>
     <table name="congregation_congregationmemberprivileges" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
@@ -96,15 +94,13 @@
       <primary-key columns="id"/>
       <foreign-key name="#FAKE_congregation_congregationmemberprivileges_1" columns="privilege_id" ref-table="congregation_congregationprivileges" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <foreign-key name="#FAKE_congregation_congregationmemberprivileges_2" columns="member_id" ref-table="congregation_congregationmember" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="congregation_congregationmemberprivileges_a3783896" unique="true" columns="privilege_id"/>
-      <index name="congregation_congregationmemberprivileges_b5c3e75b" unique="true" columns="member_id"/>
     </table>
     <table name="congregation_congregationprivileges" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
+      <column name="full_name" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="allow_gender" sqlType="VARCHAR(1)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="description" sqlType="TEXT" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="full_name" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <primary-key columns="id"/>
     </table>
     <table name="django_admin_log" schema="" catalog="" type="TABLE">
@@ -214,29 +210,29 @@
     </table>
     <table name="school_schooltask" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="slave_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
+      <column name="supervisor_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
+      <column name="creator_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <column name="lesson_passed" sqlType="BOOL" precision="0" scale="-1" nullable="true" jdbcType="4"/>
+      <column name="lesson_passed_date" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="description" sqlType="TEXT" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="last_modification" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="background_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <column name="lesson_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="task_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="slave_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="supervisor_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="creator_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="lesson_passed_date" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <primary-key columns="id"/>
-      <foreign-key name="#FAKE_school_schooltask_1" columns="creator_id" ref-table="congregation_congregationmember" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_school_schooltask_2" columns="supervisor_id" ref-table="congregation_congregationmember" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_school_schooltask_3" columns="slave_id" ref-table="congregation_congregationmember" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_school_schooltask_4" columns="task_id" ref-table="meetings_meetingtask" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_school_schooltask_5" columns="lesson_id" ref-table="school_lesson" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_school_schooltask_6" columns="background_id" ref-table="school_background" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="school_schooltask_3700153c" unique="true" columns="creator_id"/>
-      <index name="school_schooltask_eae0a89e" unique="true" columns="supervisor_id"/>
-      <index name="school_schooltask_05e2b4d0" unique="true" columns="slave_id"/>
+      <foreign-key name="#FAKE_school_schooltask_1" columns="task_id" ref-table="meetings_meetingtask" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_school_schooltask_2" columns="lesson_id" ref-table="school_lesson" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_school_schooltask_3" columns="background_id" ref-table="school_background" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_school_schooltask_4" columns="creator_id" ref-table="congregation_congregationmember" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_school_schooltask_5" columns="supervisor_id" ref-table="congregation_congregationmember" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_school_schooltask_6" columns="slave_id" ref-table="congregation_congregationmember" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <index name="school_schooltask_57746cc8" unique="true" columns="task_id"/>
       <index name="school_schooltask_55174b7b" unique="true" columns="lesson_id"/>
       <index name="school_schooltask_48abea43" unique="true" columns="background_id"/>
+      <index name="school_schooltask_3700153c" unique="true" columns="creator_id"/>
+      <index name="school_schooltask_eae0a89e" unique="true" columns="supervisor_id"/>
+      <index name="school_schooltask_05e2b4d0" unique="true" columns="slave_id"/>
     </table>
     <table name="sqlite_sequence" schema="" catalog="" type="TABLE">
       <column name="name" sqlType="" precision="0" scale="-1" nullable="true" jdbcType="12"/>
@@ -246,13 +242,13 @@
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="gender" sqlType="VARCHAR(1)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="last_modification" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
+      <column name="default_congregation_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <column name="birth_date" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="baptism_date" sqlType="DATE" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="user_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
-      <column name="default_congregation_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <primary-key columns="id"/>
-      <foreign-key name="#FAKE_users_peopleprofile_1" columns="default_congregation_id" ref-table="congregation_congregation" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_users_peopleprofile_2" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_users_peopleprofile_1" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_users_peopleprofile_2" columns="default_congregation_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <index name="users_peopleprofile_c7c0a34b" unique="true" columns="default_congregation_id"/>
     </table>
   </data-source>

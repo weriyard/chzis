@@ -4,19 +4,19 @@ from django.utils.translation import ugettext as _
 from django.core import exceptions
 
 from chzis.school.models import SchoolTask, Lesson, Background
-from chzis.school.widgets import InlineSelectDateWidget, LessonPassedWidget, AwesomeCheckbox
+from chzis.school.widgets import InlineSelectDateWidget, LessonPassedWidget, AwesomeCheckbox, ChooseLessonMultiWidget, ChooseLessonMultiField
 from chzis.congregation.models import CongregationMember
 
 
 class SchoolTaskForm(ModelForm):
+    #slave = ChooseLessonMultiField()
     class Meta:
         model = SchoolTask
         exclude = ['task', 'lesson_passed', 'supervisor', 'lesson_passed_date']
         widgets = {
             'id': HiddenInput(),
-            'slave': Select(attrs={'class': 'form-control'}),
+            'slave': Select(attrs={'class': 'form-control chosen-select'}),
             'lesson': RadioSelect(attrs={'class': 'radio-primary'}),
-            # 'lesson': LessonListWithLastDate(attrs={'class': 'form-control'}),
             'background': Select(attrs={'class': 'form-control'}),
             'description': Textarea(attrs={'class': 'form-control'})
 
@@ -92,7 +92,6 @@ class PassedLessonImportForm(forms.Form):
         super(PassedLessonImportForm, self).__init__(*args, **kwargs)
         congr_members_choices = CongregationMember.objects.filter(congregation_id=1).values_list('id', 'user__last_name', 'user__first_name')
         self.fields['members'].widget.choices = [(id, u"{0} {1}".format(last, first)) for id, last, first in congr_members_choices]
-
 
     def as_div(self):
         return self._html_output(
