@@ -5,7 +5,7 @@ import copy
 
 class InlineSelectDateWidget(SelectDateWidget):
     def render(self, name, value, attrs=None):
-        render_output = super(InlineSelectDateWidget, self).render(name, value, attrs=None)
+        render_output = super(InlineSelectDateWidget, self).render(name, value, attrs=attrs)
         output = '<div class="form-inline">%s</div>'
         return output % render_output
 

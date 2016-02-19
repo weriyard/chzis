@@ -31,7 +31,7 @@ class MeetingTaskSchoolForm(forms.ModelForm):
         widgets = {
             'person': Select(attrs={'class': 'form-control chosen-select'}),
             'topic': TextInput(attrs={'class': 'form-control'}),
-            'presentation_date': InlineSelectDateWidget(attrs={'class': 'form-control'},
+            'presentation_date': InlineSelectDateWidget(attrs={'class': 'form-control chosen-select'},
                                                         empty_label=("Year", "Month", "Day")),
             'background': Select(attrs={'class': 'form-control'}),
             'description': Textarea(attrs={'class': 'form-control'})
