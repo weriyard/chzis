@@ -87,9 +87,15 @@
                         <div id="{{ school_task_form.slave.id_for_label }}"></div>
                         <div id="slave_history"></div>
                         <div class="clearfix"></div>
-                        <div class="error-block">
-                            {{ school_task_form.lesson.errors }}
+                        <div>
+                            <div class="error-block">
+                                {{ school_task_form.lesson_number.errors|default_if_none:school_task_form.lesson.errors }}
+                                {{ school_task_form.lesson.errors }}
+                            </div>
+                            <label for="{{ school_task_form.lesson_number.id_for_label }}">{{ school_task_form.lesson_number.label }}</label>
+                            {{ school_task_form.lesson_number }}
                         </div>
+                        <div class="spacer10"></div>
                         <div id="school_task_content">
                             {% include "add_task_school.inc.html" %}
                         </div>

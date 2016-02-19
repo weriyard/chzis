@@ -3,13 +3,18 @@ from django import forms
 from django.utils.translation import ugettext as _
 from django.core import exceptions
 
-from chzis.school.models import SchoolTask, Lesson, Background
-from chzis.school.widgets import InlineSelectDateWidget, LessonPassedWidget, AwesomeCheckbox, ChooseLessonMultiWidget, ChooseLessonMultiField
+from chzis.school.models import SchoolTask, Lesson
+from chzis.school.widgets import InlineSelectDateWidget, LessonPassedWidget, AwesomeCheckbox
 from chzis.congregation.models import CongregationMember
 
 
 class SchoolTaskForm(ModelForm):
-    #slave = ChooseLessonMultiField()
+    lesson_number = forms.CharField(widget=TextInput(attrs={'class': 'form-control'}), required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(SchoolTaskForm, self).__init__(*args, **kwargs)
+        self.fields['lesson'].required = False
+
     class Meta:
         model = SchoolTask
         exclude = ['task', 'lesson_passed', 'supervisor', 'lesson_passed_date']
@@ -37,6 +42,36 @@ class SchoolTaskForm(ModelForm):
                 row_ender='</div>',
                 help_text_html=' <div class="help-block">%s</div>',
                 errors_on_separate_row=True)
+
+    def clean_lesson_number(self):
+        number_lesson_data = self.data.get('lesson_number')
+        if number_lesson_data is not None and len(number_lesson_data.strip()) == 0:
+            number_lesson_data = None
+        lesson_data = self.data.get('lesson')
+
+        if number_lesson_data is None and lesson_data is None:
+            raise ValidationError(_("Lesson is required. Put lesson number or select from list (clean_lesson_number)."))
+        elif number_lesson_data is not None and lesson_data is None:
+            self.cleaned_data['lesson'] = Lesson.objects.get(number=number_lesson_data)
+        elif number_lesson_data is not None and lesson_data is not None:
+            raise ValidationError(_("Only one lesson number is allowed (clean_lesson_number) !"))
+
+        return self.cleaned_data.get('lesson')
+
+    def clean_lesson(self):
+        number_lesson_data = self.data.get('lesson_number')
+        if number_lesson_data is not None and len(number_lesson_data.strip()) == 0:
+            number_lesson_data = None
+
+        lesson_data = self.cleaned_data.get('lesson')
+        if number_lesson_data is None and lesson_data is None:
+            raise ValidationError(_("Lesson is required. Put lesson number or select from list (clean_lesson)."))
+        elif lesson_data is None and number_lesson_data is not None:
+            lesson_data = Lesson.objects.get(number=number_lesson_data)
+        elif number_lesson_data is not None and lesson_data is not None:
+            raise ValidationError(_("Only one lesson number is allowed (clean_lesson) !"))
+
+        return lesson_data
 
 
 class SchoolTaskViewForm(SchoolTaskForm):
@@ -70,10 +105,6 @@ class SchoolTaskFilterForm(forms.Form):
                                                         empty_label=(_("Year"), _("Month"), _("Day"))),
                           label="", required=False)
 
-    def clean_end(self):
-        data = self.cleaned_data['end']
-        return data
-
     def as_div(self):
         return self._html_output(
                 normal_row='<div class="form-group %(html_class_attr)s">%(label)s %(field)s%(help_text)s</div>',
@@ -86,7 +117,6 @@ class SchoolTaskFilterForm(forms.Form):
 class PassedLessonImportForm(forms.Form):
     passed_lessons = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
     members = forms.CharField(widget=Select(attrs={'class': 'form-control'}))
-    #, choices=[(id, u"{0} {1}".format(last, first)) for id, last, first in congr_members_choices])
 
     def __init__(self, *args, **kwargs):
         super(PassedLessonImportForm, self).__init__(*args, **kwargs)
