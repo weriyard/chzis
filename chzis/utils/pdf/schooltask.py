@@ -114,12 +114,6 @@ pdfmetrics.registerFont(TTFont('Courier_New', 'Courier_New.ttf'))
 
 
 def create_meeting_task_card(data=None, school_class=None):
-    # page_size = (88.5 * mm, 140 * mm)
-    # doc = SimpleDocTemplate("form_letter.pdf", pagesize=page_size,
-    #                         rightMargin=0,
-    #                         leftMargin=0,
-    #                         topMargin=0,
-    #                         bottomMargin=0)
 
     dynamic_content = {"name": "",
                        "slave": "",
