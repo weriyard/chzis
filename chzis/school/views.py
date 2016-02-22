@@ -260,7 +260,7 @@ def school_tasks_print(request):
         response['Content-Length'] = os.path.getsize(os.path.join('/tmp', file_name))
         response['Content-Disposition'] = 'attachment; filename={filename}'.format(filename=file_name.encode('utf-8'))
     else:
-        respone = HttpResponse("Please select least one task in order to generate pdf.")
+        response = HttpResponse("Please select least one task in order to generate pdf.")
 
     return response
 
