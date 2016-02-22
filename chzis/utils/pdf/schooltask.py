@@ -193,7 +193,7 @@ def create_meeting_task_card(data=None, school_class=None):
     right_col_margin = 152
 
     page_content.append(Spacer(0, 5 * mm))
-    header = Paragraph("<strong>ZADANIE PODCZAS ZEBRANIA CHRZESCIJAŃSKIEGO ŻYCIA I SŁUŻBY</strong>", header_style)
+    header = Paragraph(u"<strong>ZADANIE PODCZAS ZEBRANIA CHRZESCIJAŃSKIEGO ŻYCIA I SŁUŻBY</strong>", header_style)
     page_content.append(header)
     page_content.append(Spacer(0, 8 * mm))
     user_name = Paragraph(u"Imię i nazwisko:<font name='Courier_New' size='12'>  {name}</font>".format(name=dynamic_content.get("name")), introduction_style)
@@ -202,7 +202,7 @@ def create_meeting_task_card(data=None, school_class=None):
         u"<para>Pomocnik(-ca):<font name='Courier_New' size='12'>  {slave}</font></para>".format(slave=dynamic_content.get("slave")),
         introduction_style)
     page_content.append(slave_user)
-    date = Paragraph("Data:<font name='Courier_New' size='12'>  {date}</font>".format(date=dynamic_content.get('date')), introduction_style)
+    date = Paragraph(u"Data:<font name='Courier_New' size='12'>  {date}</font>".format(date=dynamic_content.get('date')), introduction_style)
     page_content.append(date)
     lesson = Paragraph(u"Cecha przemawiania:<font name='Courier_New' size='12'>  {lesson}</font>".format(lesson=dynamic_content.get('lesson')), lesson_style)
     page_content.append(lesson)
@@ -214,9 +214,9 @@ def create_meeting_task_card(data=None, school_class=None):
 
     d = Drawing(20, 13)
     d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('task_type') == "Bible Reading" else False))
-    d.add(String(15 + left_col_margin, 1, "Czytanie Biblii", fontName="Arial", fontSize=9))
-    d.add(String(136, 14, "Zadanie przedstawisz", fontName="Arial_Bold", fontSize=9))
-    d.add(String(136, 1, "w sali:", fontName="Arial_Bold", fontSize=9))
+    d.add(String(15 + left_col_margin, 1, u"Czytanie Biblii", fontName="Arial", fontSize=9))
+    d.add(String(136, 14, u"Zadanie przedstawisz", fontName="Arial_Bold", fontSize=9))
+    d.add(String(136, 1, u"w sali:", fontName="Arial_Bold", fontSize=9))
     page_content.append(d)
 
     d = Drawing(20, 13)
@@ -251,9 +251,9 @@ def create_meeting_task_card(data=None, school_class=None):
     page_content.append(Spacer(0, 9.5 * mm))
 
     footer = Paragraph(
-        "<para><font name='Arial_Bold'>Wskazówki:</font> Potrzebne informacje dotyczące twojego wystąpie-<br/>nia znajdziesz w miesięczniku <font name='Arial_Italic'>Chrzescijańskie życie i słuzba - pro<br/>gram zebrań.</font>" \
-        " Pracuj nad wskazaną wyżej cechą przemawiania. Została ona opisana w podręczniku Szkoła teokratyczna. <font name='Arial_Bold'>Wez go ze sobą " \
-        " na zebranie chrzescijańskiego życia i służby.</font></para>", footer_style)
+        u"<para><font name='Arial_Bold'>Wskazówki:</font> Potrzebne informacje dotyczące twojego wystąpie-<br/>nia znajdziesz w miesięczniku <font name='Arial_Italic'>Chrzescijańskie życie i słuzba - pro<br/>gram zebrań.</font>" \
+        u" Pracuj nad wskazaną wyżej cechą przemawiania. Została ona opisana w podręczniku Szkoła teokratyczna. <font name='Arial_Bold'>Wez go ze sobą " \
+        u" na zebranie chrzescijańskiego życia i służby.</font></para>", footer_style)
     page_content.append(footer)
 
     page_content.append(Spacer(0, 7.0 * mm))
