@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.db.models import Q
 
 from chzis.users.models import PeopleProfile
 
@@ -36,8 +37,27 @@ class CongregationMemberManager(models.Manager):
         return self.get(user__username=congregation_member)
 
 
+class SchoolMemberPrivilegesManager(models.Manager):
+    def masters(self, congregation):
+        return CongregationMemberPrivileges.objects.filter(member__congregation__id=congregation,
+                                                           privilege__name='master')
+
+    def slave(self, congregation):
+        return CongregationMemberPrivileges.objects.filter(member__congregation__id=congregation,
+                                                           privilege__name='school_member')
+
+    def reader(self, congregation):
+        return CongregationMemberPrivileges.objects.filter(member__congregation__id=congregation,
+                                                           privilege__name='reader')
+
+    def master_or_reader(self, congregation):
+        return CongregationMemberPrivileges.objects.filter(Q(member__congregation__id=congregation,
+                                                           privilege__name='master') | Q(member__congregation__id=congregation,
+                                                           privilege__name='reader')).distinct()
+
 class CongregationMember(models.Model):
     objects = CongregationMemberManager()
+    school = SchoolMemberPrivilegesManager()
 
     user = models.ForeignKey(User)
     congregation = models.ForeignKey(Congregation, null=True, blank=True)
@@ -49,13 +69,17 @@ class CongregationMember(models.Model):
 
     def get_absolute_url(self):
         return "/congregations/{congregation_id}/members/{members_id}".format(
-            congregation_id=self.congregation.id if self.congregation is not None else 'unknown',
-            members_id=self.id)
+                congregation_id=self.congregation.id if self.congregation is not None else 'unknown',
+                members_id=self.id)
 
     @property
     def member_fullname(self):
         return "{firstname} {lastname}".format(firstname=self.user.first_name,
                                                lastname=self.user.last_name)
+
+    @property
+    def privileges(self):
+        return CongregationMemberPrivileges.objects.filter(member=self)
 
     class Meta:
         ordering = ['user']
@@ -90,6 +114,11 @@ class CongregationPrivileges(models.Model):
 class CongregationMemberPrivileges(models.Model):
     member = models.ForeignKey(CongregationMember, null=True, blank=True)
     privilege = models.ForeignKey(CongregationPrivileges, null=True, blank=True)
+
+    @property
+    def member_fullname(self):
+        return "{firstname} {lastname}".format(firstname=self.member.user.first_name,
+                                               lastname=self.member.user.last_name)
 
     def save(self, *args, **kwargs):
         member_gender = self.member.user.profile.gender

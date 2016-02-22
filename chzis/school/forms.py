@@ -6,21 +6,28 @@ from django.core import exceptions
 from chzis.school.models import SchoolTask, Lesson
 from chzis.school.widgets import InlineSelectDateWidget, LessonPassedWidget, AwesomeCheckbox
 from chzis.congregation.models import CongregationMember
+from chzis.meetings.forms import EmptyChoiceField
 
 
 class SchoolTaskForm(ModelForm):
     lesson_number = forms.CharField(widget=TextInput(attrs={'class': 'form-control'}), required=False)
+    slave = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}))
 
     def __init__(self, *args, **kwargs):
+        slave_school_members = (CongregationMember.school.slave(congregation=1)).values_list('member_id',
+                                                                                             'member__user__last_name',
+                                                                                             'member__user__first_name')
+        slave_school_members = [(member_id, u"{lastname} {firstname}".format(lastname=lastname, firstname=firstname))
+                                for member_id, lastname, firstname in slave_school_members]
         super(SchoolTaskForm, self).__init__(*args, **kwargs)
         self.fields['lesson'].required = False
+        self.fields['slave'].choices = [('', '-------------')] + slave_school_members
 
     class Meta:
         model = SchoolTask
         exclude = ['task', 'lesson_passed', 'supervisor', 'lesson_passed_date']
         widgets = {
             'id': HiddenInput(),
-            'slave': Select(attrs={'class': 'form-control chosen-select'}),
             'lesson': RadioSelect(attrs={'class': 'radio-primary'}),
             'background': Select(attrs={'class': 'form-control'}),
             'description': Textarea(attrs={'class': 'form-control'})
@@ -42,6 +49,11 @@ class SchoolTaskForm(ModelForm):
                 row_ender='</div>',
                 help_text_html=' <div class="help-block">%s</div>',
                 errors_on_separate_row=True)
+
+    def clean_slave(self):
+        member_id = self.cleaned_data['slave']
+        member = CongregationMember.objects.get(id=member_id)
+        return member
 
     def clean_lesson_number(self):
         number_lesson_data = self.data.get('lesson_number')
@@ -75,11 +87,13 @@ class SchoolTaskForm(ModelForm):
 
 
 class SchoolTaskViewForm(SchoolTaskForm):
+    slave = forms.CharField(widget=TextInput(attrs={'class': 'form-control', 'disabled': ''}))
+    lesson_number = forms.CharField(widget=HiddenInput())
+
     class Meta:
         model = SchoolTask
-        exclude = ['task', 'lesson_passed_date']
+        exclude = ['task', 'lesson_passed_date', 'lesson_number']
         widgets = {
-            'slave': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
             'supervisor': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
             'lesson_passed': LessonPassedWidget(attrs={'class': 'form-control', 'disabled': ''}),
             'background': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
@@ -91,16 +105,16 @@ class SchoolTaskViewForm(SchoolTaskForm):
 
 class SchoolTaskFilterForm(forms.Form):
     start_active = forms.BooleanField(
-        widget=AwesomeCheckbox(attrs={"class": "checkbox checkbox-default checkbox-filter-date"}),
-        label="",
-        initial=False, required=False)
+            widget=AwesomeCheckbox(attrs={"class": "checkbox checkbox-default checkbox-filter-date"}),
+            label="",
+            initial=False, required=False)
     start = forms.DateField(widget=InlineSelectDateWidget(attrs={'class': 'form-control'},
                                                           empty_label=(_("Year"), _("Month"), _("Day"))),
                             label="", required=False)
     end_active = forms.BooleanField(
-        widget=AwesomeCheckbox(attrs={"class": "checkbox checkbox-default checkbox-filter-date"}),
-        label="",
-        initial=False, required=False)
+            widget=AwesomeCheckbox(attrs={"class": "checkbox checkbox-default checkbox-filter-date"}),
+            label="",
+            initial=False, required=False)
     end = forms.DateField(widget=InlineSelectDateWidget(attrs={'class': 'form-control'},
                                                         empty_label=(_("Year"), _("Month"), _("Day"))),
                           label="", required=False)
@@ -120,8 +134,11 @@ class PassedLessonImportForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(PassedLessonImportForm, self).__init__(*args, **kwargs)
-        congr_members_choices = CongregationMember.objects.filter(congregation_id=1).values_list('id', 'user__last_name', 'user__first_name')
-        self.fields['members'].widget.choices = [(id, u"{0} {1}".format(last, first)) for id, last, first in congr_members_choices]
+        congr_members_choices = CongregationMember.objects.filter(congregation_id=1).values_list('id',
+                                                                                                 'user__last_name',
+                                                                                                 'user__first_name')
+        self.fields['members'].widget.choices = [(id, u"{0} {1}".format(last, first)) for id, last, first in
+                                                 congr_members_choices]
 
     def as_div(self):
         return self._html_output(
@@ -142,7 +159,7 @@ class PassedLessonImportForm(forms.Form):
         else:
             split_data = [data]
 
-        split_data = [ val for val in split_data if len(val.strip()) > 0 ]
+        split_data = [val for val in split_data if len(val.strip()) > 0]
 
         for val in split_data:
             try:
