@@ -245,6 +245,8 @@ def school_tasks_print(request):
                       }
         tasks_to_print.append(task_param)
 
+    response = HttpResponse("Please select least one task in order to generate pdf.")
+
     if tasks_to_print:
         min_date = min(tasks_to_print, key=lambda x: x['date'])
         max_date = max(tasks_to_print, key=lambda x: x['date'])
@@ -259,8 +261,6 @@ def school_tasks_print(request):
         response = HttpResponse(wrapper, content_type='application/octet-stream')
         response['Content-Length'] = os.path.getsize(os.path.join('/tmp', file_name))
         response['Content-Disposition'] = 'attachment; filename={filename}'.format(filename=file_name.encode('utf-8'))
-    else:
-        response = HttpResponse("Please select least one task in order to generate pdf.")
 
     return response
 
