@@ -7,10 +7,14 @@ For more information on this file, see
 https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
 """
 
+import sys
 import os
 
-from django.core.wsgi import get_wsgi_application
 
+sys.path.append('/home/www/chzis')
+sys.path.append('/home/www/chzis/chzis')
+
+from django.core.wsgi import get_wsgi_application
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "chzis.settings")
 
 application = get_wsgi_application()

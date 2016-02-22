@@ -148,5 +148,3 @@ AUTH_PROFILE_MODULE = "users.PeopleProfile"
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: "/people/%s/" % u.id,
 }
-
-MANAGE_URL = '/manage'
