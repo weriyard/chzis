@@ -17,7 +17,7 @@ class EmptyChoiceField(forms.ChoiceField):
 
 
 class MeetingTaskSchoolForm(forms.ModelForm):
-    meeting_item = EmptyChoiceField(widget=Select(attrs={'class': 'form-control', 'label': None}), empty_label='---------')
+    meeting_item = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select', 'label': None}), empty_label='---------')
 
     def __init__(self, *args, **kwargs):
         super(MeetingTaskSchoolForm, self).__init__(*args, **kwargs)
@@ -29,7 +29,7 @@ class MeetingTaskSchoolForm(forms.ModelForm):
         exclude = ['topic', 'description']
 
         widgets = {
-            'person': Select(attrs={'class': 'form-control chosen-select'}),
+            'person': Select(attrs={'class': 'form-control chosen-select fix-select-style'}),
             'topic': TextInput(attrs={'class': 'form-control'}),
             'presentation_date': InlineSelectDateWidget(attrs={'class': 'form-control chosen-select'},
                                                         empty_label=("Year", "Month", "Day")),

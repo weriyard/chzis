@@ -52,6 +52,22 @@
             }
 
             $(".chosen-select").chosen();
+            $("#id_meeting_item.chosen-select").trigger('chosen:activate');
+            $(".chosen-select").on('change', function (a, b) {
+                var current_obj_id = $(this).attr('id');
+                if (current_obj_id == 'id_meeting_item')
+                    $("#id_person.chosen-select").trigger('chosen:activate');
+                else if (current_obj_id == 'id_person')
+                    $("#id_presentation_date_day.chosen-select").trigger('chosen:activate');
+                else if (current_obj_id == 'id_presentation_date_day')
+                    $("#id_presentation_date_month.chosen-select").trigger('chosen:activate');
+                else if (current_obj_id == 'id_presentation_date_month')
+                    $("#id_presentation_date_year.chosen-select").trigger('chosen:activate');
+                else if (current_obj_id == 'id_presentation_date_year')
+                    $("#id_slave.chosen-select").trigger('chosen:activate');
+                else if (current_obj_id == 'id_slave')
+                    $("#id_lesson_number").focus();
+            })
         });
     </script>
 {% endblock %}
@@ -62,8 +78,6 @@
         {% csrf_token %}
         <div class="col-md-offset-3 col-md-8">
             <div class="col-md-8">
-            {{ task_form.instance.id }}
-            {{ task_form.id }}
                 <input type="hidden" id="task_id" name="task_id" value="{{ task_id }}">
                 {{ task_form.as_div }}
             <div id="master_history"></div>

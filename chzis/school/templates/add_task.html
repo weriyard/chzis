@@ -9,7 +9,6 @@
             $.ajax({
                 url: '/school/lessons/passed/' + member_id,
                 success: function (data) {
-                    console.log(data);
                     $("#school_task_content").html(data);
                     $("#id_slave").change(function () {
                         get_member_history("#id_slave", "#slave_history");
@@ -26,7 +25,6 @@
             $.ajax({
                 url: '/school/member/history/' + member_id,
                 success: function (data) {
-                    console.log(data);
                     $(id).show();
                     $(id).html(data);
                 }
@@ -65,6 +63,22 @@
             }
 
             $(".chosen-select").chosen();
+            $("#id_meeting_item.chosen-select").trigger('chosen:activate');
+            $(".chosen-select").on('change', function (a, b) {
+                var current_obj_id = $(this).attr('id');
+                if (current_obj_id == 'id_meeting_item')
+                    $("#id_person.chosen-select").trigger('chosen:activate');
+                else if (current_obj_id == 'id_person')
+                    $("#id_presentation_date_day.chosen-select").trigger('chosen:activate');
+                else if (current_obj_id == 'id_presentation_date_day')
+                    $("#id_presentation_date_month.chosen-select").trigger('chosen:activate');
+                else if (current_obj_id == 'id_presentation_date_month')
+                    $("#id_presentation_date_year.chosen-select").trigger('chosen:activate');
+                else if (current_obj_id == 'id_presentation_date_year')
+                    $("#id_slave.chosen-select").trigger('chosen:activate');
+                else if (current_obj_id == 'id_slave')
+                    $("#id_lesson_number").focus();
+            })
         });
     </script>
 {% endblock %}
