@@ -97,7 +97,7 @@
                 <tbody>
                 {% for task in tasks %}
                     <tr>
-                        <th scope="row" class="text-center"><a href="{{ task.get_absolute_url }}">{{ task.id }}</a></th>
+                        <th scope="row" class="text-center"><a href="{{ task.get_absolute_url }}">{{ task.task.id }}</a></th>
                         <td class="col-xs-2"><a
                                 href="{{ task.task.person.get_absolute_url }}">{{ task.task.person }}</a></td>
                         <td class="col-xs-2">{{ task.task.meeting_item.full_name }}</td>
