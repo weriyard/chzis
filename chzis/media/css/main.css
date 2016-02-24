@@ -164,5 +164,5 @@ div.panel-zero-padding table {
 }
 
 #id_presentation_date_year {
-    width: 85px !important;
+    min-width: 85px !important;
 }

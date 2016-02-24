@@ -14,9 +14,10 @@ class SchoolTaskForm(ModelForm):
     slave = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}))
 
     def __init__(self, *args, **kwargs):
-        slave_school_members = (CongregationMember.school.slave(congregation=1)).values_list('member_id',
-                                                                                             'member__user__last_name',
-                                                                                             'member__user__first_name')
+        congregation = kwargs.pop('congregation')
+        slave_school_members = (CongregationMember.school.slave(congregation=congregation)).values_list('member_id',
+                                                                                                        'member__user__last_name',
+                                                                                                        'member__user__first_name')
         slave_school_members = [(member_id, u"{lastname} {firstname}".format(lastname=lastname, firstname=firstname))
                                 for member_id, lastname, firstname in slave_school_members]
         super(SchoolTaskForm, self).__init__(*args, **kwargs)

@@ -82,13 +82,14 @@ class AddTasks(TemplateView):
     def get_context_data(self):
         context = dict()
         context['task_form'] = MeetingTaskSchoolForm(
+                congregation=self.request.user.profile.default_congregation.id,
                 initial={'presentation_date': self.request.session.get('last_schooltask_date', None)})
-        context['school_task_form'] = SchoolTaskForm()
+        context['school_task_form'] = SchoolTaskForm(congregation=self.request.user.profile.default_congregation.id)
         return context
 
     def post(self, request):
-        task_form = MeetingTaskSchoolForm(request.POST)
-        school_task_form = SchoolTaskForm(request.POST)
+        task_form = MeetingTaskSchoolForm(request.POST, congregation=request.user.profile.default_congregation.id)
+        school_task_form = SchoolTaskForm(request.POST, congregation=request.user.profile.default_congregation.id)
 
         if task_form.is_valid():
             if school_task_form.is_valid():
@@ -121,6 +122,7 @@ class TaskView(TemplateView):
             'meeting_item': school_task.task.meeting_item.full_name if school_task.task is not None else None,
             'person': str(school_task.task.person) if school_task.task is not None else None})
         context['school_task_form'] = SchoolTaskViewForm(instance=school_task,
+                                                         congregation=self.request.user.profile.default_congregation.id,
                                                          initial={'slave': str(
                                                                  school_task.slave) if school_task.slave is not None else "",
                                                                   'supervisor': str(
@@ -138,16 +140,16 @@ class EditTask(TemplateView):
     def get_context_data(self, task_id):
         school_task = SchoolTask.objects.get(task__id=task_id)
         context = dict()
-        context['task_form'] = MeetingTaskSchoolForm(instance=school_task.task)
-        context['school_task_form'] = SchoolTaskForm(instance=school_task)
+        context['task_form'] = MeetingTaskSchoolForm(instance=school_task.task, congregation=self.request.user.profile.default_congregation.id)
+        context['school_task_form'] = SchoolTaskForm(instance=school_task, congregation=self.request.user.profile.default_congregation.id)
         context['task_id'] = school_task.task.id
         context['school_task_id'] = school_task.id
         return context
 
     def post(self, request, task_id):
         context = dict()
-        task_form = MeetingTaskSchoolForm(request.POST)
-        school_task_form = SchoolTaskForm(request.POST)
+        task_form = MeetingTaskSchoolForm(request.POST, congregation=request.user.profile.default_congregation.id)
+        school_task_form = SchoolTaskForm(request.POST, congregation=request.user.profile.default_congregation.id)
 
         if task_form.is_valid():
             if school_task_form.is_valid():
@@ -224,7 +226,7 @@ def school_member_lesson_passed(request, member_id):
         template_name = 'add_task_school.inc.html'
 
     tpl = loader.get_template(template_name)
-    context = {'school_task_form': SchoolTaskForm(),
+    context = {'school_task_form': SchoolTaskForm(congregation=request.user.profile.default_congregation.id),
                'passed_lessons': passed_lessons
                }
     return HttpResponse(tpl.render(context))

@@ -93,8 +93,41 @@ class CongregationPrivilegesManager(models.Manager):
         return self.get(name=privilege_name)
 
 
+class CongregationPrivilegesQuerySet(models.QuerySet):
+    def man(self):
+        return self.filter(Q(allow_gender='M') | Q(allow_gender='A'))
+
+    def woman(self):
+        return self.filter(Q(allow_gender='F') | Q(allow_gender='A'))
+
+    def all(self):
+        return self.all()
+
+    def by_gender(self, gender):
+        return self.filter(Q(allow_gender=gender) | Q(allow_gender='A'))
+
+
+class PrivilegesManager(models.Manager):
+    def get_queryset(self):
+        return CongregationPrivilegesQuerySet(self.model, self._db)
+
+
+    def all(self):
+        return self.get_queryset().all()
+
+    def man(self):
+        return self.get_queryset().man()
+
+    def woman(self):
+        return self.get_queryset().woman()
+
+    def by_gender(self, gender):
+        return self.get_queryset().by_gender(gender=gender)
+
+
 class CongregationPrivileges(models.Model):
     objects = CongregationPrivilegesManager()
+    privileges = PrivilegesManager()
 
     GENDER = (
         ('M', 'male'),
