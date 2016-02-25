@@ -10,11 +10,16 @@ from chzis.meetings.forms import EmptyChoiceField
 
 
 class SchoolTaskForm(ModelForm):
-    lesson_number = forms.CharField(widget=TextInput(attrs={'class': 'form-control'}), required=False)
-    slave = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}))
+    lesson_number = forms.CharField(widget=TextInput(attrs={'class': 'form-control'}),
+                                    label=_("Lesson number"),
+                                    required=False)
+    slave = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}),
+                             label=_("Slave"),
+                             required=False)
 
     def __init__(self, *args, **kwargs):
         congregation = kwargs.pop('congregation')
+        kwargs.setdefault('label_suffix', '')
         slave_school_members = (CongregationMember.school.slave(congregation=congregation)).values_list('member_id',
                                                                                                         'member__user__last_name',
                                                                                                         'member__user__first_name')
@@ -26,13 +31,16 @@ class SchoolTaskForm(ModelForm):
 
     class Meta:
         model = SchoolTask
-        exclude = ['task', 'lesson_passed', 'supervisor', 'lesson_passed_date']
+        exclude = ['task', 'lesson_passed', 'supervisor', 'lesson_passed_date', 'background']
         widgets = {
             'id': HiddenInput(),
             'lesson': RadioSelect(attrs={'class': 'radio-primary'}),
-            'background': Select(attrs={'class': 'form-control'}),
-            'description': Textarea(attrs={'class': 'form-control'})
+            'description': Textarea(attrs={'class': 'form-control', 'rows': 3})
+        }
 
+        labels = {
+            'lesson': _("Lesson"),
+            'description': _("Description")
         }
 
     def as_table(self):
@@ -52,9 +60,19 @@ class SchoolTaskForm(ModelForm):
                 errors_on_separate_row=True)
 
     def clean_slave(self):
-        member_id = self.cleaned_data['slave']
-        member = CongregationMember.objects.get(id=member_id)
+        master_member_id = self.data.get('person')
+        if len(master_member_id) > 0:
+            master_member = CongregationMember.objects.get(id=master_member_id)
+
+        member_id = self.cleaned_data.get('slave')
+        if len(member_id) > 0:
+            member = CongregationMember.objects.get(id=member_id)
+            if member.id == master_member.id:
+                raise ValidationError(_("Master and slave person must be unique in one task !"))
+        else:
+            member = None
         return member
+
 
     def clean_lesson_number(self):
         number_lesson_data = self.data.get('lesson_number')
@@ -88,21 +106,27 @@ class SchoolTaskForm(ModelForm):
 
 
 class SchoolTaskViewForm(SchoolTaskForm):
-    slave = forms.CharField(widget=TextInput(attrs={'class': 'form-control', 'disabled': ''}))
-    lesson_number = forms.CharField(widget=HiddenInput())
+    slave = forms.CharField(widget=TextInput(attrs={'class': 'form-control', 'disabled': ''}), label=_("Slave"), label_suffix="", required=False)
+    lesson_number = forms.CharField(widget=HiddenInput(), label=_("Lesson number"), label_suffix="")
 
     class Meta:
         model = SchoolTask
-        exclude = ['task', 'lesson_passed_date', 'lesson_number']
+        exclude = ['task', 'lesson_passed_date', 'lesson_number', 'background']
         widgets = {
             'supervisor': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
             'lesson_passed': LessonPassedWidget(attrs={'class': 'form-control', 'disabled': ''}),
-            'background': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
             'description': Textarea(attrs={'class': 'form-control', 'disabled': ''}),
             'creator': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
             'lesson': TextInput(attrs={'class': 'form-control', 'disabled': ''}),
         }
 
+        labels = {
+            'lesson': _("Lesson"),
+            'lesson_passed': _("Lesson passed"),
+            'description': _("Description"),
+            'creator': _("Creator"),
+            'supervisor': _("Supervisor")
+        }
 
 class SchoolTaskFilterForm(forms.Form):
     start_active = forms.BooleanField(

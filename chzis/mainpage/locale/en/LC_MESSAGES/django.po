@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-03 13:40+0000\n"
+"POT-Creation-Date: 2016-02-25 09:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,52 +17,55 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: chzis/mainpage/templates/base.html:54
+#: chzis/mainpage/templates/base.html:56
 msgid "Profile"
 msgstr ""
 
-#: chzis/mainpage/templates/base.html:55
-#: chzis/mainpage/templates/manage_base.html:56
-msgid "Meeting tasks"
-msgstr ""
-
-#: chzis/mainpage/templates/base.html:56
+#: chzis/mainpage/templates/base.html:58
 msgid "School tasks"
 msgstr ""
 
-#: chzis/mainpage/templates/base.html:60
+#: chzis/mainpage/templates/base.html:62
 #: chzis/mainpage/templates/manage_base.html:65
 msgid "Meetings"
 msgstr ""
 
-#: chzis/mainpage/templates/base.html:63
+#: chzis/mainpage/templates/base.html:65
 msgid "School plan"
 msgstr ""
 
-#: chzis/mainpage/templates/base.html:73
+#: chzis/mainpage/templates/base.html:75
 msgid "Manage"
 msgstr ""
 
-#: chzis/mainpage/templates/base.html:75
+#: chzis/mainpage/templates/base.html:77
 #: chzis/mainpage/templates/manage_base.html:63
 msgid "Congregation"
 msgstr ""
 
-#: chzis/mainpage/templates/base.html:78
+#: chzis/mainpage/templates/base.html:80
 msgid "School add task"
 msgstr ""
 
-#: chzis/mainpage/templates/base.html:79
+#: chzis/mainpage/templates/base.html:81
 msgid "School all task"
 msgstr ""
 
-#: chzis/mainpage/templates/base.html:83
+#: chzis/mainpage/templates/base.html:82
+msgid "Import school task lesson"
+msgstr ""
+
+#: chzis/mainpage/templates/base.html:86
 #: chzis/mainpage/templates/manage_base.html:82
 msgid "Logout"
 msgstr ""
 
 #: chzis/mainpage/templates/manage_base.html:54
 msgid "Info"
+msgstr ""
+
+#: chzis/mainpage/templates/manage_base.html:56
+msgid "Meeting tasks"
 msgstr ""
 
 #: chzis/mainpage/templates/manage_base.html:59

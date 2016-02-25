@@ -1,50 +1,51 @@
 {% load i18n %}
-
 {% load extra_filters %}
 
 <div class="form-group">
-    <div class="table-responsive">
+    <div class="table-responsive" >
         <table class="table-condensed school-lessons">
             <thead>
-            <th>{% trans "No." %}</th>
-            <th>
-                {{ school_task_form.lesson.label }}
-            </th>
-            <th>
-                {% trans "Last" %}
-            </th>
-            <th></th>
+                <th class="col-md-1">{% trans "No." %}</th>
+                <th class="col-md-6">
+                    {{ school_task_form.lesson.label }}
+                </th>
+                <th class="col-md-2">
+                    {% trans "Previous" %}
+                </th>
             </thead>
-            {% for it in  school_task_form.lesson %}
-                <tr>
-                    {% if not forloop.first %}
-                        <td class="col-md-1">{{ forloop.counter0 }}</td>
-                        <td class="col-md-6">
-                            {{ it.choice_label }}
-                        </td>
-                        <td class="col-md-2">
-                            {% if passed_lessons %}
-                                {% for a in passed_lessons|access_by_key:forloop.counter0 %}
-                                    {% if forloop.first %}
-                                        {{ a|date:"d.m.y" }}
+            <tbody>
+                {% for it in  school_task_form.lesson %}
+                    <tr>
+                        {% if not forloop.first %}
+                            <td class="col-md-1">{{ forloop.counter0 }}</td>
+                            <td class="col-md-6">
+                                {{ it.choice_label }}
+                            </td>
+                            <td class="col-md-2">
+                                {% if passed_lessons %}
+                                    {% for a in passed_lessons|access_by_key:forloop.counter0 %}
+                                        {% if forloop.first %}
+                                            {{ a|date:"d.m.y" }}
+                                        {% endif %}
+                                    {% empty %}
+                                        &nbsp;
+                                    {% endfor %}
+                                    {% if passed_lessons|access_by_key:forloop.counter0|length > 2 %}
+                                        (x{{ passed_lessons|access_by_key:forloop.counter0|length|add:"-1" }})
                                     {% endif %}
-                                {% empty %}
-                                    &nbsp;
-                                {% endfor %}
-                                {% if passed_lessons|access_by_key:forloop.counter0|length > 2 %}
-                                    (x{{ passed_lessons|access_by_key:forloop.counter0|length|add:"-1" }})
                                 {% endif %}
-                            {% endif %}
-                        </td>
-                        <td class="col-md-1">
-                            <div class="radio">
-                                {{ it.tag }}
-                                <label for="{{ it.id_for_label }}"></label>
-                            </div>
-                        </td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
+                            </td>
+                            <td class="col-md-1">
+                                <div class="radio">
+                                    {{ it.tag }}
+                                    <label for="{{ it.id_for_label }}"></label>
+                                </div>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+
+            </tbody>
         </table>
     </div>
 </div>

@@ -7,9 +7,9 @@
         <form method="POST" class="form-horizontal" role="form">
         {% csrf_token %}
             <p>
-                {% blocktrans %}
-                Please put all passed lesson for selected member.
-                {% endblocktrans %}
+{% blocktrans %}
+Please put all passed lesson for selected member.
+{% endblocktrans %}
             </p>
 
             {{ passed_lesson_form }}

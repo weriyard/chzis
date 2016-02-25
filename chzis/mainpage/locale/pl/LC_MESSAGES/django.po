@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-03 13:40+0000\n"
+"POT-Creation-Date: 2016-02-25 14:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,46 +19,45 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: chzis/mainpage/templates/base.html:54
+#: chzis/mainpage/templates/base.html:56
 msgid "Profile"
 msgstr "Profil"
 
-#: chzis/mainpage/templates/base.html:55
-#: chzis/mainpage/templates/manage_base.html:56
-msgid "Meeting tasks"
-msgstr "Zadania na zebraniu"
-
-#: chzis/mainpage/templates/base.html:56
+#: chzis/mainpage/templates/base.html:58
 msgid "School tasks"
 msgstr "Zadania w szkole"
 
-#: chzis/mainpage/templates/base.html:60
+#: chzis/mainpage/templates/base.html:62
 #: chzis/mainpage/templates/manage_base.html:65
 msgid "Meetings"
 msgstr "Zebrania"
 
-#: chzis/mainpage/templates/base.html:63
+#: chzis/mainpage/templates/base.html:65
 msgid "School plan"
 msgstr "Plan szkoły"
 
-#: chzis/mainpage/templates/base.html:73
+#: chzis/mainpage/templates/base.html:75
 msgid "Manage"
 msgstr "Zarządzaj"
 
-#: chzis/mainpage/templates/base.html:75
+#: chzis/mainpage/templates/base.html:77
 #: chzis/mainpage/templates/manage_base.html:63
 msgid "Congregation"
 msgstr "Zbór"
 
-#: chzis/mainpage/templates/base.html:78
+#: chzis/mainpage/templates/base.html:80
 msgid "School add task"
 msgstr "Szkoła - dodaj zadanie"
 
-#: chzis/mainpage/templates/base.html:79
+#: chzis/mainpage/templates/base.html:81
 msgid "School all task"
 msgstr "Szkoła - wszystkie zadania"
 
-#: chzis/mainpage/templates/base.html:83
+#: chzis/mainpage/templates/base.html:82
+msgid "Import school task lesson"
+msgstr "Szkoła - import starych danych"
+
+#: chzis/mainpage/templates/base.html:86
 #: chzis/mainpage/templates/manage_base.html:82
 msgid "Logout"
 msgstr "Wyloguj"
@@ -66,6 +65,10 @@ msgstr "Wyloguj"
 #: chzis/mainpage/templates/manage_base.html:54
 msgid "Info"
 msgstr "Informacje"
+
+#: chzis/mainpage/templates/manage_base.html:56
+msgid "Meeting tasks"
+msgstr "Zadania na zebraniu"
 
 #: chzis/mainpage/templates/manage_base.html:59
 #: chzis/mainpage/templates/manage_base.html:71
@@ -87,13 +90,4 @@ msgstr "Zadania"
 
 #: chzis/mainpage/templates/manage_base.html:81
 msgid "Normal"
-msgstr ""
-
-#~ msgid "Meeting plan"
-#~ msgstr "Plan zebrań"
-
-#~ msgid "Field service plan"
-#~ msgstr "Plan zbiórek"
-
-#~ msgid "Meetings plan"
-#~ msgstr "Plan zebrań"
+msgstr "Normaln"

@@ -216,9 +216,10 @@ def school_member_lesson_passed(request, member_id):
     member_passsed_lessons = SchoolTask.objects.filter(task__person__id=member_id).only('lesson', 'lesson_passed_date')
     passed_lessons = {}
     for lesson_passed in member_passsed_lessons:
-        passed_dates = passed_lessons.setdefault(lesson_passed.lesson.number, [])
-        passed_dates.append(lesson_passed.lesson_passed_date)
-        passed_dates.sort()
+        if lesson_passed.lesson_passed_date is not None:
+            passed_dates = passed_lessons.setdefault(lesson_passed.lesson.number, [])
+            passed_dates.append(lesson_passed.lesson_passed_date)
+            passed_dates.sort()
 
     if request.GET.get('action', None) == "edit":
         template_name = 'edit_task_school.inc.html'

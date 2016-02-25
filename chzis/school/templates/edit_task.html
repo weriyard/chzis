@@ -86,7 +86,9 @@
                         <input type="hidden" id="school_task_id" name="school_task_id" value="{{ school_task_id }}">
                         <div class="form-group">
                             <label for="{{ school_task_form.slave.id_for_label }}">{{ school_task_form.slave.label }}</label>
-                            {{ school_task_form.slave.errors }}
+                            <div class="error-block">
+                                {{ school_task_form.slave.errors }}
+                            </div>
                             {{ school_task_form.slave }}
                         </div>
                         <div id="{{ school_task_form.slave.id_for_label }}"></div>
@@ -100,12 +102,16 @@
                         </div>
                         <div class="form-group">
                             <label for="{{ school_task_form.background.id_for_label }}">{{ school_task_form.background.label }}</label>
-                            {{ school_task_form.background.errors }}
+                            <div class="error-block">
+                                {{ school_task_form.background.errors }}
+                            </div>
                             {{ school_task_form.background }}
                         </div>
                         <div class="form-group">
                             <label for="{{ school_task_form.description.id_for_label }}">{{ school_task_form.description.label }}</label>
-                            {{ school_task_form.description.errors }}
+                            <div class="error-block">
+                                {{ school_task_form.description.errors }}
+                            </div>
                             {{ school_task_form.description }}
                         </div>
                     {% endif %}

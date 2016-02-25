@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-03 13:40+0000\n"
+"POT-Creation-Date: 2016-02-25 14:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,122 +19,198 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: chzis/school/forms.py:68 chzis/school/forms.py:74
+#: chzis/school/forms.py:14 chzis/school/forms.py:110
+msgid "Lesson number"
+msgstr "Numer lekcji"
+
+#: chzis/school/forms.py:17 chzis/school/forms.py:109
+#: chzis/school/templates/add_task_mamber_history.inc.html:13
+msgid "Slave"
+msgstr "Pomocnik"
+
+#: chzis/school/forms.py:42 chzis/school/forms.py:124
+#: chzis/school/templates/add_task_mamber_history.inc.html:12
+msgid "Lesson"
+msgstr "Lekcja"
+
+#: chzis/school/forms.py:43 chzis/school/forms.py:126
+msgid "Description"
+msgstr "Adnotacje"
+
+#: chzis/school/forms.py:71
+msgid "Master and slave person must be unique in one task !"
+msgstr "Prowadzący i pomocnik nie mogą być tacy sami !"
+
+#: chzis/school/forms.py:84
+msgid ""
+"Lesson is required. Put lesson number or select from list "
+"(clean_lesson_number)."
+msgstr ""
+"Numer lekcji jest wymagany. Podaj numer lekcji lub wybierz lekcję z listy."
+
+#: chzis/school/forms.py:88
+msgid "Only one lesson number is allowed (clean_lesson_number) !"
+msgstr "Mozliwy wybór tylko jednej lekcji !"
+
+#: chzis/school/forms.py:99
+msgid ""
+"Lesson is required. Put lesson number or select from list (clean_lesson)."
+msgstr ""
+"Numer lekcji jest wymagany. Podaj numer lekcji lub wybierz lekcję z listy."
+
+#: chzis/school/forms.py:103
+msgid "Only one lesson number is allowed (clean_lesson) !"
+msgstr "Mozliwy wybór tylko jednej lekcji !"
+
+#: chzis/school/forms.py:125
+msgid "Lesson passed"
+msgstr "Zaliczenie"
+
+#: chzis/school/forms.py:127
+msgid "Creator"
+msgstr "Stworzony przez"
+
+#: chzis/school/forms.py:128
+msgid "Supervisor"
+msgstr "Oceniający"
+
+#: chzis/school/forms.py:137 chzis/school/forms.py:144
 msgid "Year"
 msgstr "Rok"
 
-#: chzis/school/forms.py:68 chzis/school/forms.py:74
+#: chzis/school/forms.py:137 chzis/school/forms.py:144
 msgid "Month"
 msgstr "Miesiąc"
 
-#: chzis/school/forms.py:68 chzis/school/forms.py:74
+#: chzis/school/forms.py:137 chzis/school/forms.py:144
 msgid "Day"
 msgstr "Dzien"
 
-#: chzis/school/templates/add_task.html:40
-#: chzis/school/templates/manage/manage_tasks.html:8
-#: chzis/school/templates/school_plan.html:133
-#: chzis/school/templates/tasks.html:112
+#: chzis/school/forms.py:193
+#, python-brace-format
+msgid "Only decimal numbers are allowed! Value '{val}' is wrong."
+msgstr "Dozwolone tylko wartości numeryczne. Wartość '{val}' jest niepoprawna."
+
+#: chzis/school/forms.py:195
+#, python-brace-format
+msgid "Lesson {val} doesn't exists!"
+msgstr "Lekcja {val} nie istnieje !"
+
+#: chzis/school/templates/add_task.html:121
+#: chzis/school/templates/lesson_import.html:17
+#: chzis/school/templates/school_plan.html:140
+#: chzis/school/templates/task.html:14 chzis/school/templates/tasks.html:126
 msgid "Add task"
 msgstr "Dodaj zadanie"
 
-#: chzis/school/templates/add_task_school.inc.html:12
-msgid "No."
-msgstr "Nr."
+#: chzis/school/templates/add_task_mamber_history.inc.html:4
+msgid "Last tasks"
+msgstr "Ostanie punkty"
 
-#: chzis/school/templates/add_task_school.inc.html:17
-msgid "Last"
-msgstr "Ostatni"
+#: chzis/school/templates/add_task_mamber_history.inc.html:10
+msgid "Date"
+msgstr "Data"
 
-#: chzis/school/templates/manage/manage_school_plan.html:35
-#: chzis/school/templates/school_plan.html:45
-msgid "Week"
-msgstr "Tydzień"
-
-#: chzis/school/templates/manage/manage_school_plan.html:44
-#: chzis/school/templates/manage/manage_tasks.html:19
-#: chzis/school/templates/school_plan.html:65
-#: chzis/school/templates/tasks.html:78
+#: chzis/school/templates/add_task_mamber_history.inc.html:11
+#: chzis/school/templates/school_plan.html:70
+#: chzis/school/templates/tasks.html:90
 msgid "Meeting item"
 msgstr "Typ zadania"
 
-#: chzis/school/templates/manage/manage_school_plan.html:45
-#: chzis/school/templates/manage/manage_tasks.html:18
-#: chzis/school/templates/school_plan.html:66
-#: chzis/school/templates/tasks.html:77
+#: chzis/school/templates/add_task_mamber_history.inc.html:14
+#: chzis/school/templates/add_task_school.inc.html:8
+#: chzis/school/templates/edit_task_school.inc.html:9
+msgid "No."
+msgstr "Nr."
+
+#: chzis/school/templates/add_task_school.inc.html:13
+#: chzis/school/templates/edit_task_school.inc.html:14
+msgid "Previous"
+msgstr "Poprzednie"
+
+#: chzis/school/templates/edit_task.html:112
+msgid "Save changes"
+msgstr "Zapisz zmiany"
+
+#: chzis/school/templates/lesson_import.html:10
+#, fuzzy
+#| msgid "Please put all passed lesson for selected member."
+msgid ""
+"\n"
+"Please put all passed lesson for selected member.\n"
+msgstr "Wpisz wszystkie lekcja dla wybranego uczestnika szkoły."
+
+#: chzis/school/templates/school_plan.html:47
+msgid "Week"
+msgstr "Tydzień"
+
+#: chzis/school/templates/school_plan.html:71
+#: chzis/school/templates/tasks.html:89
 msgid "Person"
 msgstr "Osoba"
 
-#: chzis/school/templates/manage/manage_school_plan.html:46
-#: chzis/school/templates/manage/manage_tasks.html:20
-#: chzis/school/templates/school_plan.html:67
-#: chzis/school/templates/tasks.html:79
+#: chzis/school/templates/school_plan.html:72
+#: chzis/school/templates/tasks.html:91
+#, fuzzy
+#| msgid "Lesson name"
 msgid "Lesson name"
 msgstr "Lekcja"
 
-#: chzis/school/templates/manage/manage_school_plan.html:47
-#: chzis/school/templates/manage/manage_tasks.html:22
-#: chzis/school/templates/school_plan.html:68
-#: chzis/school/templates/tasks.html:80
+#: chzis/school/templates/school_plan.html:73
+#: chzis/school/templates/tasks.html:92
 msgid "Presentation date"
 msgstr "Data przedstawienia"
 
-#: chzis/school/templates/manage/manage_school_plan.html:48
-#: chzis/school/templates/manage/manage_tasks.html:23
-#: chzis/school/templates/school_plan.html:69
-#: chzis/school/templates/tasks.html:81
-msgid "Creation date"
-msgstr "Data stworzenia"
-
-#: chzis/school/templates/manage/manage_school_plan.html:49
-#: chzis/school/templates/manage/manage_tasks.html:24
-#: chzis/school/templates/school_plan.html:71
-#: chzis/school/templates/tasks.html:82
+#: chzis/school/templates/school_plan.html:75
+#: chzis/school/templates/tasks.html:94
 msgid "Result"
 msgstr "Ocena"
 
-#: chzis/school/templates/manage/manage_school_plan.html:65
-msgid "FAIL"
-msgstr "NIE ZAL"
-
-#: chzis/school/templates/manage/manage_school_plan.html:70
-msgid "OK"
-msgstr "ZAL"
-
-#: chzis/school/templates/manage/manage_tasks.html:21
-msgid "Topic"
-msgstr "Temat"
-
-#: chzis/school/templates/school_plan.html:72
-#: chzis/school/templates/tasks.html:83
+#: chzis/school/templates/school_plan.html:76
+#: chzis/school/templates/tasks.html:95
 msgid "Print"
 msgstr "Drukuj"
 
-#: chzis/school/templates/school_plan.html:135
-#: chzis/school/templates/tasks.html:114
+#: chzis/school/templates/school_plan.html:143
+#: chzis/school/templates/tasks.html:129
 msgid "Print selected"
 msgstr "Drukuj wybrane"
 
-#: chzis/school/templates/tasks.html:50
+#: chzis/school/templates/task.html:15
+msgid "Edit"
+msgstr "Edytuj"
+
+#: chzis/school/templates/task.html:16
+msgid "Delete"
+msgstr "Usuń"
+
+#: chzis/school/templates/tasks.html:61
 msgid "Search"
 msgstr "Szukaj"
 
-#: chzis/school/templates/tasks.html:51
+#: chzis/school/templates/tasks.html:63
 msgid "Show this month"
 msgstr "Ten miesiąc"
 
-#: chzis/school/templates/tasks.html:52
+#: chzis/school/templates/tasks.html:64
 msgid "Show all"
-msgstr ""
+msgstr "Pokaż wszystko"
 
-#: chzis/school/templates/tasks.html:66
+#: chzis/school/templates/tasks.html:78
 msgid "Page"
 msgstr "Strona"
 
-#: chzis/school/templates/tasks.html:66
+#: chzis/school/templates/tasks.html:78
 msgid "of"
 msgstr "z"
 
-#: chzis/school/views.py:197
+#: chzis/school/templates/tasks.html:93
+msgid "Creation date"
+msgstr "Data stworzenia"
+
+#: chzis/school/views.py:262
 msgid "school_tasks"
 msgstr "szkoła_zadania"
+
+#~ msgid "Background"
+#~ msgstr "Tło"
