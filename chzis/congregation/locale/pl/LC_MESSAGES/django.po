@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-03 13:40+0000\n"
+"POT-Creation-Date: 2016-02-25 14:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,19 +20,37 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 
 #: chzis/congregation/templates/congregationDetails.html:9
-#: chzis/congregation/templates/congregations.html:10
-msgid "Congregation name"
-msgstr "Nazwa zboru"
+msgid "No."
+msgstr "Nr."
 
 #: chzis/congregation/templates/congregationDetails.html:10
-#: chzis/congregation/templates/congregations.html:11
-msgid "Congregation number"
+#, fuzzy
+#| msgid "Congregation number"
+msgid "Congregation member"
 msgstr "Numer zboru"
 
 #: chzis/congregation/templates/congregationDetails.html:11
-#: chzis/congregation/templates/congregations.html:12
-msgid "Default"
-msgstr "Domyślny"
+#: chzis/congregation/templates/congregationMember.inc.html:12
+msgid "Active"
+msgstr "Aktywny"
+
+#: chzis/congregation/templates/congregationDetails.html:12
+msgid "School allow"
+msgstr "Uczestnik szkoły"
+
+#: chzis/congregation/templates/congregationDetails.html:13
+#, fuzzy
+#| msgid "Pioneer"
+msgid "Pionner"
+msgstr "Pionier"
+
+#: chzis/congregation/templates/congregationDetails.html:14
+msgid "Servant"
+msgstr "Sługa pomocniczy"
+
+#: chzis/congregation/templates/congregationDetails.html:15
+msgid "Elder"
+msgstr "Starszy"
 
 #: chzis/congregation/templates/congregationMember.html:9
 msgid "User is not congregation member !"
@@ -46,55 +64,23 @@ msgstr "Wiek"
 msgid "Baptism date"
 msgstr "Data chrztu"
 
-#: chzis/congregation/templates/congregationMember.inc.html:12
-msgid "Active"
-msgstr "Aktywny"
-
 #: chzis/congregation/templates/congregationMember.inc.html:13
 msgid "Last modification"
 msgstr "Ostatnia modyfikacja"
 
-#: chzis/congregation/templates/congregationMember.inc.html:40
-msgid "School allow"
-msgstr "Uczestnik szkoły"
-
-#: chzis/congregation/templates/congregationMember.inc.html:54
-msgid "Pioneer"
-msgstr "Pionier"
-
-#: chzis/congregation/templates/congregationMember.inc.html:62
-msgid "Servant"
-msgstr "Sługa pomocniczy"
-
-#: chzis/congregation/templates/congregationMember.inc.html:70
-msgid "Elder"
-msgstr "Starszy"
-
-#: chzis/congregation/templates/congregationMember.inc.html:78
-msgid "Coordinator"
-msgstr "Koordynator"
-
-#: chzis/congregation/templates/congregationMember.inc.html:92
-msgid "Lector"
-msgstr "Lektor"
-
-#: chzis/congregation/templates/congregationMember.inc.html:100
-msgid "Sound operator"
-msgstr "Operator sprzętu"
-
-#: chzis/congregation/templates/congregationMember.inc.html:114
-msgid "Master"
-msgstr "Prowadzący"
-
-#: chzis/congregation/templates/congregationMember.inc.html:122
-msgid "Slave"
-msgstr "Pomocnik"
-
-#: chzis/congregation/templates/congregationMember.inc.html:130
-msgid "Reader"
-msgstr "Lektor"
-
-#: chzis/congregation/templates/congregationMember.inc.html:140
+#: chzis/congregation/templates/congregationMember.inc.html:158
 #: chzis/congregation/templates/congregations.html:28
 msgid "Save changes"
 msgstr "Zapisz zmiany"
+
+#: chzis/congregation/templates/congregations.html:10
+msgid "Congregation name"
+msgstr "Nazwa zboru"
+
+#: chzis/congregation/templates/congregations.html:11
+msgid "Congregation number"
+msgstr "Numer zboru"
+
+#: chzis/congregation/templates/congregations.html:12
+msgid "Default"
+msgstr "Domyślny"

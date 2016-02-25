@@ -29,11 +29,8 @@ from chzis.school.views import Tasks, AddTasks, TaskView, SchoolPlanDetails, sch
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # url(r'^people/login$', auth_views.login, {'template_name': 'login.html'},
-    #     name='login'),
     url(r'^people/login$', PeopleLogin.as_view(), name='login'),
     url(r'^people/logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
-    #url(r'^people/profile/', PeopleProfileSetting.as_view()),
     url(r'^$', Index.as_view()),
     url(r'^profile/$', CongregationMemberProfileRedirect.as_view()),
     url(r'^congregations/$', login_required(CongregationRedirect.as_view())),

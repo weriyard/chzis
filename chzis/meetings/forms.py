@@ -1,6 +1,8 @@
-from django.forms import ModelForm, TextInput, Select, Textarea, HiddenInput
+from collections import OrderedDict
+
+from django.forms import TextInput, Select, Textarea, DateField
 from django import forms
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext as _
 
 from chzis.school.widgets import InlineSelectDateWidget
 from chzis.meetings.models import MeetingTask, MeetingItem
@@ -11,7 +13,6 @@ class EmptyChoiceField(forms.ChoiceField):
     def __init__(self, choices=(), empty_label=None, required=True, widget=None, label=None, initial=None,
                  help_text=None, *args, **kwargs):
 
-        # prepend an empty label if it exists (and field is not required!)
         if empty_label is not None:
             choices = tuple([(u'', empty_label)] + list(choices))
 
@@ -20,20 +21,45 @@ class EmptyChoiceField(forms.ChoiceField):
 
 
 class MeetingTaskSchoolForm(forms.ModelForm):
-    meeting_item = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select', 'label': None}))
-    person = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}))
+    meeting_item = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}),
+                                    label=_("Meeting item"),
+                                    label_suffix="")
+    person = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}),
+                              label=_("Master"),
+                              label_suffix="")
+    presentation_date = DateField(widget=InlineSelectDateWidget(attrs={'class': 'form-control chosen-select'},
+                                                                empty_label=("Year", "Month", "Day")),
+                                  label=_("Presentation date"), label_suffix="")
 
     def __init__(self, *args, **kwargs):
-        master_school_members = (CongregationMember.school.master_or_reader(congregation=1)).values_list('member_id',
-                                                                                                'member__user__last_name',
-                                                                                                'member__user__first_name')
+        congregation = kwargs.pop('congregation')
+        kwargs.setdefault('label_suffix', '')
+        master_school_members = (CongregationMember.school.master_or_reader(congregation=congregation)).values_list(
+            'member_id',
+            'member__user__last_name',
+            'member__user__first_name')
         master_school_members = [(member_id, u"{lastname} {firstname}".format(lastname=lastname, firstname=firstname))
                                  for member_id, lastname, firstname in master_school_members]
 
         super(MeetingTaskSchoolForm, self).__init__(*args, **kwargs)
         self.fields['meeting_item'].choices = [('', '-------------')] + list(
-            MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'name'))
+                MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'name'))
         self.fields['person'].choices = [('', '-------------')] + master_school_members
+        self.move_field_after('person', 'presentation_date')
+
+    def move_field_after(self, field, after_field=None):
+        mv_field = self.fields.pop(field)
+        new_fields_order = OrderedDict()
+
+        if after_field is None:
+            new_fields_order[field] = mv_field
+
+        for field_name, field_obj in self.fields.items():
+            new_fields_order[field_name] = field_obj
+            if after_field == field_name:
+                new_fields_order[field] = mv_field
+
+        self.fields = new_fields_order
 
     class Meta:
         model = MeetingTask
@@ -41,10 +67,12 @@ class MeetingTaskSchoolForm(forms.ModelForm):
 
         widgets = {
             'topic': TextInput(attrs={'class': 'form-control'}),
-            'presentation_date': InlineSelectDateWidget(attrs={'class': 'form-control chosen-select'},
-                                                        empty_label=("Year", "Month", "Day")),
-            'background': Select(attrs={'class': 'form-control'}),
             'description': Textarea(attrs={'class': 'form-control'})
+        }
+
+        labels = {
+            'topic': _("Topic"),
+            'description': _("Description")
         }
 
     def clean_meeting_item(self):
@@ -68,6 +96,27 @@ class MeetingTaskSchoolForm(forms.ModelForm):
 
 
 class MeetingTaskSchoolViewForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('label_suffix', '')
+        super(MeetingTaskSchoolViewForm, self).__init__(*args, **kwargs)
+        self.move_field_after('person', 'presentation_date')
+
+    def move_field_after(self, field, after_field=None):
+        mv_field = self.fields.pop(field)
+        new_fields_order = OrderedDict()
+
+        if after_field is None:
+            new_fields_order[field] = mv_field
+
+        for field_name, field_obj in self.fields.items():
+            new_fields_order[field_name] = field_obj
+            if after_field == field_name:
+                new_fields_order[field] = mv_field
+
+        self.fields = new_fields_order
+
+
     class Meta:
         model = MeetingTask
         exclude = ['topic', 'description']
@@ -78,6 +127,12 @@ class MeetingTaskSchoolViewForm(forms.ModelForm):
             'presentation_date': InlineSelectDateWidget(attrs={'class': 'form-control', 'disabled': ''},
                                                         empty_label=("Year", "Month", "Day"),
                                                         ),
+        }
+
+        labels = {
+            'person': _("Master"),
+            'meeting_item': _("Meeting item"),
+            'presentation_date': _("Presentation date")
         }
 
     def as_div(self):

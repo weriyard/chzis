@@ -71,7 +71,6 @@
                 <th class="text-center">{% trans "Person" %}</th>
                 <th class="text-center">{% trans "Lesson name" %}</th>
                 <th class="text-center">{% trans "Presentation date" %}</th>
-                <th class="text-center">{% trans "Creation date" %}</th>
                 {% if perms.congregation.can_manage %}
                     <th class="text-center">{% trans "Result" %}</th>
                     <th class="text-center">{% trans "Print" %}</th>
@@ -95,9 +94,8 @@
                                 {{ task.task.person }}
                             {% endif %}
                         </td>
-                        <td class="col-xs-2">{{ task.lesson.name }}</td>
+                        <td class="col-xs-3">{{ task.lesson.name }}</td>
                         <td class="col-xs-2">{{ task.task.presentation_date }}</td>
-                        <td class="col-xs-2">{{ task.task.creation_date }}</td>
                         {% if perms.congregation.can_manage %}
                             <td class="col-xs-1">
                                 {% if member.school_allow == None %}
@@ -120,7 +118,7 @@
                                     label-danger{% endif %}">{{task.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>-->
                                 <!--</h3>-->
                             </td>
-                            <td>
+                            <td class="col-xs-1">
                                 <div class="center-block">
                                     <div class="checkbox checkbox-primary checkbox-task-list">
                                         <input type="checkbox" id="print_{{ task.id }}" name="print"

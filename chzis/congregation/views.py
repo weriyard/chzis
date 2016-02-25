@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.views.generic import View, TemplateView, RedirectView
+from django.views.generic import TemplateView, RedirectView
 from django.shortcuts import redirect
 from django.core import exceptions
 from django.db.models import Q
@@ -76,8 +75,8 @@ class CongregationMemberDetails(TemplateView):
 
         member_privileges = CongregationMemberPrivileges.objects.filter(member=cong_member).values_list(
             'privilege__name', 'id')
-        all_allowed_privileges = CongregationPrivileges.objects.filter(
-            Q(allow_gender=cong_member.user.profile.gender) | Q(allow_gender='A')).values('id', 'name', 'full_name')
+
+        all_allowed_privileges = CongregationPrivileges.privileges.by_gender(cong_member.user.profile.gender).values('id', 'name', 'full_name')
         current_member_privileges = dict(member_privileges)
 
         if cong_member is not None:

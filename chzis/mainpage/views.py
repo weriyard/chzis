@@ -3,6 +3,7 @@ from django.views.generic import View
 from django.shortcuts import redirect
 from django.conf import settings
 
+
 class Index(View):
 
     def get(self, request):

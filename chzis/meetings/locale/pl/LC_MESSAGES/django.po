@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-14 23:09+0000\n"
+"POT-Creation-Date: 2016-02-25 14:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,20 +19,24 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
+#: chzis/meetings/forms.py:25 chzis/meetings/forms.py:118
+msgid "Meeting item"
+msgstr "Typ zadania"
 
-#: chzis/meetings/forms.py:21
-msgid "Initial Call"
-msgstr "Pierwsza rozmowa"
+#: chzis/meetings/forms.py:28 chzis/meetings/forms.py:117
+msgid "Master"
+msgstr "Prowadzący"
 
-#: chzis/meetings/forms.py:21
-msgid "Month presentations"
-msgstr "Prowadzenie rozmów w tym miesiącu"
+#: chzis/meetings/forms.py:32 chzis/meetings/forms.py:119
+#, fuzzy
+#| msgid "Month presentations"
+msgid "Presentation date"
+msgstr "Data przedstawienia"
 
-#: chzis/meetings/forms.py:21
-msgid "Return Visit"
-msgstr "Odwiedziny ponowne"
+#: chzis/meetings/forms.py:74
+msgid "Topic"
+msgstr "Temat"
 
-#: chzis/meetings/forms.py:21
-msgid "Bible Study"
-msgstr "Studium biblijne"
-
+#: chzis/meetings/forms.py:75
+msgid "Description"
+msgstr "Adnotacje"

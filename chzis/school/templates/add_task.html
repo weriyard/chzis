@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load i18n %}
+
 {% block head %}
     <script type='text/javascript'>
 
@@ -30,16 +30,7 @@
                 }
             });
         }
-{#        $(window).on('load', function () {#}
-{#            $("#id_person").change(function () {#}
-{#                get_lessons();#}
-{#                get_member_history("#id_person", "#master_history");#}
-{#            });#}
-{#            if ($("#id_person").val() != "") {#}
-{#                get_lessons();#}
-{#                get_member_history("#id_person", "#master_history");#}
-{#            }#}
-{#        });#}
+
         $(window).on('load', function () {
             $(function() {
                 $("#id_meeting_item").focus();
@@ -67,14 +58,14 @@
             $(".chosen-select").on('change', function (a, b) {
                 var current_obj_id = $(this).attr('id');
                 if (current_obj_id == 'id_meeting_item')
-                    $("#id_person.chosen-select").trigger('chosen:activate');
-                else if (current_obj_id == 'id_person')
                     $("#id_presentation_date_day.chosen-select").trigger('chosen:activate');
                 else if (current_obj_id == 'id_presentation_date_day')
                     $("#id_presentation_date_month.chosen-select").trigger('chosen:activate');
                 else if (current_obj_id == 'id_presentation_date_month')
                     $("#id_presentation_date_year.chosen-select").trigger('chosen:activate');
                 else if (current_obj_id == 'id_presentation_date_year')
+                    $("#id_person.chosen-select").trigger('chosen:activate');
+                else if (current_obj_id == 'id_person')
                     $("#id_slave.chosen-select").trigger('chosen:activate');
                 else if (current_obj_id == 'id_slave')
                     $("#id_lesson_number").focus();
@@ -83,6 +74,7 @@
     </script>
 {% endblock %}
 
+{% load i18n %}
 
 {% block content %}
     <form method="POST" class="form-horizontal" role="form">
@@ -90,17 +82,20 @@
         <div class="col-md-offset-3 col-md-8">
             <div class="col-md-8">
                 {{ task_form.as_div }}
-            <div id="master_history"></div>
+            <div id="master_history" class="schooltask-history"></div>
             <div class="clearfix"></div>
                 {% if school_task_form %}
                     <div class="form-group">
                         <label for="{{ school_task_form.slave.id_for_label }}">{{ school_task_form.slave.label }}</label>
-                            {{ school_task_form.slave.errors }}
+                            <div class="error-block">
+                                {{ school_task_form.slave.errors }}
+                            </div>
                             {{ school_task_form.slave }}
                         </div>
                         <div id="{{ school_task_form.slave.id_for_label }}"></div>
-                        <div id="slave_history"></div>
+                        <div id="slave_history" class="schooltask-history"></div>
                         <div class="clearfix"></div>
+                        <div class="spacer10"></div>
                         <div>
                             <div class="error-block">
                                 {{ school_task_form.lesson_number.errors|default_if_none:school_task_form.lesson.errors }}
@@ -109,18 +104,22 @@
                             <label for="{{ school_task_form.lesson_number.id_for_label }}">{{ school_task_form.lesson_number.label }}</label>
                             {{ school_task_form.lesson_number }}
                         </div>
-                        <div class="spacer10"></div>
+                        <div class="spacer30"></div>
                         <div id="school_task_content">
                             {% include "add_task_school.inc.html" %}
                         </div>
                         <div class="form-group">
                             <label for="{{ school_task_form.background.id_for_label }}">{{ school_task_form.background.label }}</label>
-                            {{ school_task_form.background.errors }}
+                            <div class="error-block">
+                                {{ school_task_form.background.errors }}
+                            </div>
                             {{ school_task_form.background }}
                         </div>
                         <div class="form-group">
                             <label for="{{ school_task_form.description.id_for_label }}">{{ school_task_form.description.label }}</label>
-                            {{ school_task_form.description.errors }}
+                            <div class="error-block">
+                                {{ school_task_form.description.errors }}
+                            </div>
                             {{ school_task_form.description }}
                         </div>
                             <button type="submit" class="btn btn-lg btn-warning" name="Add">{% trans "Add task" %}</button>
