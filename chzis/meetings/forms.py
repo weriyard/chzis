@@ -45,9 +45,9 @@ class MeetingTaskSchoolForm(forms.ModelForm):
         self.fields['meeting_item'].choices = [('', '-------------')] + list(
                 MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'name'))
         self.fields['person'].choices = [('', '-------------')] + master_school_members
-        self.move_field_before('person', 'presentation_date')
+        self.move_field_after('person', 'presentation_date')
 
-    def move_field_before(self, field, after_field=None):
+    def move_field_after(self, field, after_field=None):
         mv_field = self.fields.pop(field)
         new_fields_order = OrderedDict()
 
@@ -100,6 +100,22 @@ class MeetingTaskSchoolViewForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('label_suffix', '')
         super(MeetingTaskSchoolViewForm, self).__init__(*args, **kwargs)
+        self.move_field_after('person', 'presentation_date')
+
+    def move_field_after(self, field, after_field=None):
+        mv_field = self.fields.pop(field)
+        new_fields_order = OrderedDict()
+
+        if after_field is None:
+            new_fields_order[field] = mv_field
+
+        for field_name, field_obj in self.fields.items():
+            new_fields_order[field_name] = field_obj
+            if after_field == field_name:
+                new_fields_order[field] = mv_field
+
+        self.fields = new_fields_order
+
 
     class Meta:
         model = MeetingTask
