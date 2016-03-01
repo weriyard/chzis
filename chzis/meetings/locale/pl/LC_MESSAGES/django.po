@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-25 14:32+0000\n"
+"POT-Creation-Date: 2016-03-01 10:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,15 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: chzis/meetings/forms.py:25 chzis/meetings/forms.py:118
+#: chzis/meetings/forms.py:25 chzis/meetings/forms.py:134
 msgid "Meeting item"
 msgstr "Typ zadania"
 
-#: chzis/meetings/forms.py:28 chzis/meetings/forms.py:117
+#: chzis/meetings/forms.py:28 chzis/meetings/forms.py:133
 msgid "Master"
 msgstr "Prowadzący"
 
-#: chzis/meetings/forms.py:32 chzis/meetings/forms.py:119
+#: chzis/meetings/forms.py:32 chzis/meetings/forms.py:135
 #, fuzzy
 #| msgid "Month presentations"
 msgid "Presentation date"

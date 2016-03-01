@@ -7,7 +7,7 @@
             "part": [
                 "Public Meeting"
             ],
-            "full_name": "Public Meeting",
+            "full_name": "Wyk\\u0142ad publiczny",
             "duration": 30,
             "weekend": null,
             "order": 1
@@ -21,7 +21,7 @@
             "part": [
                 "Watchtower Study"
             ],
-            "full_name": "Watchtower Study",
+            "full_name": "Studium Stra\\u017cnicy",
             "duration": 60,
             "weekend": null,
             "order": 2
@@ -35,7 +35,7 @@
             "part": [
                 "Treasures"
             ],
-            "full_name": "Opening Comments",
+            "full_name": "Uwagi wst\\u0119pne",
             "duration": 3,
             "weekend": null,
             "order": 1
@@ -49,7 +49,7 @@
             "part": [
                 "Treasures"
             ],
-            "full_name": "Treasures from Bible",
+            "full_name": "Skarby ze S\\u0142owa Bo\\u017cego",
             "duration": 10,
             "weekend": null,
             "order": 2
@@ -63,7 +63,7 @@
             "part": [
                 "Treasures"
             ],
-            "full_name": "Digging for Spiritual Gems",
+            "full_name": "Wyszukujemy duchowe skarby",
             "duration": 8,
             "weekend": null,
             "order": 3
@@ -75,9 +75,9 @@
         "fields": {
             "name": "Bible Reading",
             "part": [
-                "Treasures"
+                "Field ministry"
             ],
-            "full_name": "Bible Reading",
+            "full_name": "Czytanie Biblii",
             "duration": 4,
             "weekend": null,
             "order": 4
@@ -91,7 +91,7 @@
             "part": [
                 "Field ministry"
             ],
-            "full_name": "Prepare This Month\u2019s Presentations",
+            "full_name": "Prowadzenie rozm\\u00f3w w tym miesi\\u0105cu",
             "duration": 15,
             "weekend": 1,
             "order": 1
@@ -105,7 +105,7 @@
             "part": [
                 "Field ministry"
             ],
-            "full_name": "Initial Call",
+            "full_name": "Pierwsza rozmowa",
             "duration": 2,
             "weekend": null,
             "order": 1
@@ -119,7 +119,7 @@
             "part": [
                 "Field ministry"
             ],
-            "full_name": "Return Visit",
+            "full_name": "Odwiedziny ponowne",
             "duration": 4,
             "weekend": null,
             "order": 2
@@ -133,7 +133,7 @@
             "part": [
                 "Field ministry"
             ],
-            "full_name": "Bible Study",
+            "full_name": "Studium biblijne",
             "duration": 6,
             "weekend": null,
             "order": 3
@@ -175,7 +175,7 @@
             "part": [
                 "Living as Christians"
             ],
-            "full_name": "Congregation Bible Study",
+            "full_name": "Zborowe studium Biblii",
             "duration": 30,
             "weekend": null,
             "order": 3
@@ -203,7 +203,7 @@
             "part": [
                 "Old school"
             ],
-            "full_name": "Old school before 2016",
+            "full_name": "Zadania ze starej szko\\u0142y przed 2016",
             "duration": 45,
             "weekend": null,
             "order": 0

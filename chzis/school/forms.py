@@ -1,6 +1,7 @@
 from django.forms import ModelForm, TextInput, Select, Textarea, RadioSelect, HiddenInput, ValidationError
 from django import forms
 from django.utils.translation import ugettext as _
+from django.utils.translation import gettext_lazy as __
 from django.core import exceptions
 
 from chzis.school.models import SchoolTask, Lesson
@@ -154,8 +155,12 @@ class SchoolTaskFilterForm(forms.Form):
 
 
 class PassedLessonImportForm(forms.Form):
-    passed_lessons = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
-    members = forms.CharField(widget=Select(attrs={'class': 'form-control'}))
+    passed_lessons = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}),
+                                     label=_("Passed lessons"),
+                                     label_suffix="")
+    members = forms.CharField(widget=Select(attrs={'class': 'form-control'}),
+                              label=_("School member"),
+                              label_suffix="")
 
     def __init__(self, *args, **kwargs):
         super(PassedLessonImportForm, self).__init__(*args, **kwargs)
@@ -190,8 +195,8 @@ class PassedLessonImportForm(forms.Form):
             try:
                 Lesson.objects.get(number=int(val))
             except ValueError:
-                raise ValidationError(_("Only decimal numbers are allowed! Value '{val}' is wrong.".format(val=val)))
+                raise ValidationError(__("Only decimal numbers are allowed! Value '%(val)s' is wrong." % dict(val=val)))
             except exceptions.ObjectDoesNotExist:
-                raise ValidationError(_("Lesson {val} doesn't exists!".format(val=val)))
+                raise ValidationError(__("Lesson %(val)s doesn't exists!" % dict(val=val)))
 
         return split_data

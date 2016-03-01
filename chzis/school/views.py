@@ -294,6 +294,8 @@ class SchoolLessonImport(TemplateView):
         return context
 
     def post(self, request):
+        imported_lessons = []
+        cong_memeber = None
         lesson_passed_form = PassedLessonImportForm(request.POST)
 
         if lesson_passed_form.is_valid():
@@ -318,7 +320,10 @@ class SchoolLessonImport(TemplateView):
                 school_task.lesson_passed_date = datetime.datetime(1900, 1, 1)
                 school_task.task = meeting_task
                 school_task.save()
+                imported_lessons.append(lesson_number)
 
         context = dict()
         context['passed_lesson_form'] = lesson_passed_form
+        context['imported_lessons'] = imported_lessons
+        context['school_member'] = cong_memeber
         return render(request, "lesson_import.html", context)
