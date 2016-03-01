@@ -193,12 +193,10 @@ class SchoolPlanDetails(View):
 def school_plan(request):
     dt = datetime.datetime.now()
     week_day = dt.isocalendar()[2]
-    week_start_day = dt.day - week_day + 1
-    if week_start_day == 0:
-        week_start_day =+ 1
-    return redirect("/school/plan/{year}/{month}/{week_start_day}".format(year=dt.year,
-                                                                          month=dt.month,
-                                                                          week_start_day=week_start_day))
+    week_start = dt - datetime.timedelta(days=week_day)
+    return redirect("/school/plan/{year}/{month}/{week_start_day}".format(year=week_start.year,
+                                                                          month=week_start.month,
+                                                                          week_start_day=week_start.day + 1))
 
 
 def set_task_result(request, task_id):
