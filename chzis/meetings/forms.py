@@ -43,7 +43,7 @@ class MeetingTaskSchoolForm(forms.ModelForm):
 
         super(MeetingTaskSchoolForm, self).__init__(*args, **kwargs)
         self.fields['meeting_item'].choices = [('', '-------------')] + list(
-                MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'name'))
+                MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'full_name'))
         self.fields['person'].choices = [('', '-------------')] + master_school_members
         self.move_field_after('person', 'presentation_date')
 

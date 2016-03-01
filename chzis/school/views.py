@@ -194,6 +194,8 @@ def school_plan(request):
     dt = datetime.datetime.now()
     week_day = dt.isocalendar()[2]
     week_start_day = dt.day - week_day + 1
+    if week_start_day == 0:
+        week_start_day =+ 1
     return redirect("/school/plan/{year}/{month}/{week_start_day}".format(year=dt.year,
                                                                           month=dt.month,
                                                                           week_start_day=week_start_day))
