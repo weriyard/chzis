@@ -1,31 +1,32 @@
+@font-face {
+  font-family: 'DINWebPro-Bold';
+  src: url('../fonts/DINWebPro-Bold.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/DINWebPro-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/DINWebPro-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/DINCompPro-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'DINWebPro';
+  src: url('../fonts/DINWebPro.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/DINWebPro.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/DINWebPro.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/DINCompPro.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
 body, table{
     background-color: #FFF;
     padding: 70px 0 0 0;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #333;
+    font-family: "DINWebPro", Arial, sans-serif;
     font-size: 14px;
     font-weight: 400;
+    font-style: normal;
 }
 
  .checkbox, .radio {
     margin-top: 0px;
-    margin-bottom: 7px;
-}
-
-.checkbox label::after {
-    font-size: 20px;
-    width: 26px;
-    height: 26px;
-}
-
-.checkbox label::before {
-    width: 27px;
-    height: 27px;
-}
-
-.checkbox label {
-    padding-left: 15px;
-    font-size: 19px;
+    margin-bottom: 0px;
 }
 
 div.data-field {
@@ -206,4 +207,184 @@ a {
 .schooltask-history div.panel-heading {
     padding: 5px 15px;
     font-weight: bold;
+}
+
+
+
+.task-list .task-row {
+    margin: 0;
+    display: table;
+    float: none;
+    margin: 0;
+    border-top: 1px dotted #d2d2d2;
+    height: 25px;
+    -webkit-transition: all 150ms linear;
+    -moz-transition: all 150ms linear;
+    -o-transition: all 150ms linear;
+    transition: all 150ms linear;
+    line-height: 12px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.task-content ul li {
+    position: relative;
+    float: left;
+    margin: 20px 0 0 20px;
+}
+
+.tasks-section .task-id, .tasks-section .task-details, .tasks-section .task-details > * {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.tasks-section .task-details > * {
+    min-width: 200px;
+}
+
+.tasks-section .task-list .task-row .task-id, .tasks-section .task-list .task-row .task-details, .tasks-section .task-list .task-row .task-details > * {
+    height: 100%;
+}
+
+.tasks-section .task-id {
+    padding: 0 5px 0 10px;
+    min-width: 50px;
+}
+
+.tasks-section .tasks-header {
+    clear: both;
+}
+.tasks-section .tasks-header {
+    display: table;
+}
+
+.task-content ul {
+    zoom: 1;
+    margin: -20px 0 0 -21px;
+    list-style: none;
+    padding: 0;
+}
+
+.task-content:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.tasks-section .task-row {
+    display: table;
+}
+.task-content ul li {
+    position: relative;
+    float: left;
+    margin: 20px 0 0 20px;
+}
+
+.tasks-section .task-details .fullname {
+    min-width: 270px;
+}
+
+.tasks-section .task-details .member-fullname {
+    min-width: 200px;
+    font-family: "DINWebPro-Bold", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.tasks-section .task-details .lesson-name {
+    min-width: 330px;
+
+}
+
+.tasks-section .task-details .presentation-date {
+    min-width: 160px;
+    font-family: "DINWebPro-Bold", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.tasks-section .task-details .lesson-passed {
+    min-width: 90px;
+}
+
+.tasks-section .task-details .select-print  {
+    min-width: 50px;
+}
+
+.tasks-section .task-details .cong-member {
+    min-width: 200px;
+    font-family: "DINWebPro-Bold", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.tasks-section .task-details .cong-member {
+    min-width: 200px;
+    font-family: "DINWebPro-Bold", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.tasks-section .task-list .task-row {
+    line-height: 26px;
+}
+
+.tasks-section .task-details .active, .tasks-section .task-details .pioneer, .tasks-section .task-details .elder {
+    min-width: 80px;
+    text-align: center;
+}
+
+.tasks-section .task-details .school-allow, .tasks-section .task-details .servant {
+    min-width: 135px;
+    text-align: center;
+}
+
+.tasks-section .task-details > * {
+    padding: 0 4px 0 7px;
+}
+
+.tasks-section .tasks-header > * {
+    position: relative;
+    height: 30px;
+    font-family: "DINWebPro-Bold", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.tasks-section .task-list .task-row a {
+    display: inline-block;
+    border: none;
+    border-bottom: 1px dotted #b6b8bc;
+    outline: 0;
+    color: #0c1421;
+    line-height: 12px;
+    text-decoration: none;
+    -webkit-transition: color, linear, 150ms;
+    -moz-transition: color, linear, 150ms;
+    -o-transition: color, linear, 150ms;
+    transition: color, linear, 150ms;
+}
+
+/*.checkbox label {*/
+    /*position: static;*/
+/*}*/
+
+.checkbox label::before {
+    line-height: 0px;
+}
+
+.checkbox label::after {
+    line-height: 15px;
+    text-align: justify;
+}
+
+.checkbox-no-border span::after{
+    border: none;
+    font-family: "FontAwesome";
+    content: "\f00c";
 }

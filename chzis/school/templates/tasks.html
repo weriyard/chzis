@@ -82,47 +82,59 @@
             {% endif %}
         </div>
         <div class="clearfix spacer30"></div>
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-condensed task_list">
-                <thead>
-                <th class="text-center">ID</th>
-                <th class="text-center">{% trans "Person" %}</th>
-                <th class="text-center">{% trans "Meeting item" %}</th>
-                <th class="text-center">{% trans "Lesson name" %}</th>
-                <th class="text-center">{% trans "Presentation date" %}</th>
-                <th class="text-center">{% trans "Creation date" %}</th>
-                <th class="text-center">{% trans "Result" %}</th>
-                <th class="text-center">{% trans "Print" %}</th>
-                </thead>
-                <tbody>
+            <section class="tasks-section">
+                <header class="tasks-header">
+                    <div class="task-id">ID</div>
+                    <div class="task-details">
+                        <div class="fullname"><div class="ss"><div>{% trans "Meeting item" %}</div></div></div>
+                        <div class="member-fullname">{% trans "Person" %}</div>
+                        <div class="lesson-name">{% trans "Lesson name" %}</div>
+                        <div class="presentation-date">{% trans "Presentation date" %}</div>
+                        <div class="presentation-date">{% trans "Creation date" %}</div>
+                        <div class="lesson-passed">{% trans "Result" %}</div>
+                        <div class="select-print">{% trans "Print" %}</div>
+                    </div>
+                </header>
+
+                <ul class="task-list">
                 {% for task in tasks %}
-                    <tr>
-                        <th scope="row" class="text-center"><a href="{{ task.get_absolute_url }}">{{ task.task.id }}</a></th>
-                        <td class="col-xs-2"><a
-                                href="{{ task.task.person.get_absolute_url }}">{{ task.task.person }}</a></td>
-                        <td class="col-xs-2">{{ task.task.meeting_item.full_name }}</td>
-                        <td class="col-xs-2">{{ task.lesson.name }}</td>
-                        <td class="col-xs-2">{{ task.task.presentation_date }}</td>
-                        <td class="col-xs-2">{{ task.task.creation_date }}</td>
-                        <td class="col-xs-1">
-                            <h3 class="lesson-passed">
-                                <span class="label {% if task.lesson.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{ task.lesson.lesson_passed|yesno:"PASSED,FAIL,FAIL" }}</span>
-                            </h3>
-                        </td>
-                        <td>
-                            <div class="checkbox checkbox-primary checkbox-task-list">
-                                <input type="checkbox" id="print_{{ task.id }}" name="print" value="{{ task.id }}"
-                                       class="print_checkbox">
-                                <label for="print_{{ task.id }}"></label>
+                    <li class="task-row">
+                        <div class="task-id"><a href="{{ task.get_absolute_url }}">{{ task.task.id }}</a></div>
+                        <div class="task-details">
+                            <div class="fullname">
+                                {{ task.task.meeting_item.full_name }}
                             </div>
-                        </td>
-                    </tr>
+                            <div class="member-fullname">
+                                <a href="{{ task.task.person.get_absolute_url }}">{{ task.task.person }}</a>
+                            </div>
+                            <div class="lesson-name">
+                                {{ task.lesson.name }}
+                            </div>
+                            <div class="presentation-date">
+                                {{ task.task.presentation_date }}
+                            </div>
+                            <div class="presentation-date">
+                                {{ task.task.creation_date }}
+                            </div>
+                            <div class="lesson-passed">
+                                <h3 class="lesson-passed">
+                                    <span class="label {% if task.lesson.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{ task.lesson.lesson_passed|yesno:"PASSED,FAIL,FAIL" }}</span>
+                                </h3>
+                            </div>
+                            <div class="select-print">
+                                <div class="checkbox checkbox-primary checkbox-task-list">
+                                    <input type="checkbox" id="print_{{ task.id }}" name="print" value="{{ task.id }}"
+                                           class="print_checkbox">
+                                    <label for="print_{{ task.id }}"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                 {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                </ul>
+            </section>
         {% if perms.congregation.can_manage %}
-            <div class="spacer10"></div>
+            <div class="spacer30"></div>
             <a href="/school/tasks/add" class="btn btn-lg btn-primary">{% trans "Add task" %}</a>
             <div class="pull-right">
                 <button type="submit" class="btn btn-lg btn-danger" name="Add"

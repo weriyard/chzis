@@ -3,56 +3,56 @@
 
 {% block content %}
 {% load i18n %}
-<div class="table-responsive">
-    <table class="table table-bordered table-hover task_list">
-        <thead>
-            <th class="text-center">{% trans "No." %}</th>
-            <th class="text-center">{% trans "Congregation member" %}</th>
-            <th class="text-center">{% trans "Active" %}</th>
-            <th class="text-center">{% trans "School allow" %}</th>
-            <th class="text-center">{% trans "Pionner" %}</th>
-            <th class="text-center">{% trans "Servant" %}</th>
-            <th class="text-center">{% trans "Elder" %}</th>
-        </thead>
-        <tbody>
-        {% for member_id, member in cong_members.items %}
-        <tr>
-            <th class="col-md-1-id"><a href="{{member.member.get_absolute_url}}">{{member_id}}</a></th>
-            <td class="col-md-6"><a href="{{member.member.get_absolute_url}}">{{member.member.user.username}}</a></td>
-            <td class="col-md-1 text-center">
-                <div class="checkbox checkbox-default">
-                    <input type="checkbox" id="active_{{cong_member.id}}" name="active" value="{{member_id}}" class="print_checkbox" {%  if member.privileges.active %}checked{% endif %}>
-                    <label for="active_{{member_id}}"></label>
+<section class="tasks-section">
+    <header class="tasks-header">
+        <div class="task-id">{% trans "No." %}</div>
+        <div class="task-details">
+            <div class="cong-member">{% trans "Congregation member" %}</div>
+            <div class="active">{% trans "Active" %}</div>
+            <div class="school-allow">{% trans "School allow" %}</div>
+            <div class="pioneer">{% trans "Pionner" %}</div>
+            <div class="servant">{% trans "Servant" %}</div>
+            <div class="elder">{% trans "Elder" %}</div>
+        </div>
+    </header>
+
+    <ul class="task-list">
+    {% for member_id, member in cong_members.items %}
+        <li class="task-row">
+            <div class="task-id"><a href="{{member.member.get_absolute_url}}">{{member_id}}</a></div>
+            <div class="task-details">
+                <div class="cong-member">
+                    <a href="{{member.member.get_absolute_url}}">{{member.member.user.username}}</a>
                 </div>
-            </td>
-            <td class="col-md-1 text-center">
-                <div class="checkbox checkbox-info">
-                    <input type="checkbox" id="school_allow_{{cong_member.id}}" name="school_allow" value="{{member_id}}" class="print_checkbox" {%  if member.privileges.school_member %}checked{% endif %}>
-                    <label for="school_allow_{{member_id}}"></label>
+                <div class="active">
+                    <div class="checkbox-no-border">
+                        <span></span>
+                    </div>
                 </div>
-            </td>
-            <td class="col-md-1 text-center">
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" id="pioneer_{{cong_member.id}}" name="pioneer" value="{{member_id}}" class="print_checkbox" {%  if member.privileges.pioneer %}checked{% endif %}>
-                    <label for="pioneer_{{member_id}}"></label>
+                <div class="school-allow">
+                    <div class="checkbox-no-border">
+                        {%  if member.privileges.school_member %}<span></span>{% endif %}
+                    </div>
                 </div>
-            </td>
-            <td class="col-md-1 text-center">
-                <div class="checkbox checkbox-warning">
-                    <input type="checkbox" id="servant_{{cong_member.id}}" name="servant" value="{{member_id}}" class="print_checkbox" {%  if member.privileges.servant %}checked{% endif %}>
-                    <label for="servant_{{member_id}}"></label>
+                <div class="pioneer">
+                    <div class="checkbox-no-border">
+                        {%  if member.privileges.pioneer %}<span></span>{% endif %}
+                    </div>
                 </div>
-            </td>
-            <td class="col-md-1 text-center">
-                <div class="checkbox checkbox-danger">
-                    <input type="checkbox" id="elder_{{cong_member.id}}" name="elder" value="{{member_id}}" class="print_checkbox" {%  if member.privileges.elder %}checked{% endif %}>
-                    <label for="elder_{{member_id}}"></label>
+                <div class="servant">
+                    <div class="checkbox-no-border">
+                        {%  if member.privileges.servant %}<span></span>{% endif %}
+                    </div>
                 </div>
-            </td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
+                <div class="elder">
+                    <div class="checkbox-no-border">
+                        {%  if member.privileges.elder %}<span></span>{% endif %}
+                    </div>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+</section>
 
 {% endblock %}
