@@ -388,3 +388,12 @@ a {
     font-family: "FontAwesome";
     content: "\f00c";
 }
+
+table.member-task-history tr.task-master {
+    font-weight: bolder;
+}
+
+table.member-task-history tr.task-slave {
+    font-size: larger;
+    font-style: italic;
+}

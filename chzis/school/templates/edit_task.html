@@ -80,7 +80,7 @@
             <div class="col-md-8">
                 <input type="hidden" id="task_id" name="task_id" value="{{ task_id }}">
                 {{ task_form.as_div }}
-            <div id="master_history"></div>
+            <div id="master_history" class="schooltask-history"></div>
             <div class="clearfix"></div>
                     {% if school_task_form %}
                         <input type="hidden" id="school_task_id" name="school_task_id" value="{{ school_task_id }}">
@@ -92,7 +92,7 @@
                             {{ school_task_form.slave }}
                         </div>
                         <div id="{{ school_task_form.slave.id_for_label }}"></div>
-                        <div id="slave_history"></div>
+                        <div id="slave_history" class="schooltask-history"></div>
                         <div class="clearfix"></div>
                         <div class="error-block">
                             {{ school_task_form.lesson.errors }}

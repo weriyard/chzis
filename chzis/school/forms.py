@@ -11,9 +11,9 @@ from chzis.meetings.forms import EmptyChoiceField
 
 
 class SchoolTaskForm(ModelForm):
-    lesson_number = forms.CharField(widget=TextInput(attrs={'class': 'form-control'}),
-                                    label=_("Lesson number"),
-                                    required=False)
+    lesson_number = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}),
+                                     label=_("Lesson number"),
+                                     required=False)
     slave = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}),
                              label=_("Slave"),
                              required=False)
@@ -26,9 +26,13 @@ class SchoolTaskForm(ModelForm):
                                                                                                         'member__user__first_name')
         slave_school_members = [(member_id, u"{lastname} {firstname}".format(lastname=lastname, firstname=firstname))
                                 for member_id, lastname, firstname in slave_school_members]
+        lessons_list = Lesson.objects.all().values_list('id', 'number', 'name')
+        lessons_list = [(lesson_id, u"{number} {name}".format(number=number, name=name)) for lesson_id, number, name in
+                        lessons_list]
         super(SchoolTaskForm, self).__init__(*args, **kwargs)
         self.fields['lesson'].required = False
         self.fields['slave'].choices = [('', '-------------')] + slave_school_members
+        self.fields['lesson_number'].choices = [('', '-------------')] + lessons_list
 
     class Meta:
         model = SchoolTask
@@ -74,7 +78,6 @@ class SchoolTaskForm(ModelForm):
             member = None
         return member
 
-
     def clean_lesson_number(self):
         number_lesson_data = self.data.get('lesson_number')
         if number_lesson_data is not None and len(number_lesson_data.strip()) == 0:
@@ -107,7 +110,8 @@ class SchoolTaskForm(ModelForm):
 
 
 class SchoolTaskViewForm(SchoolTaskForm):
-    slave = forms.CharField(widget=TextInput(attrs={'class': 'form-control', 'disabled': ''}), label=_("Slave"), label_suffix="", required=False)
+    slave = forms.CharField(widget=TextInput(attrs={'class': 'form-control', 'disabled': ''}), label=_("Slave"),
+                            label_suffix="", required=False)
     lesson_number = forms.CharField(widget=HiddenInput(), label=_("Lesson number"), label_suffix="")
 
     class Meta:
@@ -128,6 +132,7 @@ class SchoolTaskViewForm(SchoolTaskForm):
             'creator': _("Creator"),
             'supervisor': _("Supervisor")
         }
+
 
 class SchoolTaskFilterForm(forms.Form):
     start_active = forms.BooleanField(
