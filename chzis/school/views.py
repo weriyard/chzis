@@ -184,9 +184,9 @@ class SchoolPlanDetails(View):
         context['tasks'] = tasks
         context['current_week'] = dict(week_start=week_start, week_end=week_end)
         context['prev_plan_date'] = "{year}/{month}/{day}".format(year=prev_date.year, month=prev_date.month,
-                                                                  day=prev_date.day);
+                                                                  day=prev_date.day)
         context['next_plan_date'] = "{year}/{month}/{day}".format(year=next_date.year, month=next_date.month,
-                                                                  day=next_date.day);
+                                                                  day=next_date.day)
         return render(request, "school_plan.html", context)
 
 
@@ -206,10 +206,10 @@ def set_task_result(request, task_id):
         else:
             result = False
 
-        task_result = SchoolTask.objects.get(task__id=int(task_id))
-        task_result.lesson_passed = result
-        task_result.save()
-    return HttpResponse("alal")
+        school_task = SchoolTask.objects.get(task__id=int(task_id))
+        school_task.lesson_passed = result
+        school_task.save()
+    return HttpResponse(school_task)
 
 
 def school_member_lesson_passed(request, member_id):
@@ -276,7 +276,10 @@ def school_member_history(request, member_id):
                                                                                                               1)))
     b = [a for a in p][:5]
     tpl = loader.get_template('add_task_mamber_history.inc.html')
-    context = {'member_history': b}
+    print b
+    context = {'member_history': b,
+               'member_id': int(member_id)
+               }
     return HttpResponse(tpl.render(context))
 
 

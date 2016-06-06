@@ -4,12 +4,16 @@
     <script type='text/javascript'>
 
         function set_result(obj, task_id, result) {
+            if (result == "fail")
+                $("#"+task_id+"_ok").attr('checked', false);
+            else
+                $("#"+task_id+"_fail").attr('checked', false);
+
             $.ajax({
                 url: "/school/tasks/" + task_id + "/result/",
                 data: {'result': result, csrfmiddlewaretoken: '{{ csrf_token }}'},
                 type: 'post',
                 success: function (data) {
-
                 }
             });
         }
@@ -109,14 +113,22 @@
                                         {% if member.school_allow == None %}
                                             <div class="center-block">
                                                 <div class="checkbox checkbox-danger checkbox-task-list">
-                                                    <input type="checkbox" id="{{ task.id }}_fail" name="{{ task.id }}_fail"
-                                                           onclick="set_result(this, {{ task.id }}, 'fail');">
-                                                    <label for="{{ task.id }}_fail"></label>
+                                                    <input type="checkbox" id="{{ task.task.id }}_fail" name="{{ task.task.id }}_fail"
+                                                           onclick="set_result(this, {{ task.task.id }}, 'fail');"
+                                                           {% if task.lesson_passed == False %}
+                                                           checked
+                                                           {% endif %}
+                                                    >
+                                                    <label for="{{ task.task.id }}_fail"></label>
                                                 </div>
                                                 <div class="checkbox checkbox-success checkbox-task-list">
-                                                    <input type="checkbox" id="{{ task.id }}_ok" name="{{ task.id }}_ok"
-                                                           onclick="set_result(this, {{ task.id }}, 'ok');">
-                                                    <label for="{{ task.id }}_ok"></label>
+                                                    <input type="checkbox" id="{{ task.task.id }}_ok" name="{{ task.task.id }}_ok"
+                                                           onclick="set_result(this, {{ task.task.id }}, 'ok');"
+                                                           {% if task.lesson_passed == True %}
+                                                           checked
+                                                           {% endif %}
+                                                    >
+                                                    <label for="{{ task.task.id }}_ok"></label>
                                                 </div>
                                             </div>
                                         {% endif %}
