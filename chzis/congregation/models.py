@@ -70,7 +70,7 @@ class CongregationMember(models.Model):
     def get_absolute_url(self):
         return "/congregations/{congregation_id}/members/{members_id}".format(
                 congregation_id=self.congregation.id if self.congregation is not None else 'unknown',
-                members_id=self.id)
+                members_id=self.user.id)
 
     @property
     def member_fullname(self):
