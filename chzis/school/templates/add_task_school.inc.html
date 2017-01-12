@@ -30,8 +30,8 @@
                                     {% empty %}
                                         &nbsp;
                                     {% endfor %}
-                                    {% if passed_lessons|access_by_key:forloop.counter0|length > 2 %}
-                                        (x{{ passed_lessons|access_by_key:forloop.counter0|length|add:"-1" }})
+                                    {% if passed_lessons|access_by_key:forloop.counter0|length > 1 %}
+                                        <span id="lesson_repeat_counter">(+{{ passed_lessons|access_by_key:forloop.counter0|length|add:"-1" }})</span>
                                     {% endif %}
                                 {% endif %}
                             </td>
