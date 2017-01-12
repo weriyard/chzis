@@ -88,7 +88,7 @@
             {% if tasks.has_other_pages %}
               <ul class="pagination">
                 {% if tasks.has_previous %}
-                  <li><a href="?page={{ tasks.previous_page_number }}">&laquo;</a></li>
+                  <li><a href="?{{get_params.urlencode}}&amp;page={{ tasks.previous_page_number }}">&laquo;</a></li>
                 {% else %}
                   <li class="disabled"><span>&laquo;</span></li>
                 {% endif %}
@@ -96,11 +96,12 @@
                   {% if tasks.number == i %}
                     <li class="active"><span>{{ i }} <span class="sr-only" style="font-size: x-large">(current)</span></span></li>
                   {% else %}
-                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    <li><a href="?{{get_params.urlencode}}&amp;page={{ i }}">{{ i }}</a></li>
                   {% endif %}
                 {% endfor %}
                 {% if tasks.has_next %}
-                  <li><a href="?page={{ tasks.next_page_number }}">&raquo;</a></li>
+                    <li><a href="?{{get_params.urlencode}}&amp;page={{ tasks.next_page_number }}">&raquo;</a></li>
+
                 {% else %}
                   <li class="disabled"><span>&raquo;</span></li>
                 {% endif %}

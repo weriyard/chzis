@@ -143,7 +143,6 @@ class SchoolTaskFilterForm(forms.Form):
             initial=False, required=False)
     current_year = datetime.datetime.now().year
     year_range = range(current_year - 2, current_year + 6)
-    print year_range
     start = forms.DateField(widget=InlineSelectDateWidget(attrs={'class': 'form-control'},
                                                           years=year_range,
                                                           empty_label=(_("Year"), _("Month"), _("Day"))),
