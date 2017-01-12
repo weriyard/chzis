@@ -208,6 +208,7 @@ def set_task_result(request, task_id):
 
         school_task = SchoolTask.objects.get(task__id=int(task_id))
         school_task.lesson_passed = result
+        school_task.lesson_passed_date = datetime.date.strftime(datetime.datetime.now(), "%Y-%m-%d")
         school_task.save()
     return HttpResponse(school_task)
 
@@ -276,7 +277,7 @@ def school_member_history(request, member_id):
                                                                                                               1)))
     b = [a for a in p][:5]
     tpl = loader.get_template('add_task_mamber_history.inc.html')
-    print b
+
     context = {'member_history': b,
                'member_id': int(member_id)
                }
