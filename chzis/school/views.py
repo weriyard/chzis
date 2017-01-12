@@ -70,9 +70,12 @@ class Tasks(View):
             # If page is out of range (e.g. 9999), deliver last page of results.
             tasks = paginator.page(paginator.num_pages)
 
+        get_copy = request.GET.copy()
+        get_copy.pop('page', True)
         context = dict()
         context['tasks'] = tasks
         context['filter_form'] = task_filter_form
+        context['get_params'] = get_copy
         return render(request, 'tasks.html', context)
 
 
