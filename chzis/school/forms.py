@@ -1,9 +1,10 @@
+import datetime
+
 from django.forms import ModelForm, TextInput, Select, Textarea, RadioSelect, HiddenInput, ValidationError
 from django import forms
 from django.utils.translation import ugettext as _
 from django.utils.translation import gettext_lazy as __
 from django.core import exceptions
-
 from chzis.school.models import SchoolTask, Lesson
 from chzis.school.widgets import InlineSelectDateWidget, LessonPassedWidget, AwesomeCheckbox
 from chzis.congregation.models import CongregationMember
@@ -135,11 +136,16 @@ class SchoolTaskViewForm(SchoolTaskForm):
 
 
 class SchoolTaskFilterForm(forms.Form):
+
     start_active = forms.BooleanField(
             widget=AwesomeCheckbox(attrs={"class": "checkbox checkbox-default checkbox-filter-date"}),
             label="",
             initial=False, required=False)
+    current_year = datetime.datetime.now().year
+    year_range = range(current_year - 2, current_year + 6)
+    print year_range
     start = forms.DateField(widget=InlineSelectDateWidget(attrs={'class': 'form-control'},
+                                                          years=year_range,
                                                           empty_label=(_("Year"), _("Month"), _("Day"))),
                             label="", required=False)
     end_active = forms.BooleanField(
@@ -147,6 +153,7 @@ class SchoolTaskFilterForm(forms.Form):
             label="",
             initial=False, required=False)
     end = forms.DateField(widget=InlineSelectDateWidget(attrs={'class': 'form-control'},
+                                                        years=year_range,
                                                         empty_label=(_("Year"), _("Month"), _("Day"))),
                           label="", required=False)
 

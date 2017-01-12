@@ -34,6 +34,21 @@
                 }
             })
         });
+
+        function set_result(obj, task_id, result) {
+            if (result == "fail")
+                $("#"+task_id+"_ok").attr('checked', false);
+            else
+                $("#"+task_id+"_fail").attr('checked', false);
+
+            $.ajax({
+                url: "/school/tasks/" + task_id + "/result/",
+                data: {'result': result, csrfmiddlewaretoken: '{{ csrf_token }}'},
+                type: 'post',
+                success: function (data) {
+                }
+            });
+        }
     </script>
 {% endblock %}
 
@@ -70,18 +85,29 @@
     <div class="spacer10"></div>
     <form method="POST" class="form-horizontal" role="form" id="pdf_form">
         {% csrf_token %}
-        <div class="pull-right">
-            {% if tasks.has_previous %}
-                <h4 style="display: inline"><a href="?page={{ tasks.previous_page_number }}"> <<< </a></h4>
+            {% if tasks.has_other_pages %}
+              <ul class="pagination">
+                {% if tasks.has_previous %}
+                  <li><a href="?page={{ tasks.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in tasks.paginator.page_range %}
+                  {% if tasks.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only" style="font-size: x-large">(current)</span></span></li>
+                  {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                {% if tasks.has_next %}
+                  <li><a href="?page={{ tasks.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+              </ul>
             {% endif %}
 
-            <h4 style="display: inline">{% trans "Page" %} {{ tasks.number }} {% trans "of" %} {{ tasks.paginator.num_pages }}</h4>
-
-            {% if tasks.has_next %}
-                <h4 style="display: inline"><a href="?page={{ tasks.next_page_number }}"> >>> </a></h4>
-            {% endif %}
-        </div>
-        <div class="clearfix spacer30"></div>
+        <div class="clearfix spacer10"></div>
             <section class="tasks-section">
                 <header class="tasks-header">
                     <div class="task-id">ID</div>
@@ -117,10 +143,46 @@
                                 {{ task.task.creation_date }}
                             </div>
                             <div class="lesson-passed">
-                                <h3 class="lesson-passed">
-                                {{ task.lesson.lesson_passed }}
-                                    <span class="label {% if task.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{ task.lesson_passed|yesno:"ZAL,NIE ZAL," }}</span>
-                                </h3>
+                                {% if perms.congregation.can_manage %}
+                                    <div class="lesson-passed">
+                                        {% if member.school_allow == None %}
+                                            <div class="center-block">
+                                                <div class="checkbox checkbox-danger checkbox-task-list">
+                                                    <input type="checkbox" id="{{ task.task.id }}_fail" name="{{ task.task.id }}_fail"
+                                                           onclick="set_result(this, {{ task.task.id }}, 'fail');"
+                                                           {% if task.lesson_passed == False %}
+                                                           checked
+                                                           {% endif %}
+                                                    >
+                                                    <label for="{{ task.task.id }}_fail"></label>
+                                                </div>
+                                                <div class="checkbox checkbox-success checkbox-task-list">
+                                                    <input type="checkbox" id="{{ task.task.id }}_ok" name="{{ task.task.id }}_ok"
+                                                           onclick="set_result(this, {{ task.task.id }}, 'ok');"
+                                                           {% if task.lesson_passed == True %}
+                                                           checked
+                                                           {% endif %}
+                                                    >
+                                                    <label for="{{ task.task.id }}_ok"></label>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        <!--<h3>-->
+                                        <!--<span class="label {% if task.lesson_passed %}label-success{% else %}
+                                            label-danger{% endif %}">{{task.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>-->
+                                        <!--</h3>-->
+                                    </div>
+                                    <div class="select-print">
+                                        <div class="center-block">
+                                            <div class="checkbox checkbox-primary checkbox-task-list">
+                                                <input type="checkbox" id="print_{{ task.id }}" name="print"
+                                                       value="{{ task.id }}" class="print_checkbox">
+                                                <label for="print_{{ task.id }}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                {% endif %}
                             </div>
                             <div class="select-print">
                                 <div class="checkbox checkbox-primary checkbox-task-list">
@@ -134,6 +196,29 @@
                 {% endfor %}
                 </ul>
             </section>
+
+            {% if tasks.has_other_pages %}
+              <ul class="pagination">
+                {% if tasks.has_previous %}
+                  <li><a href="?page={{ tasks.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in tasks.paginator.page_range %}
+                  {% if tasks.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only" style="font-size: x-large">(current)</span></span></li>
+                  {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                {% if tasks.has_next %}
+                  <li><a href="?page={{ tasks.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+              </ul>
+            {% endif %}
+
         {% if perms.congregation.can_manage %}
             <div class="spacer30"></div>
             <a href="/school/tasks/add" class="btn btn-lg btn-primary">{% trans "Add task" %}</a>
@@ -142,5 +227,8 @@
                         id="print_button">{% trans "Print selected" %}</button>
             </div>
         {% endif %}
+
+
     </form>
+
 {% endblock %}
