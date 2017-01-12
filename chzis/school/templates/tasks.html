@@ -118,7 +118,8 @@
                             </div>
                             <div class="lesson-passed">
                                 <h3 class="lesson-passed">
-                                    <span class="label {% if task.lesson.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{ task.lesson.lesson_passed|yesno:"PASSED,FAIL,FAIL" }}</span>
+                                {{ task.lesson.lesson_passed }}
+                                    <span class="label {% if task.lesson_passed %}label-success{% else %}label-danger{% endif %}">{{ task.lesson_passed|yesno:"ZAL,NIE ZAL," }}</span>
                                 </h3>
                             </div>
                             <div class="select-print">
