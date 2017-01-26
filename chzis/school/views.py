@@ -27,7 +27,9 @@ class Tasks(View):
         date_now = datetime.datetime.now()
         month_days = datetime.datetime(year=date_now.year, month=date_now.month + 1, day=1) - datetime.datetime(
                 year=date_now.year, month=date_now.month, day=1)
-        tasks = SchoolTask.objects.all().exclude(task__meeting_item__name='Old school')
+        tasks = SchoolTask.objects.all().order_by('task__presentation_date',
+                                                  'task__meeting_item__part__order',
+                                                  'task__meeting_item__order').exclude(task__meeting_item__name='Old school')
 
         action = request.GET.get('action')
         if action == "filter":

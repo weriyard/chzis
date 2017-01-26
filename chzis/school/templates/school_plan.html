@@ -66,50 +66,49 @@
         {% csrf_token %}
         <input type="hidden" id="start_week" name="start_week" value="{{ current_week.week_start|date:"j.m" }}">
         <input type="hidden" id="end_week" name="end_week" value="{{ current_week.week_end|date:"j.m" }}">
-            <section class="tasks-section">
-                <header class="tasks-header">
-                    <div class="task-id">ID</div>
-                    <div class="task-details">
-                        <div class="fullname"><div class="ss"><div>{% trans "Meeting item" %}</div></div></div>
-                        <div class="member-fullname">{% trans "Person" %}</div>
-                        <div class="lesson-name">{% trans "Lesson name" %}</div>
-                        <div class="presentation-date">{% trans "Presentation date" %}</div>
+        <table class="table-responsive">
+            <table class="table table-hover table-striped tasks">
+                <thead class="tasks-header">
+                    <tr>
+                        <th class="task-id">ID</th>
+                        <th class="fullname"><div class="ss"><div>{% trans "Meeting item" %}</div></div></th>
+                        <th class="member-fullname">{% trans "Person" %}</th>
+                        <th class="lesson-name">{% trans "Lesson name" %}</th>
+                        <th class="presentation-date">{% trans "Presentation date" %}</th>
                         {% if perms.congregation.can_manage %}
-                            <div class="lesson-passed">{% trans "Result" %}</div>
-                            <div class="select-print">{% trans "Print" %}</div>
+                            <th class="lesson-passed">{% trans "Result" %}</th>
+                            <th class="select-print">{% trans "Print" %}</th>
                         {% endif %}
-
-                    </div>
-                </header>
-                    <ul class="task-list">
+                    </tr>
+                </thead>
+                    <tbody>
                     {% for task in tasks %}
-                        <li class="task-row gallery-column1">
-                            <div class="task-id">
+                        <tr class="task-row task-{{ task.task.meeting_item.order}}">
+                            <td class="task-id">
                                     {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
                                         <a href="{{ task.get_absolute_url }}">{{ task.task.id }}</a>
                                     {% else %}
                                         {{ task.task.id }}
                                     {% endif %}
-                            </div>
-                            <div class="task-details">
-                                <div class="fullname">
+                            </td>
+                                <td class="fullname">
                                     {{ task.task.meeting_item.full_name }}
-                                </div>
-                                <div class="member-fullname">
+                                </td>
+                                <td class="member-fullname">
                                     {% if perms.congregation.can_manage or task.task.person.user.id == user.id %}
                                         <a href="{{ task.task.person.get_absolute_url }}">{{ task.task.person }}</a>
                                     {% else %}
                                         {{ task.task.person }}
                                     {% endif %}
-                                </div>
-                                <div class="lesson-name">
+                                </td>
+                                <td class="lesson-name">
                                     {{ task.lesson.name }}
-                                </div>
-                                <div class="presentation-date">
+                                </td>
+                                <td class="presentation-date">
                                     {{ task.task.presentation_date }}
-                                </div>
+                                </td>
                                 {% if perms.congregation.can_manage %}
-                                    <div class="lesson-passed">
+                                    <td class="lesson-passed">
                                         {% if member.school_allow == None %}
                                             <div class="center-block">
                                                 <div class="checkbox checkbox-danger checkbox-task-list">
@@ -136,8 +135,8 @@
                                         <!--<span class="label {% if task.lesson_passed %}label-success{% else %}
                                             label-danger{% endif %}">{{task.lesson_passed|yesno:"PASSED,FAIL,FAIL"}}</span>-->
                                         <!--</h3>-->
-                                    </div>
-                                    <div class="select-print">
+                                    </td>
+                                    <td class="select-print">
                                         <div class="center-block">
                                             <div class="checkbox checkbox-primary checkbox-task-list">
                                                 <input type="checkbox" id="print_{{ task.id }}" name="print"
@@ -145,15 +144,15 @@
                                                 <label for="print_{{ task.id }}"></label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </td>
                                 {% else %}
                                 {% endif %}
                             </div>
 
-                        </li>
+                        </tr>
                     {% endfor %}
-                    </ul>
-            </section>
+                    </tbody>
+        </table>
         {% if perms.congregation.can_manage %}
             <div class="spacer30">
             </div>
