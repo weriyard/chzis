@@ -109,41 +109,40 @@
             {% endif %}
 
         <div class="clearfix spacer10"></div>
-            <section class="tasks-section">
-                <header class="tasks-header">
-                    <div class="task-id">ID</div>
-                    <div class="task-details">
-                        <div class="fullname"><div class="ss"><div>{% trans "Meeting item" %}</div></div></div>
-                        <div class="member-fullname">{% trans "Person" %}</div>
-                        <div class="lesson-name">{% trans "Lesson name" %}</div>
-                        <div class="presentation-date">{% trans "Presentation date" %}</div>
-                        <div class="presentation-date">{% trans "Creation date" %}</div>
-                        <div class="lesson-passed">{% trans "Result" %}</div>
-                        <div class="select-print">{% trans "Print" %}</div>
-                    </div>
-                </header>
-
-                <ul class="task-list">
+            <div class="table-responsive">
+                <table class="table table-hover table-striped tasks">
+                    <thead>
+                        <tr>
+                            <th class="task-id">ID</th>
+                            <th class="fullname"><div class="ss"><div>{% trans "Meeting item" %}</div></div></th>
+                            <th class="member-fullname">{% trans "Person" %}</th>
+                            <th class="lesson-name">{% trans "Lesson name" %}</th>
+                            <th class="presentation-date">{% trans "Presentation date" %}</th>
+                            <th class="presentation-date">{% trans "Creation date" %}</th>
+                            <th class="col-4 lesson-passed">{% trans "Result" %}</th>
+                            <th class="select-print">{% trans "Print" %}</th>
+                        </tr>
+                    </thead>
+                <tbody>
                 {% for task in tasks %}
-                    <li class="task-row">
-                        <div class="task-id"><a href="{{ task.get_absolute_url }}">{{ task.task.id }}</a></div>
-                        <div class="task-details">
-                            <div class="fullname">
+                    <tr class="task-row task-{{ task.task.meeting_item.order}}">
+                        <td class="task-id"><a href="{{ task.get_absolute_url }}">{{ task.task.id }}</a></td>
+                            <td class="fullname">
                                 {{ task.task.meeting_item.full_name }}
-                            </div>
-                            <div class="member-fullname">
+                            </td>
+                            <td class="member-fullname">
                                 <a href="{{ task.task.person.get_absolute_url }}">{{ task.task.person }}</a>
-                            </div>
-                            <div class="lesson-name">
+                            </td>
+                            <td class="lesson-name">
                                 {{ task.lesson.name }}
-                            </div>
-                            <div class="presentation-date">
+                            </td>
+                            <td class="presentation-date">
                                 {{ task.task.presentation_date }}
-                            </div>
-                            <div class="">
+                            </td>
+                            <td class="">
                                 {{ task.task.creation_date }}
-                            </div>
-                            <div class="lesson-passed">
+                            </td>
+                            <td class="col-4 lesson-passed">
                                 {% if perms.congregation.can_manage %}
                                     <div class="lesson-passed">
                                         {% if member.school_allow == None %}
@@ -169,29 +168,23 @@
                                             </div>
                                         {% endif %}
                                     </div>
-                                    <div class="select-print">
-                                        <div class="center-block">
-                                            <div class="checkbox checkbox-primary checkbox-task-list">
-                                                <input type="checkbox" id="print_{{ task.id }}" name="print"
-                                                       value="{{ task.id }}" class="print_checkbox">
-                                                <label for="print_{{ task.id }}"></label>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 {% else %}
                                 {% endif %}
-                            </div>
-                            <div class="select-print">
+                            </td>
+                            <td class="select-print">
                                 <div class="checkbox checkbox-primary checkbox-task-list">
                                     <input type="checkbox" id="print_{{ task.id }}" name="print" value="{{ task.id }}"
                                            class="print_checkbox">
                                     <label for="print_{{ task.id }}"></label>
                                 </div>
-                            </div>
-                        </div>
-                    </li>
+                            </td>
+                        </th>
+                    </tr>
                 {% endfor %}
-                </ul>
+                </tbody>
+                </table>
+            </div>
             </section>
 
             {% if tasks.has_other_pages %}

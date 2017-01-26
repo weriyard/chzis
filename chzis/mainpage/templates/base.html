@@ -35,7 +35,7 @@ $(window).on('load', function() {
 
 <body>
 {% load i18n %}
-<div class="container">
+
     <nav class="navbar navbar-default navbar-inverse navbar-static-top navbar-fixed-top" role="navigation">
          <div class="container">
            <div class="navbar-header">
@@ -95,14 +95,16 @@ $(window).on('load', function() {
         </div><!-- /.container-fluid -->
     </nav>
 
-
+<div class="container">
 {#    <div >#}
 {#        <a href="{{request.META.HTTP_REFERER}}">Back</a>#}
 {#    </div>#}
-    <div class="row center-block">
-        {% block content %}
-        {% endblock %}
-        <div class="spacer"></div>
+    <div class="row">
+        <div class="col-12">
+            {% block content %}
+            {% endblock %}
+            <div class="spacer"></div>
+        </div>
     </div>
 </div>
 </body>
