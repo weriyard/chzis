@@ -42,8 +42,13 @@ class MeetingTaskSchoolForm(forms.ModelForm):
                                  for member_id, lastname, firstname in master_school_members]
 
         super(MeetingTaskSchoolForm, self).__init__(*args, **kwargs)
-        self.fields['meeting_item'].choices = [('', '-------------')] + list(
-                MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'full_name'))
+        bible_reading = MeetingItem.objects.filter(name="Bible Reading").values_list('id', 'full_name')
+        field_ministy_items = MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'full_name')
+        school_meeting_items = list()
+        school_meeting_items.append(('', '-------------'))
+        school_meeting_items.extend(bible_reading)
+        school_meeting_items.extend(field_ministy_items)
+        self.fields['meeting_item'].choices = school_meeting_items
         self.fields['person'].choices = [('', '-------------')] + master_school_members
         self.move_field_after('person', 'presentation_date')
 
