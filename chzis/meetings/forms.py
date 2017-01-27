@@ -43,7 +43,7 @@ class MeetingTaskSchoolForm(forms.ModelForm):
 
         super(MeetingTaskSchoolForm, self).__init__(*args, **kwargs)
         bible_reading = MeetingItem.objects.filter(name="Bible Reading").values_list('id', 'full_name')
-        field_ministy_items = MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'full_name')
+        field_ministy_items = MeetingItem.objects.filter(part__name="Field ministry").values_list('id', 'full_name').exclude(name='Month presentations')
         school_meeting_items = list()
         school_meeting_items.append(('', '-------------'))
         school_meeting_items.extend(bible_reading)
