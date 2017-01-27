@@ -1,20 +1,16 @@
 @font-face {
-  font-family: 'DINWebPro-Bold';
-  src: url('../fonts/DINWebPro-Bold.eot'); /* IE9 Compat Modes */
-  src: url('../fonts/DINWebPro-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/DINWebPro-Bold.woff') format('woff'), /* Pretty Modern Browsers */
-       url('../fonts/DINCompPro-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-family: 'DINWebPro-Bold';
+    src: url('../fonts/DINWebPro-Bold.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/DINWebPro-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/DINWebPro-Bold.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/DINCompPro-Bold.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 @font-face {
-  font-family: 'DINWebPro';
-  src: url('../fonts/DINWebPro.eot'); /* IE9 Compat Modes */
-  src: url('../fonts/DINWebPro.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/DINWebPro.woff') format('woff'), /* Pretty Modern Browsers */
-       url('../fonts/DINCompPro.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-family: 'DINWebPro';
+    src: url('../fonts/DINWebPro.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/DINWebPro.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/DINWebPro.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/DINCompPro.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
-body, table{
+body, table {
     background-color: #FFF;
     padding: 70px 0 0 0;
     color: #000;
@@ -24,10 +20,11 @@ body, table{
     font-style: normal;
 }
 
- .checkbox, .radio {
+.checkbox, .radio {
     margin-top: 0px;
     margin-bottom: 0px;
-    min-height: 0px; !important;
+    min-height: 0px;
+!important;
 }
 
 div.data-field {
@@ -40,7 +37,7 @@ table.task_list td, th {
     vertical-align: middle !important;
 }
 
-table>thead>tr>th {
+table > thead > tr > th {
     font-weight: bold;
 }
 
@@ -57,7 +54,7 @@ table.task_list td:nth-child(5), table.task_list td:nth-child(6) {
     text-align: center;
 }
 
-table.add-task td{
+table.add-task td {
     padding: 10px;
 }
 
@@ -102,7 +99,7 @@ table.school-lessons tbody {
     display: block;
 }
 
-table.school-lessons thead>tr {
+table.school-lessons thead > tr {
     display: block;
     width: 100%;
 }
@@ -118,7 +115,7 @@ table.school-lessons td {
     border-bottom-color: #85929E;
 }
 
-table.school-lessons td:nth-child(1),table.school-lessons td:nth-child(3),table.school-lessons td:nth-child(4) {
+table.school-lessons td:nth-child(1), table.school-lessons td:nth-child(3), table.school-lessons td:nth-child(4) {
     text-align: center;
 }
 
@@ -135,11 +132,11 @@ table.school-lessons span#lesson_repeat_counter {
 }
 
 div.spacer {
-   height: 80px;
+    height: 80px;
 }
 
 div.spacer50 {
-   height: 50px;
+    height: 50px;
 }
 
 div.spacer30 {
@@ -151,7 +148,7 @@ div.spacer10 {
 }
 
 .table-nonfluid {
-   width: auto ;
+    width: auto;
 }
 
 div.panel-zero-padding {
@@ -176,13 +173,13 @@ div.panel-zero-padding table {
 }
 
 .chosen-container-active .chosen-single {
-    border-color:#66afe9 !important;
-    outline:0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    border-color: #66afe9 !important;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
 #id_presentation_date_day {
@@ -197,6 +194,7 @@ a:hover, a:focus {
     color: #000;
     text-decoration: underline;
 }
+
 a:active, a:hover {
     outline: 0;
 }
@@ -214,8 +212,6 @@ a {
     padding: 5px 15px;
     font-weight: bold;
 }
-
-
 
 .task-list .task-row {
     margin: 0;
@@ -279,7 +275,6 @@ table.tasks > tbody > tr.task-4:hover {
     margin: 20px 0 0 20px;
 }
 
-
 .checkbox label::before {
     line-height: 0px;
 }
@@ -289,7 +284,7 @@ table.tasks > tbody > tr.task-4:hover {
     text-align: justify;
 }
 
-.checkbox-no-border span::after{
+.checkbox-no-border span::after {
     border: none;
     font-family: "FontAwesome";
     content: "\f00c";

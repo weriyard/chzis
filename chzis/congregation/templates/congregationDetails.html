@@ -3,56 +3,52 @@
 
 {% block content %}
 {% load i18n %}
-<section class="tasks-section">
-    <header class="tasks-header">
-        <div class="task-id">{% trans "No." %}</div>
-        <div class="task-details">
-            <div class="cong-member">{% trans "Congregation member" %}</div>
-            <div class="active">{% trans "Active" %}</div>
-            <div class="school-allow">{% trans "School allow" %}</div>
-            <div class="pioneer">{% trans "Pionner" %}</div>
-            <div class="servant">{% trans "Servant" %}</div>
-            <div class="elder">{% trans "Elder" %}</div>
-        </div>
-    </header>
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-condensed tasks">
+    <thead>
+        <th>{% trans "No." %}</th>
+        <th>{% trans "Congregation member" %}</th>
+        <th>{% trans "Active" %}</th>
+        <th>{% trans "School allow" %}</th>
+        <th>{% trans "Pionner" %}</th>
+        <th>{% trans "Servant" %}</th>
+        <th>{% trans "Elder" %}</th>
+    </thead>
 
-    <ul class="task-list">
+    <tbody>
     {% for member_id, member in cong_members.items %}
-        <li class="task-row">
-            <div class="task-id"><a href="{{member.member.get_absolute_url}}">{{member_id}}</a></div>
-            <div class="task-details">
-                <div class="cong-member">
-                    <a href="{{member.member.get_absolute_url}}">{{member.member.user.username}}</a>
+        <tr>
+            <td><a href="{{member.member.get_absolute_url}}">{{member_id}}</a></td>
+            <td>
+                <a href="{{member.member.get_absolute_url}}">{{member.member.user.username}}</a>
+            </td>
+            <td>
+                <div class="checkbox-no-border"><span></span></div>
+            </td>
+            <td>
+                <div class="checkbox-no-border">
+                    {%  if member.privileges.school_member %}<span></span>{% endif %}
                 </div>
-                <div class="active">
-                    <div class="checkbox-no-border">
-                        <span></span>
-                    </div>
+            </td>
+            <td>
+                <div class="checkbox-no-border">
+                    {%  if member.privileges.pioneer %}<span></span>{% endif %}
                 </div>
-                <div class="school-allow">
-                    <div class="checkbox-no-border">
-                        {%  if member.privileges.school_member %}<span></span>{% endif %}
-                    </div>
+            </td>
+            <td>
+                <div class="checkbox-no-border">
+                    {%  if member.privileges.servant %}<span></span>{% endif %}
                 </div>
-                <div class="pioneer">
-                    <div class="checkbox-no-border">
-                        {%  if member.privileges.pioneer %}<span></span>{% endif %}
-                    </div>
+            </td>
+            <td>
+                <div class="checkbox-no-border">
+                    {%  if member.privileges.elder %}<span></span>{% endif %}
                 </div>
-                <div class="servant">
-                    <div class="checkbox-no-border">
-                        {%  if member.privileges.servant %}<span></span>{% endif %}
-                    </div>
-                </div>
-                <div class="elder">
-                    <div class="checkbox-no-border">
-                        {%  if member.privileges.elder %}<span></span>{% endif %}
-                    </div>
-                </div>
-            </div>
-        </li>
+            </td>
+        </tr>
     {% endfor %}
-    </ul>
-</section>
+    </tbody>
+    </table>
+</div>
 
 {% endblock %}
