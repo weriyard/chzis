@@ -5,6 +5,7 @@ from django.db.models import Q
 
 from chzis.congregation.models import Congregation, CongregationMember, CongregationMemberPrivileges, \
     CongregationPrivileges
+from chzis.congregation.forms import AddCongregationMember
 
 
 class CongregationRedirect(RedirectView):
@@ -92,31 +93,46 @@ class CongregationMemberDetails(TemplateView):
         return context
 
     def post(self, request, congregation_id, member_id):
-        cong_member = CongregationMember.objects.get(id=member_id)
-        all_allowed_privileges = CongregationPrivileges.objects.filter(
-                Q(allow_gender=cong_member.user.profile.gender) | Q(allow_gender='A')).values('id', 'name', 'full_name')
-        current_privs = CongregationMemberPrivileges.objects.filter(member=cong_member).values_list('id', 'privilege__name')
-        set_last_modification = False
+        if request.POST.get('action') == 'delete':
+            CongregationMember.objects.get(id=member_id).delete()
+            redirect_path = '/congregations/'
 
-        for priv in all_allowed_privileges:
-            if priv['name'] in request.POST and request.POST[priv['name']] == 'None':
-                cmp = CongregationMemberPrivileges()
-                cmp.member = cong_member
-                cmp.privilege = CongregationPrivileges.objects.get(name=priv['name'])
-                cmp.save()
-                set_last_modification = True
+        if request.POST.get('action') == 'save':
+            cong_member = CongregationMember.objects.get(id=member_id)
+            all_allowed_privileges = CongregationPrivileges.objects.filter(
+                    Q(allow_gender=cong_member.user.profile.gender) | Q(allow_gender='A')).values('id', 'name', 'full_name')
+            current_privs = CongregationMemberPrivileges.objects.filter(member=cong_member).values_list('id', 'privilege__name')
+            set_last_modification = False
 
-        for priv_id, priv_name in current_privs:
-            if priv_name not in request.POST:
-                CongregationMemberPrivileges.objects.get(id=priv_id).delete()
+            for priv in all_allowed_privileges:
+                if priv['name'] in request.POST and request.POST[priv['name']] == 'None':
+                    cmp = CongregationMemberPrivileges()
+                    cmp.member = cong_member
+                    cmp.privilege = CongregationPrivileges.objects.get(name=priv['name'])
+                    cmp.save()
+                    set_last_modification = True
+
+            for priv_id, priv_name in current_privs:
+                if priv_name not in request.POST:
+                    CongregationMemberPrivileges.objects.get(id=priv_id).delete()
+                    cong_member.save(force_update=True)
+                    set_last_modification = True
+
+            if set_last_modification:
                 cong_member.save(force_update=True)
-                set_last_modification = True
 
-        if set_last_modification:
-            cong_member.save(force_update=True)
+            redirect_path = request.path
+        return redirect(redirect_path)
 
-        return redirect(request.path)
 
+class CongregationMemberAdd(TemplateView):
+    template_name = "congregationMemberAdd.html"
+
+    def get_context_data(self):
+        context = dict()
+
+        context['add_member_form'] = AddCongregationMember()
+        return context
 
 class CongregationMemberProfileRedirect(RedirectView):
     url = ""
