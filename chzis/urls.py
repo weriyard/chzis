@@ -27,6 +27,8 @@ from chzis.users.views import PeopleProfileSetting, PeopleLogin
 from chzis.school.views import Tasks, AddTasks, TaskView, SchoolPlanDetails, school_plan, set_task_result, \
     school_member_lesson_passed, school_tasks_print, school_member_history, school_task_delete, EditTask, SchoolLessonImport
 
+#admin.autodiscover()
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^people/login$', PeopleLogin.as_view(), name='login'),
@@ -52,4 +54,4 @@ urlpatterns = [
     url(r'^school/plan/([0-9]{4})/([0-9]+)/([0-9]+)/$', SchoolPlanDetails.as_view()),
 
 
-] + static(settings.STATIC_URL)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

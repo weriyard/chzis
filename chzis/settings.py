@@ -32,12 +32,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admin',
     'chzis.mainpage',
     'chzis.congregation',
     'chzis.users',
@@ -137,9 +137,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "chzis/media"),
+    os.path.join(BASE_DIR, "chzis/static"),
 ]
 
-STATIC_URL = '/media/'
+MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'chzis','static')
 
 LOGIN_URL = "/people/login"
 AUTH_PROFILE_MODULE = "users.PeopleProfile"
