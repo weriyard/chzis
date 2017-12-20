@@ -22,7 +22,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 
 from chzis.mainpage.views import Index
-from chzis.congregation.views import Congregations, CongregationMemberDetails, CongregationDetails, CongregationMemberProfileRedirect, CongregationRedirect
+from chzis.congregation.views import Congregations, CongregationMemberDetails, CongregationDetails, CongregationMemberProfileRedirect, CongregationRedirect, CongregationMemberAdd
 from chzis.users.views import PeopleProfileSetting, PeopleLogin
 from chzis.school.views import Tasks, AddTasks, TaskView, SchoolPlanDetails, school_plan, set_task_result, \
     school_member_lesson_passed, school_tasks_print, school_member_history, school_task_delete, EditTask, SchoolLessonImport
@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^profile/$', CongregationMemberProfileRedirect.as_view()),
     url(r'^congregations/$', login_required(CongregationRedirect.as_view())),
     url(r'^congregations/all/$', login_required(Congregations.as_view())),
+    url(r'^congregations/member/add/$', login_required(CongregationMemberAdd.as_view())),
     url(r'^congregations/(?P<congregation_id>\d+)/$', login_required(CongregationDetails.as_view())),
     url(r'^congregations/(?P<congregation_id>\d+)/members/(?P<member_id>\d+)$', login_required(CongregationMemberDetails.as_view())),
     url(r'^congregations/unknown/members/(?P<member_id>\d+)$', login_required(CongregationMemberDetails.as_view())),

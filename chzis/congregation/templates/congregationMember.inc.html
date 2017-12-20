@@ -1,32 +1,37 @@
 {% block content %}
 {% load i18n %}
-{{member.user.username}}
+<span>{{member.user.last_name}} {{member.user.first_name}}</span>
+
 <br>
 <br>
-    <div class="table-responsive">
+    <div class="table-responsive col-lg-4">
         <table class="table table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-xs-3">{% trans "Age" %}</td>
-                    <td class="col-xs-3">{% trans "Baptism date" %}</td>
-                    <td class="col-xs-3">{% trans "Active" %}</td>
-                    <td class="col-xs-3">{% trans "Last modification" %}</td>
+                    <td class="col-xs-2">{% trans "Age" %}</td>
+                    <td class="col-xs-2">{{member.age}}</td>
                 </tr>
                 <tr>
-                    <td>{{member.age}}</td>
-                    <td>{{member.baptism_date}}</td>
-                    <td>
+                    <td class="col-xs-2">{% trans "Baptism date" %}</td>
+                    <td class="col-xs-2">{{member.baptism_date}}</td>
+                </tr>
+                <tr>
+                    <td class="col-xs-2">{% trans "Active" %}</td>
+                    <td class="col-xs-2">
                         <div class="checkbox checkbox-success" style="margin-top:0px;margin-bottom:5px;">
                             <input type="checkbox" id="active" name="active" {% if member.active %}checked{% endif %} disabled>
                             <label for="active"></label>
                         </div>
                     </td>
-                    <td>{{member.last_modification}}</td>
+                </tr>
+                <tr>
+                    <td class="col-xs-2">{% trans "Last modification" %}</td>
+                    <td class="col-xs-2">{{member.last_modification}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
-
+<div class="clearfix"></div>
 <form method="POST">
     {% csrf_token %}
 
@@ -155,8 +160,8 @@
 
 <div class="spacer30"></div>
     {% if perms.congregation.can_manage %}
-        <button type="submit" class="btn btn-lg btn-success">{% trans "Save changes" %}</button>
+        <button type="submit" class="btn btn-lg btn-success" value="save" name="action">{% trans "Save changes" %}</button>
+        <button type="submit" class="btn btn-lg btn-danger" value="delete" name="action">{% trans "Remove" %}</button>
     {% endif %}
 </form>
-
 {% endblock %}

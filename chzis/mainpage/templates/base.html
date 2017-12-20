@@ -74,12 +74,16 @@ $(window).on('load', function() {
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Manage" %} <span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="/congregations/">{% trans "Congregation" %}</a></li>
-{#                        <li><a href="/meetings/">{% trans "Meetings plan" %}</a></li>#}
-                        <li role="separator" class="divider"></li>
+                        <li>{% trans "School" %}</li>
                         <li><a href="/school/tasks/add/">{% trans "School add task" %}</a></li>
                         <li><a href="/school/tasks">{% trans "School all task" %}</a></li>
-			<li><a href="/school/lessons/import">{% trans "Import school task lesson" %}</a></li>
+                        <li><a href="/school/lessons/import">{% trans "Import school task lesson" %}</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li>{% trans "Congregation" %}</li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/congregations/">{% trans "Congregation" %}</a></li>
+                        <li><a href="/congregations/member/add">{% trans "Add congregation member" %}</a></li>
+{#                        <li><a href="/meetings/">{% trans "Meetings plan" %}</a></li>#}
                       </ul>
                     </li>
                 {% endif %}
