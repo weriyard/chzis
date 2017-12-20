@@ -25,7 +25,14 @@ from chzis.utils.pdf import schooltask
 class Tasks(View):
     def get(self, request):
         date_now = datetime.datetime.now()
-        month_days = datetime.datetime(year=date_now.year, month=date_now.month + 1, day=1) - datetime.datetime(
+        year = date_now.year
+        month = date_now.month
+        if month + 1 > 12:
+            month = 1
+            year = year + 1
+        else:
+            month += 1
+        month_days = datetime.datetime(year=year, month=month, day=1) - datetime.datetime(
                 year=date_now.year, month=date_now.month, day=1)
         tasks = SchoolTask.objects.all().order_by('task__presentation_date',
                                                   'task__meeting_item__part__order',
