@@ -189,7 +189,7 @@ def create_meeting_task_card(data=None, school_class=None):
     page_content.append(Spacer(0, 5 * mm))
     header = Paragraph(u"<strong>ZADANIE PODCZAS ZEBRANIA CHRZESCIJAŃSKIEGO ŻYCIA I SŁUŻBY</strong>", header_style)
     page_content.append(header)
-    page_content.append(Spacer(0, 8 * mm))
+    page_content.append(Spacer(0, 6 * mm))
     user_name = Paragraph(u"Imię i nazwisko:<font name='Courier_New' size='12'>  {name}</font>".format(name=dynamic_content.get("name")), introduction_style)
     page_content.append(user_name)
     slave_user = Paragraph(
@@ -200,7 +200,7 @@ def create_meeting_task_card(data=None, school_class=None):
     page_content.append(date)
     lesson = Paragraph(u"Cecha przemawiania:<font name='Courier_New' size='12'>  {lesson}</font>".format(lesson=dynamic_content.get('lesson')), lesson_style)
     page_content.append(lesson)
-    page_content.append(Spacer(0, 5 * mm))
+    page_content.append(Spacer(0, 4 * mm))
 
     d = Drawing(10, 15)
     d.add(String(5, 1, "Zadanie", fontName="Arial_Bold", fontSize=9))
@@ -209,40 +209,56 @@ def create_meeting_task_card(data=None, school_class=None):
     d = Drawing(20, 13)
     d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('task_type') == "Bible Reading" else False))
     d.add(String(15 + left_col_margin, 1, u"Czytanie Biblii", fontName="Arial", fontSize=9))
-    d.add(String(136, 14, u"Zadanie przedstawisz", fontName="Arial_Bold", fontSize=9))
-    d.add(String(136, 1, u"w sali:", fontName="Arial_Bold", fontSize=9))
+
+    d.add(MyCrossBox(right_col_margin - 2, selected=True if dynamic_content.get('task_type') == "Return Visit 3" else False))
+    d.add(String(15 + right_col_margin, 1, "Trzecie odwiedziny", fontName="Arial", fontSize=9))
     page_content.append(d)
 
     d = Drawing(20, 13)
     d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('task_type') == "Initial Call" else False))
     d.add(String(15 + left_col_margin, 1, "Pierwsza rozmowa", fontName="Arial", fontSize=9))
 
-    d.add(MyCrossBox(right_col_margin - 2, selected=True if dynamic_content.get('class') == 1 else False))
-    d.add(String(15 + right_col_margin, 1, "głównej", fontName="Arial", fontSize=9))
-
+    d.add(MyCrossBox(right_col_margin - 2, selected=True if dynamic_content.get('task_type') == "Bible Study" else False))
+    d.add(String(15 + right_col_margin, 1, "Studium biblijne", fontName="Arial", fontSize=9))
     page_content.append(d)
+
     d = Drawing(20, 13)
     d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('task_type') == "Return Visit" else False))
-    d.add(String(15 + left_col_margin, 1, "Odwiedziny ponowne", fontName="Arial", fontSize=9))
+    d.add(String(15 + left_col_margin, 1, "Pierwsze odwiedziny", fontName="Arial", fontSize=9))
 
-    d.add(MyCrossBox(right_col_margin - 2, selected=True if dynamic_content.get('class') == 2 else False))
-    d.add(String(15 + right_col_margin, 1, "drugiej", fontName="Arial", fontSize=9))
-
+    d.add(MyCrossBox(right_col_margin - 2, selected=True if dynamic_content.get('task_type') == "Bible Short Meeting" else False))
+    d.add(String(15 + right_col_margin, 1, "Przemówienie", fontName="Arial", fontSize=9))
     page_content.append(d)
+
     d = Drawing(20, 13)
-    d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('task_type') == "Bible Study" else False))
-    d.add(String(15 + left_col_margin, 1, "Studium biblijne", fontName="Arial", fontSize=9))
+    d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('task_type') == "Return Visit 2" else False))
+    d.add(String(15 + left_col_margin, 1, "Drugie odwiedziny", fontName="Arial", fontSize=9))
 
-    d.add(MyCrossBox(right_col_margin - 2, selected=True if dynamic_content.get('class') == 3 else False))
-    d.add(String(15 + right_col_margin, 1, "trzeciej", fontName="Arial", fontSize=9))
-
+    d.add(MyCrossBox(right_col_margin - 2, selected=True if dynamic_content.get('task_type') == "Other" else False))
+    d.add(String(15 + right_col_margin, 1, "Inne: .....................", fontName="Arial", fontSize=9))
     page_content.append(d)
+
+    d = Drawing(10, 15)
+    d.add(String(5,1, u"Zadanie przedstawisz w sali:", fontName="Arial_Bold", fontSize=9))
+    page_content.append(d)
+
     d = Drawing(20, 13)
-    d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('task_type') == "Other" else False))
-    d.add(String(15 + left_col_margin, 1, "Inne: ................................", fontName="Arial", fontSize=9))
+    d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('class') == 1 else False))
+    d.add(String(15 + left_col_margin, 1, "głównej", fontName="Arial", fontSize=9))
     page_content.append(d)
 
-    page_content.append(Spacer(0, 9.5 * mm))
+    d = Drawing(20, 13)
+    d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('class') == 2 else False))
+    d.add(String(15 + left_col_margin, 1, "drugiej", fontName="Arial", fontSize=9))
+    page_content.append(d)
+
+    d = Drawing(20, 13)
+    d.add(MyCrossBox(left_col_margin, selected=True if dynamic_content.get('class') == 3 else False))
+    d.add(String(15 + left_col_margin, 1, "trzeciej", fontName="Arial", fontSize=9))
+    page_content.append(d)
+
+
+    page_content.append(Spacer(0, 3.0 * mm))
 
     footer = Paragraph(
         u"<para><font name='Arial_Bold'>Wskazówki:</font> Potrzebne informacje dotyczące twojego wystąpie-<br/>nia znajdziesz w miesięczniku <font name='Arial_Italic'>Chrzescijańskie życie i słuzba - pro<br/>gram zebrań.</font>" \
@@ -250,8 +266,8 @@ def create_meeting_task_card(data=None, school_class=None):
         u" na zebranie chrzescijańskiego życia i służby.</font></para>", footer_style)
     page_content.append(footer)
 
-    page_content.append(Spacer(0, 7.0 * mm))
-    annonation = Paragraph("S-89-P 10/15", annonation_style)
+    page_content.append(Spacer(0, 2.0 * mm))
+    annonation = Paragraph("S-89-P 10/17", annonation_style)
     page_content.append(annonation)
 
     return page_content
