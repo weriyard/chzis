@@ -43,7 +43,7 @@ class Background(models.Model):
 
 class SchoolTask(models.Model):
     task = models.ForeignKey(MeetingTask, null=True, blank=True)
-    slave = models.ForeignKey(CongregationMember, null=True, blank=True, related_name='slave_person')
+    subordinate = models.ForeignKey(CongregationMember, null=True, blank=True, related_name='subordinate_person')
     lesson = models.ForeignKey(Lesson)
     lesson_passed = models.NullBooleanField(null=True, blank=True)
     lesson_passed_date = models.DateTimeField(blank=True, null=True)

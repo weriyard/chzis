@@ -38,11 +38,11 @@ class CongregationMemberManager(models.Manager):
 
 
 class SchoolMemberPrivilegesManager(models.Manager):
-    def masters(self, congregation):
+    def mains(self, congregation):
         return CongregationMemberPrivileges.objects.filter(member__congregation__id=congregation,
-                                                           privilege__name='master')
+                                                           privilege__name='main')
 
-    def slave(self, congregation):
+    def subordinate(self, congregation):
         return CongregationMemberPrivileges.objects.filter(member__congregation__id=congregation,
                                                            privilege__name='school_member')
 
@@ -50,9 +50,9 @@ class SchoolMemberPrivilegesManager(models.Manager):
         return CongregationMemberPrivileges.objects.filter(member__congregation__id=congregation,
                                                            privilege__name='reader')
 
-    def master_or_reader(self, congregation):
+    def main_or_reader(self, congregation):
         return CongregationMemberPrivileges.objects.filter(Q(member__congregation__id=congregation,
-                                                           privilege__name='master') | Q(member__congregation__id=congregation,
+                                                           privilege__name='main') | Q(member__congregation__id=congregation,
                                                            privilege__name='reader')).distinct()
 
 class CongregationMember(models.Model):

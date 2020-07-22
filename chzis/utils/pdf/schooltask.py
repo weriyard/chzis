@@ -116,7 +116,7 @@ pdfmetrics.registerFont(TTFont('Courier_New', 'Courier_New.ttf'))
 def create_meeting_task_card(data=None, school_class=None):
 
     dynamic_content = {"name": "",
-                       "slave": "",
+                       "subordinate": "",
                        "date": "",
                        "lesson": "",
                        "task_type": "",
@@ -192,10 +192,10 @@ def create_meeting_task_card(data=None, school_class=None):
     page_content.append(Spacer(0, 6 * mm))
     user_name = Paragraph(u"Imię i nazwisko:<font name='Courier_New' size='12'>  {name}</font>".format(name=dynamic_content.get("name")), introduction_style)
     page_content.append(user_name)
-    slave_user = Paragraph(
-        u"<para>Pomocnik(-ca):<font name='Courier_New' size='12'>  {slave}</font></para>".format(slave=dynamic_content.get("slave")),
+    subordinate_user = Paragraph(
+        u"<para>Pomocnik(-ca):<font name='Courier_New' size='12'>  {subordinate}</font></para>".format(subordinate=dynamic_content.get("subordinate")),
         introduction_style)
-    page_content.append(slave_user)
+    page_content.append(subordinate_user)
     date = Paragraph(u"Data:<font name='Courier_New' size='12'>  {date}</font>".format(date=dynamic_content.get('date')), introduction_style)
     page_content.append(date)
     lesson = Paragraph(u"Cecha przemawiania:<font name='Courier_New' size='12'>  {lesson}</font>".format(lesson=dynamic_content.get('lesson')), lesson_style)

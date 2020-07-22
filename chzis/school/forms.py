@@ -15,24 +15,24 @@ class SchoolTaskForm(ModelForm):
     lesson_number = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}),
                                      label=_("Lesson number"),
                                      required=False)
-    slave = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}),
-                             label=_("Slave"),
+    subordinate = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}),
+                             label=_("Subordinate"),
                              required=False)
 
     def __init__(self, *args, **kwargs):
         congregation = kwargs.pop('congregation')
         kwargs.setdefault('label_suffix', '')
-        slave_school_members = (CongregationMember.school.slave(congregation=congregation)).values_list('member_id',
+        subordinate_school_members = (CongregationMember.school.subordinate(congregation=congregation)).values_list('member_id',
                                                                                                         'member__user__last_name',
                                                                                                         'member__user__first_name')
-        slave_school_members = [(member_id, u"{lastname} {firstname}".format(lastname=lastname, firstname=firstname))
-                                for member_id, lastname, firstname in slave_school_members]
+        subordinate_school_members = [(member_id, u"{lastname} {firstname}".format(lastname=lastname, firstname=firstname))
+                                for member_id, lastname, firstname in subordinate_school_members]
         lessons_list = Lesson.objects.all().values_list('id', 'number', 'name')
         lessons_list = [(lesson_id, u"{number} {name}".format(number=number, name=name)) for lesson_id, number, name in
                         lessons_list]
         super(SchoolTaskForm, self).__init__(*args, **kwargs)
         self.fields['lesson'].required = False
-        self.fields['slave'].choices = [('', '-------------')] + slave_school_members
+        self.fields['subordinate'].choices = [('', '-------------')] + subordinate_school_members
         self.fields['lesson_number'].choices = [('', '-------------')] + lessons_list
 
     class Meta:
@@ -65,16 +65,16 @@ class SchoolTaskForm(ModelForm):
                 help_text_html=' <div class="help-block">%s</div>',
                 errors_on_separate_row=True)
 
-    def clean_slave(self):
-        master_member_id = self.data.get('person')
-        if len(master_member_id) > 0:
-            master_member = CongregationMember.objects.get(id=master_member_id)
+    def clean_subordinate(self):
+        main_member_id = self.data.get('person')
+        if len(main_member_id) > 0:
+            main_member = CongregationMember.objects.get(id=main_member_id)
 
-        member_id = self.cleaned_data.get('slave')
+        member_id = self.cleaned_data.get('subordinate')
         if len(member_id) > 0:
             member = CongregationMember.objects.get(id=member_id)
-            if member.id == master_member.id:
-                raise ValidationError(_("Master and slave person must be unique in one task !"))
+            if member.id == main_member.id:
+                raise ValidationError(_("Main and subordinate person must be unique in one task !"))
         else:
             member = None
         return member
@@ -111,7 +111,7 @@ class SchoolTaskForm(ModelForm):
 
 
 class SchoolTaskViewForm(SchoolTaskForm):
-    slave = forms.CharField(widget=TextInput(attrs={'class': 'form-control', 'disabled': ''}), label=_("Slave"),
+    subordinate = forms.CharField(widget=TextInput(attrs={'class': 'form-control', 'disabled': ''}), label=_("Subordinate"),
                             label_suffix="", required=False)
     lesson_number = forms.CharField(widget=HiddenInput(), label=_("Lesson number"), label_suffix="")
 

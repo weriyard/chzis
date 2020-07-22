@@ -48,8 +48,8 @@ class Migration(migrations.Migration):
                 name='SchoolTask',
                 fields=[
                     ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                    ('slave', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
-                                        related_name='slave_person', to='congregation.CongregationMember')),
+                    ('subordinate', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                                        related_name='subordinate_person', to='congregation.CongregationMember')),
                     ('supervisor', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
                                         related_name='supervisor_person', to='congregation.CongregationMember')),
                     ('creator', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='creator_person', to='congregation.CongregationMember')),
