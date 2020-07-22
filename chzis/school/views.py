@@ -135,8 +135,8 @@ class TaskView(TemplateView):
             'person': str(school_task.task.person) if school_task.task is not None else None})
         context['school_task_form'] = SchoolTaskViewForm(instance=school_task,
                                                          congregation=self.request.user.profile.default_congregation.id,
-                                                         initial={'slave': str(
-                                                                 school_task.slave) if school_task.slave is not None else "",
+                                                         initial={'subordinate': str(
+                                                                 school_task.subordinate) if school_task.subordinate is not None else "",
                                                                   'supervisor': str(
                                                                           school_task.supervisor) if school_task.supervisor is not None else "",
                                                                   'creator': str(
@@ -252,7 +252,7 @@ def school_tasks_print(request):
     for task in task_list:
         t = SchoolTask.objects.get(id=task)
         task_param = {"name": u"{fullname}".format(fullname=t.task.person.member_fullname),
-                      "slave": u"{fullname}".format(fullname=t.slave.member_fullname if t.slave is not None else u""),
+                      "subordinate": u"{fullname}".format(fullname=t.subordinate.member_fullname if t.subordinate is not None else u""),
                       "date": t.task.presentation_date,
                       "lesson": u"({lesson_number}){lesson_name}".format(lesson_name=t.lesson.name,
                                                                          lesson_number=t.lesson.number),
@@ -282,7 +282,7 @@ def school_tasks_print(request):
 
 
 def school_member_history(request, member_id):
-    member_history = SchoolTask.objects.filter(Q(task__person__id=member_id) | Q(slave__id=member_id)).exclude(
+    member_history = SchoolTask.objects.filter(Q(task__person__id=member_id) | Q(subordinate__id=member_id)).exclude(
             task__meeting_item__name='Old school')
     p = reversed(sorted(member_history,
                         key=lambda x: x.task.presentation_date if x.task.presentation_date else datetime.date(1900, 1,

@@ -25,7 +25,7 @@ class MeetingTaskSchoolForm(forms.ModelForm):
                                     label=_("Meeting item"),
                                     label_suffix="")
     person = EmptyChoiceField(widget=Select(attrs={'class': 'form-control chosen-select'}),
-                              label=_("Master"),
+                              label=_("Main"),
                               label_suffix="")
     presentation_date = DateField(widget=InlineSelectDateWidget(attrs={'class': 'form-control chosen-select'},
                                                                 empty_label=("Year", "Month", "Day")),
@@ -34,12 +34,12 @@ class MeetingTaskSchoolForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         congregation = kwargs.pop('congregation')
         kwargs.setdefault('label_suffix', '')
-        master_school_members = (CongregationMember.school.master_or_reader(congregation=congregation)).values_list(
+        main_school_members = (CongregationMember.school.main_or_reader(congregation=congregation)).values_list(
             'member_id',
             'member__user__last_name',
             'member__user__first_name')
-        master_school_members = [(member_id, u"{lastname} {firstname}".format(lastname=lastname, firstname=firstname))
-                                 for member_id, lastname, firstname in master_school_members]
+        main_school_members = [(member_id, u"{lastname} {firstname}".format(lastname=lastname, firstname=firstname))
+                                 for member_id, lastname, firstname in main_school_members]
 
         super(MeetingTaskSchoolForm, self).__init__(*args, **kwargs)
         bible_reading = MeetingItem.objects.filter(name="Bible Reading").values_list('id', 'full_name')
@@ -49,7 +49,7 @@ class MeetingTaskSchoolForm(forms.ModelForm):
         school_meeting_items.extend(bible_reading)
         school_meeting_items.extend(field_ministy_items)
         self.fields['meeting_item'].choices = school_meeting_items
-        self.fields['person'].choices = [('', '-------------')] + master_school_members
+        self.fields['person'].choices = [('', '-------------')] + main_school_members
         self.move_field_after('person', 'presentation_date')
 
     def move_field_after(self, field, after_field=None):
@@ -135,7 +135,7 @@ class MeetingTaskSchoolViewForm(forms.ModelForm):
         }
 
         labels = {
-            'person': _("Master"),
+            'person': _("Main"),
             'meeting_item': _("Meeting item"),
             'presentation_date': _("Presentation date")
         }
